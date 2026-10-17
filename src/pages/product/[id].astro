@@ -173,6 +173,30 @@ const { product } = Astro.props;
     border-radius: 4px;
     margin: 15px 0;
   }
+
+  @media (max-width: 991px) {
+    .single-product-wrap-layout1 {
+      padding: 40px 0 60px !important;
+    }
+    .item-title {
+      font-size: clamp(22px, 5vw, 28px) !important;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .viewer-container,
+    .apparel-gallery-box {
+      padding: 15px !important;
+    }
+    .main-image-wrap {
+      min-height: 280px !important;
+    }
+    .desc-content table {
+      display: block;
+      width: 100%;
+      overflow-x: auto;
+    }
+  }
 </style>
 
 <script>

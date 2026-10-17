@@ -113,7 +113,16 @@ const loopSlides = [
     align-items: stretch !important;
     justify-content: space-between !important;
     height: 193px !important;
-    overflow: hidden !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+  }
+
+  #heroNavStrip::-webkit-scrollbar {
+    display: none !important;
   }
 
   #heroNavStrip .nav-item {
@@ -125,6 +134,8 @@ const loopSlides = [
     align-items: center !important;
     justify-content: center !important;
     transition: background-color 0.25s ease;
+    scroll-snap-align: start;
+    flex-shrink: 0;
   }
 
   .slick-nav .nav-item.slick-current {
@@ -133,6 +144,77 @@ const loopSlides = [
 
   .slick-nav .nav-item:hover {
     background-color: #da101a;
+  }
+
+  @media only screen and (max-width: 1199px) {
+    #heroNavStrip {
+      height: 160px !important;
+    }
+    #heroNavStrip .nav-item {
+      height: 160px !important;
+      padding: 30px 5px 18px !important;
+    }
+    #heroNavStrip .nav-item .item-title {
+      font-size: 16px !important;
+    }
+  }
+
+  @media only screen and (max-width: 991px) {
+    #heroNavStrip {
+      height: 130px !important;
+      justify-content: flex-start !important;
+    }
+    #heroNavStrip .nav-item {
+      flex: 0 0 33.333% !important;
+      max-width: 33.333% !important;
+      min-width: 33.333% !important;
+      height: 130px !important;
+      padding: 16px 5px 12px !important;
+    }
+    #heroNavStrip .nav-item .item-icon {
+      margin-bottom: 10px !important;
+    }
+    #heroNavStrip .nav-item .item-icon img {
+      height: 38px !important;
+      width: auto !important;
+    }
+    #heroNavStrip .nav-item .item-title {
+      font-size: 14px !important;
+      line-height: 1.25 !important;
+    }
+  }
+
+  @media only screen and (max-width: 767px) {
+    .hero-slide .item-img {
+      margin-bottom: 0 !important;
+    }
+    .hero-slide .item-img img {
+      max-height: 400px !important;
+    }
+  }
+
+  @media only screen and (max-width: 575px) {
+    #heroNavStrip {
+      height: 105px !important;
+    }
+    #heroNavStrip .nav-item {
+      flex: 0 0 50% !important;
+      max-width: 50% !important;
+      min-width: 50% !important;
+      height: 105px !important;
+      padding: 12px 6px 10px !important;
+    }
+    #heroNavStrip .nav-item .item-icon {
+      margin-bottom: 6px !important;
+    }
+    #heroNavStrip .nav-item .item-icon img {
+      height: 28px !important;
+      width: auto !important;
+    }
+    #heroNavStrip .nav-item .item-title {
+      font-size: 13px !important;
+      line-height: 1.2 !important;
+    }
   }
 </style>
 
@@ -160,6 +242,8 @@ const loopSlides = [
       navItems.forEach((nav, idx) => {
         if (idx === realIndex) {
           nav.classList.add('slick-current');
+          // Smoothly keep active nav item in view on mobile devices
+          nav.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
         } else {
           nav.classList.remove('slick-current');
         }

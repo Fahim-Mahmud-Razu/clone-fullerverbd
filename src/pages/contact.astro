@@ -203,6 +203,32 @@ import PageBanner from '../components/PageBanner.astro';
   </dialog>
 </BaseLayout>
 
+<style>
+  @media (max-width: 767px) {
+    .contact-wrap-layout2 {
+      padding: 40px 0 !important;
+    }
+    .contact-form {
+      padding: 24px 16px !important;
+    }
+    .contact-wrap-map iframe {
+      height: 280px !important;
+    }
+    .sidebar-widget-area {
+      margin-top: 35px !important;
+    }
+  }
+  @media (max-width: 576px) {
+    .vc-modal-inner {
+      padding: 16px !important;
+    }
+    .vc-close {
+      top: 6px !important;
+      right: 6px !important;
+    }
+  }
+</style>
+
 <script>
   function initContact() {
     // Visiting Card Modal

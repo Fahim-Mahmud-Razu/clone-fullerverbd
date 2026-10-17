@@ -87,7 +87,11 @@ const stats = [
       <div class="row gutters-15">
         {categoryTiles.map((cat) => (
           <div class="col-lg-4 col-md-6 col-12" style="margin-bottom: 30px;">
-            <div class="project-box-layout1" style="position: relative; overflow: hidden; background: #f8f8f8; border-radius: 4px; box-shadow: 0 4px 15px rgba(0,0,0,0.06);">
+            <div
+              class="project-box-layout1"
+              onclick={`location.href='${cat.url}'`}
+              style="position: relative; overflow: hidden; background: #f8f8f8; border-radius: 4px; box-shadow: 0 4px 15px rgba(0,0,0,0.06); cursor: pointer;"
+            >
               <div class="item-img" style="overflow: hidden; height: 336px; display: flex; align-items: center; justify-content: center; background: radial-gradient(circle, #e2f4fb 0%, #ffffff 80%);">
                 <img
                   src={cat.img}
@@ -402,6 +406,70 @@ const stats = [
     color: #ffffff;
     line-height: 16px;
     font-weight: 400;
+  }
+
+  @media only screen and (max-width: 767px) {
+    .service-wrap-layout1 {
+      padding: 50px 0 30px !important;
+    }
+    .service-wrap-layout1 .heading-layout1 {
+      margin-bottom: 30px !important;
+    }
+    .service-wrap-layout1 .heading-layout1 h2 {
+      font-size: 28px !important;
+    }
+    .project-wrap-layout1 {
+      padding: 30px 0 50px !important;
+    }
+    .project-box-layout1 {
+      height: 280px !important;
+    }
+    .project-box-layout1 .item-img {
+      height: 280px !important;
+    }
+    .stat {
+      height: auto !important;
+      min-height: 100px !important;
+      padding: 12px 10px !important;
+      margin-bottom: 12px !important;
+    }
+    .progress-box-layout1 .progress-content .item-icon i {
+      font-size: 40px !important;
+    }
+    .progress-box-layout1 .progress-content .item-content .count-number {
+      font-size: 26px !important;
+    }
+  }
+
+  @media only screen and (max-width: 575px) {
+    .service-box-layout1 .item-img img {
+      width: 200px !important;
+      height: 200px !important;
+    }
+    .service-box-layout1 .sl-number {
+      width: 46px !important;
+      height: 46px !important;
+      line-height: 46px !important;
+      font-size: 17px !important;
+      top: 6px !important;
+      right: 10px !important;
+    }
+    .about-box-layout1 .about-box-content {
+      padding: 40px 15px !important;
+    }
+    .about-box-layout1 .about-box-content .item-header .experience-year {
+      font-size: 55px !important;
+      line-height: 52px !important;
+      margin-right: 15px !important;
+    }
+    .about-box-layout1 .about-box-content .item-header .item-title li {
+      font-size: 20px !important;
+    }
+    .about-box-layout1 .about-box-content p {
+      font-size: 15px !important;
+      line-height: 24px !important;
+      margin-bottom: 25px !important;
+    }
   }
 </style>
 

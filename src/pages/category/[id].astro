@@ -41,7 +41,11 @@ const categoryProducts = category.product_ids
       <div class="row gutters-15">
         {categoryProducts.map((prod) => (
           <div class="col-lg-4 col-md-6 col-12 col-sm-4" style="margin-bottom: 30px;">
-            <div class="project-box-layout1" style="position: relative; overflow: hidden; background: #f8f8f8; border-radius: 4px; box-shadow: 0 4px 15px rgba(0,0,0,0.06); height: 336px;">
+            <div
+              class="project-box-layout1"
+              onclick={`location.href='/product/${prod.id}'`}
+              style="position: relative; overflow: hidden; background: #f8f8f8; border-radius: 4px; box-shadow: 0 4px 15px rgba(0,0,0,0.06); height: 336px; cursor: pointer;"
+            >
               <div class="item-img" style="overflow: hidden; height: 100%; display: flex; align-items: center; justify-content: center; background: radial-gradient(circle, #eef7fc 0%, #ffffff 80%); padding: 20px;">
                 <img
                   src={prod.preview_image || prod.sprite_image}
@@ -73,5 +77,11 @@ const categoryProducts = category.product_ids
   }
   .project-box-layout1:hover .item-img img {
     transform: scale(1.08);
+  }
+
+  @media (max-width: 767px) {
+    .project-box-layout1 {
+      height: 280px !important;
+    }
   }
 </style>

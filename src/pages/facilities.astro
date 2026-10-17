@@ -112,18 +112,31 @@ import PageBanner from '../components/PageBanner.astro';
     font-size: 14px;
   }
   @media (max-width: 900px) {
+    .facilities {
+      padding: 40px 15px !important;
+    }
     .container1 {
       grid-template-columns: 1fr;
+      gap: 35px;
     }
     .content h1 {
-      font-size: 42px;
+      font-size: clamp(28px, 6vw, 42px);
+    }
+    .single-item.right-item {
+      padding-right: 0 !important;
     }
     .features {
       grid-template-columns: 1fr;
+      margin-top: 35px;
+      padding: 16px;
     }
     .features div {
       border-right: none;
       border-bottom: 1px solid #eee;
+      padding: 12px 6px;
+    }
+    .features div:last-child {
+      border-bottom: none;
     }
   }
 </style>

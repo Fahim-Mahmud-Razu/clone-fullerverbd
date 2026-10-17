@@ -120,21 +120,68 @@ const {
           const isOpen = mobileNav.classList.toggle('is-open');
           mobileBtn.classList.toggle('meanclose', isOpen);
         });
+
+        // Close menu when clicking normal links
+        mobileNav.querySelectorAll('a').forEach((link) => {
+          link.addEventListener('click', () => {
+            const href = link.getAttribute('href');
+            if (href && href !== '#' && !link.classList.contains('mean-expand')) {
+              mobileNav.classList.remove('is-open');
+              mobileBtn.classList.remove('meanclose');
+            }
+          });
+        });
+
+        // Close when clicking outside mobile nav and button
+        document.addEventListener('click', (e) => {
+          const target = e.target as HTMLElement | null;
+          if (
+            mobileNav.classList.contains('is-open') &&
+            target &&
+            !mobileNav.contains(target) &&
+            !mobileBtn.contains(target)
+          ) {
+            mobileNav.classList.remove('is-open');
+            mobileBtn.classList.remove('meanclose');
+          }
+        });
+
+        // Close when window resized to desktop
+        window.addEventListener('resize', () => {
+          if (window.innerWidth >= 992 && mobileNav.classList.contains('is-open')) {
+            mobileNav.classList.remove('is-open');
+            mobileBtn.classList.remove('meanclose');
+          }
+        });
+      }
+
+      function toggleSubmenu(btn: HTMLElement | null, submenu: HTMLElement | null) {
+        if (!btn || !submenu) return;
+        const isExpanded = submenu.classList.toggle('sub-open');
+        btn.textContent = isExpanded ? '-' : '+';
       }
 
       if (prodExpandBtn && prodSubmenu) {
         prodExpandBtn.addEventListener('click', (e) => {
           e.preventDefault();
-          const isExpanded = prodSubmenu.classList.toggle('sub-open');
-          prodExpandBtn.textContent = isExpanded ? '-' : '+';
+          toggleSubmenu(prodExpandBtn, prodSubmenu);
+        });
+        const prodParentLink = prodExpandBtn.parentElement?.querySelector('a:not(.mean-expand)');
+        prodParentLink?.addEventListener('click', (e) => {
+          e.preventDefault();
+          toggleSubmenu(prodExpandBtn, prodSubmenu);
         });
       }
 
       if (langExpandBtn && langSubmenu) {
         langExpandBtn.addEventListener('click', (e) => {
           e.preventDefault();
-          const isExpanded = langSubmenu.classList.toggle('sub-open');
-          langExpandBtn.textContent = isExpanded ? '-' : '+';
+          toggleSubmenu(langExpandBtn, langSubmenu);
+        });
+        const langParentLink = langExpandBtn.parentElement?.querySelector('a:not(.mean-expand)');
+        langParentLink?.addEventListener('click', (e) => {
+          e.preventDefault();
+          toggleSubmenu(langExpandBtn, langSubmenu);
         });
       }
 

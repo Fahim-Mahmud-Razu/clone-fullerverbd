@@ -132,6 +132,39 @@ if (locale === 'jp') {
   .process-thumb-btn.active {
     border-color: #ee212b !important;
   }
+
+  @media (max-width: 991px) {
+    .single-service-wrap-layout2 {
+      padding: 40px 0 60px !important;
+    }
+    .zoom-gallery-box {
+      margin-bottom: 30px !important;
+    }
+    .sidebar-widget-area {
+      margin-top: 35px !important;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .tab-nav-list {
+      overflow-x: auto !important;
+      flex-wrap: nowrap !important;
+      padding-bottom: 8px !important;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+    }
+    .tab-nav-list::-webkit-scrollbar {
+      display: none;
+    }
+    .process-thumb-btn {
+      width: 80px !important;
+      height: 56px !important;
+      flex-shrink: 0 !important;
+    }
+    .item-subtitle {
+      font-size: 22px !important;
+    }
+  }
 </style>
 
 <script>
