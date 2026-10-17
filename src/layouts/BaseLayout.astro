@@ -146,7 +146,7 @@ const {
 
       function handleScroll() {
         const scrollY = window.scrollY || window.pageYOffset;
-        if (headerMenu && stickyPlaceholder) {
+        if (headerMenu && stickyPlaceholder && window.innerWidth >= 992) {
           if (scrollY > 60) {
             if (!headerMenu.classList.contains('rt-sticky')) {
               updateMenuMetrics();

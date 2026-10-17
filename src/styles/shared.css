@@ -10,12 +10,73 @@
   --brand-orange: #F66202;
   --brand-orange-hover: #D95400;
   --brand-orange-light: #FFF0E6;
+  --brand-orange-text: #C44800; /* WCAG AA accessible contrast on white backgrounds */
   --brand-bg: #FFFFFF;
   --brand-font-heading: 'Montserrat', sans-serif;
   --brand-font-body: 'Inter', 'Roboto', sans-serif;
+  --spacing-section-desktop: 70px 0;
+  --spacing-section-mobile: 40px 0;
 }
 
-/* Typography Defaults */
+/* Accessible Focus States */
+:focus-visible {
+  outline: 2px solid var(--brand-orange) !important;
+  outline-offset: 2px !important;
+}
+
+/* Standard Button System */
+.btn-primary-brand,
+.item-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: var(--brand-orange);
+  color: #ffffff !important;
+  border: 2px solid var(--brand-orange);
+  padding: 12px 28px;
+  border-radius: 4px;
+  font-weight: 700;
+  font-size: 15px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 12px rgba(246, 98, 2, 0.2);
+}
+.btn-primary-brand:hover,
+.item-btn-primary:hover {
+  background-color: var(--brand-orange-hover);
+  border-color: var(--brand-orange-hover);
+  color: #ffffff !important;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(246, 98, 2, 0.3);
+}
+
+.btn-secondary-brand,
+.item-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: transparent;
+  color: var(--brand-navy) !important;
+  border: 2px solid var(--brand-navy);
+  padding: 12px 28px;
+  border-radius: 4px;
+  font-weight: 700;
+  font-size: 15px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+.btn-secondary-brand:hover,
+.item-btn-secondary:hover {
+  background-color: var(--brand-navy);
+  color: #ffffff !important;
+  transform: translateY(-1px);
+}
+
+/* Typography Defaults & 16px+ Mobile Scale */
 h1, h2, h3, h4, h5, h6,
 .heading-layout1, .heading-layout2, .heading-layout3,
 .item-title, .footer-title,
@@ -27,6 +88,17 @@ nav.template-main-menu > ul > li > a,
 body {
   font-family: var(--brand-font-body);
   color: #333333;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+@media (max-width: 767px) {
+  body {
+    font-size: 16px !important;
+  }
+  p, input, textarea, select {
+    font-size: 16px !important;
+  }
 }
 
 /* 1230px and above container override */

@@ -218,19 +218,24 @@ const { product } = Astro.props;
     }
 
     // 2. 3D Sprite Viewer Scrubber
-    const viewer = document.getElementById('productViewer');
-    const sprite = document.getElementById('productSprite');
-    const handleContainer = document.getElementById('viewerHandle');
-    const handleFill = document.getElementById('handleFill');
-    const handleCursor = document.getElementById('handleCursor');
+    const viewer = document.getElementById('productViewer') as HTMLElement | null;
+    const sprite = document.getElementById('productSprite') as HTMLElement | null;
+    const handleContainer = document.getElementById('viewerHandle') as HTMLElement | null;
+    const handleFill = document.getElementById('handleFill') as HTMLElement | null;
+    const handleCursor = document.getElementById('handleCursor') as HTMLElement | null;
 
     if (viewer && sprite && handleContainer && handleFill && handleCursor) {
+      const activeSprite = sprite;
+      const activeContainer = handleContainer;
+      const activeFill = handleFill;
+      const activeCursor = handleCursor;
+
       const frames = parseInt(viewer.getAttribute('data-frame') || '16', 10);
       let visibleFrame = 0;
       let isDragging = false;
 
       // Reveal sprite on load
-      const spriteUrl = sprite.getAttribute('data-image');
+      const spriteUrl = activeSprite.getAttribute('data-image');
       if (spriteUrl) {
         const img = new Image();
         img.src = spriteUrl;
@@ -242,24 +247,24 @@ const { product } = Astro.props;
       function updateFrame(frameIndex: number) {
         visibleFrame = Math.max(0, Math.min(frameIndex, frames - 1));
         const transformPercent = -(100 * visibleFrame / frames);
-        sprite.style.transform = `translateX(${transformPercent}%)`;
+        activeSprite.style.transform = `translateX(${transformPercent}%)`;
 
         const percent = (visibleFrame / (frames - 1)) * 100;
-        handleFill.style.width = `${percent}%`;
-        handleCursor.style.left = `${percent}%`;
+        activeFill.style.width = `${percent}%`;
+        activeCursor.style.left = `${percent}%`;
       }
 
       function onHandleMove(clientX: number) {
-        const rect = handleContainer.getBoundingClientRect();
+        const rect = activeContainer.getBoundingClientRect();
         const offsetX = Math.max(0, Math.min(clientX - rect.left, rect.width));
         const fraction = offsetX / rect.width;
         const targetFrame = Math.round(fraction * (frames - 1));
         updateFrame(targetFrame);
       }
 
-      handleContainer.addEventListener('mousedown', (e) => {
+      activeContainer.addEventListener('mousedown', (e) => {
         isDragging = true;
-        handleContainer.classList.add('dragging');
+        activeContainer.classList.add('dragging');
         onHandleMove(e.clientX);
       });
 
@@ -271,7 +276,7 @@ const { product } = Astro.props;
       window.addEventListener('mouseup', () => {
         if (isDragging) {
           isDragging = false;
-          handleContainer.classList.remove('dragging');
+          activeContainer.classList.remove('dragging');
         }
       });
 
