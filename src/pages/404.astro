@@ -1,0 +1,31 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageBanner from '../components/PageBanner.astro';
+---
+
+<BaseLayout title="Page Not Found - FULLEVER BD LIMITED" currentPath="/404">
+  <PageBanner title="404 Not Found" breadcrumbs={[{ label: 'Home', url: '/' }, { label: '404' }]} />
+
+  <section class="error-page-wrap" style="padding: 100px 0; text-align: center; background: #ffffff;">
+    <div class="container">
+      <div class="error-content" style="max-width: 600px; margin: 0 auto;">
+        <h1 style="font-size: 110px; font-weight: 900; color: #082c4b; line-height: 1; margin-bottom: 20px;">
+          404
+        </h1>
+        <h2 style="font-size: 28px; font-weight: 700; color: #111111; margin-bottom: 20px;">
+          Oops! That Page Can't Be Found
+        </h2>
+        <p style="color: #646464; font-size: 16px; line-height: 28px; margin-bottom: 35px;">
+          The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.
+        </p>
+        <a
+          href="/"
+          class="btn-fill-xl"
+          style="background: #ee212b; color: #ffffff; padding: 14px 32px; border-radius: 4px; font-weight: 700; text-decoration: none; display: inline-block;"
+        >
+          Back To Home
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

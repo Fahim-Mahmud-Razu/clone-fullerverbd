@@ -1,0 +1,38 @@
+[
+  {
+    "tag": "SQP",
+    "title": "Supplier Qualification Program",
+    "desc": "Verifies suppliers meet our quality, ethical, and operational standards before onboarding.",
+    "image": "/front-end/img/SQP-Logo-Web.png"
+  },
+  {
+    "tag": "GSV",
+    "title": "Global Security Verification",
+    "desc": "Confirms supply chain security practices that protect cargo from tampering and unauthorized access.",
+    "image": "/front-end/img/gsv-logo-web.png"
+  },
+  {
+    "tag": "FLAXA",
+    "title": "Footwear, Leather Goods & Accessories Exporters Association",
+    "desc": "Membership in the industry association representing footwear, leather goods, and accessories exporters.",
+    "image": "/front-end/img/FLAXA.png"
+  },
+  {
+    "tag": "WCA",
+    "title": "Workplace Conditions Assessment",
+    "desc": "Independent audit of labor practices, health, and safety conditions across our facilities.",
+    "image": "/front-end/img/WCA.png"
+  },
+  {
+    "tag": "ISO 9001",
+    "title": "ISO 9001 Certified",
+    "desc": "International standard for quality management systems, consistently met and independently certified.",
+    "image": "/front-end/img/ISO_14001.png"
+  },
+  {
+    "tag": "ISO 14001",
+    "title": "ISO 14001 Certified",
+    "desc": "International standard for environmental management systems, independently certified.",
+    "image": "/front-end/img/ISO_14001.png"
+  }
+]

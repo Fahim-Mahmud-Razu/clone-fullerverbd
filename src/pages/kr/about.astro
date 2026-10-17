@@ -1,0 +1,35 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageBanner from '../../components/PageBanner.astro';
+---
+
+<BaseLayout title="회사 소개 - FULLEVER BD LIMITED" currentPath="/kr/about" locale="kr">
+  <PageBanner title="회사 소개" breadcrumbs={[{ label: '홈 페이지', url: '/kr/' }, { label: '회사 소개' }]} />
+
+  <section class="about-wrap-layout7 bg-shape-2" style="padding: 70px 0; background: #ffffff;">
+    <div class="container">
+      <div class="row about-box-layout9 align-items-center">
+        <div class="col-lg-7 col-12 single-item left-item">
+          <div class="item-content">
+            <h2 class="item-title" style="font-size: 32px; font-weight: 700; color: #082c4b; margin-bottom: 20px;">
+              회사 소개
+            </h2>
+            <p class="t-align" style="font-size: 16px; line-height: 28px; color: #646464; margin-bottom: 20px;">
+              FULLEVER BD LIMITED는 가죽 안전용품의 글로벌 제조업체이자 공급업체입니다. 우리 회사의 목표는 전 세계 국가에서 중요한 작업자를 안전하게 보호하기 위해 다양한 고품질 개인 보호 장비에 접근할 수 있도록 하는 것입니다.
+            </p>
+            <p class="t-align" style="font-size: 16px; line-height: 28px; color: #646464; margin-bottom: 20px;">
+              저희 공장은 방글라데시 최대 규모의 가죽 장갑 제조업체이며, 지금도 빠르게 성장하고 있습니다. 저희는 40년 이상의 장갑 생산 경험을 지닌 가죽제품 전문업체입니다. 우리는 현재 1000명 이상의 숙련된 근로자를 고용하고 있으며 이를 통해 매월 100,000다스의 장갑을 생산하고 있습니다. FULLEVER BD LIMITED의 가장 큰 우선순위는 고객 서비스와 일관된 고품질 공급입니다.
+            </p>
+            <p class="t-align" style="font-size: 16px; line-height: 28px; color: #646464;">
+              파트너에게 최고의 서비스를 보장하기 위해 우리는 관리팀에 서구식 관리 방식을 도입했습니다. 우리는 모든 가죽 품질, 재고 및 생산 데이터를 기록하고 추적하여 우리가 제조한 모든 장갑을 철저히 검사합니다. 또한 우리는 미국, 유럽, 일본 및 호주시장에 최고의 품질의 제품을 공급하기위해 말단사원에서부터 경영진까지 한마음이 되어 최선을 다해왔고 앞으로도 그 초심의 마음을 유지하기위해 사력을 다할것 입니다.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-lg-5 col-12 single-item right-item" style="padding-right: 20px;">
+          <img style="border: 2px solid #00008B; width: 100%; border-radius: 6px;" src="/front-end/img/TEAM_PHOTO.jpg" alt="About Us" />
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

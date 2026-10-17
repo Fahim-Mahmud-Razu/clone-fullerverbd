@@ -1,0 +1,44 @@
+{
+  "en": {
+    "code": "en",
+    "name": "English",
+    "nav": {
+      "home": "HOME",
+      "about": "ABOUT US",
+      "facilities": "Our Facilities",
+      "compliance": "COMPLIANCE",
+      "products": "Our Product",
+      "gallery": "GALLERY",
+      "contact": "CONTACT US",
+      "language": "LANGUAGE"
+    }
+  },
+  "jp": {
+    "code": "jp",
+    "name": "\u65e5\u672c\u8a9e",
+    "nav": {
+      "home": "\u30db\u30fc\u30e0\u30da\u30fc\u30b8",
+      "about": "\u79c1\u305f\u3061\u306b\u3064\u3044\u3066",
+      "facilities": "\u79c1\u305f\u3061\u306e\u65bd\u8a2d",
+      "compliance": "\u30b3\u30f3\u30d7\u30e9\u30a4\u30a2\u30f3\u30b9",
+      "products": "\u79c1\u305f\u3061\u306e\u5546\u54c1",
+      "gallery": "\u30ae\u30e3\u30e9\u30ea\u30fc",
+      "contact": "\u304a\u554f\u3044\u5408\u308f\u305b",
+      "language": "\u8a00\u8a9e"
+    }
+  },
+  "kr": {
+    "code": "kr",
+    "name": "\ud55c\uad6d\uc5b4",
+    "nav": {
+      "home": "\ud648 \ud398\uc774\uc9c0",
+      "about": "\ud68c\uc0ac \uc18c\uac1c",
+      "facilities": "\uc6b0\ub9ac \uc2dc\uc124",
+      "compliance": "\uaddc\uc815 \uc900\uc218",
+      "products": "\uc6b0\ub9ac\uc758 \uc81c\ud488",
+      "gallery": "\uac24\ub7ec\ub9ac",
+      "contact": "\ubb38\uc758\ud558\uae30",
+      "language": "\uc5b8\uc5b4"
+    }
+  }
+}

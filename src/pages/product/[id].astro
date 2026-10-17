@@ -1,0 +1,327 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageBanner from '../../components/PageBanner.astro';
+import products from '../../data/products.json';
+
+export function getStaticPaths() {
+  return products.map((prod) => ({
+    params: { id: prod.id.toString() },
+    props: { product: prod }
+  }));
+}
+
+interface Props {
+  product: {
+    id: number;
+    route: string;
+    title: string;
+    banner_title: string;
+    category_id: number | null;
+    category_title: string;
+    sku: string;
+    preview_image: string;
+    sprite_image: string;
+    is_apparel_gallery: boolean;
+    apparel_images: string[];
+    frame: number;
+    friction: number;
+    description_html: string;
+    size_image: string;
+  };
+}
+
+const { product } = Astro.props;
+---
+
+<BaseLayout title={`${product.title} - FULLEVER BD LIMITED`} currentPath={product.route}>
+  <PageBanner
+    title={product.title}
+    breadcrumbs={[{ label: 'Home', url: '/' }, { label: product.category_title || 'Products' }]}
+  />
+
+  <section class="single-product-wrap-layout1 product-up-gap" style="padding: 70px 0 90px; background: #ffffff;">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="row">
+            <!-- Left Column: Product Viewer / Gallery -->
+            <div class="col-xl-6 col-12" style="margin-bottom: 35px;">
+              <div class="single-product-gallery-layout1">
+                {product.is_apparel_gallery ? (
+                  <!-- Apparel Gallery with Thumbnails -->
+                  <div class="apparel-gallery-box" style="background: #fbfbfb; border: 1px solid #eee; border-radius: 8px; padding: 25px;">
+                    <div class="main-image-wrap text-center" style="margin-bottom: 20px; min-height: 400px; display: flex; align-items: center; justify-content: center;">
+                      <img
+                        id="apparelMainImage"
+                        src={product.apparel_images[0] || product.preview_image}
+                        alt={product.title}
+                        style="max-width: 100%; max-height: 450px; object-fit: contain;"
+                      />
+                    </div>
+                    {product.apparel_images.length > 1 && (
+                      <div class="apparel-thumbnails" style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+                        {product.apparel_images.map((img) => (
+                          <button
+                            class="apparel-thumb-btn"
+                            data-img-src={img}
+                            style="border: 2px solid #ddd; padding: 4px; border-radius: 4px; background: #fff; cursor: pointer; width: 75px; height: 75px;"
+                          >
+                            <img src={img} alt="Thumbnail" style="width: 100%; height: 100%; object-fit: contain;" />
+                          </button>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                ) : (
+                  <!-- Glove 3D Image Sprite Viewer -->
+                  <div class="viewer-container" style="background: #fbfbfb; border: 1px solid #eee; border-radius: 8px; padding: 25px;">
+                    <div
+                      class="cd-product-viewer-wrapper"
+                      id="productViewer"
+                      data-frame={product.frame || 16}
+                      data-friction={product.friction || 0.33}
+                    >
+                      <figure class="product-viewer" id="productFigure">
+                        <img
+                          id="productPreviewImg"
+                          src={product.preview_image || product.sprite_image}
+                          alt="Product Preview"
+                        />
+                        {product.sprite_image && (
+                          <div
+                            class="product-sprite"
+                            id="productSprite"
+                            data-image={product.sprite_image}
+                            style={`background-image: url(${product.sprite_image});`}
+                          ></div>
+                        )}
+                      </figure>
+
+                      {product.sprite_image && (
+                        <div class="cd-product-viewer-handle" id="viewerHandle">
+                          <span class="fill" id="handleFill"></span>
+                          <span class="handle" id="handleCursor">Handle</span>
+                        </div>
+                      )}
+                    </div>
+
+                    {product.sprite_image && (
+                      <div class="badge bg-primary" style="padding: 6px 14px; color: #111; background-color: #c9dff3 !important; font-weight: 700; border-radius: 4px; display: inline-block;">
+                        Image 3D View
+                      </div>
+                    )}
+                  </div>
+                )}
+              </div>
+            </div>
+
+            <!-- Right Column: Details & SKU -->
+            <div class="col-xl-6 col-12">
+              <div class="single-product-content-layout1">
+                <div class="product-dec">
+                  <h3 class="item-title" style="font-size: 28px; font-weight: 700; color: #111111; margin-bottom: 10px;">
+                    {product.title}
+                  </h3>
+
+                  {product.sku && (
+                    <p style="font-weight: bold; color: Black; font-size: 16px; margin-bottom: 25px;">
+                      {product.sku}
+                    </p>
+                  )}
+
+                  <div class="single-product-other-info">
+                    <ul class="nav nav-tabs tab-nav-list" style="border-bottom: 2px solid #ee212b; margin-bottom: 20px;">
+                      <li class="nav-item">
+                        <a
+                          class="active"
+                          href="#desc"
+                          style="display: inline-block; padding: 10px 22px; font-size: 16px; font-weight: 700; color: #ee212b; background: #fff; border: none; text-decoration: none;"
+                        >
+                          Description
+                        </a>
+                      </li>
+                    </ul>
+
+                    <div class="tab-content" style="color: #444444; font-size: 15px; line-height: 26px;">
+                      <div class="tab-pane active show" id="desc">
+                        <div class="desc-content" set:html={product.description_html} />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .apparel-thumb-btn.is-active {
+    border-color: #ee212b !important;
+  }
+  .desc-content p {
+    margin-bottom: 16px;
+    color: #333333;
+    line-height: 24px;
+  }
+  .desc-content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    margin: 15px 0;
+  }
+</style>
+
+<script>
+  function initProductPage() {
+    // 1. Apparel Thumbnail Switcher
+    const apparelMain = document.getElementById('apparelMainImage') as HTMLImageElement;
+    const apparelBtns = document.querySelectorAll<HTMLButtonElement>('.apparel-thumb-btn');
+
+    if (apparelMain && apparelBtns.length) {
+      apparelBtns.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          apparelBtns.forEach((b) => b.classList.remove('is-active'));
+          btn.classList.add('is-active');
+          const src = btn.getAttribute('data-img-src');
+          if (src) {
+            apparelMain.src = src;
+          }
+        });
+      });
+      apparelBtns[0]?.classList.add('is-active');
+    }
+
+    // 2. 3D Sprite Viewer Scrubber
+    const viewer = document.getElementById('productViewer');
+    const sprite = document.getElementById('productSprite');
+    const handleContainer = document.getElementById('viewerHandle');
+    const handleFill = document.getElementById('handleFill');
+    const handleCursor = document.getElementById('handleCursor');
+
+    if (viewer && sprite && handleContainer && handleFill && handleCursor) {
+      const frames = parseInt(viewer.getAttribute('data-frame') || '16', 10);
+      let visibleFrame = 0;
+      let isDragging = false;
+
+      // Reveal sprite on load
+      const spriteUrl = sprite.getAttribute('data-image');
+      if (spriteUrl) {
+        const img = new Image();
+        img.src = spriteUrl;
+        img.onload = () => {
+          viewer.classList.add('loaded');
+        };
+      }
+
+      function updateFrame(frameIndex: number) {
+        visibleFrame = Math.max(0, Math.min(frameIndex, frames - 1));
+        const transformPercent = -(100 * visibleFrame / frames);
+        sprite.style.transform = `translateX(${transformPercent}%)`;
+
+        const percent = (visibleFrame / (frames - 1)) * 100;
+        handleFill.style.width = `${percent}%`;
+        handleCursor.style.left = `${percent}%`;
+      }
+
+      function onHandleMove(clientX: number) {
+        const rect = handleContainer.getBoundingClientRect();
+        const offsetX = Math.max(0, Math.min(clientX - rect.left, rect.width));
+        const fraction = offsetX / rect.width;
+        const targetFrame = Math.round(fraction * (frames - 1));
+        updateFrame(targetFrame);
+      }
+
+      handleContainer.addEventListener('mousedown', (e) => {
+        isDragging = true;
+        handleContainer.classList.add('dragging');
+        onHandleMove(e.clientX);
+      });
+
+      window.addEventListener('mousemove', (e) => {
+        if (!isDragging) return;
+        onHandleMove(e.clientX);
+      });
+
+      window.addEventListener('mouseup', () => {
+        if (isDragging) {
+          isDragging = false;
+          handleContainer.classList.remove('dragging');
+        }
+      });
+
+      // Touch events for mobile
+      handleContainer.addEventListener('touchstart', (e) => {
+        isDragging = true;
+        handleContainer.classList.add('dragging');
+        onHandleMove(e.touches[0].clientX);
+      }, { passive: true });
+
+      window.addEventListener('touchmove', (e) => {
+        if (!isDragging) return;
+        onHandleMove(e.touches[0].clientX);
+      }, { passive: true });
+
+      window.addEventListener('touchend', () => {
+        if (isDragging) {
+          isDragging = false;
+          handleContainer.classList.remove('dragging');
+        }
+      });
+
+      // Also allow swiping directly on the product image
+      const figure = document.getElementById('productFigure');
+      let imgStartX = 0;
+      let imgStartFrame = 0;
+      let imgDragging = false;
+
+      if (figure) {
+        figure.addEventListener('mousedown', (e) => {
+          e.preventDefault();
+          imgDragging = true;
+          imgStartX = e.clientX;
+          imgStartFrame = visibleFrame;
+        });
+
+        window.addEventListener('mousemove', (e) => {
+          if (!imgDragging) return;
+          const diff = e.clientX - imgStartX;
+          const step = Math.round(diff / 20);
+          updateFrame(imgStartFrame - step);
+        });
+
+        window.addEventListener('mouseup', () => {
+          imgDragging = false;
+        });
+
+        figure.addEventListener('touchstart', (e) => {
+          imgDragging = true;
+          imgStartX = e.touches[0].clientX;
+          imgStartFrame = visibleFrame;
+        }, { passive: true });
+
+        window.addEventListener('touchmove', (e) => {
+          if (!imgDragging) return;
+          const diff = e.touches[0].clientX - imgStartX;
+          const step = Math.round(diff / 20);
+          updateFrame(imgStartFrame - step);
+        }, { passive: true });
+
+        window.addEventListener('touchend', () => {
+          imgDragging = false;
+        });
+      }
+
+      updateFrame(0);
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initProductPage);
+  } else {
+    initProductPage();
+  }
+</script>

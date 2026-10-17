@@ -1,0 +1,23 @@
+---
+import ProcessLayout from '../../components/ProcessLayout.astro';
+
+const images = [
+  '/front-end/img/workingprocess/ps/01.jpg',
+  '/front-end/img/workingprocess/ps/02.jpg',
+  '/front-end/img/workingprocess/ps/03.jpg'
+];
+
+const paragraphs = [
+  '가죽의 품질을 확인하고 생산에 적합한지 확인한 후 재단 부서로 보내집니다. FULLEVER BD LIMITED는 강력한 자동 절단 기계를 사용하여 더 빠른 속도로 더 많은 생산량을 제공합니다. 후 절단 공정이 완료되면 모든 장갑 부품이 함께 그룹화되고 또 다른 품질 검사를 거칩니다. 저희 봉제부서로 보내지기 전에',
+  'Full Ever가 할 수 있는 것은 우리의 절단 기술 혁신과 서부 관리 스타일을 통해서입니다. 매월 80,000 - 100,000 다스의 장갑을 생산할 수 있는 효율적이고 숙련된 공장을 운영합니다.'
+];
+---
+
+<ProcessLayout
+  title="절단 공정"
+  subtitle="절단 공정"
+  currentPath="/kr/cutting-process"
+  images={images}
+  paragraphs={paragraphs}
+  locale="kr"
+/>

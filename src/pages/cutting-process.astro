@@ -1,0 +1,22 @@
+---
+import ProcessLayout from '../components/ProcessLayout.astro';
+
+const images = [
+  '/front-end/img/workingprocess/ps/01.jpg',
+  '/front-end/img/workingprocess/ps/02.jpg',
+  '/front-end/img/workingprocess/ps/03.jpg'
+];
+
+const paragraphs = [
+  'After our leather is quality checked that it\'s good for production, it is sent to our cutting department. FULLEVER BD LIMITED uses powerful automated cutting machines allowing for a greater yield at a faster rate. After the cutting process is complete, all the glove parts are grouped together and go through another quality check before being sent to our sewing department',
+  'It is through our cutting technological innovations and westerm management style that Full Ever is able to run an efficient and skilled factory capable of producing 80,000 - 100,000 dozen gloves per month.'
+];
+---
+
+<ProcessLayout
+  title="Cutting Process"
+  subtitle="Cutting Process"
+  currentPath="/cutting-process"
+  images={images}
+  paragraphs={paragraphs}
+/>

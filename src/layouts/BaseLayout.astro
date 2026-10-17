@@ -1,0 +1,160 @@
+---
+import SiteHeader from '../components/SiteHeader.astro';
+import MobileMenu from '../components/MobileMenu.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import '../styles/shared.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  currentPath?: string;
+  locale?: 'en' | 'jp' | 'kr';
+  bodyClass?: string;
+}
+
+const {
+  title = 'FULLEVER BD LIMITED',
+  description = 'FULLEVER BD LIMITED is a premier manufacturer of high quality safety gloves, leather driver gloves, welding articles, and apparel based in Gazipur, Bangladesh.',
+  currentPath = '/',
+  locale = 'en',
+  bodyClass = 'sticky-header'
+} = Astro.props;
+---
+
+<!doctype html>
+<html class="no-js" lang={locale}>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link rel="shortcut icon" type="image/x-icon" href="/front-end/img/favicon.png" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,600,700,900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+    <!-- Source Stylesheets in Exact Cascade Order -->
+    <link rel="stylesheet" href="/front-end/css/normalize.css" />
+    <link rel="stylesheet" href="/front-end/css/main.css" />
+    <link rel="stylesheet" href="/front-end/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/front-end/css/meanmenu.min.css" />
+    <link rel="stylesheet" href="/front-end/css/fontawesome-all.min.css" />
+    <link rel="stylesheet" href="/front-end/css/animate.min.css" />
+    <link rel="stylesheet" href="/front-end/font/flaticon.css" />
+    <link rel="stylesheet" href="/front-end/vendor/slick/slick.css" />
+    <link rel="stylesheet" href="/front-end/vendor/slick/slick-theme.css" />
+    <link rel="stylesheet" href="/front-end/css/select2.min.css" />
+    <link rel="stylesheet" href="/front-end/css/magnific-popup.css" />
+    <link rel="stylesheet" href="/front-end/css/style.css" />
+
+    <slot name="head" />
+  </head>
+
+  <body class={bodyClass}>
+    <div id="wrapper" class="wrapper">
+      <SiteHeader currentPath={currentPath} locale={locale} />
+      <MobileMenu currentPath={currentPath} locale={locale} />
+
+      <main id="main-content">
+        <slot />
+      </main>
+
+      <SiteFooter locale={locale} />
+    </div>
+
+    <!-- Client Interactivity Script -->
+    <script>
+      // 1. Sticky Header
+      const headerMenu = document.getElementById('header-menu');
+      const stickyPlaceholder = document.getElementById('rt-sticky-placeholder');
+      const scrollUpBtn = document.getElementById('scrollUpBtn');
+
+      function handleScroll() {
+        const scrollY = window.scrollY || window.pageYOffset;
+        if (headerMenu && stickyPlaceholder) {
+          if (scrollY > 50) {
+            headerMenu.classList.add('rt-sticky');
+            stickyPlaceholder.classList.add('is-active');
+          } else {
+            headerMenu.classList.remove('rt-sticky');
+            stickyPlaceholder.classList.remove('is-active');
+          }
+        }
+
+        // Scroll-to-top button visibility
+        if (scrollUpBtn) {
+          if (scrollY > 300) {
+            scrollUpBtn.classList.add('back-top');
+          } else {
+            scrollUpBtn.classList.remove('back-top');
+          }
+        }
+      }
+
+      window.addEventListener('scroll', handleScroll, { passive: true });
+      handleScroll();
+
+      // Scroll to top action
+      if (scrollUpBtn) {
+        scrollUpBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      }
+
+      // 2. Mobile Menu Toggle & Accordion
+      const mobileBtn = document.getElementById('mobileMenuBtn');
+      const mobileNav = document.getElementById('mobileNavMenu');
+      const prodExpandBtn = document.getElementById('mobileProductsExpand');
+      const prodSubmenu = document.getElementById('mobileProductsSubmenu');
+      const langExpandBtn = document.getElementById('mobileLangExpand');
+      const langSubmenu = document.getElementById('mobileLangSubmenu');
+
+      if (mobileBtn && mobileNav) {
+        mobileBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          const isOpen = mobileNav.classList.toggle('is-open');
+          mobileBtn.classList.toggle('meanclose', isOpen);
+        });
+      }
+
+      if (prodExpandBtn && prodSubmenu) {
+        prodExpandBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          const isExpanded = prodSubmenu.classList.toggle('sub-open');
+          prodExpandBtn.textContent = isExpanded ? '-' : '+';
+        });
+      }
+
+      if (langExpandBtn && langSubmenu) {
+        langExpandBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          const isExpanded = langSubmenu.classList.toggle('sub-open');
+          langExpandBtn.textContent = isExpanded ? '-' : '+';
+        });
+      }
+
+      // 3. Desktop Language Dropdown Toggle
+      const langBtn = document.getElementById('dropdownMenuButton');
+      if (langBtn) {
+        langBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const menu = langBtn.nextElementSibling as HTMLElement;
+          if (menu) {
+            menu.classList.toggle('show');
+          }
+        });
+        document.addEventListener('click', () => {
+          const menu = langBtn.nextElementSibling as HTMLElement;
+          if (menu && menu.classList.contains('show')) {
+            menu.classList.remove('show');
+          }
+        });
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,129 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageBanner from '../components/PageBanner.astro';
+---
+
+<BaseLayout title="Our Facilities - FULLEVER BD LIMITED" currentPath="/facilities">
+  <PageBanner title="Our Facilities" breadcrumbs={[{ label: 'Home', url: '/' }, { label: 'Our Facilities' }]} />
+
+  <section class="facilities">
+    <div class="container1">
+      <div class="content">
+        <span class="eyebrow">/// WHAT WE HAVE</span>
+        <h1>Our Facilities</h1>
+        <div class="line"></div>
+
+        <p><strong>FULL EVER BD LIMITED</strong> is based in a prime manufacturing area in Bangladesh, only 1 hour outside the capital Dhaka, and the airport. Further benefits of our location include only being 6-8 hours from the nearest port, Chittagong.</p>
+
+        <p>Bangladesh has the second largest garment manufacturing industry behind China. This enables <strong>FULL EVER BD LIMITED</strong> to hire experienced workers that are efficient, organized, and flexible.</p>
+
+        <p><strong>FULL EVER BD LIMITED</strong> has a long history of producing reliable leather drivers and welding gloves that have been shipped across the world for years.</p>
+
+        <p>We create advanced leather gloves with increased comfort and heat resistance. Our team can develop custom products based on customer requirements.</p>
+
+        <p>We are capable of producing high volume stock at a lower cost while maintaining quality, safety, and consistent production capability.</p>
+      </div>
+
+      <div class="gallery">
+        <div class="single-item right-item" style="padding-right: 20px;">
+          <img style="border: 2px solid #00008B; width: 100%; border-radius: 4px; box-shadow: 0 10px 30px rgba(0,0,0,0.12);" src="/front-end/img/about/facilities.jpg" alt="Our Facilities" />
+        </div>
+      </div>
+    </div>
+
+    <div class="features">
+      <div><b>🏅 Premium Quality</b><span>High quality raw materials and strict quality control.</span></div>
+      <div><b>👥 Skilled Workforce</b><span>Experienced and efficient team ensuring excellence.</span></div>
+      <div><b>🏭 High Capacity</b><span>Large scale production with on-time delivery.</span></div>
+      <div><b>🛡 Safety First</b><span>Committed to safety standards and compliance.</span></div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .facilities {
+    padding: 70px 5%;
+    background: #ffffff;
+  }
+  .container1 {
+    max-width: 1200px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 55px;
+    align-items: center;
+  }
+  .eyebrow {
+    font-size: 14px;
+    font-weight: 700;
+    color: #ed3340;
+    letter-spacing: 1px;
+    display: block;
+  }
+  .content h1 {
+    font-size: 58px;
+    margin: 18px 0;
+    color: #142033;
+    font-weight: 700;
+    line-height: 1.1;
+  }
+  .line {
+    width: 45px;
+    height: 4px;
+    background: #ed3340;
+    margin-bottom: 25px;
+  }
+  .content p {
+    font-size: 17px;
+    line-height: 1.9;
+    color: #596273;
+    margin-bottom: 22px;
+  }
+  .content strong {
+    color: #ed3340;
+  }
+  .features {
+    max-width: 1200px;
+    margin: 50px auto 0;
+    padding: 25px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+  }
+  .features div {
+    padding: 15px;
+    border-right: 1px solid #eee;
+  }
+  .features div:last-child {
+    border-right: none;
+  }
+  .features b {
+    display: block;
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #162238;
+  }
+  .features span {
+    color: #667085;
+    line-height: 1.5;
+    font-size: 14px;
+  }
+  @media (max-width: 900px) {
+    .container1 {
+      grid-template-columns: 1fr;
+    }
+    .content h1 {
+      font-size: 42px;
+    }
+    .features {
+      grid-template-columns: 1fr;
+    }
+    .features div {
+      border-right: none;
+      border-bottom: 1px solid #eee;
+    }
+  }
+</style>

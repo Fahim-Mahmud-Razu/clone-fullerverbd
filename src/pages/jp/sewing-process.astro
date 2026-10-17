@@ -1,0 +1,23 @@
+---
+import ProcessLayout from '../../components/ProcessLayout.astro';
+
+const images = [
+  '/front-end/img/workingprocess/pro/01.jpg',
+  '/front-end/img/workingprocess/pro/02.jpg',
+  '/front-end/img/workingprocess/pro/03.jpg'
+];
+
+const paragraphs = [
+  '革のパーツが縫製部門に運ばれると、それらが縫い合わされてグローブが形成されます。 当社では 18 の異なる縫製ラインを備え、あらゆるニーズに対応するさまざまなタイプの手袋を生産しています。 その後、手袋は再度検査され、仕上げ部門に送られるグループに分類されます。',
+  'FULLEVER BD LIMITED が他の安全手袋メーカーと比較してトップクラスの製品を製造する理由の 1 つは、細部へのこだわりです。 当社の手袋は、業界で一般的な 5 ～ 6 針と比較して、手袋 1 インチあたり標準 8 針で縫製されています。 ステッチを増やすと、手袋の耐久性と手袋の寿命が大幅に向上します。'
+];
+---
+
+<ProcessLayout
+  title="縫製工程"
+  subtitle="縫製工程"
+  currentPath="/jp/sewing-process"
+  images={images}
+  paragraphs={paragraphs}
+  locale="jp"
+/>

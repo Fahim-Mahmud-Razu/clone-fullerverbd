@@ -1,0 +1,199 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageBanner from '../../components/PageBanner.astro';
+import galleryData from '../../data/gallery.json';
+
+const { filters, items } = galleryData;
+---
+
+<BaseLayout title="Gallery - FULLEVER BD LIMITED" currentPath="/jp/gallery" locale="jp">
+  <PageBanner title="Gallery" breadcrumbs={[{ label: 'Home', url: '/jp/' }, { label: 'Portfolio Gallery' }]} />
+
+  <section class="single-service-wrap-layout2" style="padding: 60px 0 80px;">
+    <div class="container">
+      <div class="main text-center" style="margin-bottom: 40px;">
+        <h2 style="font-size: 32px; font-weight: 700; color: #111; margin-bottom: 10px;">COMPANY</h2>
+        <hr style="border: none; border-top: 3px solid #ee212b; width: 60px; margin: 0 auto 15px;" />
+        <h2 style="font-size: 26px; font-weight: 700; color: #082c4b; margin-bottom: 30px;">PORTFOLIO</h2>
+
+        <!-- Filter Buttons Strip -->
+        <div id="galleryFilterContainer" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-bottom: 35px;">
+          {filters.map((f) => (
+            <button
+              class={`gallery-filter-btn ${f.filter === 'all' ? 'active' : ''}`}
+              data-filter={f.filter}
+            >
+              {f.label}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <!-- Gallery Grid -->
+      <div class="row" id="galleryGrid">
+        {items.map((item, index) => (
+          <div
+            class={`col-lg-4 col-md-6 col-12 gallery-col column ${item.category}`}
+            data-category={item.category}
+            style="margin-bottom: 25px;"
+          >
+            <div class="gallery-card" style="overflow: hidden; border-radius: 6px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); background: #fff; height: 260px;">
+              <a
+                href={item.full_image}
+                class="gallery-thumb-link"
+                data-image={item.full_image}
+                data-index={index}
+                data-title={item.title}
+                style="display: block; width: 100%; height: 100%; overflow: hidden;"
+              >
+                <img
+                  src={item.thumbnail}
+                  alt={item.title || 'Portfolio Image'}
+                  loading="lazy"
+                  style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; display: block;"
+                />
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Image Lightbox Modal -->
+  <div class="gallery-modal-overlay" id="galleryModalOverlay" role="dialog" aria-modal="true">
+    <div class="gallery-modal-content">
+      <button class="gallery-modal-close" id="galleryModalClose" aria-label="Close modal">&times;</button>
+      <button class="gallery-modal-nav gallery-modal-prev" id="galleryModalPrev" aria-label="Previous image">
+        <i class="fa fa-arrow-left"></i>
+      </button>
+      <img id="galleryModalImg" src="" alt="Full preview" />
+      <button class="gallery-modal-nav gallery-modal-next" id="galleryModalNext" aria-label="Next image">
+        <i class="fa fa-arrow-right"></i>
+      </button>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .gallery-filter-btn {
+    border: none;
+    outline: none;
+    font-weight: bold;
+    padding: 10px 18px;
+    background-color: #49cbd5;
+    color: #111111;
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 4px;
+    transition: all 0.25s ease;
+  }
+  .gallery-filter-btn:hover {
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+    background-color: #38b4bd;
+  }
+  .gallery-filter-btn.active {
+    background-color: #082c4b;
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(8, 44, 75, 0.25);
+  }
+  .gallery-thumb-link:hover img {
+    transform: scale(1.08);
+  }
+</style>
+
+<script>
+  function initGallery() {
+    const filterBtns = document.querySelectorAll<HTMLButtonElement>('.gallery-filter-btn');
+    const cols = document.querySelectorAll<HTMLElement>('.gallery-col');
+    const links = Array.from(document.querySelectorAll<HTMLAnchorElement>('.gallery-thumb-link'));
+    const modal = document.getElementById('galleryModalOverlay');
+    const modalImg = document.getElementById('galleryModalImg') as HTMLImageElement;
+    const modalClose = document.getElementById('galleryModalClose');
+    const modalPrev = document.getElementById('galleryModalPrev');
+    const modalNext = document.getElementById('galleryModalNext');
+
+    if (!filterBtns.length || !cols.length) return;
+
+    filterBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach((b) => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.getAttribute('data-filter');
+
+        cols.forEach((col) => {
+          const cat = col.getAttribute('data-category');
+          if (filter === 'all' || cat === filter) {
+            col.style.display = 'block';
+          } else {
+            col.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    let currentIdx = 0;
+    const visibleLinks = () => links.filter((l) => (l.closest('.gallery-col') as HTMLElement)?.style.display !== 'none');
+
+    function openModal(idx: number) {
+      const activeList = visibleLinks();
+      if (!activeList.length) return;
+      currentIdx = (idx + activeList.length) % activeList.length;
+      const targetLink = activeList[currentIdx];
+      const src = targetLink.getAttribute('data-image') || '';
+      if (modalImg && modal) {
+        modalImg.src = src;
+        modal.classList.add('is-active');
+      }
+    }
+
+    function closeModal() {
+      if (modal) {
+        modal.classList.remove('is-active');
+      }
+    }
+
+    links.forEach((link) => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const activeList = visibleLinks();
+        const clickedIdx = activeList.indexOf(link);
+        openModal(clickedIdx >= 0 ? clickedIdx : 0);
+      });
+    });
+
+    if (modalClose) modalClose.addEventListener('click', closeModal);
+    if (modal) {
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+      });
+    }
+
+    if (modalPrev) {
+      modalPrev.addEventListener('click', (e) => {
+        e.stopPropagation();
+        openModal(currentIdx - 1);
+      });
+    }
+
+    if (modalNext) {
+      modalNext.addEventListener('click', (e) => {
+        e.stopPropagation();
+        openModal(currentIdx + 1);
+      });
+    }
+
+    window.addEventListener('keydown', (e) => {
+      if (!modal?.classList.contains('is-active')) return;
+      if (e.key === 'Escape') closeModal();
+      if (e.key === 'ArrowLeft') openModal(currentIdx - 1);
+      if (e.key === 'ArrowRight') openModal(currentIdx + 1);
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initGallery);
+  } else {
+    initGallery();
+  }
+</script>

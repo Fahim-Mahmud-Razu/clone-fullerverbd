@@ -1,0 +1,160 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageBanner from '../components/PageBanner.astro';
+
+interface Props {
+  title: string;
+  subtitle: string;
+  currentPath: string;
+  images: string[];
+  paragraphs: string[];
+  locale?: 'en' | 'jp' | 'kr';
+}
+
+const { title, subtitle, currentPath, images, paragraphs, locale = 'en' } = Astro.props;
+
+let sidebarTitle = 'Manufacturing Process';
+let homeLabel = 'Home';
+let homeUrl = '/';
+let sidebarLinks = [
+  { title: 'Raw Materials', url: '/raw-materials' },
+  { title: 'Cutting Process', url: '/cutting-process' },
+  { title: 'Sewing Process', url: '/sewing-process' },
+  { title: 'Packaging', url: '/packaging' }
+];
+
+if (locale === 'jp') {
+  sidebarTitle = '私たちの仕事のプロセス';
+  homeLabel = 'ホームページ';
+  homeUrl = '/jp/';
+  sidebarLinks = [
+    { title: '原材料', url: '/jp/raw-materials' },
+    { title: '切断工程', url: '/jp/cutting-process' },
+    { title: '縫製工程', url: '/jp/sewing-process' },
+    { title: '包装', url: '/jp/packaging' }
+  ];
+} else if (locale === 'kr') {
+  sidebarTitle = '우리의 작업 과정';
+  homeLabel = '홈 페이지';
+  homeUrl = '/kr/';
+  sidebarLinks = [
+    { title: '원자재', url: '/kr/raw-materials' },
+    { title: '절단 공정', url: '/kr/cutting-process' },
+    { title: '봉제 공정', url: '/kr/sewing-process' },
+    { title: '포장', url: '/kr/packaging' }
+  ];
+}
+---
+
+<BaseLayout title={`${title} - FULLEVER BD LIMITED`} currentPath={currentPath} locale={locale}>
+  <PageBanner title={title} breadcrumbs={[{ label: homeLabel, url: homeUrl }, { label: title }]} />
+
+  <section class="single-service-wrap-layout2" style="padding: 70px 0;">
+    <div class="container">
+      <!-- Main Photo Slider/Switcher -->
+      <div class="zoom-gallery-box" style="margin-bottom: 40px;">
+        <div class="tab-content" style="margin-bottom: 15px; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.08);">
+          <div class="tab-pane fade show active">
+            <img
+              id="processMainImage"
+              src={images[0]}
+              alt={title}
+              style="width: 100%; height: auto; max-height: 550px; object-fit: cover; display: block;"
+            />
+          </div>
+        </div>
+
+        <ul class="nav nav-tabs tab-nav-list" style="display: flex; gap: 12px; list-style: none; padding: 0; margin: 0; border: none;">
+          {images.map((img, idx) => (
+            <li class="nav-item" style="border: none;">
+              <button
+                class={`process-thumb-btn ${idx === 0 ? 'active' : ''}`}
+                data-img-src={img}
+                style="padding: 0; border: 2px solid transparent; border-radius: 4px; overflow: hidden; cursor: pointer; background: none; width: 100px; height: 70px; display: block;"
+              >
+                <img src={img} alt={`Thumbnail ${idx + 1}`} style="width: 100%; height: 100%; object-fit: cover; display: block;" />
+              </button>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="row">
+        <!-- Content on right -->
+        <div class="col-lg-8 order-lg-2">
+          <div class="single-service-box-layout1">
+            <div class="item-content">
+              <div class="item-info">
+                <div class="item-subtitle" style="font-size: 28px; font-weight: 700; color: #082c4b; margin-bottom: 20px;">
+                  {subtitle}
+                </div>
+                {paragraphs.map((p) => (
+                  <p style="font-size: 16px; line-height: 28px; color: #646464; margin-bottom: 20px;">
+                    {p}
+                  </p>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sidebar Navigation on left -->
+        <div class="col-lg-4 order-lg-1">
+          <div class="sidebar-widget-area" style="background: #f8f8f8; padding: 30px; border-radius: 6px; border: 1px solid #e5e5e5;">
+            <h3 style="font-size: 20px; font-weight: 700; color: #082c4b; margin-bottom: 20px; border-bottom: 2px solid #ee212b; padding-bottom: 10px;">
+              {sidebarTitle}
+            </h3>
+            <ul style="list-style: none; padding: 0; margin: 0;">
+              {sidebarLinks.map((item) => (
+                <li style="margin-bottom: 10px;">
+                  <a
+                    href={item.url}
+                    style={`display: block; padding: 12px 18px; border-radius: 4px; text-decoration: none; font-weight: 600; font-size: 15px; transition: all 0.2s ease; ${
+                      currentPath === item.url
+                        ? 'background: #082c4b; color: #ffffff;'
+                        : 'background: #ffffff; color: #333333; border: 1px solid #e0e0e0;'
+                    }`}
+                  >
+                    <i class="fas fa-angle-right" style="margin-right: 8px;"></i>
+                    {item.title}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .process-thumb-btn.active {
+    border-color: #ee212b !important;
+  }
+</style>
+
+<script>
+  function initProcessThumbs() {
+    const mainImg = document.getElementById('processMainImage') as HTMLImageElement;
+    const thumbBtns = document.querySelectorAll<HTMLButtonElement>('.process-thumb-btn');
+    if (!mainImg || !thumbBtns.length) return;
+
+    thumbBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        thumbBtns.forEach((b) => b.classList.remove('active'));
+        btn.classList.add('active');
+        const src = btn.getAttribute('data-img-src');
+        if (src) {
+          mainImg.src = src;
+        }
+      });
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initProcessThumbs);
+  } else {
+    initProcessThumbs();
+  }
+</script>

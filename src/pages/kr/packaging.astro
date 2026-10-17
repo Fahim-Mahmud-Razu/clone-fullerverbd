@@ -1,0 +1,24 @@
+---
+import ProcessLayout from '../../components/ProcessLayout.astro';
+
+const images = [
+  '/front-end/img/workingprocess/pa/01.jpg',
+  '/front-end/img/workingprocess/pa/02.jpg',
+  '/front-end/img/workingprocess/pa/03.jpg',
+  '/front-end/img/workingprocess/pa/04.jpg'
+];
+
+const paragraphs = [
+  '장갑을 재봉한 후 두 가지 품질 검사를 거칩니다. 하나는 바느질 확인용이고 다듬고 장갑을 뒤집어서 다림질 스테이션으로 보냅니다. 어떤 것에 대한 최종 검사 결함이나 결함이 있는 경우 장갑을 금속 탐지기로 보내기 전에 확인합니다. 금속 탐지기에서 확인합니다 모든 완성된 장갑은 포장에 오염이 없도록 하고 일관된 고품질로 제 시간에 도착하도록 보장합니다.',
+  '마지막으로 장갑이 준비되어 상자에 포장되어 창고로 보내질 예정입니다. 고객에게 배송됩니다. 우리는 모든 선적을 관리하기 위해 내부 수입 및 수출 부서를 보유하고 있습니다. FULLEVER BD LIMITED가 고객에게 가능한 최고의 서비스를 제공할 수 있도록 지원합니다.'
+];
+---
+
+<ProcessLayout
+  title="포장"
+  subtitle="포장"
+  currentPath="/kr/packaging"
+  images={images}
+  paragraphs={paragraphs}
+  locale="kr"
+/>

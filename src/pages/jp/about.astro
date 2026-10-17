@@ -1,0 +1,35 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageBanner from '../../components/PageBanner.astro';
+---
+
+<BaseLayout title="弊社について - FULLEVER BD LIMITED" currentPath="/jp/about" locale="jp">
+  <PageBanner title="弊社について" breadcrumbs={[{ label: 'ホームページ', url: '/jp/' }, { label: '弊社について' }]} />
+
+  <section class="about-wrap-layout7 bg-shape-2" style="padding: 70px 0; background: #ffffff;">
+    <div class="container">
+      <div class="row about-box-layout9 align-items-center">
+        <div class="col-lg-7 col-12 single-item left-item">
+          <div class="item-content">
+            <h2 class="item-title" style="font-size: 32px; font-weight: 700; color: #082c4b; margin-bottom: 20px;">
+              弊社について
+            </h2>
+            <p class="t-align" style="font-size: 16px; line-height: 28px; color: #646464; margin-bottom: 20px;">
+              FULLEVER BD LIMITED は、革製安全用品の世界的なメーカーおよびサプライヤーです。重要な労働者の安全を守るために、世界中の国がさまざまな高品質の個人用保護具を利用できるようにすることが当社の目標です。
+            </p>
+            <p class="t-align" style="font-size: 16px; line-height: 28px; color: #646464; margin-bottom: 20px;">
+              私たちの工場はバングラデシュ最大の革手袋メーカーであり、現在も急速に拡大しています。当社は手袋の製造において40年以上の経験を持つ革製品の専門家です。当社は現在、1,000 人以上の熟練労働者を雇用しており、月あたり 100,000 双の手袋を生産することができます。 FULLEVER BD LIMITED の最大の優先事項は、顧客サービスと一貫した高品質の供給です。
+            </p>
+            <p class="t-align" style="font-size: 16px; line-height: 28px; color: #646464;">
+              パートナーに最高のサービスを提供するために、当社は管理チームに西洋式の管理を導入しました。当社はすべての革の品質、在庫、生産データを記録および追跡し、発送するすべてのグローブを徹底的に検査します。また、当社の経営陣は、米国、ヨーロッパ、日本、オーストラリアの市場を管理する特定の個人に対して非常に迅速に対応できることを誇りに思っています。これにより、世界中のどこにでも迅速に通信できるようになります。
+            </p>
+          </div>
+        </div>
+
+        <div class="col-lg-5 col-12 single-item right-item" style="padding-right: 20px;">
+          <img style="border: 2px solid #00008B; width: 100%; border-radius: 6px;" src="/front-end/img/TEAM_PHOTO.jpg" alt="About Us" />
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

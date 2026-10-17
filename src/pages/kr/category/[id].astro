@@ -1,0 +1,76 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageBanner from '../../../components/PageBanner.astro';
+import krData from '../../../data/kr_data.json';
+import products from '../../../data/products.json';
+import categories from '../../../data/categories.json';
+
+export function getStaticPaths() {
+  return krData.categories.map((cat) => ({
+    params: { id: cat.id.toString() },
+    props: { category: cat }
+  }));
+}
+
+interface Props {
+  category: {
+    id: number;
+    title: string;
+    url: string;
+    img: string;
+  };
+}
+
+const { category } = Astro.props;
+
+const baseCat = categories.find((c) => c.id === category.id);
+const categoryProducts = (baseCat?.product_ids || [])
+  .map((pid) => products.find((p) => p.id === pid))
+  .filter(Boolean);
+---
+
+<BaseLayout title={`${category.title} - FULLEVER BD LIMITED`} currentPath={`/kr/category/${category.id}`} locale="kr">
+  <PageBanner
+    title={category.title}
+    breadcrumbs={[{ label: '홈 페이지', url: '/kr/' }, { label: '카테고리' }]}
+  />
+
+  <section class="project-wrap-layout1 bg-common" style="padding: 70px 0 85px;">
+    <div class="container">
+      <div class="row gutters-15">
+        {categoryProducts.map((prod) => (
+          <div class="col-lg-4 col-md-6 col-12 col-sm-4" style="margin-bottom: 30px;">
+            <div class="project-box-layout1" style="position: relative; overflow: hidden; background: #f8f8f8; border-radius: 4px; box-shadow: 0 4px 15px rgba(0,0,0,0.06); height: 336px;">
+              <div class="item-img" style="overflow: hidden; height: 100%; display: flex; align-items: center; justify-content: center; background: radial-gradient(circle, #eef7fc 0%, #ffffff 80%); padding: 20px;">
+                <img
+                  src={prod.preview_image || prod.sprite_image}
+                  alt={prod.title}
+                  loading="lazy"
+                  style="max-height: 85%; max-width: 90%; object-fit: contain; transition: transform 0.4s ease;"
+                />
+              </div>
+              <div class="item-content" style="position: absolute; inset: 0; background: rgba(8, 44, 75, 0.85); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s ease; padding: 20px;">
+                <a
+                  href={`/product/${prod.id}`}
+                  class="item-btn"
+                  style="color: #ffffff; border: 2px solid #ffffff; padding: 10px 20px; border-radius: 4px; font-weight: 700; text-decoration: none; font-size: 15px; text-align: center;"
+                >
+                  {prod.title} 보기
+                </a>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .project-box-layout1:hover .item-content {
+    opacity: 1 !important;
+  }
+  .project-box-layout1:hover .item-img img {
+    transform: scale(1.08);
+  }
+</style>

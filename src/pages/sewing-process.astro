@@ -1,0 +1,22 @@
+---
+import ProcessLayout from '../components/ProcessLayout.astro';
+
+const images = [
+  '/front-end/img/workingprocess/pro/01.jpg',
+  '/front-end/img/workingprocess/pro/02.jpg',
+  '/front-end/img/workingprocess/pro/03.jpg'
+];
+
+const paragraphs = [
+  'Once the leather parts are taken to the sewing department, they are sewn together to form the glove. We have 18 different sewing lines producing the various different types of gloves for every need. The gloves are then inspected again and sorted in groups to be sent to our finishing department.',
+  'One reason FULLEVER BD LIMITED produces a top tier product compared to other safety glove manufacturers is attention to detail. Our gloves are sewn with a standard of 8 stitches per inch of glove compared to normal industry practice of 5-6 stitches. Increasing the stitching greatly increases the glove durability, and the longevity of the glove.'
+];
+---
+
+<ProcessLayout
+  title="Sewing Process"
+  subtitle="Sewing Process"
+  currentPath="/sewing-process"
+  images={images}
+  paragraphs={paragraphs}
+/>

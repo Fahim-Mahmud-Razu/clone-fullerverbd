@@ -1,0 +1,214 @@
+{
+  "filters": [
+    {
+      "label": "Show all",
+      "filter": "all"
+    },
+    {
+      "label": "Factory",
+      "filter": "factory"
+    },
+    {
+      "label": "Product Dashboard",
+      "filter": "product"
+    },
+    {
+      "label": "Office Staff",
+      "filter": "office"
+    },
+    {
+      "label": "Cutting Section",
+      "filter": "cutting"
+    },
+    {
+      "label": "Sewing Section",
+      "filter": "sewing"
+    },
+    {
+      "label": "Finishing Section",
+      "filter": "finishing"
+    },
+    {
+      "label": "QC Section",
+      "filter": "qc"
+    },
+    {
+      "label": "Buffing & Milling Section",
+      "filter": "BM"
+    },
+    {
+      "label": "Finished Goods Warehouse",
+      "filter": "FW"
+    }
+  ],
+  "items": [
+    {
+      "id": 1,
+      "category": "factory",
+      "title": "",
+      "full_image": "/front-end/img/gallery/OF3_25_7.jpg",
+      "thumbnail": "/front-end/img/gallery/OF3_25_7.jpg"
+    },
+    {
+      "id": 2,
+      "category": "factory",
+      "title": "",
+      "full_image": "/front-end/img/gallery/OF25_7_2.jpg",
+      "thumbnail": "/front-end/img/gallery/OF25_7_2.jpg"
+    },
+    {
+      "id": 3,
+      "category": "factory",
+      "title": "",
+      "full_image": "/front-end/img/gallery/OF_25_7_3.jpg",
+      "thumbnail": "/front-end/img/gallery/OF_25_7_3.jpg"
+    },
+    {
+      "id": 4,
+      "category": "product",
+      "title": "",
+      "full_image": "/front-end/img/gallery/PD2.jpg",
+      "thumbnail": "/front-end/img/gallery/PD2.jpg"
+    },
+    {
+      "id": 5,
+      "category": "product",
+      "title": "",
+      "full_image": "/front-end/img/gallery/PD3.jpg",
+      "thumbnail": "/front-end/img/gallery/PD3.jpg"
+    },
+    {
+      "id": 6,
+      "category": "office",
+      "title": "",
+      "full_image": "/front-end/img/gallery/FEOT111_22.jpg",
+      "thumbnail": "/front-end/img/gallery/FEOT111_22.jpg"
+    },
+    {
+      "id": 7,
+      "category": "office",
+      "title": "",
+      "full_image": "/front-end/img/gallery/TEAM_PHOTO.jpg",
+      "thumbnail": "/front-end/img/gallery/TEAM_PHOTO.jpg"
+    },
+    {
+      "id": 8,
+      "category": "office",
+      "title": "",
+      "full_image": "/front-end/img/gallery/FEOT1111_22.jpg",
+      "thumbnail": "/front-end/img/gallery/FEOT1111_22.jpg"
+    },
+    {
+      "id": 9,
+      "category": "cutting",
+      "title": "",
+      "full_image": "/front-end/img/gallery/CT2.jpg",
+      "thumbnail": "/front-end/img/gallery/CT2.jpg"
+    },
+    {
+      "id": 10,
+      "category": "cutting",
+      "title": "",
+      "full_image": "/front-end/img/gallery/CT3.jpg",
+      "thumbnail": "/front-end/img/gallery/CT3.jpg"
+    },
+    {
+      "id": 11,
+      "category": "cutting",
+      "title": "",
+      "full_image": "/front-end/img/gallery/CT1.jpg",
+      "thumbnail": "/front-end/img/gallery/CT1.jpg"
+    },
+    {
+      "id": 12,
+      "category": "sewing",
+      "title": "",
+      "full_image": "/front-end/img/gallery/SW1.jpg",
+      "thumbnail": "/front-end/img/gallery/SW1.jpg"
+    },
+    {
+      "id": 13,
+      "category": "sewing",
+      "title": "",
+      "full_image": "/front-end/img/gallery/SW2.jpg",
+      "thumbnail": "/front-end/img/gallery/SW2.jpg"
+    },
+    {
+      "id": 14,
+      "category": "sewing",
+      "title": "",
+      "full_image": "/front-end/img/gallery/SW3.jpg",
+      "thumbnail": "/front-end/img/gallery/SW3.jpg"
+    },
+    {
+      "id": 15,
+      "category": "finishing",
+      "title": "",
+      "full_image": "/front-end/img/gallery/PS1.jpg",
+      "thumbnail": "/front-end/img/gallery/PS1.jpg"
+    },
+    {
+      "id": 16,
+      "category": "finishing",
+      "title": "",
+      "full_image": "/front-end/img/gallery/PS2.jpg",
+      "thumbnail": "/front-end/img/gallery/PS2.jpg"
+    },
+    {
+      "id": 17,
+      "category": "finishing",
+      "title": "",
+      "full_image": "/front-end/img/gallery/PS3.jpg",
+      "thumbnail": "/front-end/img/gallery/PS3.jpg"
+    },
+    {
+      "id": 18,
+      "category": "qc",
+      "title": "",
+      "full_image": "/front-end/img/gallery/QC1.jpg",
+      "thumbnail": "/front-end/img/gallery/QC1.jpg"
+    },
+    {
+      "id": 19,
+      "category": "qc",
+      "title": "",
+      "full_image": "/front-end/img/gallery/QC2.jpg",
+      "thumbnail": "/front-end/img/gallery/QC2.jpg"
+    },
+    {
+      "id": 20,
+      "category": "qc",
+      "title": "",
+      "full_image": "/front-end/img/gallery/QC3.jpg",
+      "thumbnail": "/front-end/img/gallery/QC3.jpg"
+    },
+    {
+      "id": 21,
+      "category": "BM",
+      "title": "",
+      "full_image": "/front-end/img/gallery/BM1.jpg",
+      "thumbnail": "/front-end/img/gallery/BM1.jpg"
+    },
+    {
+      "id": 22,
+      "category": "BM",
+      "title": "",
+      "full_image": "/front-end/img/gallery/BM2.jpg",
+      "thumbnail": "/front-end/img/gallery/BM2.jpg"
+    },
+    {
+      "id": 23,
+      "category": "BM",
+      "title": "",
+      "full_image": "/front-end/img/gallery/BM3.jpg",
+      "thumbnail": "/front-end/img/gallery/BM3.jpg"
+    },
+    {
+      "id": 24,
+      "category": "FW",
+      "title": "",
+      "full_image": "/front-end/img/gallery/WH2.jpg",
+      "thumbnail": "/front-end/img/gallery/WH2.jpg"
+    }
+  ]
+}

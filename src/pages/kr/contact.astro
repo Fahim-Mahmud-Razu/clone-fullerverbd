@@ -1,0 +1,209 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageBanner from '../../components/PageBanner.astro';
+---
+
+<BaseLayout title="우리에게 연락하세요 - FULLEVER BD LIMITED" currentPath="/kr/contact" locale="kr">
+  <PageBanner title="우리에게 연락하세요" breadcrumbs={[{ label: '홈 페이지', url: '/kr/' }, { label: '우리에게 연락하세요' }]} />
+
+  <section class="contact-wrap-layout2" style="padding: 70px 0;">
+    <div class="container">
+      <div class="row">
+        <!-- Main Form & Map Column (col-lg-8) -->
+        <div class="col-lg-8">
+          <div class="contact-box-layout2">
+            <!-- Google Maps Embed -->
+            <div class="contact-wrap-map" style="margin-bottom: 35px; border-radius: 6px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.08);">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3646.2836952621374!2d90.37794331470694!3d23.950406284491162!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755db1cbe9b6e71%3A0x2c237a88f8f0129f!2sFullEver%20BD%20Ltd!5e0!3m2!1sen!2sbd!4v1639042297558!5m2!1sen!2sbd"
+                width="100%"
+                height="450"
+                style="border:0; display: block;"
+                allowfullscreen=""
+                loading="lazy"
+                title="Fullever BD Location Map"
+              ></iframe>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="contact-form" style="background: #ffffff; padding: 40px; border-radius: 6px; box-shadow: 0 4px 20px rgba(0,0,0,0.06); border: 1px solid #ebebeb;">
+              <div class="heading-layout3" style="margin-bottom: 25px;">
+                <h3 class="mg-b-10" style="font-size: 26px; font-weight: 700; color: #082c4b;">Get In Touch With Us!</h3>
+              </div>
+
+              <form class="contact-form-box" id="contactForm">
+                <div class="row gutters-15">
+                  <div class="col-md-6 col-12 form-group" style="margin-bottom: 20px;">
+                    <input
+                      type="text"
+                      placeholder="Name *"
+                      class="form-control"
+                      name="name"
+                      id="nameInput"
+                      required
+                      style="height: 50px; border: 1px solid #ddd; padding: 10px 18px; border-radius: 4px; width: 100%; font-size: 15px;"
+                    />
+                    <div class="help-block with-errors" style="color: #ee212b; font-size: 13px; margin-top: 4px;"></div>
+                  </div>
+
+                  <div class="col-md-6 col-12 form-group" style="margin-bottom: 20px;">
+                    <input
+                      type="email"
+                      placeholder="E-mail *"
+                      class="form-control"
+                      name="email"
+                      id="emailInput"
+                      required
+                      style="height: 50px; border: 1px solid #ddd; padding: 10px 18px; border-radius: 4px; width: 100%; font-size: 15px;"
+                    />
+                    <div class="help-block with-errors" style="color: #ee212b; font-size: 13px; margin-top: 4px;"></div>
+                  </div>
+
+                  <div class="col-md-6 col-12 form-group" style="margin-bottom: 20px;">
+                    <input
+                      type="text"
+                      placeholder="Phone *"
+                      class="form-control"
+                      name="phone"
+                      id="phoneInput"
+                      required
+                      style="height: 50px; border: 1px solid #ddd; padding: 10px 18px; border-radius: 4px; width: 100%; font-size: 15px;"
+                    />
+                    <div class="help-block with-errors" style="color: #ee212b; font-size: 13px; margin-top: 4px;"></div>
+                  </div>
+
+                  <div class="col-md-6 col-12 form-group" style="margin-bottom: 20px;">
+                    <input
+                      type="text"
+                      placeholder="Subject *"
+                      class="form-control"
+                      name="subject"
+                      id="subjectInput"
+                      required
+                      style="height: 50px; border: 1px solid #ddd; padding: 10px 18px; border-radius: 4px; width: 100%; font-size: 15px;"
+                    />
+                    <div class="help-block with-errors" style="color: #ee212b; font-size: 13px; margin-top: 4px;"></div>
+                  </div>
+
+                  <div class="col-12 form-group" style="margin-bottom: 25px;">
+                    <textarea
+                      placeholder="Comments *"
+                      class="textarea form-control"
+                      name="comment"
+                      id="commentInput"
+                      rows="7"
+                      required
+                      style="border: 1px solid #ddd; padding: 14px 18px; border-radius: 4px; width: 100%; font-size: 15px; resize: vertical;"
+                    ></textarea>
+                    <div class="help-block with-errors" style="color: #ee212b; font-size: 13px; margin-top: 4px;"></div>
+                  </div>
+
+                  <div class="col-12 form-group">
+                    <button
+                      type="submit"
+                      class="item-btn btn-fill-lg btn-accent text-light"
+                      id="submitBtn"
+                      style="background: #ee212b; color: #ffffff; border: none; padding: 14px 36px; border-radius: 4px; font-weight: 700; font-size: 16px; cursor: pointer; transition: background 0.25s;"
+                    >
+                      Send Now
+                    </button>
+                  </div>
+                </div>
+
+                <div id="formStatus" class="form-feedback"></div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sidebar Column (col-lg-4) -->
+        <div class="col-lg-4 sidebar-break-md sidebar-widget-area">
+          <!-- Address Card -->
+          <div class="widget widget-contact-info" style="background: #ffffff; padding: 25px; border-radius: 6px; box-shadow: 0 4px 15px rgba(0,0,0,0.06); border: 1px solid #ebebeb; margin-bottom: 25px;">
+            <div class="media" style="display: flex; gap: 15px;">
+              <div class="item-icon" style="color: #ee212b; font-size: 32px;">
+                <i class="flaticon-maps-and-flags"></i>
+              </div>
+              <div class="media-body space-md">
+                <h4 style="font-size: 18px; font-weight: 700; color: #082c4b; margin-bottom: 6px;">주소:</h4>
+                <ul style="list-style: none; padding: 0; margin: 0; color: #646464; line-height: 24px; font-size: 14px;">
+                  <li>320, Choydana (Hazirpukur), National University, Gacha, Gazipur-1704, Bangladesh.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Contacts Header -->
+          <ul class="list-group" style="margin-bottom: 0;">
+            <li class="list-group-item list-group-item-info" style="background: #082c4b; color: #ffffff; border: none; padding: 14px 20px; border-radius: 6px 6px 0 0;">
+              <h4 style="color: #ffffff; margin: 0; font-size: 18px; display: flex; align-items: center; gap: 10px;">
+                <i class="flaticon-call-answer"></i> 콘택트 렌즈
+              </h4>
+            </li>
+          </ul>
+
+          <!-- Person: Brendan Hein -->
+          <ul class="list-group text-center" style="padding-top: 10px; list-style: none;">
+            <li class="list-group-item" style="border: 1px solid #ebebeb; border-radius: 6px; padding: 25px 20px; background: #ffffff;">
+              <div class="row section-success ourTeam-box text-center">
+                <div class="col-md-12 section2 pb-3" style="margin-bottom: 15px;">
+                  <p style="padding-top: 7px; font-size: 17px; font-weight: bold; color: #111; margin-bottom: 4px;">Brendan Hein</p>
+                  <span style="font-size: 16px; font-weight: bold; color: #082c4b;">マーケティング・マネージャー </span><span style="font-size: 14px; color: #666;">（北米）</span><br />
+                  <span style="font-size: 14px; font-weight: 600; color: #555;">セールスとマーケティング</span>
+                </div>
+                <div class="col-md-12" style="font-size: 14px; line-height: 28px;">
+                  <i class="far fa-envelope" style="color: #ee212b;">&nbsp;<span><a href="mailto:brendan@fulleverbd.com" style="color: #333; text-decoration: none;">brendan@fulleverbd.com</a></span></i><br />
+                  <i class="far fa-envelope" style="color: #ee212b;">&nbsp;<span><a href="mailto:info@fulleverbd.com" style="color: #333; text-decoration: none;">info@fulleverbd.com</a></span></i><br />
+                  <i class="flaticon-call-answer" aria-hidden="true" style="color: #28a745;">&nbsp;<span>+1 816-835-2537</span></i><br />
+                  <i>&nbsp;<span>+880 01313 427 679</span></i>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  function initContact() {
+    const form = document.getElementById('contactForm') as HTMLFormElement;
+    const formStatus = document.getElementById('formStatus');
+
+    if (form && formStatus) {
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const name = (document.getElementById('nameInput') as HTMLInputElement).value.trim();
+        const email = (document.getElementById('emailInput') as HTMLInputElement).value.trim();
+        const phone = (document.getElementById('phoneInput') as HTMLInputElement).value.trim();
+        const subject = (document.getElementById('subjectInput') as HTMLInputElement).value.trim();
+        const comment = (document.getElementById('commentInput') as HTMLTextAreaElement).value.trim();
+
+        if (!name || !email || !phone || !subject || !comment) {
+          formStatus.className = 'form-feedback error';
+          formStatus.textContent = 'Please fill out all required fields marked with *';
+          return;
+        }
+
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+          formStatus.className = 'form-feedback error';
+          formStatus.textContent = 'Please provide a valid email address.';
+          return;
+        }
+
+        formStatus.className = 'form-feedback success';
+        formStatus.textContent = 'Thank you! Your message has been prepared for transmission. Note: This replica does not dispatch live inquiries to production.';
+        form.reset();
+      });
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initContact);
+  } else {
+    initContact();
+  }
+</script>

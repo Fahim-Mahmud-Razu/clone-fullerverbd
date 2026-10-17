@@ -1,0 +1,103 @@
+[
+  {
+    "title": "HOME",
+    "url": "/"
+  },
+  {
+    "title": "ABOUT US",
+    "url": "/about"
+  },
+  {
+    "title": "OUR FACILITIES",
+    "url": "/facilities"
+  },
+  {
+    "title": "COMPLIANCE",
+    "url": "/compliance"
+  },
+  {
+    "title": "OUR PRODUCT",
+    "url": "#",
+    "dropdown": [
+      {
+        "title": "Leather Winter Gloves",
+        "url": "/category/23"
+      },
+      {
+        "title": "Leather Driver Gloves",
+        "url": "/category/17"
+      },
+      {
+        "title": "Leather Grain Gloves",
+        "url": "/category/18"
+      },
+      {
+        "title": "Leather Split Gloves",
+        "url": "/category/19"
+      },
+      {
+        "title": "Leather Welding Gloves",
+        "url": "/category/20"
+      },
+      {
+        "title": "Leather Palm Gloves",
+        "url": "/category/21"
+      },
+      {
+        "title": "Leather Welding Apparel",
+        "url": "/category/24"
+      },
+      {
+        "title": "Synthetic Leather Gloves",
+        "url": "/category/27"
+      },
+      {
+        "title": "Mechanic's Gloves",
+        "url": "/category/29"
+      },
+      {
+        "title": "Impact Gloves",
+        "url": "/category/30"
+      },
+      {
+        "title": "100% Cotton Interlock Gloves",
+        "url": "/category/31"
+      },
+      {
+        "title": "Gardening Gloves",
+        "url": "/category/32"
+      }
+    ]
+  },
+  {
+    "title": "GALLERY",
+    "url": "/gallery"
+  },
+  {
+    "title": "CONTACT US",
+    "url": "/contact"
+  },
+  {
+    "title": "Language",
+    "url": "#",
+    "languages": [
+      {
+        "code": "en",
+        "label": "English",
+        "url": "/"
+      },
+      {
+        "code": "jp",
+        "label": "\u65e5\u672c\u8a9e",
+        "flag": "https://cdn.parcellab.com/img/flags/jp.png",
+        "url": "/jp/"
+      },
+      {
+        "code": "kr",
+        "label": "\ud55c\uad6d\uc5b4",
+        "flag": "https://cdn.parcellab.com/img/flags/kr.png",
+        "url": "/kr/"
+      }
+    ]
+  }
+]

@@ -1,0 +1,365 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import HeroSlider from '../../components/HeroSlider.astro';
+import CertificationSlider from '../../components/CertificationSlider.astro';
+import krData from '../../data/kr_data.json';
+
+const { process, categories, stats } = krData;
+---
+
+<BaseLayout title="FULLEVER BD LIMITED - 한국어" currentPath="/kr/" locale="kr">
+  <HeroSlider />
+
+  <!-- Our Working Process Section -->
+  <section class="service-wrap-layout1 bg-accent bg-common" style="padding: 95px 0 65px;">
+    <div class="container">
+      <div class="heading-layout1 heading-light text-center" style="margin-bottom: 45px;">
+        <h2 style="color: #ffffff; font-size: 36px; font-weight: 500;">우리의 작업 과정</h2>
+      </div>
+      <div class="row">
+        {process.map((proc) => (
+          <div class="col-lg-3 col-md-6 col-12" style="margin-bottom: 30px;">
+            <div class="service-box-layout1 text-center">
+              <div class="item-img" style="position: relative; display: inline-block;">
+                <a href={proc.url}>
+                  <img
+                    src={proc.img}
+                    alt={proc.title}
+                    style="width: 250px; height: 250px; border-radius: 50%; border: 10px solid #ffffff; object-fit: cover; transition: all 0.3s ease;"
+                  />
+                </a>
+                <div
+                  class="sl-number"
+                  style="position: absolute; top: 10px; right: 15px; width: 55px; height: 55px; line-height: 55px; background: #ee212b; color: #fff; border-radius: 50%; font-size: 20px; font-weight: 700; text-align: center;"
+                >
+                  {proc.num}
+                </div>
+              </div>
+              <div class="item-content" style="margin-top: 20px;">
+                <h3 class="item-title">
+                  <a href={proc.url} style="color: #ffffff; font-size: 20px; font-weight: 600; text-decoration: none;">
+                    {proc.title}
+                  </a>
+                </h3>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Product Categories Section -->
+  <section class="project-wrap-layout1 bg-common" style="padding: 34px 0 85px;">
+    <div class="container text-center">
+      <div style="margin-bottom: 40px;">
+        <h2 style="font-size: 36px; font-weight: 700; color: #082c4b; margin-bottom: 20px;">우리의 제품 카테고리</h2>
+      </div>
+
+      <div class="row gutters-15">
+        {categories.map((cat) => (
+          <div class="col-lg-4 col-md-6 col-12" style="margin-bottom: 30px;">
+            <div class="project-box-layout1" style="position: relative; overflow: hidden; background: #f8f8f8; border-radius: 4px; box-shadow: 0 4px 15px rgba(0,0,0,0.06); height: 336px;">
+              <div class="item-img" style="overflow: hidden; height: 100%; display: flex; align-items: center; justify-content: center; background: radial-gradient(circle, #e2f4fb 0%, #ffffff 80%);">
+                <img
+                  src={cat.img}
+                  alt={cat.title}
+                  style="max-height: 90%; width: 96%; object-fit: contain; margin-top: -53px; transition: transform 0.5s ease;"
+                />
+              </div>
+              <div class="item-content" style="position: absolute; inset: 0; background: rgba(8, 44, 75, 0.85); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s ease; padding: 20px;">
+                <a
+                  href={`/category/${cat.id}`}
+                  class="item-btn"
+                  style="color: #ffffff; border: 2px solid #ffffff; padding: 10px 22px; border-radius: 4px; font-weight: 700; text-decoration: none; font-size: 16px;"
+                >
+                  {cat.title}
+                </a>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <p style="margin-top: 25px; font-size: 16px;">
+        <a href="/kr/" style="color: #ee212b; font-weight: 600; text-decoration: none;">
+          더 많은 제품 보기.. 메뉴의 '우리의 제품'을 클릭하세요
+        </a>
+      </p>
+    </div>
+  </section>
+
+  <!-- About Us Area Start Here -->
+  <section class="about-wrap-layout1">
+    <div class="about-box-layout1">
+      <div class="about-box-content">
+        <div class="item-header">
+          <div class="experience-year">40</div>
+          <ul class="item-title">
+            <li>년</li>
+            <li>일하고 있는 <span>경험</span></li>
+          </ul>
+        </div>
+        <p>
+          FULLEVER BD LIMITED는 중국을 시작으로 40년 이상 안전장갑 사업을 경험한 방글라데시에 본사를 둔 고품질 안전장갑 제조업체입니다.
+        </p>
+        <a href="/kr/about" class="btn-fill-xl bg-textprimary text-primarytext">
+          READ MORE <i class="fas fa-angle-right"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+  <!-- About Us Area End Here -->
+
+  <!-- Progress Area Start Here -->
+  <section class="progress-wrap-layout1 bg-common" style="padding: 20px 0;">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-3 col-md-6 col-12 stat" style="height: 150px;">
+          <div class="progress-box-layout1">
+            <div class="progress-content">
+              <div class="item-icon">
+                <i class="flaticon-apartment"></i>
+              </div>
+              <div class="item-content">
+                <div class="counter count-number" data-num="1200">1,200</div>
+                <div class="count-title">숙련된 노동자</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-12 stat" style="height: 150px;">
+          <div class="progress-box-layout1">
+            <div class="progress-content">
+              <div class="item-icon">
+                <i class="flaticon-industry"></i>
+              </div>
+              <div class="item-content">
+                <div class="counter count-number" data-num="12000">12,000</div>
+                <div class="count-title">평방 미터</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-12 stat" style="height: 150px;">
+          <div class="progress-box-layout1">
+            <div class="progress-content">
+              <div class="item-icon">
+                <i class="flaticon-helmet"></i>
+              </div>
+              <div class="item-content">
+                <div class="counter count-number" data-num="100000">1,00,000</div>
+                <div class="count-title">월간 생산되는 장갑 수(다스)</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-12 stat" style="height: 150px;">
+          <div class="progress-box-layout1">
+            <div class="progress-content">
+              <div class="item-icon">
+                <i class="flaticon-happy"></i>
+              </div>
+              <div class="item-content">
+                <div class="counter count-number" data-num="40">40</div>
+                <div class="count-title">전체 생산된 장갑(백만 개)</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Progress Area End Here -->
+
+  <!-- Certifications Slider Section -->
+  <CertificationSlider />
+</BaseLayout>
+
+<style>
+  .project-box-layout1:hover .item-content {
+    opacity: 1 !important;
+  }
+  .project-box-layout1:hover .item-img img {
+    transform: scale(1.06);
+  }
+
+  .about-wrap-layout1 {
+    background-color: #6ac5f2;
+    background-image: url('/front-end/img/about/about-bg.png');
+    background-repeat: no-repeat;
+    background-position: right bottom;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .about-box-layout1 {
+    width: 55%;
+    background-color: #ee212b;
+    -webkit-clip-path: polygon(0 0, 100% 0%, 80% 100%, 0 100%);
+    clip-path: polygon(0 0, 100% 0%, 80% 100%, 0 100%);
+    padding-left: calc((100% - 1170px) / 2);
+  }
+
+  @media only screen and (max-width: 1229px) {
+    .about-box-layout1 {
+      padding-left: calc((100% - 1110px) / 2);
+    }
+  }
+  @media only screen and (max-width: 1199px) {
+    .about-box-layout1 {
+      padding-left: calc((100% - 930px) / 2);
+    }
+  }
+  @media only screen and (max-width: 991px) {
+    .about-box-layout1 {
+      width: 100%;
+      padding-left: calc((100% - 690px) / 2);
+      clip-path: none;
+      -webkit-clip-path: none;
+    }
+  }
+  @media only screen and (max-width: 767px) {
+    .about-box-layout1 {
+      padding-left: calc((100% - 510px) / 2);
+    }
+  }
+  @media only screen and (max-width: 575px) {
+    .about-box-layout1 {
+      padding: 0 15px;
+    }
+  }
+
+  .about-box-layout1 .about-box-content {
+    padding: 110px 160px 110px 0;
+  }
+  @media only screen and (max-width: 1199px) {
+    .about-box-layout1 .about-box-content {
+      padding: 90px 90px 90px 0;
+    }
+  }
+  @media only screen and (max-width: 991px) {
+    .about-box-layout1 .about-box-content {
+      padding: 70px 20px;
+    }
+  }
+
+  .about-box-layout1 .about-box-content .item-header {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.35);
+    display: flex;
+    align-items: center;
+    color: #ffffff;
+    padding-bottom: 25px;
+    margin-bottom: 22px;
+  }
+  .about-box-layout1 .about-box-content .item-header .experience-year {
+    font-size: 100px;
+    font-weight: 700;
+    line-height: 76px;
+    margin-right: 20px;
+    margin-top: 5px;
+    color: #ffffff;
+  }
+  .about-box-layout1 .about-box-content .item-header .item-title {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .about-box-layout1 .about-box-content .item-header .item-title li {
+    font-size: 34px;
+    margin-bottom: 6px;
+    line-height: 1.2;
+    color: #ffffff;
+  }
+  .about-box-layout1 .about-box-content .item-header .item-title li span {
+    font-weight: 700;
+    color: #ffffff;
+  }
+  .about-box-layout1 .about-box-content p {
+    color: #ffffff;
+    margin-bottom: 35px;
+    font-size: 16px;
+    line-height: 28px;
+    max-width: 500px;
+    font-weight: 400;
+  }
+
+  .about-box-layout1 .btn-fill-xl {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background-color: #ffffff !important;
+    color: #111111 !important;
+    font-weight: 700;
+    font-size: 15px;
+    padding: 14px 38px;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+  .about-box-layout1 .btn-fill-xl:hover {
+    background-color: #082c4b !important;
+    color: #ffffff !important;
+  }
+
+  .progress-wrap-layout1 {
+    background-color: #082c4b;
+    padding: 30px 0 40px;
+  }
+  .stat {
+    padding: 15px 12px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.07);
+    border-radius: 14px;
+    height: 130px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+    transition: all 0.3s ease;
+  }
+  .stat:hover {
+    border-color: rgba(255, 255, 255, 0.28);
+    background: rgba(255, 255, 255, 0.1);
+  }
+  .progress-box-layout1 {
+    width: 100%;
+    margin-bottom: 0;
+  }
+  .progress-box-layout1 .progress-content {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 15px;
+    padding: 0 5px;
+  }
+  .progress-box-layout1 .progress-content .item-icon {
+    line-height: 1;
+    flex-shrink: 0;
+    margin-right: 0;
+  }
+  .progress-box-layout1 .progress-content .item-icon i {
+    color: #ee212b;
+    font-size: 52px;
+    display: block;
+  }
+  .progress-box-layout1 .progress-content .item-content {
+    text-align: left;
+    min-width: 0;
+  }
+  .progress-box-layout1 .progress-content .item-content .count-number {
+    font-size: 32px;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.1;
+    margin-bottom: 4px;
+    letter-spacing: -0.5px;
+  }
+  .progress-box-layout1 .progress-content .item-content .count-title {
+    font-size: 13px;
+    color: #ffffff;
+    line-height: 16px;
+    font-weight: 400;
+  }
+</style>

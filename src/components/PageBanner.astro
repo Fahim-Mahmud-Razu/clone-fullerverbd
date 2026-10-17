@@ -1,0 +1,41 @@
+---
+interface Breadcrumb {
+  label: string;
+  url?: string;
+}
+
+interface Props {
+  title: string;
+  breadcrumbs?: Breadcrumb[];
+}
+
+const {
+  title,
+  breadcrumbs = [{ label: 'Home', url: '/' }]
+} = Astro.props;
+---
+
+<section class="inner-page-banner bg-common">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="breadcrumbs-area">
+          <h1>{title}</h1>
+          {breadcrumbs.length > 0 && (
+            <ul>
+              {breadcrumbs.map((crumb, idx) => (
+                <li>
+                  {crumb.url ? (
+                    <a href={crumb.url}>{crumb.label}</a>
+                  ) : (
+                    crumb.label
+                  )}
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

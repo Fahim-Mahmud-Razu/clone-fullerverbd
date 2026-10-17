@@ -1,0 +1,158 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageBanner from '../components/PageBanner.astro';
+import '../styles/about.css';
+---
+
+<BaseLayout title="About Us - FULLEVER BD LIMITED" currentPath="/about">
+  <PageBanner title="About Us" breadcrumbs={[{ label: 'Home', url: '/' }, { label: 'About Us' }]} />
+
+  <div class="about-page-wrap">
+    <!-- Company Profile Section -->
+    <section class="section" id="about">
+      <div class="container">
+        <div class="head" style="margin-bottom: 25px;">
+          <div class="kicker">About Us</div>
+          <div class="rule"></div>
+          <h5 style="color: #4e6172; font-size: 16px; font-weight: 500; line-height: 1.7; margin-top: 10px;">
+            A global manufacturer and supplier of leather safety goods, committed to delivering high-quality personal protective equipment and reliable service to customers around the world.
+          </h5>
+        </div>
+
+        <div class="head">
+          <div class="kicker">Who We Are</div>
+          <h2>Experience, capacity and quality in every glove.</h2>
+          <div class="rule"></div>
+        </div>
+
+        <div class="about-grid">
+          <article class="copy-card">
+            <p>
+              <strong>FULLEVER BD LIMITED</strong> is a global manufacturer and supplier of leather safety goods. It is our company goal to ensure countries across the world have access to a range of high-quality personal protective equipment to keep vital workers safe.
+            </p>
+            <p>
+              Our factory is the largest leather glove manufacturer in Bangladesh, and we are still rapidly expanding. We are experts in leather goods with over <strong>40 years of experience</strong> producing gloves.
+            </p>
+            <p>
+              We currently employ over <strong>1,200 skilled workers</strong>, enabling us to produce <strong>100,000 dozen of gloves per month</strong>.
+            </p>
+            <p>
+              Customer service and consistent high-quality supply are our biggest priorities. We have instituted a Western-style management approach to provide professional and responsive service to our partners.
+            </p>
+            <p>
+              We record and track leather quality, inventory and production data so that every glove we send out is thoroughly inspected.
+            </p>
+            <p>
+              Dedicated individuals manage the US, European, Japanese and Australian markets, allowing us to communicate quickly with customers across the globe.
+            </p>
+          </article>
+
+          <article class="image-card">
+            <img src="/front-end/img/gallery/Cover.png" alt="FULLEVER BD Factory" style="border: 2px solid #00008B; height: 100%; min-height: 500px;" />
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Statistics Strip -->
+    <section class="stats">
+      <div class="container">
+        <div class="stats-grid">
+          <div class="stat">
+            <strong>40+</strong>
+            <span>Years of Experience</span>
+          </div>
+          <div class="stat">
+            <strong>1,200+</strong>
+            <span>Skilled Workers</span>
+          </div>
+          <div class="stat">
+            <strong>100K</strong>
+            <span>Dozen / Month</span>
+          </div>
+          <div class="stat">
+            <strong>Global</strong>
+            <span>International Markets</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Vision Section -->
+    <section class="section" id="vision">
+      <div class="container">
+        <div class="section-title">
+          <div class="kicker">Our Vision</div>
+          <h2>Responsible growth with a global purpose.</h2>
+          <div class="title-line"></div>
+        </div>
+
+        <div class="vision">
+          <figure class="image-card vision-image">
+            <img style="border: 2px solid #00008B;" src="/front-end/img/about/mission.jpg" alt="Mission and Vision" />
+          </figure>
+
+          <article class="copy-card vision-copy">
+            <p>
+              Our vision focuses on minimizing delays and unknowns with our shipments. We have achieved this by sourcing <strong>95% of our raw materials locally in Bangladesh</strong>.
+            </p>
+            <p>
+              By locating our supply chain within Bangladesh, we avoid many of the issues currently occurring with shipment costs and delays. This allows us to supply orders very quickly from when we receive them. Our factory is only <strong>6–7 hours from the nearest seaport in Chittagong</strong>, allowing easy access for delivering our products.
+            </p>
+            <p>
+              As a company, it is our goal to become the largest safety goods supplier across the globe. We continue to grow and innovate, discovering new ways to make a better and more efficient glove so that we can provide the highest quality products at a competitive cost.
+            </p>
+            <p>
+              We believe that with the right partners, FULLEVER BD LIMITED can advance the rapidly growing PPE industry.
+            </p>
+
+            <div class="vision-points">
+              <div class="point"><b>95% Local Sourcing</b><span>Strong domestic supply-chain foundation.</span></div>
+              <div class="point"><b>Fast Port Access</b><span>Approx. 6–7 hours to Chittagong seaport.</span></div>
+              <div class="point"><b>Continuous Innovation</b><span>Improving glove quality and efficiency.</span></div>
+              <div class="point"><b>Global PPE Ambition</b><span>Building a major international safety-goods supplier.</span></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Commitment & CTA Section -->
+    <section class="section commit">
+      <div class="container">
+        <div class="head">
+          <div class="kicker">Our Commitment</div>
+          <h2>What our partners can expect.</h2>
+          <div class="rule"></div>
+        </div>
+
+        <div class="grid3">
+          <div class="mini">
+            <div class="icon">01</div>
+            <h3>Consistent Quality</h3>
+            <p>Production and leather information is tracked to support reliable product quality.</p>
+          </div>
+          <div class="mini">
+            <div class="icon">02</div>
+            <h3>Reliable Supply</h3>
+            <p>Experienced teams and scalable capacity support long-term customer programs.</p>
+          </div>
+          <div class="mini">
+            <div class="icon">03</div>
+            <h3>Fast Communication</h3>
+            <p>Dedicated market management helps us respond quickly to international customers.</p>
+          </div>
+        </div>
+
+        <!-- Sales CTA -->
+        <div class="cta">
+          <div>
+            <h3>Looking for a reliable leather glove supplier?</h3>
+            <p>Connect with FULLEVER BD LIMITED for sourcing and manufacturing requirements.</p>
+          </div>
+          <a class="btn" href="mailto:info@fulleverbd.com">Contact Sales</a>
+        </div>
+      </div>
+    </section>
+  </div>
+</BaseLayout>

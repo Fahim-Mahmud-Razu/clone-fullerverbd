@@ -1,0 +1,229 @@
+---
+---
+
+<section class="action-wrap-layout1 bg-common" style="background: #f7f8fa; padding: 60px 0 70px;">
+  <div class="container">
+    <div style="display: flex; justify-content: center; margin-bottom: 40px;">
+      <h2 class="certifications-title">OUR CERTIFICATIONS</h2>
+    </div>
+
+    <!-- Strip 1: 4 Badges -->
+    <div class="strip">
+      <div class="corner"></div>
+
+      <div class="badge">
+        <div class="icon">
+          <img src="/front-end/img/SQP-Logo-Web.png" alt="SQP logo" />
+        </div>
+        <div class="pill">SQP</div>
+        <div class="caption">Supplier Qualification Program</div>
+      </div>
+
+      <div class="badge">
+        <div class="icon">
+          <img src="/front-end/img/gsv-logo-web.png" alt="GSV logo" />
+        </div>
+        <div class="pill">GSV</div>
+        <div class="caption">Global Security Verification</div>
+      </div>
+
+      <div class="badge">
+        <div class="icon">
+          <img src="/front-end/img/FLAXA.png" alt="FLAXA logo" />
+        </div>
+        <div class="pill">FLAXA</div>
+        <div class="caption">Footwear, Leather goods <br /> Accessories Exporters Association</div>
+      </div>
+
+      <div class="badge">
+        <div class="icon">
+          <img src="/front-end/img/WCA.png" alt="WCA logo" />
+        </div>
+        <div class="pill">WCA</div>
+        <div class="caption">Workplace Conditions Assessment</div>
+      </div>
+    </div>
+
+    <!-- Strip 2: 2 Badges -->
+    <div class="strip" style="margin-top: 25px;">
+      <div class="corner"></div>
+
+      <div class="badge">
+        <div class="icon">
+          <img src="/front-end/img/ISO_9001.png" alt="ISO 9001 logo" />
+        </div>
+        <div class="pill">ISO 9001</div>
+        <div class="caption">Quality Management System</div>
+      </div>
+
+      <div class="badge">
+        <div class="icon">
+          <img src="/front-end/img/ISO_14001.png" alt="ISO 14001 logo" />
+        </div>
+        <div class="pill">ISO 14001</div>
+        <div class="caption">Environmental Management Systems</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  :root {
+    --navy: #0b2447;
+    --blue: #1360b5;
+    --gold: #f5a623;
+    --line: #d9dee5;
+    --text: #1c2733;
+    --muted: #5b6672;
+  }
+
+  .certifications-title {
+    position: relative;
+    isolation: isolate;
+    margin: 0 auto;
+    padding: 8px 48px 10px;
+    color: #fff;
+    font-family: "Arial Black", "Helvetica Neue", Arial, sans-serif;
+    font-size: clamp(22px, 4.5vw, 48px);
+    font-weight: 900;
+    line-height: 1.15;
+    letter-spacing: -1.5px;
+    text-align: center;
+    text-transform: uppercase;
+    white-space: nowrap;
+    display: inline-block;
+  }
+
+  .certifications-title::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    border: 2px solid #fff;
+    border-radius: 25px 25px 18px 18px;
+    background: linear-gradient(110deg, #034485, #07509c 55%, #034385);
+    clip-path: polygon(4% 0, 96% 0, 100% 100%, 0 100%);
+  }
+
+  .certifications-title::after {
+    content: "";
+    position: absolute;
+    z-index: -2;
+    inset: 10px -13px;
+    border-radius: 12px;
+    background: linear-gradient(90deg, #ffa20b, #ff8c00);
+    clip-path: polygon(3% 0, 97% 0, 100% 100%, 0 100%);
+  }
+
+  .strip {
+    position: relative;
+    overflow: hidden;
+    max-width: 100%;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 6px;
+    padding: 28px 24px 30px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  }
+
+  .corner {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 110px;
+    height: 70px;
+    background: var(--navy);
+    clip-path: polygon(100% 0, 100% 100%, 0 100%);
+  }
+
+  .corner::before {
+    content: "";
+    position: absolute;
+    right: 20px;
+    bottom: 0;
+    width: 90px;
+    height: 70px;
+    background: var(--gold);
+    clip-path: polygon(100% 0, 100% 100%, 30% 100%);
+  }
+
+  .badge {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 0 14px;
+    position: relative;
+  }
+
+  .badge:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 6px;
+    bottom: 20px;
+    width: 1px;
+    background: var(--line);
+  }
+
+  .icon {
+    width: 98px;
+    height: 98px;
+    border-radius: 50%;
+    border: 3px solid var(--blue);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    margin-bottom: 14px;
+  }
+
+  .icon img {
+    max-height: 70px;
+    max-width: 70px;
+    object-fit: contain;
+  }
+
+  .pill {
+    background: #0b2447;
+    color: #fff;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.04em;
+    padding: 6px 22px;
+    border-radius: 14px;
+    margin-bottom: 10px;
+    white-space: nowrap;
+  }
+
+  .caption {
+    font-size: 12.5px;
+    color: var(--muted);
+    line-height: 1.4;
+    max-width: 180px;
+  }
+
+  @media (max-width: 820px) {
+    .strip {
+      flex-wrap: wrap;
+      gap: 26px 0;
+    }
+    .badge {
+      flex: 1 1 50%;
+      margin-bottom: 10px;
+    }
+    .badge::after {
+      display: none;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .badge {
+      flex: 1 1 100%;
+    }
+  }
+</style>

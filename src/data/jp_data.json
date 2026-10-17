@@ -1,0 +1,129 @@
+{
+  "locale": "jp",
+  "title": "FULLEVER BD LIMITED",
+  "nav_heading": "私たちの商品",
+  "process_heading": "私たちの作業プロセス",
+  "categories_heading": "当社の製品カテゴリー",
+  "process": [
+    {
+      "num": "01",
+      "title": "原材料",
+      "url": "/jp/raw-materials",
+      "img": "/front-end/img/service/rawmaterials.jpg"
+    },
+    {
+      "num": "02",
+      "title": "切断工程",
+      "url": "/jp/cutting-process",
+      "img": "/front-end/img/service/catting.jpg"
+    },
+    {
+      "num": "03",
+      "title": "縫製工程",
+      "url": "/jp/sewing-process",
+      "img": "/front-end/img/service/swwim.jpg"
+    },
+    {
+      "num": "04",
+      "title": "包装",
+      "url": "/jp/packaging",
+      "img": "/front-end/img/service/Packaging.jpg"
+    }
+  ],
+  "categories": [
+    {
+      "id": 23,
+      "title": "革冬用手袋",
+      "url": "/jp/category/23",
+      "img": "/media-library/wenter.png"
+    },
+    {
+      "id": 17,
+      "title": "革ドライバー手袋",
+      "url": "/jp/category/17",
+      "img": "/media-library/driver.png"
+    },
+    {
+      "id": 18,
+      "title": "本革手袋",
+      "url": "/jp/category/18",
+      "img": "/media-library/Grain-Gloves_jp.png"
+    },
+    {
+      "id": 19,
+      "title": "床革手袋",
+      "url": "/jp/category/19",
+      "img": "/media-library/split_jp.png"
+    },
+    {
+      "id": 20,
+      "title": "革溶接手袋",
+      "url": "/jp/category/20",
+      "img": "/media-library/walding.png"
+    },
+    {
+      "id": 21,
+      "title": "革パーム手袋",
+      "url": "/jp/category/21",
+      "img": "/media-library/palm_gloves_jp.png"
+    },
+    {
+      "id": 25,
+      "title": "レザー溶接アパレル",
+      "url": "/jp/category/25",
+      "img": "/media-library/pant.png"
+    },
+    {
+      "id": 24,
+      "title": "レザー溶接アパレル",
+      "url": "/jp/category/24",
+      "img": "/media-library/jek.png"
+    },
+    {
+      "id": 27,
+      "title": "合成皮革手袋",
+      "url": "/jp/category/27",
+      "img": "/media-library/Microfiber-Gloves_jp.png"
+    },
+    {
+      "id": 29,
+      "title": "メカニックグローブ",
+      "url": "/jp/category/29",
+      "img": "/media-library/0172317000.png"
+    },
+    {
+      "id": 30,
+      "title": "インパクトグローブ",
+      "url": "/jp/category/30",
+      "img": "/media-library/0000025056864_1.png"
+    },
+    {
+      "id": 31,
+      "title": "100% 綿スムーズ手袋",
+      "url": "/jp/category/31",
+      "img": "/media-library/cotton_new_gloves_jp.png"
+    }
+  ],
+  "stats": [
+    {
+      "icon": "flaticon-apartment",
+      "value": "1,200",
+      "title": "熟練労働者"
+    },
+    {
+      "icon": "flaticon-industry",
+      "value": "12,000",
+      "title": "平方メートル"
+    },
+    {
+      "icon": "flaticon-helmet",
+      "value": "1,00,000",
+      "title": "月間手袋生産数（ダース）"
+    },
+    {
+      "icon": "flaticon-happy",
+      "value": "40",
+      "title": "総生産数（100万組）"
+    }
+  ]
+}

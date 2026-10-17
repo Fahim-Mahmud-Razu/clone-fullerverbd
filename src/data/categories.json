@@ -1,0 +1,252 @@
+[
+  {
+    "id": 23,
+    "title": "Leather Winter Gloves",
+    "slug": "leather-winter-gloves",
+    "route": "/category/23",
+    "tile_image": "/media-library/wenter.png",
+    "product_ids": [
+      163,
+      164,
+      166,
+      209,
+      211,
+      212
+    ]
+  },
+  {
+    "id": 17,
+    "title": "Leather Driver Gloves",
+    "slug": "leather-driver-gloves",
+    "route": "/category/17",
+    "tile_image": "/media-library/driver.png",
+    "product_ids": [
+      95,
+      109,
+      110,
+      112,
+      115,
+      116,
+      198
+    ]
+  },
+  {
+    "id": 18,
+    "title": "Leather Grain Gloves",
+    "slug": "leather-grain-gloves",
+    "route": "/category/18",
+    "tile_image": "/media-library/Grain-Gloves.png",
+    "product_ids": [
+      104,
+      106,
+      119,
+      120,
+      122,
+      124,
+      125,
+      127,
+      128,
+      129
+    ]
+  },
+  {
+    "id": 19,
+    "title": "Leather Split Gloves",
+    "slug": "leather-split-gloves",
+    "route": "/category/19",
+    "tile_image": "/media-library/slipt.png",
+    "product_ids": [
+      91,
+      113,
+      114,
+      117,
+      118,
+      133,
+      135,
+      136,
+      139,
+      142,
+      143
+    ]
+  },
+  {
+    "id": 20,
+    "title": "Leather Welding Gloves",
+    "slug": "leather-welding-gloves",
+    "route": "/category/20",
+    "tile_image": "/media-library/walding.png",
+    "product_ids": [
+      111,
+      123,
+      126,
+      132,
+      134,
+      148,
+      150,
+      151,
+      162,
+      173,
+      178,
+      179,
+      183,
+      184,
+      185,
+      186,
+      195,
+      216,
+      217,
+      218,
+      219,
+      220,
+      221,
+      222,
+      223,
+      224,
+      226
+    ]
+  },
+  {
+    "id": 21,
+    "title": "Leather Palm Gloves",
+    "slug": "leather-palm-gloves",
+    "route": "/category/21",
+    "tile_image": "/media-library/117356021.png",
+    "product_ids": [
+      93,
+      144,
+      147,
+      149,
+      152,
+      155,
+      156,
+      157,
+      159,
+      160,
+      161
+    ]
+  },
+  {
+    "id": 25,
+    "title": "Leather Welding Apparel",
+    "slug": "leather-welding-apparel-25",
+    "route": "/category/25",
+    "tile_image": "/media-library/pant.png",
+    "product_ids": [
+      167,
+      168,
+      175,
+      176,
+      177,
+      193,
+      194
+    ]
+  },
+  {
+    "id": 24,
+    "title": "Leather Welding Apparel",
+    "slug": "leather-welding-apparel-24",
+    "route": "/category/24",
+    "tile_image": "/media-library/jek.png",
+    "product_ids": [
+      84,
+      85,
+      180,
+      181,
+      182,
+      196,
+      197
+    ]
+  },
+  {
+    "id": 27,
+    "title": "Synthetic Leather Gloves",
+    "slug": "synthetic-leather-gloves",
+    "route": "/category/27",
+    "tile_image": "/media-library/Micro-Gloves.png",
+    "product_ids": [
+      170,
+      171,
+      172,
+      190,
+      191,
+      192,
+      200,
+      201,
+      204
+    ]
+  },
+  {
+    "id": 29,
+    "title": "Mechanic's Gloves",
+    "slug": "mechanics-gloves",
+    "route": "/category/29",
+    "tile_image": "/media-library/0172317000.png",
+    "product_ids": [
+      174,
+      189,
+      202,
+      203,
+      206,
+      208,
+      210,
+      213,
+      214,
+      215,
+      227,
+      239
+    ]
+  },
+  {
+    "id": 30,
+    "title": "Impact Gloves",
+    "slug": "impact-gloves",
+    "route": "/category/30",
+    "tile_image": "/media-library/0000025056864_1.png",
+    "product_ids": [
+      187,
+      205,
+      207
+    ]
+  },
+  {
+    "id": 31,
+    "title": "100% Cotton Interlock Gloves",
+    "slug": "cotton-interlock-gloves",
+    "route": "/category/31",
+    "tile_image": "/media-library/cotton_new.png",
+    "product_ids": [
+      199
+    ]
+  },
+  {
+    "id": 32,
+    "title": "Gardening Gloves",
+    "slug": "gardening-gloves",
+    "route": "/category/32",
+    "tile_image": "/media-library/GG1_F.png",
+    "product_ids": [
+      225,
+      228,
+      229,
+      230,
+      231,
+      232,
+      233,
+      234,
+      235,
+      236,
+      237,
+      238
+    ]
+  },
+  {
+    "id": 26,
+    "title": "Leather Golf Gloves",
+    "slug": "leather-golf-gloves",
+    "route": "/category/26",
+    "tile_image": "/product-images/1670647571golf.png",
+    "product_ids": [
+      169
+    ]
+  }
+]

@@ -1,0 +1,166 @@
+---
+const slides = [
+  { image: '/front-end/img/slider/Fullever_Banner1.png', label: 'Welcome Fullever', alt: 'Welcome to Fullever BD' },
+  { image: '/front-end/img/slider/Driver_gloves26.png', label: 'Driver Gloves', alt: 'Driver Gloves' },
+  { image: '/front-end/img/slider/Grain-Gloves.png', label: 'Grain Gloves', alt: 'Grain Gloves' },
+  { image: '/front-end/img/slider/FULLEVER_SPLIT_GLOVES_1920x700_150kb.jpg', label: 'Split Gloves', alt: 'Split Gloves' },
+  { image: '/front-end/img/slider/Welding-gloves2026_09.jpg', label: 'Welding Articles', alt: 'Welding Articles' },
+  { image: '/front-end/img/slider/Palm-Gloves.jpg', label: 'Leather Palm Gloves', alt: 'Leather Palm Gloves' }
+];
+---
+
+<section class="slick-slider-wrap-layout1" id="heroSliderSection">
+  <div class="slick-slider-layout1">
+    <!-- Main Big Slide Display -->
+    <div class="slick-carousel slick-content" id="heroContentTrack" style="position: relative; overflow: hidden; min-height: 480px;">
+      {slides.map((slide, idx) => (
+        <div
+          class={`hero-slide ${idx === 0 ? 'is-active' : ''}`}
+          data-slide-index={idx}
+          style={`display: ${idx === 0 ? 'block' : 'none'}; width: 100%; transition: opacity 0.8s ease;`}
+        >
+          <div class="item-img" style="width: 100%; text-align: center;">
+            <img src={slide.image} alt={slide.alt} style="width: 100%; height: auto; max-height: 700px; object-fit: cover; display: block;" />
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Synchronized Navigation Control Strip -->
+    <div class="slick-nav-wrap">
+      <div class="container">
+        <div class="slick-carousel slick-nav" id="heroNavStrip">
+          {slides.map((slide, idx) => (
+            <div
+              class={`nav-item ${idx === 0 ? 'slick-current' : ''}`}
+              data-nav-index={idx}
+              role="button"
+              tabindex="0"
+              style="cursor: pointer;"
+            >
+              <div class="item-icon">
+                <img src="/front-end/img/ggafp.png" alt="service" width="32" height="51" />
+              </div>
+              <h4 class="item-title">{slide.label}</h4>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero-slide {
+    animation: fadeIn 0.8s ease-in-out;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  #heroNavStrip {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: stretch !important;
+    justify-content: space-between !important;
+    height: 193px !important;
+    overflow: hidden !important;
+  }
+
+  #heroNavStrip .nav-item {
+    flex: 1 1 0 !important;
+    max-width: 195px !important;
+    height: 193px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transition: background-color 0.25s ease;
+  }
+
+  .slick-nav .nav-item.slick-current {
+    background-color: #cd0d16 !important;
+  }
+
+  .slick-nav .nav-item:hover {
+    background-color: #da101a;
+  }
+</style>
+
+<script>
+  function initHeroSlider() {
+    const slides = document.querySelectorAll<HTMLElement>('.hero-slide');
+    const navItems = document.querySelectorAll<HTMLElement>('.slick-nav .nav-item');
+    if (!slides.length || !navItems.length) return;
+
+    let currentIndex = 0;
+    let timer: number | null = null;
+    const AUTOPLAY_DELAY = 3000;
+
+    function goToSlide(index: number) {
+      currentIndex = (index + slides.length) % slides.length;
+
+      slides.forEach((slide, i) => {
+        if (i === currentIndex) {
+          slide.style.display = 'block';
+          slide.classList.add('is-active');
+        } else {
+          slide.style.display = 'none';
+          slide.classList.remove('is-active');
+        }
+      });
+
+      navItems.forEach((nav, i) => {
+        if (i === currentIndex) {
+          nav.classList.add('slick-current');
+        } else {
+          nav.classList.remove('slick-current');
+        }
+      });
+    }
+
+    function startAutoplay() {
+      stopAutoplay();
+      timer = window.setInterval(() => {
+        goToSlide(currentIndex + 1);
+      }, AUTOPLAY_DELAY);
+    }
+
+    function stopAutoplay() {
+      if (timer) {
+        clearInterval(timer);
+        timer = null;
+      }
+    }
+
+    navItems.forEach((item, idx) => {
+      item.addEventListener('click', () => {
+        goToSlide(idx);
+        startAutoplay();
+      });
+      item.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          goToSlide(idx);
+          startAutoplay();
+        }
+      });
+    });
+
+    const heroSection = document.getElementById('heroSliderSection');
+    if (heroSection) {
+      heroSection.addEventListener('mouseenter', stopAutoplay);
+      heroSection.addEventListener('mouseleave', startAutoplay);
+    }
+
+    startAutoplay();
+  }
+
+  // Initialize on load
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initHeroSlider);
+  } else {
+    initHeroSlider();
+  }
+</script>

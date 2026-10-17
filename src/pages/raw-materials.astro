@@ -1,0 +1,22 @@
+---
+import ProcessLayout from '../components/ProcessLayout.astro';
+
+const images = [
+  '/front-end/img/workingprocess/rm/01.jpg',
+  '/front-end/img/workingprocess/rm/02.jpg',
+  '/front-end/img/workingprocess/rm/03.jpg'
+];
+
+const paragraphs = [
+  'At FULLEVER BD LIMITED we work to source high quality leather supplied by secure and trusted suppliers. As a result, 80% of our leather goods and accessories for production are supplied from inside Bangladesh, and the other 20% of our grain leather supply comes from trusted sources in China. This allows FULLEVER BD LIMITED to minimize delays in our production.',
+  'All the leather we buy is inspected and quality checked at multiplied points in production to ensure a high quality glove. The leather we use in all our gloves consists of butt splits or shoulder splits suede quality,and A, B graded grain leathe'
+];
+---
+
+<ProcessLayout
+  title="Raw Materials"
+  subtitle="Raw Materials"
+  currentPath="/raw-materials"
+  images={images}
+  paragraphs={paragraphs}
+/>

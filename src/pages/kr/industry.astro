@@ -1,0 +1,35 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageBanner from '../../components/PageBanner.astro';
+---
+
+<BaseLayout title="Our Industry - FULLEVER BD LIMITED" currentPath="/kr/industry" locale="kr">
+  <PageBanner title="Our Industry" breadcrumbs={[{ label: 'Home', url: '/kr/' }, { label: 'Our Industry' }]} />
+
+  <section class="about-wrap-layout7 bg-shape-2" style="padding: 70px 0; background: #ffffff;">
+    <div class="container">
+      <div class="row about-box-layout9 align-items-center">
+        <div class="col-lg-7 col-12 single-item left-item">
+          <div class="item-content">
+            <h2 class="item-title" style="font-size: 32px; font-weight: 700; color: #082c4b; margin-bottom: 20px;">
+              Our Industry
+            </h2>
+            <p class="t-align" style="font-size: 16px; line-height: 28px; color: #646464; margin-bottom: 20px;">
+              With FULLEVER BD LIMITED's prime location for shipping benefits and our cost effective production methods, we can guarantee to reduce the cost of your product while keeping a high standard of quality. We prioritize getting orders delivered on time, and keep track of all shipping orders. Our customer support is flexible to provide whatever our clients need. FULLEVER BD LIMITED is able to express air freight for emergency/expedited service, or low cost land/sea freight to suit all needs. We promise you to deliver your order on time in prime condition, which we achieve by tracking all orders along the way.
+            </p>
+            <p class="t-align" style="font-size: 16px; line-height: 28px; color: #646464; margin-bottom: 20px;">
+              One of the many benefits of operating in Bangladesh is the consumer friendly policies such as a GSP to lower tariff costs, and duty free imports from products exported from Bangladesh enabling easy and low cost shipping keeping our prices competitive.
+            </p>
+            <p class="t-align" style="font-size: 16px; line-height: 28px; color: #646464;">
+              At FULLEVER BD LIMITED we always ensure your product is on time, and to the precise specifications you order. Our quality assurance starts at all the leather we buy and use for our gloves. It is checked by professionals on arrival to ensure the gloves are always consistent and high quality. We work with experts in the industry which ensure our supply chain is always running, and sourced from very competitive suppliers enabling low costs to our buyers. Finally, all of our gloves are inspected at every step of construction and before packaging to ensure our clients always get the product they need at the time promised to them.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-lg-5 col-12 single-item right-item" style="padding-right: 20px;">
+          <img style="border: 2px solid #00008B; width: 100%; border-radius: 6px;" src="/front-end/img/about/Industry.jpg" alt="Our Industry" />
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
