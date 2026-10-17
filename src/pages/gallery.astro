@@ -6,15 +6,15 @@ import galleryData from '../data/gallery.json';
 const { filters, items } = galleryData;
 ---
 
-<BaseLayout title="Gallery - FULLEVER BD LIMITED" currentPath="/gallery">
+<BaseLayout title="Gallery - Max Gloves BD Ltd." currentPath="/gallery">
   <PageBanner title="Gallery" breadcrumbs={[{ label: 'Home', url: '/' }, { label: 'Portfolio Gallery' }]} />
 
   <section class="single-service-wrap-layout2" style="padding: 60px 0 80px;">
     <div class="container">
       <div class="main text-center" style="margin-bottom: 40px;">
         <h2 style="font-size: 32px; font-weight: 700; color: #111; margin-bottom: 10px;">COMPANY</h2>
-        <hr style="border: none; border-top: 3px solid #ee212b; width: 60px; margin: 0 auto 15px;" />
-        <h2 style="font-size: 26px; font-weight: 700; color: #082c4b; margin-bottom: 30px;">PORTFOLIO</h2>
+        <hr style="border: none; border-top: 3px solid var(--brand-orange); width: 60px; margin: 0 auto 15px;" />
+        <h2 style="font-size: 26px; font-weight: 700; color: var(--brand-navy); margin-bottom: 30px;">PORTFOLIO</h2>
 
         <!-- Filter Buttons Strip -->
         <div id="galleryFilterContainer" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-bottom: 35px;">
@@ -93,9 +93,9 @@ const { filters, items } = galleryData;
     background-color: #38b4bd;
   }
   .gallery-filter-btn.active {
-    background-color: #082c4b;
+    background-color: var(--brand-navy);
     color: #ffffff;
-    box-shadow: 0 4px 12px rgba(8, 44, 75, 0.25);
+    box-shadow: 0 4px 12px rgba(5, 37, 79, 0.25);
   }
   .gallery-thumb-link:hover img {
     transform: scale(1.08);

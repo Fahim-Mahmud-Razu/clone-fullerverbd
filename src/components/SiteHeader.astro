@@ -32,7 +32,7 @@ const labels = {
     gallery: 'GALLERY',
     contact: 'CONTACT US',
     language: 'LANGUAGE',
-    welcome: 'Welcome to Fullever BD Limited'
+    welcome: 'Welcome to Max Gloves BD Ltd. — Protecting Hands, Building Futures'
   },
   jp: {
     home: 'ホームページ',
@@ -43,7 +43,7 @@ const labels = {
     gallery: 'ギャラリー',
     contact: 'お問い合わせ',
     language: '言語',
-    welcome: 'FULLEVER BD LIMITED へようこそ'
+    welcome: 'Max Gloves BD Ltd. へようこそ — 手を守り、未来を築く'
   },
   kr: {
     home: '홈 페이지',
@@ -54,7 +54,7 @@ const labels = {
     gallery: '갤러리',
     contact: '문의하기',
     language: '언어',
-    welcome: '풀에버 BD 유한회사에 오신 것을 환영합니다'
+    welcome: 'Max Gloves BD Ltd.에 오신 것을 환영합니다 — 손을 보호하고 미래를 건설합니다'
   }
 }[locale];
 ---
@@ -63,26 +63,39 @@ const labels = {
   <div id="header-topbar" class="bg-accent pd-x-85">
     <div class="container-fluid">
       <div class="row align-items-center">
-        <div class="col-lg-6">
+        <div class="col-lg-7">
           <div class="header-topbar-layout1">
-            <ul class="header-top-left" style="display: flex; align-items: center; list-style: none; margin: 0; padding: 0;">
-              <li style="margin-right: 15px;">
-                <i style="color:white;" class="far fa-envelope">&nbsp;<span><a style="color:white;" href="mailto:info@fulleverbd.com">info@fulleverbd.com</a></span></i>
+            <ul class="header-top-left" style="display: flex; flex-wrap: wrap; align-items: center; list-style: none; margin: 0; padding: 0; font-size: 13px; gap: 14px;">
+              <li style="display: inline-flex; align-items: center; gap: 6px;">
+                <i style="color: var(--brand-orange);" class="fas fa-phone-alt"></i>
+                <a style="color: white; text-decoration: none; font-weight: 600;" href="tel:+8801710591088">+880 1710-591088</a>
               </li>
-              <marquee width="50%" direction="left" style="color:white; margin: 0;">
-                {labels.welcome}
-              </marquee>
+              <li style="display: inline-flex; align-items: center; gap: 6px;">
+                <i style="color: var(--brand-orange);" class="far fa-envelope"></i>
+                <a style="color: white; text-decoration: none;" href="mailto:maxglovesbdltd@gmail.com">maxglovesbdltd@gmail.com</a>
+              </li>
+              <li style="display: inline-flex; align-items: center; gap: 6px;">
+                <i style="color: var(--brand-orange);" class="fas fa-building"></i>
+                <span style="color: white;"><span style="color: var(--brand-orange); font-weight: 600;">Office:</span> 585/C, Khilgaon, C Block, Dhaka-1219</span>
+              </li>
+              <li style="display: inline-flex; align-items: center; gap: 6px;">
+                <i style="color: var(--brand-orange);" class="fas fa-industry"></i>
+                <span style="color: white;"><span style="color: var(--brand-orange); font-weight: 600;">Factory:</span> Savar, Hemayetpur</span>
+              </li>
             </ul>
           </div>
         </div>
-        <div class="col-lg-6 d-flex justify-content-end">
+        <div class="col-lg-5 d-flex justify-content-end align-items-center">
           <div class="header-topbar-layout1">
-            <ul class="header-top-right" style="list-style: none; margin: 0; padding: 0;">
+            <ul class="header-top-right" style="list-style: none; margin: 0; padding: 0; display: flex; align-items: center; gap: 15px;">
+              <li style="color: rgba(255,255,255,0.85); font-size: 12px; font-weight: 500; font-style: italic;">
+                Protecting Hands, Building Futures
+              </li>
               <li class="social-icon">
-                <a href="https://www.facebook.com/FULLEVERBD" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://www.linkedin.com/company/full-ever-bd-limited" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a>
-                <a href="https://www.instagram.com/fulleverbd/" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
-                <a href="https://twitter.com/FullEverBD" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+                <a href="#" title="[FACEBOOK_URL]" aria-label="[FACEBOOK_URL]"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" title="[LINKEDIN_URL]" aria-label="[LINKEDIN_URL]"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" title="[INSTAGRAM_URL]" aria-label="[INSTAGRAM_URL]"><i class="fab fa-instagram"></i></a>
+                <a href="#" title="[TWITTER_URL]" aria-label="[TWITTER_URL]"><i class="fab fa-twitter"></i></a>
               </li>
             </ul>
           </div>
@@ -93,17 +106,24 @@ const labels = {
 
   <div id="rt-sticky-placeholder"></div>
 
-  <div id="header-menu" class="header-menu menu-layout1 pd-x-85">
+  <div id="header-menu" class="header-menu menu-layout1 pd-x-85" style="position: relative;">
     <div class="container-fluid">
       <div class="row d-flex align-items-center">
-        <div class="col-xl-2 col-lg-2">
-          <div class="logo-area">
-            <a href={homeUrl} class="temp-logo">
-              <img src="/front-end/img/bd_logo-new.png" alt="FULLEVER BD LIMITED" class="img-fluid" width="179" height="39" />
+        <div class="col-xl-3 col-lg-3">
+          <div class="logo-area" style="padding: 10px 0;">
+            <a href={homeUrl} class="temp-logo" style="display: inline-block;">
+              <img
+                src="/front-end/img/max-logo-horizontal.png"
+                alt="Max Gloves BD Ltd. logo"
+                class="img-fluid"
+                width="240"
+                height="68"
+                style="max-height: 56px; width: auto; object-fit: contain; display: block;"
+              />
             </a>
           </div>
         </div>
-        <div class="col-xl-10 col-lg-10 d-flex justify-content-end possition-static">
+        <div class="col-xl-9 col-lg-9 d-flex justify-content-end possition-static">
           <nav id="dropdown" class="template-main-menu">
             <ul>
               <li>
@@ -143,7 +163,7 @@ const labels = {
               </li>
               <li>
                 <div class="dropdown" style="padding-top: 22px;">
-                  <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size: 15px; font-weight: bold; padding-top: 10px; background: transparent; color: #111;">
+                  <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size: 15px; font-weight: bold; padding-top: 10px; background: transparent; color: var(--brand-navy);">
                     {labels.language}
                   </button>
                   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="min-width: 130px; padding: 8px 12px;">
@@ -158,5 +178,7 @@ const labels = {
         </div>
       </div>
     </div>
+    <!-- Signature Letterhead Divider: Navy on left, Orange on right with slanted cut -->
+    <div class="header-letterhead-divider" aria-hidden="true"></div>
   </div>
 </header>

@@ -2,22 +2,50 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import HeroSlider from '../../components/HeroSlider.astro';
 import CertificationSlider from '../../components/CertificationSlider.astro';
-import jpData from '../../data/jp_data.json';
 
-const { process, categories, stats } = jpData;
+const workingProcess = [
+  { num: '01', title: 'Raw Materials', url: '/raw-materials', img: '/front-end/img/service/rawmaterials.jpg' },
+  { num: '02', title: 'Cutting Process', url: '/cutting-process', img: '/front-end/img/service/catting.jpg' },
+  { num: '03', title: 'Sewing Process', url: '/sewing-process', img: '/front-end/img/service/swwim.jpg' },
+  { num: '04', title: 'Packaging', url: '/packaging', img: '/front-end/img/service/Packaging.jpg' }
+];
+
+const categoryTiles = [
+  { id: 23, title: 'Leather Winter Gloves', url: '/category/23', img: '/media-library/wenter.png' },
+  { id: 17, title: 'Leather Driver Gloves', url: '/category/17', img: '/media-library/driver.png' },
+  { id: 18, title: 'Leather Grain Gloves', url: '/category/18', img: '/media-library/Grain-Gloves.png' },
+  { id: 19, title: 'Leather Split Gloves', url: '/category/19', img: '/media-library/slipt.png' },
+  { id: 20, title: 'Leather Welding Gloves', url: '/category/20', img: '/media-library/walding.png' },
+  { id: 21, title: 'Leather Palm Gloves', url: '/category/21', img: '/media-library/117356021.png' },
+  { id: 25, title: 'Leather Welding Apparel', url: '/category/25', img: '/media-library/pant.png' },
+  { id: 24, title: 'Leather Welding Apparel', url: '/category/24', img: '/media-library/jek.png' },
+  { id: 27, title: 'Synthetic Leather Gloves', url: '/category/27', img: '/media-library/Micro-Gloves.png' },
+  { id: 29, title: "Mechanic's Gloves", url: '/category/29', img: '/media-library/0172317000.png' },
+  { id: 30, title: 'Impact Gloves', url: '/category/30', img: '/media-library/0000025056864_1.png' },
+  { id: 31, title: '100% Cotton Interlock Gloves', url: '/category/31', img: '/media-library/cotton_new.png' },
+  { id: 32, title: 'Gardening Gloves', url: '/category/32', img: '/media-library/GG1_F.png' }
+];
+
+const stats = [
+  { icon: 'flaticon-apartment', value: '1,200', title: 'Skilled Workers' },
+  { icon: 'flaticon-industry', value: '12,000', title: 'Square Meters' },
+  { icon: 'flaticon-helmet', value: '1,00,000', title: 'Dozen Gloves Produced Monthly' },
+  { icon: 'flaticon-happy', value: '40', title: 'Million Gloves Produced Overall' }
+];
 ---
 
-<BaseLayout title="FULLEVER BD LIMITED - 日本語" currentPath="/jp/" locale="jp">
+<BaseLayout title="Max Gloves BD Ltd. - 日本語" currentPath="/jp/" locale="jp">
+  <!-- Hero Section with Synchronized Nav -->
   <HeroSlider />
 
   <!-- Our Working Process Section -->
   <section class="service-wrap-layout1 bg-accent bg-common" style="padding: 95px 0 65px;">
     <div class="container">
       <div class="heading-layout1 heading-light text-center" style="margin-bottom: 45px;">
-        <h2 style="color: #ffffff; font-size: 36px; font-weight: 500;">私たちの作業プロセス</h2>
+        <h2 style="color: #ffffff; font-size: 36px; font-weight: 500;">Our Working Process</h2>
       </div>
       <div class="row">
-        {process.map((proc) => (
+        {workingProcess.map((proc) => (
           <div class="col-lg-3 col-md-6 col-12" style="margin-bottom: 30px;">
             <div class="service-box-layout1 text-center">
               <div class="item-img" style="position: relative; display: inline-block;">
@@ -30,7 +58,7 @@ const { process, categories, stats } = jpData;
                 </a>
                 <div
                   class="sl-number"
-                  style="position: absolute; top: 10px; right: 15px; width: 55px; height: 55px; line-height: 55px; background: #ee212b; color: #fff; border-radius: 50%; font-size: 20px; font-weight: 700; text-align: center;"
+                  style="position: absolute; top: 10px; right: 15px; width: 55px; height: 55px; line-height: 55px; background: var(--brand-orange); color: #fff; border-radius: 50%; font-size: 20px; font-weight: 700; text-align: center;"
                 >
                   {proc.num}
                 </div>
@@ -53,25 +81,29 @@ const { process, categories, stats } = jpData;
   <section class="project-wrap-layout1 bg-common" style="padding: 34px 0 85px;">
     <div class="container text-center">
       <div style="margin-bottom: 40px;">
-        <h2 style="font-size: 36px; font-weight: 700; color: #082c4b; margin-bottom: 20px;">当社の製品カテゴリー</h2>
+        <img src="/front-end/img/CT.png" alt="Our Product Categories" style="max-width: 100%; height: auto;" />
       </div>
 
       <div class="row gutters-15">
-        {categories.map((cat) => (
+        {categoryTiles.map((cat) => (
           <div class="col-lg-4 col-md-6 col-12" style="margin-bottom: 30px;">
-            <div class="project-box-layout1" style="position: relative; overflow: hidden; background: #f8f8f8; border-radius: 4px; box-shadow: 0 4px 15px rgba(0,0,0,0.06); height: 336px;">
-              <div class="item-img" style="overflow: hidden; height: 100%; display: flex; align-items: center; justify-content: center; background: radial-gradient(circle, #e2f4fb 0%, #ffffff 80%);">
+            <div
+              class="project-box-layout1"
+              onclick={`location.href='${cat.url}'`}
+              style="position: relative; overflow: hidden; background: #f8f8f8; border-radius: 4px; box-shadow: 0 4px 15px rgba(0,0,0,0.06); cursor: pointer;"
+            >
+              <div class="item-img" style="overflow: hidden; height: 336px; display: flex; align-items: center; justify-content: center; background: radial-gradient(circle, #e2f4fb 0%, #ffffff 80%);">
                 <img
                   src={cat.img}
                   alt={cat.title}
                   style="max-height: 90%; width: 96%; object-fit: contain; margin-top: -53px; transition: transform 0.5s ease;"
                 />
               </div>
-              <div class="item-content" style="position: absolute; inset: 0; background: rgba(8, 44, 75, 0.85); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s ease; padding: 20px;">
+              <div class="item-content" style="position: absolute; inset: 0; background: rgba(5, 37, 79, 0.9); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s ease; padding: 20px;">
                 <a
-                  href={`/category/${cat.id}`}
+                  href={cat.url}
                   class="item-btn"
-                  style="color: #ffffff; border: 2px solid #ffffff; padding: 10px 22px; border-radius: 4px; font-weight: 700; text-decoration: none; font-size: 16px;"
+                  style="color: #ffffff; border: 2px solid var(--brand-orange); background: var(--brand-orange); padding: 10px 22px; border-radius: 4px; font-weight: 700; text-decoration: none; font-size: 16px;"
                 >
                   {cat.title}
                 </a>
@@ -82,28 +114,28 @@ const { process, categories, stats } = jpData;
       </div>
 
       <p style="margin-top: 25px; font-size: 16px;">
-        <a href="/jp/" style="color: #ee212b; font-weight: 600; text-decoration: none;">
-          さらに表示.. メニューの「私たちの商品」をクリックしてください
+        <a href="/jp/" style="color: var(--brand-orange); font-weight: 600; text-decoration: none;">
+          詳細.. メニュー「私たちの商品」をクリックしてください
         </a>
       </p>
     </div>
   </section>
 
   <!-- About Us Area Start Here -->
-  <section class="about-wrap-layout1">
+  <section class="about-wrap-layout1 watermark-shield">
     <div class="about-box-layout1">
       <div class="about-box-content">
         <div class="item-header">
-          <div class="experience-year">40</div>
+          <div class="experience-year" style="color: var(--brand-orange); font-size: 48px; font-weight: 900;">MAX</div>
           <ul class="item-title">
-            <li>年数</li>
-            <li>働く <span>経験</span></li>
+            <li>手の <span>安全</span></li>
+            <li>世界 <span>基準</span></li>
           </ul>
         </div>
         <p>
-          FULLEVER BD LIMITED は、バングラデシュに拠点を置く高品質の安全手袋メーカーであり、中国から始まって 40 年以上にわたり安全手袋ビジネスに携わってきた経験があります。
+          <strong>Max Gloves BD Ltd.</strong> は、バングラデシュのサバール、ヘマエトプール（Savar, Hemayetpur）に拠点を置く高品質の安全手袋および保護具の専門メーカーです。「手を守り、未来を築く（Protecting Hands, Building Futures）」をモットーに、最高水準の手袋をお届けしています。
         </p>
-        <a href="/jp/about" class="btn-fill-xl bg-textprimary text-primarytext">
+        <a href="/jp/about" class="btn-fill-xl text-light" style="background: var(--brand-orange); color: #ffffff; border-radius: 4px; padding: 14px 32px; font-weight: 700; text-decoration: none; display: inline-block;">
           READ MORE <i class="fas fa-angle-right"></i>
         </a>
       </div>
@@ -123,7 +155,7 @@ const { process, categories, stats } = jpData;
               </div>
               <div class="item-content">
                 <div class="counter count-number" data-num="1200">1,200</div>
-                <div class="count-title">熟練労働者</div>
+                <div class="count-title">Skilled Workers</div>
               </div>
             </div>
           </div>
@@ -136,7 +168,7 @@ const { process, categories, stats } = jpData;
               </div>
               <div class="item-content">
                 <div class="counter count-number" data-num="12000">12,000</div>
-                <div class="count-title">平方メートル</div>
+                <div class="count-title">Square Meters</div>
               </div>
             </div>
           </div>
@@ -149,7 +181,7 @@ const { process, categories, stats } = jpData;
               </div>
               <div class="item-content">
                 <div class="counter count-number" data-num="100000">1,00,000</div>
-                <div class="count-title">月間手袋生産数（ダース）</div>
+                <div class="count-title">Dozen Gloves Produced Monthly</div>
               </div>
             </div>
           </div>
@@ -162,7 +194,7 @@ const { process, categories, stats } = jpData;
               </div>
               <div class="item-content">
                 <div class="counter count-number" data-num="40">40</div>
-                <div class="count-title">総生産数（100万組）</div>
+                <div class="count-title">Million Gloves Produced Overall</div>
               </div>
             </div>
           </div>
@@ -184,21 +216,24 @@ const { process, categories, stats } = jpData;
     transform: scale(1.06);
   }
 
+  /* About Us Brand Showcase Section */
   .about-wrap-layout1 {
-    background-color: #6ac5f2;
-    background-image: url('/front-end/img/about/about-bg.png');
+    background-color: var(--brand-navy);
+    background-image: url('/front-end/img/max-watermark.png');
     background-repeat: no-repeat;
-    background-position: right bottom;
+    background-position: right 50px center;
+    background-size: 380px auto;
     position: relative;
     overflow: hidden;
   }
 
   .about-box-layout1 {
     width: 55%;
-    background-color: #ee212b;
+    background-color: var(--brand-navy-dark);
     -webkit-clip-path: polygon(0 0, 100% 0%, 80% 100%, 0 100%);
     clip-path: polygon(0 0, 100% 0%, 80% 100%, 0 100%);
     padding-left: calc((100% - 1170px) / 2);
+    border-right: 4px solid var(--brand-orange);
   }
 
   @media only screen and (max-width: 1229px) {
@@ -260,6 +295,12 @@ const { process, categories, stats } = jpData;
     margin-top: 5px;
     color: #ffffff;
   }
+  @media only screen and (max-width: 767px) {
+    .about-box-layout1 .about-box-content .item-header .experience-year {
+      font-size: 70px;
+      line-height: 66px;
+    }
+  }
   .about-box-layout1 .about-box-content .item-header .item-title {
     list-style: none;
     margin: 0;
@@ -270,6 +311,11 @@ const { process, categories, stats } = jpData;
     margin-bottom: 6px;
     line-height: 1.2;
     color: #ffffff;
+  }
+  @media only screen and (max-width: 767px) {
+    .about-box-layout1 .about-box-content .item-header .item-title li {
+      font-size: 26px;
+    }
   }
   .about-box-layout1 .about-box-content .item-header .item-title li span {
     font-weight: 700;
@@ -303,6 +349,7 @@ const { process, categories, stats } = jpData;
     color: #ffffff !important;
   }
 
+  /* Statistics Counter Section */
   .progress-wrap-layout1 {
     background-color: #082c4b;
     padding: 30px 0 40px;
@@ -362,4 +409,124 @@ const { process, categories, stats } = jpData;
     line-height: 16px;
     font-weight: 400;
   }
+
+  @media only screen and (max-width: 767px) {
+    .service-wrap-layout1 {
+      padding: 50px 0 30px !important;
+    }
+    .service-wrap-layout1 .heading-layout1 {
+      margin-bottom: 30px !important;
+    }
+    .service-wrap-layout1 .heading-layout1 h2 {
+      font-size: 28px !important;
+    }
+    .project-wrap-layout1 {
+      padding: 30px 0 50px !important;
+    }
+    .project-box-layout1 {
+      height: 280px !important;
+    }
+    .project-box-layout1 .item-img {
+      height: 280px !important;
+    }
+    .stat {
+      height: auto !important;
+      min-height: 100px !important;
+      padding: 12px 10px !important;
+      margin-bottom: 12px !important;
+    }
+    .progress-box-layout1 .progress-content .item-icon i {
+      font-size: 40px !important;
+    }
+    .progress-box-layout1 .progress-content .item-content .count-number {
+      font-size: 26px !important;
+    }
+  }
+
+  @media only screen and (max-width: 575px) {
+    .service-box-layout1 .item-img img {
+      width: 200px !important;
+      height: 200px !important;
+    }
+    .service-box-layout1 .sl-number {
+      width: 46px !important;
+      height: 46px !important;
+      line-height: 46px !important;
+      font-size: 17px !important;
+      top: 6px !important;
+      right: 10px !important;
+    }
+    .about-box-layout1 .about-box-content {
+      padding: 40px 15px !important;
+    }
+    .about-box-layout1 .about-box-content .item-header .experience-year {
+      font-size: 55px !important;
+      line-height: 52px !important;
+      margin-right: 15px !important;
+    }
+    .about-box-layout1 .about-box-content .item-header .item-title li {
+      font-size: 20px !important;
+    }
+    .about-box-layout1 .about-box-content p {
+      font-size: 15px !important;
+      line-height: 24px !important;
+      margin-bottom: 25px !important;
+    }
+  }
 </style>
+
+<script>
+  function initCounters() {
+    const counters = document.querySelectorAll<HTMLElement>('.counter.count-number');
+    if (!counters.length) return;
+
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const el = entry.target as HTMLElement;
+          obs.unobserve(el);
+          const target = parseInt(el.getAttribute('data-num') || '0', 10);
+          const duration = 1600;
+          const startTime = performance.now();
+
+          function update(currentTime: number) {
+            const elapsed = currentTime - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            // Ease-out cubic
+            const eased = 1 - Math.pow(1 - progress, 3);
+            const current = Math.floor(eased * target);
+
+            if (target === 100000) {
+              if (current < 100000) {
+                el.textContent = current.toLocaleString();
+              } else {
+                el.textContent = '1,00,000';
+              }
+            } else {
+              el.textContent = current.toLocaleString();
+            }
+
+            if (progress < 1) {
+              requestAnimationFrame(update);
+            } else {
+              if (target === 100000) {
+                el.textContent = '1,00,000';
+              } else {
+                el.textContent = target.toLocaleString();
+              }
+            }
+          }
+          requestAnimationFrame(update);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    counters.forEach((c) => observer.observe(c));
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initCounters);
+  } else {
+    initCounters();
+  }
+</script>

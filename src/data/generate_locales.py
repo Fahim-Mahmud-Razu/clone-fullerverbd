@@ -6,7 +6,7 @@ DATA_DIR = os.path.join(BASE_DIR, "src", "data")
 
 jp_data = {
   "locale": "jp",
-  "title": "FULLEVER BD LIMITED",
+  "title": "Max Gloves BD Ltd.",
   "nav_heading": "私たちの商品",
   "process_heading": "私たちの作業プロセス",
   "categories_heading": "当社の製品カテゴリー",
@@ -40,7 +40,7 @@ jp_data = {
 
 kr_data = {
   "locale": "kr",
-  "title": "FULLEVER BD LIMITED",
+  "title": "Max Gloves BD Ltd.",
   "nav_heading": "우리의 제품",
   "process_heading": "우리의 작업 과정",
   "categories_heading": "우리의 제품 카테고리",

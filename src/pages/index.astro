@@ -34,7 +34,7 @@ const stats = [
 ];
 ---
 
-<BaseLayout title="FULLEVER BD LIMITED" currentPath="/">
+<BaseLayout title="Max Gloves BD Ltd. - Protecting Hands, Building Futures" currentPath="/">
   <!-- Hero Section with Synchronized Nav -->
   <HeroSlider />
 
@@ -58,7 +58,7 @@ const stats = [
                 </a>
                 <div
                   class="sl-number"
-                  style="position: absolute; top: 10px; right: 15px; width: 55px; height: 55px; line-height: 55px; background: #ee212b; color: #fff; border-radius: 50%; font-size: 20px; font-weight: 700; text-align: center;"
+                  style="position: absolute; top: 10px; right: 15px; width: 55px; height: 55px; line-height: 55px; background: var(--brand-orange); color: #fff; border-radius: 50%; font-size: 20px; font-weight: 700; text-align: center;"
                 >
                   {proc.num}
                 </div>
@@ -99,11 +99,11 @@ const stats = [
                   style="max-height: 90%; width: 96%; object-fit: contain; margin-top: -53px; transition: transform 0.5s ease;"
                 />
               </div>
-              <div class="item-content" style="position: absolute; inset: 0; background: rgba(8, 44, 75, 0.85); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s ease; padding: 20px;">
+              <div class="item-content" style="position: absolute; inset: 0; background: rgba(5, 37, 79, 0.9); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s ease; padding: 20px;">
                 <a
                   href={cat.url}
                   class="item-btn"
-                  style="color: #ffffff; border: 2px solid #ffffff; padding: 10px 22px; border-radius: 4px; font-weight: 700; text-decoration: none; font-size: 16px;"
+                  style="color: #ffffff; border: 2px solid var(--brand-orange); background: var(--brand-orange); padding: 10px 22px; border-radius: 4px; font-weight: 700; text-decoration: none; font-size: 16px;"
                 >
                   {cat.title}
                 </a>
@@ -114,7 +114,7 @@ const stats = [
       </div>
 
       <p style="margin-top: 25px; font-size: 16px;">
-        <a href="/" style="color: #ee212b; font-weight: 600; text-decoration: none;">
+        <a href="/" style="color: var(--brand-orange); font-weight: 600; text-decoration: none;">
           More.. Click Menu Our Product
         </a>
       </p>
@@ -122,20 +122,20 @@ const stats = [
   </section>
 
   <!-- About Us Area Start Here -->
-  <section class="about-wrap-layout1">
+  <section class="about-wrap-layout1 watermark-shield">
     <div class="about-box-layout1">
       <div class="about-box-content">
         <div class="item-header">
-          <div class="experience-year">40</div>
+          <div class="experience-year" style="color: var(--brand-orange); font-size: 48px; font-weight: 900;">MAX</div>
           <ul class="item-title">
-            <li>Years Of</li>
-            <li>Working <span>Experience</span></li>
+            <li>Hand <span>Safety</span></li>
+            <li>&amp; Global <span>Standards</span></li>
           </ul>
         </div>
         <p>
-          FULLEVER BD LIMITED is a quality safety gloves manufacturer based in Bangladesh experienced in the safety glove business for over 40 years beginning in China.
+          <strong>Max Gloves BD Ltd.</strong> is a dedicated manufacturer of premium quality leather safety gloves and protective apparel based in Savar, Hemayetpur, Bangladesh. Built on rigorous craftsmanship, durable materials, and international standards, our mission is: <em>Protecting Hands, Building Futures</em>.
         </p>
-        <a href="/about" class="btn-fill-xl bg-textprimary text-primarytext">
+        <a href="/about" class="btn-fill-xl text-light" style="background: var(--brand-orange); color: #ffffff; border-radius: 4px; padding: 14px 32px; font-weight: 700; text-decoration: none; display: inline-block;">
           READ MORE <i class="fas fa-angle-right"></i>
         </a>
       </div>
@@ -216,22 +216,24 @@ const stats = [
     transform: scale(1.06);
   }
 
-  /* About Us 40 Years Section */
+  /* About Us Brand Showcase Section */
   .about-wrap-layout1 {
-    background-color: #6ac5f2;
-    background-image: url('/front-end/img/about/about-bg.png');
+    background-color: var(--brand-navy);
+    background-image: url('/front-end/img/max-watermark.png');
     background-repeat: no-repeat;
-    background-position: right bottom;
+    background-position: right 50px center;
+    background-size: 380px auto;
     position: relative;
     overflow: hidden;
   }
 
   .about-box-layout1 {
     width: 55%;
-    background-color: #ee212b;
+    background-color: var(--brand-navy-dark);
     -webkit-clip-path: polygon(0 0, 100% 0%, 80% 100%, 0 100%);
     clip-path: polygon(0 0, 100% 0%, 80% 100%, 0 100%);
     padding-left: calc((100% - 1170px) / 2);
+    border-right: 4px solid var(--brand-orange);
   }
 
   @media only screen and (max-width: 1229px) {

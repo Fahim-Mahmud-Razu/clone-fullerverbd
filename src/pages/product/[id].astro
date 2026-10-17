@@ -33,7 +33,7 @@ interface Props {
 const { product } = Astro.props;
 ---
 
-<BaseLayout title={`${product.title} - FULLEVER BD LIMITED`} currentPath={product.route}>
+<BaseLayout title={`${product.title} - Max Gloves BD Ltd.`} currentPath={product.route}>
   <PageBanner
     title={product.title}
     breadcrumbs={[{ label: 'Home', url: '/' }, { label: product.category_title || 'Products' }]}
@@ -48,7 +48,6 @@ const { product } = Astro.props;
             <div class="col-xl-6 col-12" style="margin-bottom: 35px;">
               <div class="single-product-gallery-layout1">
                 {product.is_apparel_gallery ? (
-                  <!-- Apparel Gallery with Thumbnails -->
                   <div class="apparel-gallery-box" style="background: #fbfbfb; border: 1px solid #eee; border-radius: 8px; padding: 25px;">
                     <div class="main-image-wrap text-center" style="margin-bottom: 20px; min-height: 400px; display: flex; align-items: center; justify-content: center;">
                       <img
@@ -73,7 +72,6 @@ const { product } = Astro.props;
                     )}
                   </div>
                 ) : (
-                  <!-- Glove 3D Image Sprite Viewer -->
                   <div class="viewer-container" style="background: #fbfbfb; border: 1px solid #eee; border-radius: 8px; padding: 25px;">
                     <div
                       class="cd-product-viewer-wrapper"
@@ -130,12 +128,12 @@ const { product } = Astro.props;
                   )}
 
                   <div class="single-product-other-info">
-                    <ul class="nav nav-tabs tab-nav-list" style="border-bottom: 2px solid #ee212b; margin-bottom: 20px;">
+                    <ul class="nav nav-tabs tab-nav-list" style="border-bottom: 2px solid var(--brand-orange); margin-bottom: 20px;">
                       <li class="nav-item">
                         <a
                           class="active"
                           href="#desc"
-                          style="display: inline-block; padding: 10px 22px; font-size: 16px; font-weight: 700; color: #ee212b; background: #fff; border: none; text-decoration: none;"
+                          style="display: inline-block; padding: 10px 22px; font-size: 16px; font-weight: 700; color: var(--brand-orange); background: #fff; border: none; text-decoration: none;"
                         >
                           Description
                         </a>
@@ -160,7 +158,7 @@ const { product } = Astro.props;
 
 <style>
   .apparel-thumb-btn.is-active {
-    border-color: #ee212b !important;
+    border-color: var(--brand-orange) !important;
   }
   .desc-content p {
     margin-bottom: 16px;

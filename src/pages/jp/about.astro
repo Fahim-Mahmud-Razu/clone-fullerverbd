@@ -1,35 +1,101 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageBanner from '../../components/PageBanner.astro';
+import '../../styles/about.css';
 ---
 
-<BaseLayout title="弊社について - FULLEVER BD LIMITED" currentPath="/jp/about" locale="jp">
-  <PageBanner title="弊社について" breadcrumbs={[{ label: 'ホームページ', url: '/jp/' }, { label: '弊社について' }]} />
+<BaseLayout title="会社概要 - Max Gloves BD Ltd." currentPath="/jp/about" locale="jp">
+  <PageBanner title="弊社について" breadcrumbs={[{ label: 'ホーム', url: '/jp/' }, { label: '弊社について' }]} />
 
-  <section class="about-wrap-layout7 bg-shape-2" style="padding: 70px 0; background: #ffffff;">
-    <div class="container">
-      <div class="row about-box-layout9 align-items-center">
-        <div class="col-lg-7 col-12 single-item left-item">
-          <div class="item-content">
-            <h2 class="item-title" style="font-size: 32px; font-weight: 700; color: #082c4b; margin-bottom: 20px;">
-              弊社について
-            </h2>
-            <p class="t-align" style="font-size: 16px; line-height: 28px; color: #646464; margin-bottom: 20px;">
-              FULLEVER BD LIMITED は、革製安全用品の世界的なメーカーおよびサプライヤーです。重要な労働者の安全を守るために、世界中の国がさまざまな高品質の個人用保護具を利用できるようにすることが当社の目標です。
-            </p>
-            <p class="t-align" style="font-size: 16px; line-height: 28px; color: #646464; margin-bottom: 20px;">
-              私たちの工場はバングラデシュ最大の革手袋メーカーであり、現在も急速に拡大しています。当社は手袋の製造において40年以上の経験を持つ革製品の専門家です。当社は現在、1,000 人以上の熟練労働者を雇用しており、月あたり 100,000 双の手袋を生産することができます。 FULLEVER BD LIMITED の最大の優先事項は、顧客サービスと一貫した高品質の供給です。
-            </p>
-            <p class="t-align" style="font-size: 16px; line-height: 28px; color: #646464;">
-              パートナーに最高のサービスを提供するために、当社は管理チームに西洋式の管理を導入しました。当社はすべての革の品質、在庫、生産データを記録および追跡し、発送するすべてのグローブを徹底的に検査します。また、当社の経営陣は、米国、ヨーロッパ、日本、オーストラリアの市場を管理する特定の個人に対して非常に迅速に対応できることを誇りに思っています。これにより、世界中のどこにでも迅速に通信できるようになります。
-            </p>
-          </div>
+  <div class="about-page-wrap">
+    <!-- Company Profile Section -->
+    <section class="section" id="about">
+      <div class="container">
+        <div class="head" style="margin-bottom: 25px;">
+          <div class="kicker">弊社について</div>
+          <div class="rule" style="background: var(--brand-orange); height: 3px; width: 50px; margin: 10px 0;"></div>
+          <h5 style="color: #4e6172; font-size: 16px; font-weight: 500; line-height: 1.7; margin-top: 10px;">
+            バングラデシュのサバール、ヘマエトプール（Savar, Hemayetpur）に拠点を置く、高品質な革製安全用品の製造・供給企業です。世界中のパートナーへ高品質な個人用保護具と信頼のおけるサービスをお届けします。
+          </h5>
         </div>
 
-        <div class="col-lg-5 col-12 single-item right-item" style="padding-right: 20px;">
-          <img style="border: 2px solid #00008B; width: 100%; border-radius: 6px;" src="/front-end/img/TEAM_PHOTO.jpg" alt="About Us" />
+        <div class="head">
+          <div class="kicker">私たちについて</div>
+          <h2 style="color: var(--brand-navy); font-weight: 800;">すべての手袋に息づく経験、生産力、そして確かな品質。</h2>
+          <div class="rule" style="background: var(--brand-orange); height: 3px; width: 50px; margin: 10px 0;"></div>
+        </div>
+
+        <div class="about-grid">
+          <article class="copy-card">
+            <p>
+              <strong>Max Gloves BD Ltd.</strong> は、革製安全用品の世界的なメーカーおよびサプライヤーです。「Protecting Hands, Building Futures（手を守り、未来を築く）」を使命とし、世界中の産業従事者を安全に保護するための高品質な個人用保護具を提供しています。
+            </p>
+            <p>
+              サバール、ヘマエトプールの製造工場では、ドライバー用手袋、溶接用手袋、各種作業用安全手袋を高い耐久性と快適性を持って製造しています。
+            </p>
+            <p>
+              原材料の選別から自動切断、熟練の縫製、出荷前の全数検査に至るまで、徹底した品質管理体制を維持しています。
+            </p>
+            <p>
+              お客様への迅速なサービスと安定した高品質供給を最優先とし、海外パートナーの細やかなニーズに応じたOEM/ODMカスタム生産に対応しています。
+            </p>
+            <p>
+              すべての革品質、在庫、生産データを記録・追跡管理し、出荷されるすべての製品が厳格な安全基準を満たしていることを保証します。
+            </p>
+          </article>
+
+          <article class="image-card" style="display: flex; align-items: center; justify-content: center; background: #ffffff;">
+            <img
+              src="/front-end/img/max_cover.png"
+              alt="Max Gloves BD Ltd. Company Profile"
+              style="border: 2px solid var(--brand-orange); width: 100%; height: auto; object-fit: cover; border-radius: 8px; box-shadow: 0 8px 25px rgba(5,37,79,0.15);"
+            />
+          </article>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+
+    <!-- Mission & Vision Section -->
+    <section class="section section-soft" id="mission">
+      <div class="container">
+        <div class="head">
+          <div class="kicker">私たちの約束</div>
+          <h2 style="color: var(--brand-navy); font-weight: 800;">ミッション、ビジョン &amp; 価値基準</h2>
+          <div class="rule" style="background: var(--brand-orange); height: 3px; width: 50px; margin: 10px 0;"></div>
+        </div>
+
+        <div class="cards-3">
+          <article class="info-card">
+            <div class="icon-circle" style="color: var(--brand-orange); background: var(--brand-orange-light);">
+              <i class="fas fa-bullseye"></i>
+            </div>
+            <h3 style="color: var(--brand-navy);">ミッション</h3>
+            <p>
+              Protecting Hands, Building Futures. 卓越した職人技と厳選された素材により、耐久性と安全性に優れた最高品質の安全手袋をお届けします。
+            </p>
+          </article>
+
+          <article class="info-card">
+            <div class="icon-circle" style="color: var(--brand-navy); background: #e8eef6;">
+              <i class="fas fa-eye"></i>
+            </div>
+            <h3 style="color: var(--brand-navy);">ビジョン</h3>
+            <p>
+              バングラデシュを代表する持続可能で信頼性の高い安全手袋メーカーとして、世界中の労働安全の向上に貢献します。
+            </p>
+          </article>
+
+          <article class="info-card">
+            <div class="icon-circle" style="color: var(--brand-orange); background: var(--brand-orange-light);">
+              <i class="fas fa-award"></i>
+            </div>
+            <h3 style="color: var(--brand-navy);">品質への誓い</h3>
+            <p>
+              均一な高品質、正確な納期管理、誠実なコミュニケーション、そして環境と労働者に配慮した倫理的な製造を約束します。
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </div>
 </BaseLayout>

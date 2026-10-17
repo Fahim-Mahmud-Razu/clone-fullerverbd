@@ -16,22 +16,37 @@ const contactUrl = locale === 'en' ? '/contact' : `/${locale}/contact`;
   <div class="footer-top-wrap-layout1">
     <div class="container">
       <div class="row">
-        <div class="col-lg-4" style="margin-top: -32px;">
+        <!-- Brand & Mission Column -->
+        <div class="col-lg-4" style="margin-top: -15px;">
           <div class="footer-box-layout1">
-            <div class="footer-logo">
-              <a href={homeUrl}><img src="/front-end/img/bd_logo-bw.png" alt="logo" width="318" height="84" /></a>
+            <div class="footer-logo" style="margin-bottom: 20px;">
+              <a href={homeUrl}>
+                <img
+                  src="/front-end/img/max-logo-stacked-white.png"
+                  alt="Max Gloves BD Ltd. logo"
+                  width="180"
+                  height="210"
+                  style="max-height: 140px; width: auto; object-fit: contain; display: block;"
+                />
+              </a>
             </div>
-            <p>We always deliver 100% customer satisfaction and absolute quality work without any other compromise, just like we've been doing since 1978.</p>
-            <hr style="background-color:#ffffff; margin-top: -25px;" />
-            <h3 class="footer-title" style="color: #fff; margin-top: -5px; font-size: 24px; font-weight: 500;">CLASS "A" MEMBER OF FLAXA</h3>
-            <img src="/front-end/img/FLAXA.png" alt="FLAXA" style="margin-top: -15px;" />
+            <p style="color: #cbd5e1; font-size: 15px; line-height: 1.6; margin-bottom: 15px;">
+              <strong style="color: #ffffff;">Max Gloves BD Ltd.</strong> — Protecting Hands, Building Futures. Dedicated to delivering absolute quality safety and leather protective equipment.
+            </p>
+            <hr style="background-color: rgba(255, 255, 255, 0.15); margin: 20px 0;" />
+            <div class="tagline-badge" style="display: inline-flex; align-items: center; gap: 8px; color: var(--brand-orange); font-weight: 700; font-size: 14px;">
+              <i class="fas fa-shield-alt"></i> Protecting Hands, Building Futures
+            </div>
           </div>
         </div>
 
+        <!-- Quick Links Column -->
         <div class="col-lg-4">
           <div class="footer-box-layout1">
             <div class="footer-title">
-              <h3>Quick Links</h3>
+              <h3 style="color: #ffffff; font-size: 20px; font-weight: 700; margin-bottom: 20px; position: relative;">
+                Quick Links
+              </h3>
             </div>
             <div class="footer-menu-box">
               <ul class="footer-menu-list">
@@ -39,7 +54,7 @@ const contactUrl = locale === 'en' ? '/contact' : `/${locale}/contact`;
                 <li><a href={aboutUrl}>About Us</a></li>
                 <li><a href={complianceUrl}>Compliance</a></li>
                 <li><a href={facilitiesUrl}>Our Facilities</a></li>
-                <li><a href={contactUrl}>Contact us</a></li>
+                <li><a href={contactUrl}>Contact Us</a></li>
                 <li><a href="/category/17">Driver Gloves</a></li>
               </ul>
               <ul class="footer-menu-list">
@@ -47,29 +62,51 @@ const contactUrl = locale === 'en' ? '/contact' : `/${locale}/contact`;
                 <li><a href="/category/19">Split Gloves</a></li>
                 <li><a href="/category/20">Welding Gloves</a></li>
                 <li><a href="/category/21">Palm Gloves</a></li>
-                <li><a href="/category/24">Leather Welding Jacket</a></li>
-                <li><a href="/category/25">Leather Welding Trouser</a></li>
+                <li><a href="/category/24">Leather Welding Apparel</a></li>
+                <li><a href="/category/27">Synthetic Gloves</a></li>
               </ul>
             </div>
           </div>
         </div>
 
+        <!-- Contact Information Block -->
         <div class="col-lg-4">
           <div class="footer-box-layout1">
             <div class="footer-title">
-              <h3>Contact Us</h3>
+              <h3 style="color: #ffffff; font-size: 20px; font-weight: 700; margin-bottom: 20px;">
+                Contact Us
+              </h3>
             </div>
-            <div class="footer-contac">
-              <h3>FULLEVER BD LIMITED</h3>
-              <p>
-                <i class="flaticon-maps-and-flags"></i> 320, Choydana (Hazirpukur), National University, Gacha, Gazipur, Bangladesh.
+            <div class="footer-contac" style="color: #cbd5e1; font-size: 14.5px; line-height: 28px;">
+              <h4 style="color: #ffffff; font-size: 18px; font-weight: 700; margin-bottom: 12px;">
+                Max Gloves BD Ltd.
+              </h4>
+              <p style="margin-bottom: 8px; display: flex; align-items: center; gap: 10px;">
+                <i class="fas fa-phone-alt" style="color: var(--brand-orange);"></i>
+                <span><a href="tel:+8801710591088" style="color: #ffffff; text-decoration: none; font-weight: 600;">+880 1710-591088</a></span>
+              </p>
+              <p style="margin-bottom: 8px; display: flex; align-items: center; gap: 10px;">
+                <i class="fas fa-envelope" style="color: var(--brand-orange);"></i>
+                <span><a href="mailto:maxglovesbdltd@gmail.com" style="color: #ffffff; text-decoration: none;">maxglovesbdltd@gmail.com</a></span>
+              </p>
+              <p style="margin-bottom: 8px; display: flex; align-items: flex-start; gap: 10px;">
+                <i class="fas fa-building" style="color: var(--brand-orange); margin-top: 5px;"></i>
+                <span>Office: 585/C, Khilgaon, C Block, Dhaka-1219</span>
+              </p>
+              <p style="margin-bottom: 8px; display: flex; align-items: flex-start; gap: 10px;">
+                <i class="fas fa-industry" style="color: var(--brand-orange); margin-top: 5px;"></i>
+                <span>Factory: Savar, Hemayetpur</span>
+              </p>
+              <p style="margin-bottom: 8px; display: flex; align-items: center; gap: 10px;">
+                <i class="fas fa-globe" style="color: var(--brand-orange);"></i>
+                <span><a href="http://www.maxglovesbdltd.com" target="_blank" rel="noopener noreferrer" style="color: #ffffff; text-decoration: none;">www.maxglovesbdltd.com</a></span>
               </p>
             </div>
-            <ul class="footer-social">
-              <li><a href="https://www.facebook.com/FULLEVERBD" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a></li>
-              <li><a href="https://www.linkedin.com/company/full-ever-bd-limited" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a></li>
-              <li><a href="https://www.instagram.com/fulleverbd/" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a></li>
-              <li><a href="https://twitter.com/FullEverBD" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a></li>
+            <ul class="footer-social" style="margin-top: 15px; display: flex; gap: 10px; list-style: none; padding: 0;">
+              <li><a href="#" title="[FACEBOOK_URL]" aria-label="[FACEBOOK_URL]"><i class="fab fa-facebook-f"></i></a></li>
+              <li><a href="#" title="[LINKEDIN_URL]" aria-label="[LINKEDIN_URL]"><i class="fab fa-linkedin-in"></i></a></li>
+              <li><a href="#" title="[INSTAGRAM_URL]" aria-label="[INSTAGRAM_URL]"><i class="fab fa-instagram"></i></a></li>
+              <li><a href="#" title="[TWITTER_URL]" aria-label="[TWITTER_URL]"><i class="fab fa-twitter"></i></a></li>
             </ul>
           </div>
         </div>
@@ -77,12 +114,12 @@ const contactUrl = locale === 'en' ? '/contact' : `/${locale}/contact`;
     </div>
   </div>
 
-  <div class="footer-bottom-wrap-layout1" style="margin-top:-50px;">
+  <div class="footer-bottom-wrap-layout1" style="margin-top: -30px; padding: 22px 0;">
     <div class="container">
-      <div class="row">
+      <div class="row align-items-center">
         <div class="col-lg-12">
-          <div class="copyright text-center">
-            Copyright © 2026 <a href={homeUrl}>Fahim Mahmud Razu by</a> All Rights Reserved.
+          <div class="copyright text-center" style="color: rgba(255, 255, 255, 0.8); font-size: 14.5px;">
+            © 2026 Max Gloves BD Ltd. All rights reserved. &nbsp;|&nbsp; <span style="color: var(--brand-orange); font-weight: 600;">Protecting Hands, Building Futures</span>
           </div>
         </div>
       </div>

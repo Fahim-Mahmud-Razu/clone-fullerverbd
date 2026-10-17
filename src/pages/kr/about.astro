@@ -1,35 +1,101 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageBanner from '../../components/PageBanner.astro';
+import '../../styles/about.css';
 ---
 
-<BaseLayout title="회사 소개 - FULLEVER BD LIMITED" currentPath="/kr/about" locale="kr">
+<BaseLayout title="회사 소개 - Max Gloves BD Ltd." currentPath="/kr/about" locale="kr">
   <PageBanner title="회사 소개" breadcrumbs={[{ label: '홈 페이지', url: '/kr/' }, { label: '회사 소개' }]} />
 
-  <section class="about-wrap-layout7 bg-shape-2" style="padding: 70px 0; background: #ffffff;">
-    <div class="container">
-      <div class="row about-box-layout9 align-items-center">
-        <div class="col-lg-7 col-12 single-item left-item">
-          <div class="item-content">
-            <h2 class="item-title" style="font-size: 32px; font-weight: 700; color: #082c4b; margin-bottom: 20px;">
-              회사 소개
-            </h2>
-            <p class="t-align" style="font-size: 16px; line-height: 28px; color: #646464; margin-bottom: 20px;">
-              FULLEVER BD LIMITED는 가죽 안전용품의 글로벌 제조업체이자 공급업체입니다. 우리 회사의 목표는 전 세계 국가에서 중요한 작업자를 안전하게 보호하기 위해 다양한 고품질 개인 보호 장비에 접근할 수 있도록 하는 것입니다.
-            </p>
-            <p class="t-align" style="font-size: 16px; line-height: 28px; color: #646464; margin-bottom: 20px;">
-              저희 공장은 방글라데시 최대 규모의 가죽 장갑 제조업체이며, 지금도 빠르게 성장하고 있습니다. 저희는 40년 이상의 장갑 생산 경험을 지닌 가죽제품 전문업체입니다. 우리는 현재 1000명 이상의 숙련된 근로자를 고용하고 있으며 이를 통해 매월 100,000다스의 장갑을 생산하고 있습니다. FULLEVER BD LIMITED의 가장 큰 우선순위는 고객 서비스와 일관된 고품질 공급입니다.
-            </p>
-            <p class="t-align" style="font-size: 16px; line-height: 28px; color: #646464;">
-              파트너에게 최고의 서비스를 보장하기 위해 우리는 관리팀에 서구식 관리 방식을 도입했습니다. 우리는 모든 가죽 품질, 재고 및 생산 데이터를 기록하고 추적하여 우리가 제조한 모든 장갑을 철저히 검사합니다. 또한 우리는 미국, 유럽, 일본 및 호주시장에 최고의 품질의 제품을 공급하기위해 말단사원에서부터 경영진까지 한마음이 되어 최선을 다해왔고 앞으로도 그 초심의 마음을 유지하기위해 사력을 다할것 입니다.
-            </p>
-          </div>
+  <div class="about-page-wrap">
+    <!-- Company Profile Section -->
+    <section class="section" id="about">
+      <div class="container">
+        <div class="head" style="margin-bottom: 25px;">
+          <div class="kicker">회사 소개</div>
+          <div class="rule" style="background: var(--brand-orange); height: 3px; width: 50px; margin: 10px 0;"></div>
+          <h5 style="color: #4e6172; font-size: 16px; font-weight: 500; line-height: 1.7; margin-top: 10px;">
+            방글라데시 사바르 헤마예트푸르(Savar, Hemayetpur)에 본사를 둔 프리미엄 가죽 안전용품 제조 및 공급업체입니다. 글로벌 파트너에게 고품질 개인 보호 장비와 신뢰할 수 있는 서비스를 제공하기 위해 전념하고 있습니다.
+          </h5>
         </div>
 
-        <div class="col-lg-5 col-12 single-item right-item" style="padding-right: 20px;">
-          <img style="border: 2px solid #00008B; width: 100%; border-radius: 6px;" src="/front-end/img/TEAM_PHOTO.jpg" alt="About Us" />
+        <div class="head">
+          <div class="kicker">우리는 누구인가</div>
+          <h2 style="color: var(--brand-navy); font-weight: 800;">모든 장갑에 담긴 경험, 생산 역량 및 품질.</h2>
+          <div class="rule" style="background: var(--brand-orange); height: 3px; width: 50px; margin: 10px 0;"></div>
+        </div>
+
+        <div class="about-grid">
+          <article class="copy-card">
+            <p>
+              <strong>Max Gloves BD Ltd.</strong>는 가죽 안전용품의 글로벌 제조업체이자 공급업체입니다. 우리 회사의 목표는 전 세계 국가에서 중요한 작업자를 안전하게 보호하기 위해 다양한 고품질 개인 보호 장비에 접근할 수 있도록 하는 것입니다.
+            </p>
+            <p>
+              저희 공장은 방글라데시 사바르 헤마예트푸르에 위치하여 신뢰할 수 있는 드라이버용 장갑 및 용접 장갑 등 안전 장갑을 전문적으로 생산하고 있습니다.
+            </p>
+            <p>
+              원자재 선별에서부터 정밀 자동 절단, 강화 스티치 봉제 및 출하 전 최종 검수까지 모든 공정에서 엄격한 품질 관리를 유지하고 있습니다.
+            </p>
+            <p>
+              고객 서비스와 일관된 고품질 공급은 우리의 최우선 과제입니다. 글로벌 파트너의 요구사항에 맞춘 맞춤형 OEM/ODM 솔루션을 제공합니다.
+            </p>
+            <p>
+              모든 가죽 품질, 재고 및 생산 데이터를 기록하고 추적하여 제조된 모든 장갑이 국제 안전 기준을 충족하도록 관리합니다.
+            </p>
+          </article>
+
+          <article class="image-card" style="display: flex; align-items: center; justify-content: center; background: #ffffff;">
+            <img
+              src="/front-end/img/max_cover.png"
+              alt="Max Gloves BD Ltd. Company Profile"
+              style="border: 2px solid var(--brand-orange); width: 100%; height: auto; object-fit: cover; border-radius: 8px; box-shadow: 0 8px 25px rgba(5,37,79,0.15);"
+            />
+          </article>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+
+    <!-- Mission & Vision Section -->
+    <section class="section section-soft" id="mission">
+      <div class="container">
+        <div class="head">
+          <div class="kicker">우리의 약속</div>
+          <h2 style="color: var(--brand-navy); font-weight: 800;">사명, 비전 &amp; 핵심 가치</h2>
+          <div class="rule" style="background: var(--brand-orange); height: 3px; width: 50px; margin: 10px 0;"></div>
+        </div>
+
+        <div class="cards-3">
+          <article class="info-card">
+            <div class="icon-circle" style="color: var(--brand-orange); background: var(--brand-orange-light);">
+              <i class="fas fa-bullseye"></i>
+            </div>
+            <h3 style="color: var(--brand-navy);">우리의 사명</h3>
+            <p>
+              Protecting Hands, Building Futures. 전 세계 산업 현장의 근로자들에게 편안함, 내구성 및 타협 없는 안전성을 제공하는 최고급 가죽 장갑을 공급합니다.
+            </p>
+          </article>
+
+          <article class="info-card">
+            <div class="icon-circle" style="color: var(--brand-navy); background: #e8eef6;">
+              <i class="fas fa-eye"></i>
+            </div>
+            <h3 style="color: var(--brand-navy);">우리의 비전</h3>
+            <p>
+              방글라데시를 대표하는 지속 가능한 최고 수준의 가죽 안전 장갑 제조기업으로 도약하여 전 세계 산업 안전 솔루션을 선도합니다.
+            </p>
+          </article>
+
+          <article class="info-card">
+            <div class="icon-circle" style="color: var(--brand-orange); background: var(--brand-orange-light);">
+              <i class="fas fa-award"></i>
+            </div>
+            <h3 style="color: var(--brand-navy);">품질 가치</h3>
+            <p>
+              무결점 장갑 생산, 정시 납품, 투명한 소통, 그리고 지속 가능한 윤리적 제조 환경 준수를 약속합니다.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </div>
 </BaseLayout>

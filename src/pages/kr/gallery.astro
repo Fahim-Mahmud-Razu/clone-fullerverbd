@@ -19,15 +19,15 @@ const krFilters = [
 const { items } = galleryData;
 ---
 
-<BaseLayout title="갤러리 - FULLEVER BD LIMITED" currentPath="/kr/gallery" locale="kr">
+<BaseLayout title="갤러리 - Max Gloves BD Ltd." currentPath="/kr/gallery" locale="kr">
   <PageBanner title="갤러리" breadcrumbs={[{ label: '홈 페이지', url: '/kr/' }, { label: '포트폴리오 갤러리' }]} />
 
   <section class="single-service-wrap-layout2" style="padding: 60px 0 80px;">
     <div class="container">
       <div class="main text-center" style="margin-bottom: 40px;">
         <h2 style="font-size: 32px; font-weight: 700; color: #111; margin-bottom: 10px;">COMPANY</h2>
-        <hr style="border: none; border-top: 3px solid #ee212b; width: 60px; margin: 0 auto 15px;" />
-        <h2 style="font-size: 26px; font-weight: 700; color: #082c4b; margin-bottom: 30px;">PORTFOLIO</h2>
+        <hr style="border: none; border-top: 3px solid var(--brand-orange); width: 60px; margin: 0 auto 15px;" />
+        <h2 style="font-size: 26px; font-weight: 700; color: var(--brand-navy); margin-bottom: 30px;">PORTFOLIO</h2>
 
         <!-- Filter Buttons Strip -->
         <div id="galleryFilterContainer" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-bottom: 35px;">
@@ -106,7 +106,7 @@ const { items } = galleryData;
     background-color: #38b4bd;
   }
   .gallery-filter-btn.active {
-    background-color: #082c4b;
+    background-color: var(--brand-navy);
     color: #ffffff;
     box-shadow: 0 4px 12px rgba(8, 44, 75, 0.25);
   }

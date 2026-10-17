@@ -233,7 +233,7 @@
     --------------------------------------*/
     if ($.fn.meanmenu) {
         $('nav#dropdown').meanmenu({
-            siteLogo: "<div class='mobile-menu-nav-back'><a class='logo-mobile' href='https://www.fulleverbd.com'><img src='https://www.fulleverbd.com/front-end/img/asas_fullever.jpg' alt='FULLEVER BD LIMITED' class='img-fluid'/></a></div>"
+            siteLogo: "<div class='mobile-menu-nav-back'><a class='logo-mobile' href='/'><img src='/front-end/img/max-logo-horizontal.png' alt='Max Gloves BD Ltd. logo' class='img-fluid'/></a></div>"
         });
     }
 

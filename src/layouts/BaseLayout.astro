@@ -13,8 +13,8 @@ interface Props {
 }
 
 const {
-  title = 'FULLEVER BD LIMITED',
-  description = 'FULLEVER BD LIMITED is a premier manufacturer of high quality safety gloves, leather driver gloves, welding articles, and apparel based in Gazipur, Bangladesh.',
+  title = 'Max Gloves BD Ltd. - Protecting Hands, Building Futures',
+  description = 'Max Gloves BD Ltd. is a premier manufacturer of high quality safety gloves, leather driver gloves, welding articles, and protective apparel based in Savar, Hemayetpur, Bangladesh. Protecting Hands, Building Futures.',
   currentPath = '/',
   locale = 'en',
   bodyClass = 'sticky-header'
@@ -29,13 +29,75 @@ const {
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <link rel="shortcut icon" type="image/x-icon" href="/front-end/img/favicon.png" />
+    <meta name="theme-color" content="#05254F" />
 
-    <!-- Google Fonts -->
+    <!-- Favicons & App Icons -->
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="manifest" href="/manifest.json" />
+
+    <!-- Open Graph & Twitter Cards -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Max Gloves BD Ltd." />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={`https://www.maxglovesbdltd.com${currentPath}`} />
+    <meta property="og:image" content="https://www.maxglovesbdltd.com/front-end/img/max-logo-stacked.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content="https://www.maxglovesbdltd.com/front-end/img/max-logo-stacked.png" />
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Max Gloves BD Ltd.",
+      "alternateName": "MAX Gloves",
+      "url": "https://www.maxglovesbdltd.com",
+      "logo": "https://www.maxglovesbdltd.com/front-end/img/max-logo-stacked.png",
+      "email": "maxglovesbdltd@gmail.com",
+      "telephone": "+8801710591088",
+      "slogan": "Protecting Hands, Building Futures",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "585/C, Khilgaon, C Block",
+        "addressLocality": "Dhaka",
+        "postalCode": "1219",
+        "addressCountry": "BD"
+      },
+      "location": [
+        {
+          "@type": "Place",
+          "name": "Corporate Office",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "585/C, Khilgaon, C Block",
+            "addressLocality": "Dhaka",
+            "postalCode": "1219",
+            "addressCountry": "BD"
+          }
+        },
+        {
+          "@type": "Place",
+          "name": "Manufacturing Factory",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Savar, Hemayetpur",
+            "addressLocality": "Dhaka",
+            "addressCountry": "BD"
+          }
+        }
+      ]
+    })} />
+
+    <!-- Google Fonts (Montserrat for headings, Inter/Roboto for body) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,600,700,900&display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet" />
 
     <!-- Source Stylesheets in Exact Cascade Order -->
     <link rel="stylesheet" href="/front-end/css/normalize.css" />
