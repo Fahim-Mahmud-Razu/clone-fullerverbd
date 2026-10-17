@@ -77,25 +77,28 @@ const { filters, items } = galleryData;
 
 <style>
   .gallery-filter-btn {
-    border: none;
+    border: 1px solid #dcdcdc;
     outline: none;
-    font-weight: bold;
-    padding: 10px 18px;
-    background-color: #49cbd5;
-    color: #111111;
+    font-weight: 600;
+    padding: 10px 20px;
+    background-color: #ffffff;
+    color: var(--brand-navy);
     cursor: pointer;
     font-size: 14px;
     border-radius: 4px;
     transition: all 0.25s ease;
   }
   .gallery-filter-btn:hover {
-    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
-    background-color: #38b4bd;
+    box-shadow: 0 4px 12px rgba(246, 98, 2, 0.18);
+    background-color: #fff6f0;
+    color: var(--brand-orange);
+    border-color: var(--brand-orange);
   }
   .gallery-filter-btn.active {
     background-color: var(--brand-navy);
     color: #ffffff;
-    box-shadow: 0 4px 12px rgba(8, 44, 75, 0.25);
+    border-color: var(--brand-navy);
+    box-shadow: 0 4px 12px rgba(5, 37, 79, 0.25);
   }
   .gallery-thumb-link:hover img {
     transform: scale(1.08);

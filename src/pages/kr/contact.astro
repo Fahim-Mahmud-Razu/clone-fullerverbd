@@ -119,78 +119,81 @@ import BRAND from '../../config/site';
 
         <!-- Sidebar Column (col-lg-4) -->
         <div class="col-lg-4 sidebar-break-md sidebar-widget-area">
-          <!-- Office Address Card -->
-          <div class="widget widget-contact-info" style="background: #ffffff; padding: 25px; border-radius: 6px; box-shadow: 0 4px 15px rgba(0,0,0,0.06); border: 1px solid #ebebeb; margin-bottom: 25px;">
-            <div class="media" style="display: flex; gap: 15px;">
-              <div class="item-icon" style="color: var(--brand-orange); font-size: 32px;">
-                <i class="fas fa-building"></i>
-              </div>
-              <div class="media-body space-md">
-                <h4 style="font-size: 18px; font-weight: 700; color: var(--brand-navy); margin-bottom: 6px;">Head Office</h4>
-                <ul style="list-style: none; padding: 0; margin: 0; color: #555; line-height: 24px; font-size: 14.5px;">
-                  <li>585/C, Khilgaon, C Block, Dhaka-1219, Bangladesh</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          <!-- Factory Address Card -->
-          <div class="widget widget-contact-info" style="background: #ffffff; padding: 25px; border-radius: 6px; box-shadow: 0 4px 15px rgba(0,0,0,0.06); border: 1px solid #ebebeb; margin-bottom: 25px;">
-            <div class="media" style="display: flex; gap: 15px;">
-              <div class="item-icon" style="color: var(--brand-orange); font-size: 32px;">
-                <i class="fas fa-industry"></i>
-              </div>
-              <div class="media-body space-md">
-                <h4 style="font-size: 18px; font-weight: 700; color: var(--brand-navy); margin-bottom: 6px;">Factory</h4>
-                <ul style="list-style: none; padding: 0; margin: 0; color: #555; line-height: 24px; font-size: 14.5px;">
-                  <li>Savar, Hemayetpur, Dhaka, Bangladesh</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          <!-- Contacts Header -->
-          <ul class="list-group" style="margin-bottom: 0;">
+          <!-- 1. Direct Contact Card (Phone & Email First) -->
+          <ul class="list-group" style="margin-bottom: 25px; list-style: none; padding: 0;">
             <li class="list-group-item list-group-item-info" style="background: var(--brand-navy); color: #ffffff; border: none; padding: 14px 20px; border-radius: 6px 6px 0 0;">
               <h4 style="color: #ffffff; margin: 0; font-size: 18px; display: flex; align-items: center; gap: 10px;">
-                <i class="flaticon-call-answer"></i> Company Contacts
+                <i class="fas fa-headset" style="color: var(--brand-orange);"></i> 직접 문의
               </h4>
             </li>
-          </ul>
-
-          <!-- Official Contact Card Block -->
-          <ul class="list-group text-center" style="padding-top: 10px; margin-bottom: 20px; list-style: none;">
-            <li class="list-group-item" style="border: 1px solid #ebebeb; border-radius: 6px; padding: 25px 20px; background: #ffffff;">
+            <li class="list-group-item" style="border: 1px solid #ebebeb; border-top: none; border-radius: 0 0 6px 6px; padding: 25px 20px; background: #ffffff; box-shadow: 0 4px 15px rgba(0,0,0,0.06);">
               <div class="row section-info ourTeam-box text-center">
                 <div class="col-md-12 section2 pb-3" style="margin-bottom: 15px;">
                   <p style="padding-top: 2px; font-size: 18px; font-weight: bold; color: var(--brand-navy); margin-bottom: 4px;">[PLACEHOLDER: contact person name needs confirmation]</p>
                   <span style="font-size: 15px; font-weight: bold; color: var(--brand-orange);">Sales and Marketing</span><br />
-                  <span style="font-size: 14px; font-weight: 600; color: #555;">Max Gloves BD Ltd.</span>
+                  <span style="font-size: 14px; font-weight: 600; color: #555;">{BRAND.companyName}</span>
                 </div>
-                <div class="col-md-12" style="font-size: 14.5px; line-height: 32px;">
-                  <p style="margin: 0;">
-                    <i class="fas fa-phone-alt" style="color: var(--brand-orange);"></i> &nbsp;<a href={BRAND.phoneTel} style="color: #333; text-decoration: none; font-weight: 600;">{BRAND.phone}</a>
+                <div class="col-md-12" style="font-size: 14.5px; line-height: 32px; text-align: left;">
+                  <!-- Phone -->
+                  <p style="margin: 0; display: flex; align-items: center; gap: 10px;">
+                    <i class="fas fa-phone-alt" style="color: var(--brand-orange); width: 18px;"></i>
+                    <a href={BRAND.phoneTel} style="color: #111; text-decoration: none; font-weight: 700;">{BRAND.phone}</a>
                   </p>
-                  <p style="margin: 0;">
-                    <i class="far fa-envelope" style="color: var(--brand-orange);"></i> &nbsp;<a href={BRAND.emailMailto} style="color: #333; text-decoration: none; font-weight: 500;">{BRAND.email}</a>
+                  <!-- Email -->
+                  <p style="margin: 0; display: flex; align-items: center; gap: 10px;">
+                    <i class="far fa-envelope" style="color: var(--brand-orange); width: 18px;"></i>
+                    <a href={BRAND.emailMailto} style="color: #111; text-decoration: none; font-weight: 600;">{BRAND.email}</a>
                   </p>
-                  <p style="margin: 0;">
-                    <i class="fas fa-globe" style="color: var(--brand-orange);"></i> &nbsp;<a href={BRAND.websiteUrl} target="_blank" rel="noopener noreferrer" style="color: #333; text-decoration: none; font-weight: 500;">{BRAND.website}</a>
+                  <!-- Website -->
+                  <p style="margin: 0; display: flex; align-items: center; gap: 10px;">
+                    <i class="fas fa-globe" style="color: var(--brand-orange); width: 18px;"></i>
+                    <a href={BRAND.websiteUrl} target="_blank" rel="noopener noreferrer" style="color: #111; text-decoration: none; font-weight: 500;">{BRAND.website}</a>
                   </p>
 
                   <div class="col-md-12 text-center" style="margin-top: 20px;">
-                    <button class="vc-trigger" id="vcOpenBtn" style="background: var(--brand-navy); color: #fff; border: none; padding: 10px 20px; border-radius: 4px; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
-                      <svg width="22" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <rect x="2" y="5" width="20" height="14" rx="2"></rect>
-                        <path d="M2 7l10 6 10-6"></path>
-                      </svg>
-                      View Card
+                    <button class="vc-trigger" id="vcOpenBtn" style="background: var(--brand-navy); color: #fff; border: none; padding: 10px 22px; border-radius: 4px; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                      <i class="far fa-id-card"></i> 명함 보기
                     </button>
                   </div>
                 </div>
               </div>
             </li>
           </ul>
+
+          <!-- 2. Office Address Card -->
+          <div class="widget widget-contact-info" style="background: #ffffff; padding: 25px; border-radius: 6px; box-shadow: 0 4px 15px rgba(0,0,0,0.06); border: 1px solid #ebebeb; margin-bottom: 25px;">
+            <div class="media" style="display: flex; gap: 15px; align-items: flex-start;">
+              <div class="item-icon" style="color: var(--brand-orange); font-size: 28px; line-height: 1;">
+                <i class="fas fa-building"></i>
+              </div>
+              <div class="media-body space-md">
+                <h4 style="font-size: 17px; font-weight: 700; color: var(--brand-navy); margin-bottom: 6px;">본사 사무실</h4>
+                <p style="margin: 0; color: #555; line-height: 22px; font-size: 14.5px;">
+                  {BRAND.officeAddress}
+                </p>
+                <div style="margin-top: 8px;">
+                  <a href="#wrapper" onclick="window.scrollTo({top: 200, behavior: 'smooth'}); return false;" style="font-size: 13px; color: var(--brand-orange); font-weight: 600; text-decoration: none;">
+                    <i class="fas fa-map-marked-alt"></i> 위 지도에서 보기
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3. Factory Address Card -->
+          <div class="widget widget-contact-info" style="background: #ffffff; padding: 25px; border-radius: 6px; box-shadow: 0 4px 15px rgba(0,0,0,0.06); border: 1px solid #ebebeb; margin-bottom: 25px;">
+            <div class="media" style="display: flex; gap: 15px; align-items: flex-start;">
+              <div class="item-icon" style="color: var(--brand-orange); font-size: 28px; line-height: 1;">
+                <i class="fas fa-industry"></i>
+              </div>
+              <div class="media-body space-md">
+                <h4 style="font-size: 17px; font-weight: 700; color: var(--brand-navy); margin-bottom: 6px;">제조 공장</h4>
+                <p style="margin: 0; color: #555; line-height: 22px; font-size: 14.5px;">
+                  {BRAND.factoryAddress}
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -261,9 +264,70 @@ import BRAND from '../../config/site';
     if (contactForm && formStatus) {
       contactForm.addEventListener('submit', (e) => {
         e.preventDefault();
-        formStatus.textContent = 'Thank you for contacting Max Gloves BD Ltd. Your message has been received!';
-        formStatus.className = 'form-feedback success';
-        contactForm.reset();
+
+        const nameEl = document.getElementById('nameInput') as HTMLInputElement;
+        const emailEl = document.getElementById('emailInput') as HTMLInputElement;
+        const phoneEl = document.getElementById('phoneInput') as HTMLInputElement;
+        const subjectEl = document.getElementById('subjectInput') as HTMLInputElement;
+        const commentEl = document.getElementById('commentInput') as HTMLTextAreaElement;
+
+        const name = nameEl?.value.trim() || '';
+        const email = emailEl?.value.trim() || '';
+        const phone = phoneEl?.value.trim() || '';
+        const subject = subjectEl?.value.trim() || '';
+        const comment = commentEl?.value.trim() || '';
+
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!name || name.length < 2) {
+          formStatus.innerHTML = '<div style="color: #d9534f; background: #fff0f0; border: 1px solid #ffcccc; padding: 12px; border-radius: 4px; font-weight: 600;"><i class="fas fa-exclamation-triangle"></i> 성함을 입력해 주세요.</div>';
+          nameEl?.focus();
+          return;
+        }
+
+        if (!emailPattern.test(email)) {
+          formStatus.innerHTML = '<div style="color: #d9534f; background: #fff0f0; border: 1px solid #ffcccc; padding: 12px; border-radius: 4px; font-weight: 600;"><i class="fas fa-exclamation-triangle"></i> 올바른 이메일 주소를 입력해 주세요.</div>';
+          emailEl?.focus();
+          return;
+        }
+
+        if (!subject || subject.length < 3) {
+          formStatus.innerHTML = '<div style="color: #d9534f; background: #fff0f0; border: 1px solid #ffcccc; padding: 12px; border-radius: 4px; font-weight: 600;"><i class="fas fa-exclamation-triangle"></i> 제목을 입력해 주세요.</div>';
+          subjectEl?.focus();
+          return;
+        }
+
+        if (!comment || comment.length < 5) {
+          formStatus.innerHTML = '<div style="color: #d9534f; background: #fff0f0; border: 1px solid #ffcccc; padding: 12px; border-radius: 4px; font-weight: 600;"><i class="fas fa-exclamation-triangle"></i> 문의 내용을 입력해 주세요.</div>';
+          commentEl?.focus();
+          return;
+        }
+
+        const emailBody = `Name: ${name}\nEmail: ${email}\nPhone: ${phone || 'N/A'}\nSubject: ${subject}\n\nMessage:\n${comment}\n\n---\nSent via MAX GLOVES BD LTD. Website (Korean)`;
+        const mailtoLink = `mailto:maxglovesbdltd@gmail.com?subject=${encodeURIComponent(`[Website Inquiry] ${subject}`)}&body=${encodeURIComponent(emailBody)}`;
+
+        formStatus.innerHTML = `
+          <div style="background: #f0f7ff; border: 2px solid #05254F; border-radius: 6px; padding: 22px 20px; margin-top: 25px; box-shadow: 0 4px 15px rgba(5,37,79,0.08);">
+            <div style="display: flex; align-items: flex-start; gap: 14px;">
+              <i class="fas fa-info-circle" style="color: var(--brand-navy); font-size: 24px; margin-top: 2px; flex-shrink: 0;"></i>
+              <div>
+                <h4 style="color: var(--brand-navy); font-size: 17px; font-weight: 700; margin: 0 0 6px;">
+                  ${name}님, 문의가 준비되었습니다
+                </h4>
+                <p style="color: #334155; font-size: 14px; margin: 0 0 14px; line-height: 1.6;">
+                  현재 온라인 폼은 직접 문의 모드로 운영되고 있습니다. 아래 버튼을 눌러 이메일 프로그램을 실행하고 영업 담당(<strong>maxglovesbdltd@gmail.com</strong>)으로 직접 발송하시거나 전화로 문의해 주시기 바랍니다.
+                </p>
+                <div style="display: flex; flex-wrap: wrap; gap: 12px;">
+                  <a href="${mailtoLink}" class="btn" style="background: var(--brand-orange); color: #ffffff; text-decoration: none; padding: 10px 22px; border-radius: 4px; font-weight: 700; font-size: 14px; display: inline-flex; align-items: center; gap: 8px;">
+                    <i class="far fa-envelope"></i> 이메일 프로그램으로 발송
+                  </a>
+                  <a href="tel:+8801710591088" class="btn" style="background: var(--brand-navy); color: #ffffff; text-decoration: none; padding: 10px 22px; border-radius: 4px; font-weight: 700; font-size: 14px; display: inline-flex; align-items: center; gap: 8px;">
+                    <i class="fas fa-phone-alt"></i> 전화 걸기 (+880 1710-591088)
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
       });
     }
   }

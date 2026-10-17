@@ -1,6 +1,6 @@
 export const BRAND = {
-  companyName: 'Max Gloves BD Ltd.',
-  shortName: 'MAX Gloves',
+  companyName: 'MAX GLOVES BD LTD.',
+  shortName: 'MAX GLOVES',
   tagline: 'Protecting Hands, Building Futures',
   phone: '+880 1710-591088',
   phoneTel: 'tel:+8801710591088',
@@ -21,7 +21,7 @@ export const BRAND = {
     headings: "'Montserrat', sans-serif",
     body: "'Inter', sans-serif"
   },
-  copyright: '© 2026 Max Gloves BD Ltd. All rights reserved.',
+  copyright: '© 2026 MAX GLOVES BD LTD. All rights reserved.',
   developerCredit: 'Website by Fahim Mahmud Razu',
   logo: {
     horizontal: '/front-end/img/max-logo-horizontal.png',
