@@ -4,9 +4,8 @@
 
 .about-page-wrap {
   --navy: var(--brand-navy, #05254F);
-  --green: var(--brand-orange, #F66202);
-  --green-dark: var(--brand-orange-hover, #D95400);
-  --red: var(--brand-orange, #F66202);
+  --accent: var(--brand-orange, #F66202);
+  --accent-dark: var(--brand-orange-hover, #D95400);
   --cream: #f7f5ef;
   --text: #273746;
   --muted: #687581;
@@ -93,7 +92,7 @@
 }
 
 .about-page-wrap .kicker {
-  color: var(--green);
+  color: var(--accent);
   font-weight: 900;
   font-size: 12px;
   text-transform: uppercase;
@@ -111,7 +110,7 @@
 .about-page-wrap .title-line {
   width: 58px;
   height: 4px;
-  background: var(--red);
+  background: var(--accent);
   margin-top: 15px;
   border-radius: 5px;
 }
@@ -259,7 +258,7 @@
 .about-page-wrap .commit .rule {
   width: 58px;
   height: 4px;
-  background: var(--red);
+  background: var(--accent);
   margin-top: 15px;
   border-radius: 5px;
 }
@@ -282,8 +281,8 @@
 .about-page-wrap .mini .icon {
   font-size: 18px;
   font-weight: 800;
-  color: var(--green);
-  background: rgba(25, 139, 90, 0.1);
+  color: var(--accent);
+  background: rgba(246, 98, 2, 0.1);
   display: inline-block;
   padding: 6px 12px;
   border-radius: 8px;
