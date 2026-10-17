@@ -4,33 +4,33 @@ import HeroSlider from '../../components/HeroSlider.astro';
 import CertificationSlider from '../../components/CertificationSlider.astro';
 
 const workingProcess = [
-  { num: '01', title: 'Raw Materials', url: '/raw-materials', img: '/front-end/img/service/rawmaterials.jpg' },
-  { num: '02', title: 'Cutting Process', url: '/cutting-process', img: '/front-end/img/service/catting.jpg' },
-  { num: '03', title: 'Sewing Process', url: '/sewing-process', img: '/front-end/img/service/swwim.jpg' },
-  { num: '04', title: 'Packaging', url: '/packaging', img: '/front-end/img/service/Packaging.jpg' }
+  { num: '01', title: 'Raw Materials', url: '/jp/raw-materials', img: '/front-end/img/service/rawmaterials.webp' },
+  { num: '02', title: 'Cutting Process', url: '/jp/cutting-process', img: '/front-end/img/service/catting.webp' },
+  { num: '03', title: 'Sewing Process', url: '/jp/sewing-process', img: '/front-end/img/service/swwim.webp' },
+  { num: '04', title: 'Packaging', url: '/jp/packaging', img: '/front-end/img/service/Packaging.webp' }
 ];
 
 const categoryTiles = [
-  { id: 23, title: 'Leather Winter Gloves', url: '/category/23', img: '/media-library/wenter.png' },
-  { id: 17, title: 'Leather Driver Gloves', url: '/category/17', img: '/media-library/driver.png' },
-  { id: 18, title: 'Leather Grain Gloves', url: '/category/18', img: '/media-library/Grain-Gloves.png' },
-  { id: 19, title: 'Leather Split Gloves', url: '/category/19', img: '/media-library/slipt.png' },
-  { id: 20, title: 'Leather Welding Gloves', url: '/category/20', img: '/media-library/walding.png' },
-  { id: 21, title: 'Leather Palm Gloves', url: '/category/21', img: '/media-library/117356021.png' },
-  { id: 25, title: 'Leather Welding Apparel', url: '/category/25', img: '/media-library/pant.png' },
-  { id: 24, title: 'Leather Welding Apparel', url: '/category/24', img: '/media-library/jek.png' },
-  { id: 27, title: 'Synthetic Leather Gloves', url: '/category/27', img: '/media-library/Micro-Gloves.png' },
-  { id: 29, title: "Mechanic's Gloves", url: '/category/29', img: '/media-library/0172317000.png' },
-  { id: 30, title: 'Impact Gloves', url: '/category/30', img: '/media-library/0000025056864_1.png' },
-  { id: 31, title: '100% Cotton Interlock Gloves', url: '/category/31', img: '/media-library/cotton_new.png' },
-  { id: 32, title: 'Gardening Gloves', url: '/category/32', img: '/media-library/GG1_F.png' }
+  { id: 23, title: 'Leather Winter Gloves', url: '/jp/category/23', img: '/media-library/wenter.png' },
+  { id: 17, title: 'Leather Driver Gloves', url: '/jp/category/17', img: '/media-library/driver.png' },
+  { id: 18, title: 'Leather Grain Gloves', url: '/jp/category/18', img: '/media-library/Grain-Gloves.png' },
+  { id: 19, title: 'Leather Split Gloves', url: '/jp/category/19', img: '/media-library/slipt.png' },
+  { id: 20, title: 'Leather Welding Gloves', url: '/jp/category/20', img: '/media-library/walding.png' },
+  { id: 21, title: 'Leather Palm Gloves', url: '/jp/category/21', img: '/media-library/117356021.png' },
+  { id: 24, title: 'Leather Welding Jackets', url: '/jp/category/24', img: '/media-library/jek.png' },
+  { id: 25, title: 'Leather Welding Trousers', url: '/jp/category/25', img: '/media-library/pant.png' },
+  { id: 27, title: 'Synthetic Leather Gloves', url: '/jp/category/27', img: '/media-library/Micro-Gloves.png' },
+  { id: 29, title: 'Mechanics Gloves', url: '/jp/category/29', img: '/media-library/0172317000.png' },
+  { id: 30, title: 'Impact Gloves', url: '/jp/category/30', img: '/media-library/0000025056864_1.png' },
+  { id: 31, title: 'Cotton Gloves', url: '/jp/category/31', img: '/media-library/cotton_new.png' },
+  { id: 32, title: 'Gardening Gloves', url: '/jp/category/32', img: '/media-library/GG1_F.png' }
 ];
 
 const stats = [
-  { icon: 'flaticon-apartment', value: '1,200', title: 'Skilled Workers' },
-  { icon: 'flaticon-industry', value: '12,000', title: 'Square Meters' },
-  { icon: 'flaticon-helmet', value: '1,00,000', title: 'Dozen Gloves Produced Monthly' },
-  { icon: 'flaticon-happy', value: '40', title: 'Million Gloves Produced Overall' }
+  { icon: 'fas fa-check-circle', value: '100%', title: '品質検査への取り組み' },
+  { icon: 'fas fa-industry', value: '[確認要]', title: '生産能力（確認要）' },
+  { icon: 'fas fa-layer-group', value: '50+', title: '安全手袋モデル' },
+  { icon: 'fas fa-globe-americas', value: 'Global', title: '国際輸出基準' }
 ];
 ---
 
@@ -113,11 +113,11 @@ const stats = [
         ))}
       </div>
 
-      <p style="margin-top: 25px; font-size: 16px;">
-        <a href="/jp/" style="color: var(--brand-orange); font-weight: 600; text-decoration: none;">
-          詳細.. メニュー「私たちの商品」をクリックしてください
+      <div style="margin-top: 30px;">
+        <a href="/jp/category/17" class="item-btn" style="color: #ffffff; background: var(--brand-orange); padding: 14px 34px; border-radius: 4px; font-weight: 700; text-decoration: none; font-size: 16px; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 4px 15px rgba(246, 98, 2, 0.35);">
+          すべての製品を見る <i class="fas fa-angle-right" aria-hidden="true"></i>
         </a>
-      </p>
+      </div>
     </div>
   </section>
 
@@ -136,69 +136,36 @@ const stats = [
           <strong>Max Gloves BD Ltd.</strong> は、バングラデシュのサバール、ヘマエトプール（Savar, Hemayetpur）に拠点を置く高品質の安全手袋および保護具の専門メーカーです。「手を守り、未来を築く（Protecting Hands, Building Futures）」をモットーに、最高水準の手袋をお届けしています。
         </p>
         <a href="/jp/about" class="btn-fill-xl text-light" style="background: var(--brand-orange); color: #ffffff; border-radius: 4px; padding: 14px 32px; font-weight: 700; text-decoration: none; display: inline-block;">
-          READ MORE <i class="fas fa-angle-right"></i>
+          もっと読む <i class="fas fa-angle-right"></i>
         </a>
       </div>
     </div>
   </section>
   <!-- About Us Area End Here -->
 
-  <!-- Progress Area Start Here -->
-  <section class="progress-wrap-layout1 bg-common" style="padding: 20px 0;">
+  <!-- Progress Area Start Here (Operational Pillars & Unverified Claims Placeholder) -->
+  <section class="progress-wrap-layout1 bg-common" style="padding: 35px 0; background: var(--brand-navy);">
     <div class="container">
       <div class="row">
-        <div class="col-lg-3 col-md-6 col-12 stat" style="height: 150px;">
-          <div class="progress-box-layout1">
-            <div class="progress-content">
-              <div class="item-icon">
-                <i class="flaticon-apartment"></i>
-              </div>
-              <div class="item-content">
-                <div class="counter count-number" data-num="1200">1,200</div>
-                <div class="count-title">Skilled Workers</div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-6 col-12 stat" style="height: 150px;">
-          <div class="progress-box-layout1">
-            <div class="progress-content">
-              <div class="item-icon">
-                <i class="flaticon-industry"></i>
-              </div>
-              <div class="item-content">
-                <div class="counter count-number" data-num="12000">12,000</div>
-                <div class="count-title">Square Meters</div>
+        {stats.map((st) => (
+          <div class="col-lg-3 col-md-6 col-12 stat" style="height: 140px; margin-bottom: 15px;">
+            <div class="progress-box-layout1" style="height: 100%; display: flex; align-items: center; background: rgba(255, 255, 255, 0.05); padding: 20px; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.1);">
+              <div class="progress-content" style="display: flex; align-items: center; gap: 16px; width: 100%;">
+                <div class="item-icon" style="flex-shrink: 0;">
+                  <i class={st.icon} style="font-size: 34px; color: var(--brand-orange);"></i>
+                </div>
+                <div class="item-content">
+                  <div class="count-number" style="font-size: 26px; font-weight: 800; color: #ffffff; line-height: 1.1; margin-bottom: 4px;">
+                    {st.value}
+                  </div>
+                  <div class="count-title" style="font-size: 13.5px; color: #cbd5e1; font-weight: 500; line-height: 1.3;">
+                    {st.title}
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <div class="col-lg-3 col-md-6 col-12 stat" style="height: 150px;">
-          <div class="progress-box-layout1">
-            <div class="progress-content">
-              <div class="item-icon">
-                <i class="flaticon-helmet"></i>
-              </div>
-              <div class="item-content">
-                <div class="counter count-number" data-num="100000">1,00,000</div>
-                <div class="count-title">Dozen Gloves Produced Monthly</div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-6 col-12 stat" style="height: 150px;">
-          <div class="progress-box-layout1">
-            <div class="progress-content">
-              <div class="item-icon">
-                <i class="flaticon-happy"></i>
-              </div>
-              <div class="item-content">
-                <div class="counter count-number" data-num="40">40</div>
-                <div class="count-title">Million Gloves Produced Overall</div>
-              </div>
-            </div>
-          </div>
-        </div>
+        ))}
       </div>
     </div>
   </section>

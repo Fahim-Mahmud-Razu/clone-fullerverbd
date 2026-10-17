@@ -1,4 +1,6 @@
 ---
+import BRAND from '../config/site';
+
 interface Props {
   currentPath?: string;
   locale?: 'en' | 'jp' | 'kr';
@@ -28,11 +30,11 @@ const labels = {
     about: 'ABOUT US',
     facilities: 'Our Facilities',
     compliance: 'COMPLIANCE',
-    products: 'Our Product',
+    products: 'Our Products',
     gallery: 'GALLERY',
     contact: 'CONTACT US',
     language: 'LANGUAGE',
-    welcome: 'Welcome to Max Gloves BD Ltd. — Protecting Hands, Building Futures'
+    welcome: `Welcome to ${BRAND.companyName} — ${BRAND.tagline}`
   },
   jp: {
     home: 'ホームページ',
@@ -43,7 +45,7 @@ const labels = {
     gallery: 'ギャラリー',
     contact: 'お問い合わせ',
     language: '言語',
-    welcome: 'Max Gloves BD Ltd. へようこそ — 手を守り、未来を築く'
+    welcome: `${BRAND.companyName} へようこそ — 手を守り、未来を築く`
   },
   kr: {
     home: '홈 페이지',
@@ -54,7 +56,7 @@ const labels = {
     gallery: '갤러리',
     contact: '문의하기',
     language: '언어',
-    welcome: 'Max Gloves BD Ltd.에 오신 것을 환영합니다 — 손을 보호하고 미래를 건설합니다'
+    welcome: `${BRAND.companyName}에 오신 것을 환영합니다 — 손을 보호하고 미래를 건설합니다`
   }
 }[locale];
 ---
@@ -67,19 +69,19 @@ const labels = {
           <div class="header-topbar-layout1">
             <ul class="header-top-left" style="display: flex; flex-wrap: wrap; align-items: center; list-style: none; margin: 0; padding: 0; font-size: 13px; gap: 14px;">
               <li style="display: inline-flex; align-items: center; gap: 6px;">
-                <i style="color: var(--brand-orange);" class="fas fa-phone-alt"></i>
-                <a style="color: white; text-decoration: none; font-weight: 600;" href="tel:+8801710591088">+880 1710-591088</a>
+                <i style="color: var(--brand-orange);" class="fas fa-phone-alt" aria-hidden="true"></i>
+                <a style="color: white; text-decoration: none; font-weight: 600;" href={BRAND.phoneTel}>{BRAND.phone}</a>
               </li>
               <li style="display: inline-flex; align-items: center; gap: 6px;">
-                <i style="color: var(--brand-orange);" class="far fa-envelope"></i>
-                <a style="color: white; text-decoration: none;" href="mailto:maxglovesbdltd@gmail.com">maxglovesbdltd@gmail.com</a>
+                <i style="color: var(--brand-orange);" class="far fa-envelope" aria-hidden="true"></i>
+                <a style="color: white; text-decoration: none;" href={BRAND.emailMailto}>{BRAND.email}</a>
               </li>
               <li style="display: inline-flex; align-items: center; gap: 6px;">
-                <i style="color: var(--brand-orange);" class="fas fa-building"></i>
+                <i style="color: var(--brand-orange);" class="fas fa-building" aria-hidden="true"></i>
                 <span style="color: white;"><span style="color: var(--brand-orange); font-weight: 600;">Office:</span> 585/C, Khilgaon, C Block, Dhaka-1219</span>
               </li>
               <li style="display: inline-flex; align-items: center; gap: 6px;">
-                <i style="color: var(--brand-orange);" class="fas fa-industry"></i>
+                <i style="color: var(--brand-orange);" class="fas fa-industry" aria-hidden="true"></i>
                 <span style="color: white;"><span style="color: var(--brand-orange); font-weight: 600;">Factory:</span> Savar, Hemayetpur</span>
               </li>
             </ul>
@@ -88,15 +90,10 @@ const labels = {
         <div class="col-lg-5 d-flex justify-content-end align-items-center">
           <div class="header-topbar-layout1">
             <ul class="header-top-right" style="list-style: none; margin: 0; padding: 0; display: flex; align-items: center; gap: 15px;">
-              <li style="color: rgba(255,255,255,0.85); font-size: 12px; font-weight: 500; font-style: italic;">
-                Protecting Hands, Building Futures
+              <li style="color: rgba(255,255,255,0.9); font-size: 12px; font-weight: 600; font-style: italic;">
+                {BRAND.tagline}
               </li>
-              <li class="social-icon">
-                <a href="#" title="[FACEBOOK_URL]" aria-label="[FACEBOOK_URL]"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" title="[LINKEDIN_URL]" aria-label="[LINKEDIN_URL]"><i class="fab fa-linkedin-in"></i></a>
-                <a href="#" title="[INSTAGRAM_URL]" aria-label="[INSTAGRAM_URL]"><i class="fab fa-instagram"></i></a>
-                <a href="#" title="[TWITTER_URL]" aria-label="[TWITTER_URL]"><i class="fab fa-twitter"></i></a>
-              </li>
+
             </ul>
           </div>
         </div>
@@ -113,8 +110,8 @@ const labels = {
           <div class="logo-area" style="padding: 10px 0;">
             <a href={homeUrl} class="temp-logo" style="display: inline-block;">
               <img
-                src="/front-end/img/max-logo-horizontal.png"
-                alt="Max Gloves BD Ltd. logo"
+                src={BRAND.logo.horizontal}
+                alt={BRAND.logo.alt}
                 class="img-fluid"
                 width="240"
                 height="68"
@@ -147,9 +144,10 @@ const labels = {
                   <li><a href="/category/19">Leather Split Gloves</a></li>
                   <li><a href="/category/20">Leather Welding Gloves</a></li>
                   <li><a href="/category/21">Leather Palm Gloves</a></li>
-                  <li><a href="/category/24">Leather Welding Apparel</a></li>
+                  <li><a href="/category/24">Leather Welding Jackets</a></li>
+                  <li><a href="/category/25">Leather Welding Trousers</a></li>
                   <li><a href="/category/27">Synthetic Leather Gloves</a></li>
-                  <li><a href="/category/29">Mechanic's Gloves</a></li>
+                  <li><a href="/category/29">Mechanics Gloves</a></li>
                   <li><a href="/category/30">Impact Gloves</a></li>
                   <li><a href="/category/31">Cotton Gloves</a></li>
                   <li><a href="/category/32">Gardening Gloves</a></li>

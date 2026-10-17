@@ -1,4 +1,6 @@
 ---
+import BRAND from '../config/site';
+
 interface Props {
   locale?: 'en' | 'jp' | 'kr';
 }
@@ -12,8 +14,18 @@ const facilitiesUrl = locale === 'en' ? '/facilities' : `/${locale}/facilities`;
 const contactUrl = locale === 'en' ? '/contact' : `/${locale}/contact`;
 ---
 
-<footer class="footer-wrap-layout1">
-  <div class="footer-top-wrap-layout1">
+<footer class="footer-wrap-layout1" style="position: relative; overflow: hidden;">
+  <!-- Letterhead Signature Navy Wave with Orange Curved Accent Strip -->
+  <div class="footer-letterhead-wave" aria-hidden="true" style="width: 100%; overflow: hidden; line-height: 0; background: transparent;">
+    <svg viewBox="0 0 1440 60" preserveAspectRatio="none" style="display: block; width: 100%; height: 42px;">
+      <!-- Orange Curved Strip Accent (from letterhead) -->
+      <path d="M0,20 C360,55 720,5 1080,38 C1260,52 1380,24 1440,30 L1440,60 L0,60 Z" fill={BRAND.colors.orange} opacity="0.95"></path>
+      <!-- Dominant Navy Wave Joining Footer Body -->
+      <path d="M0,28 C340,60 700,16 1060,46 C1240,60 1370,32 1440,38 L1440,60 L0,60 Z" fill={BRAND.colors.navy}></path>
+    </svg>
+  </div>
+
+  <div class="footer-top-wrap-layout1" style="padding-top: 40px;">
     <div class="container">
       <div class="row">
         <!-- Brand & Mission Column -->
@@ -22,8 +34,8 @@ const contactUrl = locale === 'en' ? '/contact' : `/${locale}/contact`;
             <div class="footer-logo" style="margin-bottom: 20px;">
               <a href={homeUrl}>
                 <img
-                  src="/front-end/img/max-logo-stacked-white.png"
-                  alt="Max Gloves BD Ltd. logo"
+                  src={BRAND.logo.stackedWhite}
+                  alt={BRAND.logo.alt}
                   width="180"
                   height="210"
                   style="max-height: 140px; width: auto; object-fit: contain; display: block;"
@@ -31,11 +43,11 @@ const contactUrl = locale === 'en' ? '/contact' : `/${locale}/contact`;
               </a>
             </div>
             <p style="color: #cbd5e1; font-size: 15px; line-height: 1.6; margin-bottom: 15px;">
-              <strong style="color: #ffffff;">Max Gloves BD Ltd.</strong> — Protecting Hands, Building Futures. Dedicated to delivering absolute quality safety and leather protective equipment.
+              <strong style="color: #ffffff;">{BRAND.companyName}</strong> — {BRAND.tagline}. Dedicated to delivering absolute quality safety and leather protective equipment.
             </p>
             <hr style="background-color: rgba(255, 255, 255, 0.15); margin: 20px 0;" />
             <div class="tagline-badge" style="display: inline-flex; align-items: center; gap: 8px; color: var(--brand-orange); font-weight: 700; font-size: 14px;">
-              <i class="fas fa-shield-alt"></i> Protecting Hands, Building Futures
+              <i class="fas fa-shield-alt"></i> {BRAND.tagline}
             </div>
           </div>
         </div>
@@ -55,21 +67,21 @@ const contactUrl = locale === 'en' ? '/contact' : `/${locale}/contact`;
                 <li><a href={complianceUrl}>Compliance</a></li>
                 <li><a href={facilitiesUrl}>Our Facilities</a></li>
                 <li><a href={contactUrl}>Contact Us</a></li>
-                <li><a href="/category/17">Driver Gloves</a></li>
+                <li><a href="/category/17">Leather Driver Gloves</a></li>
               </ul>
               <ul class="footer-menu-list">
-                <li><a href="/category/18">Grain Gloves</a></li>
-                <li><a href="/category/19">Split Gloves</a></li>
-                <li><a href="/category/20">Welding Gloves</a></li>
-                <li><a href="/category/21">Palm Gloves</a></li>
-                <li><a href="/category/24">Leather Welding Apparel</a></li>
-                <li><a href="/category/27">Synthetic Gloves</a></li>
+                <li><a href="/category/18">Leather Grain Gloves</a></li>
+                <li><a href="/category/19">Leather Split Gloves</a></li>
+                <li><a href="/category/20">Leather Welding Gloves</a></li>
+                <li><a href="/category/21">Leather Palm Gloves</a></li>
+                <li><a href="/category/24">Leather Welding Jackets</a></li>
+                <li><a href="/category/25">Leather Welding Trousers</a></li>
               </ul>
             </div>
           </div>
         </div>
 
-        <!-- Contact Information Block -->
+        <!-- Contact Information Block (Order: Phone -> Email -> Office -> Factory) -->
         <div class="col-lg-4">
           <div class="footer-box-layout1">
             <div class="footer-title">
@@ -79,35 +91,35 @@ const contactUrl = locale === 'en' ? '/contact' : `/${locale}/contact`;
             </div>
             <div class="footer-contac" style="color: #cbd5e1; font-size: 14.5px; line-height: 28px;">
               <h4 style="color: #ffffff; font-size: 18px; font-weight: 700; margin-bottom: 12px;">
-                Max Gloves BD Ltd.
+                {BRAND.companyName}
               </h4>
+              <!-- 1. Phone -->
               <p style="margin-bottom: 8px; display: flex; align-items: center; gap: 10px;">
-                <i class="fas fa-phone-alt" style="color: var(--brand-orange);"></i>
-                <span><a href="tel:+8801710591088" style="color: #ffffff; text-decoration: none; font-weight: 600;">+880 1710-591088</a></span>
+                <i class="fas fa-phone-alt" style="color: var(--brand-orange);" aria-hidden="true"></i>
+                <span><a href={BRAND.phoneTel} style="color: #ffffff; text-decoration: none; font-weight: 600;">{BRAND.phone}</a></span>
               </p>
+              <!-- 2. Email -->
               <p style="margin-bottom: 8px; display: flex; align-items: center; gap: 10px;">
-                <i class="fas fa-envelope" style="color: var(--brand-orange);"></i>
-                <span><a href="mailto:maxglovesbdltd@gmail.com" style="color: #ffffff; text-decoration: none;">maxglovesbdltd@gmail.com</a></span>
+                <i class="far fa-envelope" style="color: var(--brand-orange);" aria-hidden="true"></i>
+                <span><a href={BRAND.emailMailto} style="color: #ffffff; text-decoration: none;">{BRAND.email}</a></span>
               </p>
+              <!-- 3. Office -->
               <p style="margin-bottom: 8px; display: flex; align-items: flex-start; gap: 10px;">
-                <i class="fas fa-building" style="color: var(--brand-orange); margin-top: 5px;"></i>
-                <span>Office: 585/C, Khilgaon, C Block, Dhaka-1219</span>
+                <i class="fas fa-building" style="color: var(--brand-orange); margin-top: 5px;" aria-hidden="true"></i>
+                <span><strong>Office:</strong> {BRAND.officeAddress}</span>
               </p>
+              <!-- 4. Factory -->
               <p style="margin-bottom: 8px; display: flex; align-items: flex-start; gap: 10px;">
-                <i class="fas fa-industry" style="color: var(--brand-orange); margin-top: 5px;"></i>
-                <span>Factory: Savar, Hemayetpur</span>
+                <i class="fas fa-industry" style="color: var(--brand-orange); margin-top: 5px;" aria-hidden="true"></i>
+                <span><strong>Factory:</strong> {BRAND.factoryAddress}</span>
               </p>
+              <!-- Website -->
               <p style="margin-bottom: 8px; display: flex; align-items: center; gap: 10px;">
-                <i class="fas fa-globe" style="color: var(--brand-orange);"></i>
-                <span><a href="http://www.maxglovesbdltd.com" target="_blank" rel="noopener noreferrer" style="color: #ffffff; text-decoration: none;">www.maxglovesbdltd.com</a></span>
+                <i class="fas fa-globe" style="color: var(--brand-orange);" aria-hidden="true"></i>
+                <span><a href={BRAND.websiteUrl} target="_blank" rel="noopener noreferrer" style="color: #ffffff; text-decoration: none;">{BRAND.website}</a></span>
               </p>
             </div>
-            <ul class="footer-social" style="margin-top: 15px; display: flex; gap: 10px; list-style: none; padding: 0;">
-              <li><a href="#" title="[FACEBOOK_URL]" aria-label="[FACEBOOK_URL]"><i class="fab fa-facebook-f"></i></a></li>
-              <li><a href="#" title="[LINKEDIN_URL]" aria-label="[LINKEDIN_URL]"><i class="fab fa-linkedin-in"></i></a></li>
-              <li><a href="#" title="[INSTAGRAM_URL]" aria-label="[INSTAGRAM_URL]"><i class="fab fa-instagram"></i></a></li>
-              <li><a href="#" title="[TWITTER_URL]" aria-label="[TWITTER_URL]"><i class="fab fa-twitter"></i></a></li>
-            </ul>
+
           </div>
         </div>
       </div>
@@ -118,8 +130,9 @@ const contactUrl = locale === 'en' ? '/contact' : `/${locale}/contact`;
     <div class="container">
       <div class="row align-items-center">
         <div class="col-lg-12">
-          <div class="copyright text-center" style="color: rgba(255, 255, 255, 0.8); font-size: 14.5px;">
-            © 2026 Max Gloves BD Ltd. All rights reserved. &nbsp;|&nbsp; <span style="color: var(--brand-orange); font-weight: 600;">Protecting Hands, Building Futures</span>
+          <div class="copyright text-center" style="color: rgba(255, 255, 255, 0.85); font-size: 14.5px;">
+            <div>{BRAND.copyright} &nbsp;|&nbsp; <span style="color: var(--brand-orange); font-weight: 600;">{BRAND.tagline}</span></div>
+            <div style="margin-top: 6px; font-size: 12px; color: rgba(255, 255, 255, 0.55);">{BRAND.developerCredit}</div>
           </div>
         </div>
       </div>
@@ -129,5 +142,5 @@ const contactUrl = locale === 'en' ? '/contact' : `/${locale}/contact`;
 
 <!-- ScrollUp Button -->
 <a href="#wrapper" data-type="section-switch" class="scrollup" id="scrollUpBtn" aria-label="Scroll to top">
-  <i class="fas fa-angle-double-up"></i>
+  <i class="fas fa-angle-double-up" aria-hidden="true"></i>
 </a>

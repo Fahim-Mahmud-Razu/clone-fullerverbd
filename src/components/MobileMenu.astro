@@ -1,4 +1,6 @@
 ---
+import BRAND from '../config/site';
+
 interface Props {
   currentPath?: string;
   locale?: 'en' | 'jp' | 'kr';
@@ -26,7 +28,7 @@ const labels = {
     about: 'ABOUT US',
     facilities: 'Our Facilities',
     compliance: 'COMPLIANCE',
-    products: 'Our Product',
+    products: 'Our Products',
     gallery: 'GALLERY',
     contact: 'CONTACT US',
     language: 'Language'
@@ -57,7 +59,7 @@ const labels = {
 <div class="mean-container">
   <div class="mean-bar">
     <a href={homeUrl} class="mean-logo">
-      <img src="/front-end/img/max-logo-horizontal.png" alt="Max Gloves BD Ltd. logo" style="max-height: 38px; width: auto; object-fit: contain;" />
+      <img src={BRAND.logo.horizontal} alt={BRAND.logo.alt} style="max-height: 38px; width: auto; object-fit: contain;" />
     </a>
     <a href="#nav" class="meanmenu-reveal" id="mobileMenuBtn" aria-label="Toggle Navigation">
       <span></span>
@@ -67,54 +69,54 @@ const labels = {
   </div>
   <!-- Signature Letterhead Divider on Mobile -->
   <div class="header-letterhead-divider" aria-hidden="true" style="position: fixed; top: 52px; left: 0; right: 0; z-index: 99999;"></div>
-    <nav class="mean-nav" id="mobileNavMenu">
-      <ul>
-        <li>
-          <a class={isHome ? 'active-m' : ''} href={homeUrl}>{labels.home}</a>
-        </li>
-        <li>
-          <a class={isAbout ? 'active-m' : ''} href={aboutUrl}>{labels.about}</a>
-        </li>
-        <li>
-          <a class={isFacilities ? 'active-m' : ''} href={facilitiesUrl}>{labels.facilities}</a>
-        </li>
-        <li>
-          <a class={isCompliance ? 'active-m' : ''} href={complianceUrl}>{labels.compliance}</a>
-        </li>
-        <li class="has-submenu">
-          <a href="#">{labels.products}</a>
-          <a class="mean-expand" id="mobileProductsExpand" href="#" aria-label="Expand Products">+</a>
-          <ul id="mobileProductsSubmenu">
-            <li><a href="/category/23">Leather Winter Gloves</a></li>
-            <li><a href="/category/17">Leather Driver Gloves</a></li>
-            <li><a href="/category/18">Leather Grain Gloves</a></li>
-            <li><a href="/category/19">Leather Split Gloves</a></li>
-            <li><a href="/category/20">Leather Welding Gloves</a></li>
-            <li><a href="/category/21">Leather Palm Gloves</a></li>
-            <li><a href="/category/24">Leather Welding Apparel</a></li>
-            <li><a href="/category/27">Synthetic Leather Gloves</a></li>
-            <li><a href="/category/29">Mechanic's Gloves</a></li>
-            <li><a href="/category/30">Impact Gloves</a></li>
-            <li><a href="/category/31">Cotton Gloves</a></li>
-            <li><a href="/category/32">Gardening Gloves</a></li>
-          </ul>
-        </li>
-        <li>
-          <a class={isGallery ? 'active-m' : ''} href={galleryUrl}>{labels.gallery}</a>
-        </li>
-        <li>
-          <a class={isContact ? 'active-m' : ''} href={contactUrl}>{labels.contact}</a>
-        </li>
-        <li class="has-submenu">
-          <a href="#">{labels.language}</a>
-          <a class="mean-expand" id="mobileLangExpand" href="#" aria-label="Expand Languages">+</a>
-          <ul id="mobileLangSubmenu">
-            <li><a href="/">English</a></li>
-            <li><a href="/jp/"><img src="https://cdn.parcellab.com/img/flags/jp.png" alt="JP" width="16" height="11" style="display:inline; margin-right:6px;" /> 日本語</a></li>
-            <li><a href="/kr/"><img src="https://cdn.parcellab.com/img/flags/kr.png" alt="KR" width="16" height="11" style="display:inline; margin-right:6px;" /> 한국인</a></li>
-          </ul>
-        </li>
-      </ul>
-    </nav>
-  </div>
+  <nav class="mean-nav" id="mobileNavMenu">
+    <ul>
+      <li>
+        <a class={isHome ? 'active-m' : ''} href={homeUrl}>{labels.home}</a>
+      </li>
+      <li>
+        <a class={isAbout ? 'active-m' : ''} href={aboutUrl}>{labels.about}</a>
+      </li>
+      <li>
+        <a class={isFacilities ? 'active-m' : ''} href={facilitiesUrl}>{labels.facilities}</a>
+      </li>
+      <li>
+        <a class={isCompliance ? 'active-m' : ''} href={complianceUrl}>{labels.compliance}</a>
+      </li>
+      <li class="has-submenu">
+        <a href="#">{labels.products}</a>
+        <a class="mean-expand" id="mobileProductsExpand" href="#" aria-label="Expand Products">+</a>
+        <ul id="mobileProductsSubmenu">
+          <li><a href="/category/23">Leather Winter Gloves</a></li>
+          <li><a href="/category/17">Leather Driver Gloves</a></li>
+          <li><a href="/category/18">Leather Grain Gloves</a></li>
+          <li><a href="/category/19">Leather Split Gloves</a></li>
+          <li><a href="/category/20">Leather Welding Gloves</a></li>
+          <li><a href="/category/21">Leather Palm Gloves</a></li>
+          <li><a href="/category/24">Leather Welding Jackets</a></li>
+          <li><a href="/category/25">Leather Welding Trousers</a></li>
+          <li><a href="/category/27">Synthetic Leather Gloves</a></li>
+          <li><a href="/category/29">Mechanics Gloves</a></li>
+          <li><a href="/category/30">Impact Gloves</a></li>
+          <li><a href="/category/31">Cotton Gloves</a></li>
+          <li><a href="/category/32">Gardening Gloves</a></li>
+        </ul>
+      </li>
+      <li>
+        <a class={isGallery ? 'active-m' : ''} href={galleryUrl}>{labels.gallery}</a>
+      </li>
+      <li>
+        <a class={isContact ? 'active-m' : ''} href={contactUrl}>{labels.contact}</a>
+      </li>
+      <li class="has-submenu">
+        <a href="#">{labels.language}</a>
+        <a class="mean-expand" id="mobileLangExpand" href="#" aria-label="Expand Languages">+</a>
+        <ul id="mobileLangSubmenu">
+          <li><a href="/">English</a></li>
+          <li><a href="/jp/">日本語</a></li>
+          <li><a href="/kr/">한국인</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
 </div>

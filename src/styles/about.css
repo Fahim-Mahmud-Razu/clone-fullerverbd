@@ -32,7 +32,7 @@
   align-items: center;
   overflow: hidden;
   background: linear-gradient(110deg, rgba(8, 28, 45, 0.95), rgba(16, 40, 63, 0.78)),
-    url("/front-end/img/gallery/TEAM_PHOTO.jpg") center/cover no-repeat;
+    url("/front-end/img/service/rawmaterials.webp") center/cover no-repeat;
   color: #fff;
 }
 

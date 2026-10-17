@@ -13,10 +13,6 @@
       "filter": "product"
     },
     {
-      "label": "Office Staff",
-      "filter": "office"
-    },
-    {
       "label": "Cutting Section",
       "filter": "cutting"
     },
@@ -76,27 +72,6 @@
       "title": "",
       "full_image": "/front-end/img/gallery/PD3.jpg",
       "thumbnail": "/front-end/img/gallery/PD3.jpg"
-    },
-    {
-      "id": 6,
-      "category": "office",
-      "title": "",
-      "full_image": "/front-end/img/gallery/FEOT111_22.jpg",
-      "thumbnail": "/front-end/img/gallery/FEOT111_22.jpg"
-    },
-    {
-      "id": 7,
-      "category": "office",
-      "title": "",
-      "full_image": "/front-end/img/gallery/TEAM_PHOTO.jpg",
-      "thumbnail": "/front-end/img/gallery/TEAM_PHOTO.jpg"
-    },
-    {
-      "id": 8,
-      "category": "office",
-      "title": "",
-      "full_image": "/front-end/img/gallery/FEOT1111_22.jpg",
-      "thumbnail": "/front-end/img/gallery/FEOT1111_22.jpg"
     },
     {
       "id": 9,

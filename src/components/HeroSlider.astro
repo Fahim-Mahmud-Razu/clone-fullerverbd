@@ -65,12 +65,18 @@ const loopSlides = [
 </section>
 
 <style>
+  #heroSliderSection {
+    overflow-anchor: none;
+  }
+
   .hero-viewport {
     position: relative;
     overflow: hidden;
     width: 100%;
     margin: 0;
     padding: 0;
+    contain: layout paint;
+    overflow-anchor: none;
   }
 
   .hero-track {
@@ -95,6 +101,8 @@ const loopSlides = [
     text-align: center;
     position: relative;
     margin-bottom: -10px;
+    background: #05254f;
+    min-height: 240px;
   }
 
   .hero-slide .item-img img {
@@ -118,7 +126,7 @@ const loopSlides = [
     scrollbar-width: none !important;
     -ms-overflow-style: none !important;
     -webkit-overflow-scrolling: touch;
-    scroll-snap-type: x mandatory;
+    overflow-anchor: none;
   }
 
   #heroNavStrip::-webkit-scrollbar {
@@ -134,7 +142,6 @@ const loopSlides = [
     align-items: center !important;
     justify-content: center !important;
     transition: background-color 0.25s ease;
-    scroll-snap-align: start;
     flex-shrink: 0;
   }
 
@@ -187,6 +194,7 @@ const loopSlides = [
   @media only screen and (max-width: 767px) {
     .hero-slide .item-img {
       margin-bottom: 0 !important;
+      min-height: 180px;
     }
     .hero-slide .item-img img {
       max-height: 400px !important;
@@ -216,6 +224,12 @@ const loopSlides = [
       line-height: 1.2 !important;
     }
   }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-track {
+      transition: none !important;
+    }
+  }
 </style>
 
 <script>
@@ -223,27 +237,39 @@ const loopSlides = [
     const track = document.getElementById('heroTrack') as HTMLElement | null;
     const navItems = document.querySelectorAll<HTMLElement>('#heroNavStrip .nav-item');
     const heroSection = document.getElementById('heroSliderSection');
+    const navStrip = document.getElementById('heroNavStrip');
     if (!track || !navItems.length) return;
 
     const TOTAL_REAL_SLIDES = navItems.length; // 6
-    // Track indices: 0 is clone of slide 5, 1..6 are slides 0..5, 7 is clone of slide 0
     let currentTrackIndex = 1;
     let isTransitioning = false;
     let autoplayTimer: number | null = null;
-    const AUTOPLAY_DELAY = 3000;
+    let isHeroInView = true;
+    const AUTOPLAY_DELAY = 3500;
     const TRANSITION_STYLE = 'transform 1000ms ease';
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     // Set initial position
     track.style.transition = 'none';
     track.style.transform = `translate3d(-${currentTrackIndex * 100}%, 0, 0)`;
     void track.offsetWidth;
 
+    // ROOT CAUSE FIX: Never call nav.scrollIntoView() which scrolls the whole window viewport!
+    // Instead, scroll ONLY the horizontal navStrip container element.
     function updateNav(realIndex: number) {
       navItems.forEach((nav, idx) => {
         if (idx === realIndex) {
           nav.classList.add('slick-current');
-          // Smoothly keep active nav item in view on mobile devices
-          nav.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+          if (navStrip) {
+            const navLeft = nav.offsetLeft;
+            const navWidth = nav.offsetWidth;
+            const stripWidth = navStrip.clientWidth;
+            const targetLeft = navLeft - (stripWidth / 2) + (navWidth / 2);
+            navStrip.scrollTo({
+              left: Math.max(0, targetLeft),
+              behavior: prefersReducedMotion ? 'auto' : 'smooth'
+            });
+          }
         } else {
           nav.classList.remove('slick-current');
         }
@@ -255,7 +281,7 @@ const loopSlides = [
       currentTrackIndex = targetIndex;
       isTransitioning = true;
 
-      track.style.transition = TRANSITION_STYLE;
+      track.style.transition = prefersReducedMotion ? 'none' : TRANSITION_STYLE;
       track.style.transform = `translate3d(-${currentTrackIndex * 100}%, 0, 0)`;
 
       // Determine active nav index immediately
@@ -285,14 +311,14 @@ const loopSlides = [
       if (e.target !== track || e.propertyName !== 'transform') return;
       isTransitioning = false;
 
-      // If we just slid past the last slide onto the clone of slide 0 (index 7)
+      // Past last slide -> jump to slide 1
       if (currentTrackIndex === TOTAL_REAL_SLIDES + 1) {
         track.style.transition = 'none';
         currentTrackIndex = 1;
         track.style.transform = `translate3d(-${currentTrackIndex * 100}%, 0, 0)`;
         void track.offsetWidth;
       }
-      // If we just slid backward past the first slide onto the clone of slide 5 (index 0)
+      // Before first slide -> jump to last slide
       else if (currentTrackIndex === 0) {
         track.style.transition = 'none';
         currentTrackIndex = TOTAL_REAL_SLIDES;
@@ -303,6 +329,7 @@ const loopSlides = [
 
     function startAutoplay() {
       stopAutoplay();
+      if (prefersReducedMotion || !isHeroInView || document.hidden) return;
       autoplayTimer = window.setInterval(nextSlide, AUTOPLAY_DELAY);
     }
 
@@ -313,7 +340,35 @@ const loopSlides = [
       }
     }
 
-    // Navigation item click
+    // ROOT CAUSE MITIGATION: Pause autoplay whenever the hero section is not visible on screen.
+    // When the user scrolls past the hero to "Our Working Process", slider pauses completely.
+    if ('IntersectionObserver' in window && heroSection) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            isHeroInView = entry.isIntersecting;
+            if (isHeroInView) {
+              startAutoplay();
+            } else {
+              stopAutoplay();
+            }
+          });
+        },
+        { threshold: 0.05 }
+      );
+      observer.observe(heroSection);
+    }
+
+    // Pause on background tab or app minimize
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        stopAutoplay();
+      } else if (isHeroInView) {
+        startAutoplay();
+      }
+    });
+
+    // Navigation item click & keyboard accessibility (no window scroll)
     navItems.forEach((item, idx) => {
       item.addEventListener('click', () => {
         goToTrackIndex(idx + 1);
@@ -321,38 +376,49 @@ const loopSlides = [
       });
       item.addEventListener('keydown', (e) => {
         if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
           goToTrackIndex(idx + 1);
           startAutoplay();
         }
       });
     });
 
-    // Pause on hover
+    // Pause on mouse hover (desktop)
     if (heroSection) {
       heroSection.addEventListener('mouseenter', stopAutoplay);
-      heroSection.addEventListener('mouseleave', startAutoplay);
+      heroSection.addEventListener('mouseleave', () => {
+        if (isHeroInView) startAutoplay();
+      });
     }
 
-    // Touch swipe support for mobile
+    // Touch swipe support for mobile (pure horizontal, passive)
     let touchStartX = 0;
     let touchEndX = 0;
-    track.addEventListener('touchstart', (e) => {
-      touchStartX = e.changedTouches[0].screenX;
-      stopAutoplay();
-    }, { passive: true });
+    track.addEventListener(
+      'touchstart',
+      (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+        stopAutoplay();
+      },
+      { passive: true }
+    );
 
-    track.addEventListener('touchend', (e) => {
-      touchEndX = e.changedTouches[0].screenX;
-      const diffX = touchEndX - touchStartX;
-      if (Math.abs(diffX) > 50) {
-        if (diffX < 0) {
-          nextSlide();
-        } else {
-          prevSlide();
+    track.addEventListener(
+      'touchend',
+      (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        const diffX = touchEndX - touchStartX;
+        if (Math.abs(diffX) > 50) {
+          if (diffX < 0) {
+            nextSlide();
+          } else {
+            prevSlide();
+          }
         }
-      }
-      startAutoplay();
-    }, { passive: true });
+        if (isHeroInView) startAutoplay();
+      },
+      { passive: true }
+    );
 
     startAutoplay();
   }
