@@ -27,10 +27,10 @@ const categoryTiles = [
 ];
 
 const stats = [
-  { icon: 'fas fa-check-circle', value: '100%', title: '품질 검사 약속' },
-  { icon: 'fas fa-industry', value: '[확인 필요]', title: '월간 생산 능력 (확인 필요)' },
-  { icon: 'fas fa-layer-group', value: '50+', title: '안전 장갑 모델' },
-  { icon: 'fas fa-globe-americas', value: 'Global', title: '국제 수출 표준' }
+  { icon: 'flaticon-apartment', value: '1,200', num: 1200, title: '숙련 된 일꾼들' },
+  { icon: 'flaticon-industry', value: '12,000', num: 12000, title: 'Square Meters' },
+  { icon: 'flaticon-helmet', value: '80,000', num: 80000, title: '월간 생산량' },
+  { icon: 'flaticon-happy', value: '40', num: 40, title: '총 생산량 (백만)' }
 ];
 ---
 
@@ -122,44 +122,42 @@ const stats = [
   </section>
 
   <!-- About Us Area Start Here -->
-  <section class="about-wrap-layout1 watermark-shield">
+  <section class="about-wrap-layout1">
     <div class="about-box-layout1">
       <div class="about-box-content">
         <div class="item-header">
-          <div class="experience-year" style="color: var(--brand-orange); font-size: 48px; font-weight: 900;">MAX</div>
+          <div class="experience-year">40</div>
           <ul class="item-title">
-            <li>손 <span>안전</span></li>
-            <li>글로벌 <span>표준</span></li>
+            <li>년수</li>
+            <li>실무 <span>경험</span></li>
           </ul>
         </div>
         <p>
-          <strong>Max Gloves BD Ltd.</strong>는 방글라데시 사바르 헤마예트푸르(Savar, Hemayetpur)에 본사를 둔 고품질 안전 장갑 및 가죽 보호구 전문 제조업체입니다. 우리는 &quot;손을 보호하고 미래를 건설합니다(Protecting Hands, Building Futures)&quot;라는 사명으로 전 세계 고객에게 최고 품질의 장갑을 제공합니다.
+          MAX GLOVES BD LIMITED는 방글라데시에 본사를 둔 고품질 안전 장갑 제조업체로 중국에서 시작하여 40년 이상 안전 장갑 사업을 영위해 왔습니다.
         </p>
-        <a href="/kr/about" class="btn-fill-xl text-light" style="background: var(--brand-orange); color: #ffffff; border-radius: 4px; padding: 14px 32px; font-weight: 700; text-decoration: none; display: inline-block;">
-          더 읽기 <i class="fas fa-angle-right"></i>
+        <a href="/kr/about" class="btn-fill-xl bg-textprimary text-primarytext">
+          더 읽기 <i class="fas fa-angle-right" aria-hidden="true"></i>
         </a>
       </div>
     </div>
   </section>
   <!-- About Us Area End Here -->
 
-  <!-- Progress Area Start Here (Operational Pillars & Unverified Claims Placeholder) -->
-  <section class="progress-wrap-layout1 bg-common" style="padding: 35px 0; background: var(--brand-navy);">
+  <!-- Progress Area Start Here -->
+  <section class="progress-wrap-layout1 bg-common">
     <div class="container">
       <div class="row">
         {stats.map((st) => (
-          <div class="col-lg-3 col-md-6 col-12 stat" style="height: 140px; margin-bottom: 15px;">
-            <div class="progress-box-layout1" style="height: 100%; display: flex; align-items: center; background: rgba(255, 255, 255, 0.05); padding: 20px; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.1);">
-              <div class="progress-content" style="display: flex; align-items: center; gap: 16px; width: 100%;">
-                <div class="item-icon" style="flex-shrink: 0;">
-                  <i class={st.icon} style="font-size: 34px; color: var(--brand-orange);"></i>
-                </div>
-                <div class="item-content">
-                  <div class="count-number" style="font-size: 26px; font-weight: 800; color: #ffffff; line-height: 1.1; margin-bottom: 4px;">
-                    {st.value}
+          <div class="col-lg-3 col-md-6 col-12 stat-col">
+            <div class="stat">
+              <div class="progress-box-layout1">
+                <div class="progress-content">
+                  <div class="item-icon">
+                    <i class={st.icon} aria-hidden="true"></i>
                   </div>
-                  <div class="count-title" style="font-size: 13.5px; color: #cbd5e1; font-weight: 500; line-height: 1.3;">
-                    {st.title}
+                  <div class="item-content">
+                    <div class="counter count-number" data-num={st.num}>{st.value}</div>
+                    <div class="count-title">{st.title}</div>
                   </div>
                 </div>
               </div>
@@ -185,22 +183,22 @@ const stats = [
 
   /* About Us Brand Showcase Section */
   .about-wrap-layout1 {
-    background-color: var(--brand-navy);
-    background-image: url('/front-end/img/max-watermark.png');
+    background-color: #66c6f0;
+    background-image: url('/front-end/img/about/about-bg.png');
     background-repeat: no-repeat;
-    background-position: right 50px center;
-    background-size: 380px auto;
+    background-position: right bottom;
+    background-size: auto 100%;
     position: relative;
     overflow: hidden;
   }
 
   .about-box-layout1 {
     width: 55%;
-    background-color: var(--brand-navy-dark);
+    background-color: var(--brand-orange);
+    background: linear-gradient(135deg, #F66202 0%, #e05300 100%);
     -webkit-clip-path: polygon(0 0, 100% 0%, 80% 100%, 0 100%);
     clip-path: polygon(0 0, 100% 0%, 80% 100%, 0 100%);
     padding-left: calc((100% - 1170px) / 2);
-    border-right: 4px solid var(--brand-orange);
   }
 
   @media only screen and (max-width: 1229px) {
@@ -233,16 +231,16 @@ const stats = [
   }
 
   .about-box-layout1 .about-box-content {
-    padding: 110px 160px 110px 0;
+    padding: 100px 180px 100px 0;
   }
   @media only screen and (max-width: 1199px) {
     .about-box-layout1 .about-box-content {
-      padding: 90px 90px 90px 0;
+      padding: 90px 100px 90px 0;
     }
   }
   @media only screen and (max-width: 991px) {
     .about-box-layout1 .about-box-content {
-      padding: 70px 20px;
+      padding: 60px 20px;
     }
   }
 
@@ -255,11 +253,10 @@ const stats = [
     margin-bottom: 22px;
   }
   .about-box-layout1 .about-box-content .item-header .experience-year {
-    font-size: 100px;
+    font-size: 96px;
     font-weight: 700;
     line-height: 76px;
     margin-right: 20px;
-    margin-top: 5px;
     color: #ffffff;
   }
   @media only screen and (max-width: 767px) {
@@ -274,14 +271,14 @@ const stats = [
     padding: 0;
   }
   .about-box-layout1 .about-box-content .item-header .item-title li {
-    font-size: 34px;
+    font-size: 32px;
     margin-bottom: 6px;
-    line-height: 1.2;
+    line-height: 1.15;
     color: #ffffff;
   }
   @media only screen and (max-width: 767px) {
     .about-box-layout1 .about-box-content .item-header .item-title li {
-      font-size: 26px;
+      font-size: 24px;
     }
   }
   .about-box-layout1 .about-box-content .item-header .item-title li span {
@@ -291,9 +288,9 @@ const stats = [
   .about-box-layout1 .about-box-content p {
     color: #ffffff;
     margin-bottom: 35px;
-    font-size: 16px;
-    line-height: 28px;
-    max-width: 500px;
+    font-size: 15px;
+    line-height: 26px;
+    max-width: 480px;
     font-weight: 400;
   }
 
@@ -302,40 +299,41 @@ const stats = [
     align-items: center;
     gap: 10px;
     background-color: #ffffff !important;
-    color: #111111 !important;
+    color: var(--brand-navy) !important;
     font-weight: 700;
-    font-size: 15px;
-    padding: 14px 38px;
+    font-size: 14px;
+    padding: 13px 32px;
     border-radius: 4px;
     text-decoration: none;
     transition: all 0.3s ease;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   }
   .about-box-layout1 .btn-fill-xl:hover {
-    background-color: #082c4b !important;
+    background-color: var(--brand-navy-dark) !important;
     color: #ffffff !important;
   }
 
   /* Statistics Counter Section */
   .progress-wrap-layout1 {
-    background-color: #082c4b;
-    padding: 30px 0 40px;
+    background-color: var(--brand-navy-dark);
+    padding: 24px 0 28px;
+  }
+  .stat-col {
+    margin-bottom: 12px;
   }
   .stat {
-    padding: 15px 12px;
     border: 1px solid rgba(255, 255, 255, 0.12);
-    background: rgba(255, 255, 255, 0.07);
+    background: rgba(255, 255, 255, 0.04);
     border-radius: 14px;
-    height: 130px;
+    padding: 18px 16px;
+    height: 126px;
     display: flex;
     align-items: center;
-    justify-content: center;
-    margin-bottom: 15px;
     transition: all 0.3s ease;
   }
   .stat:hover {
     border-color: rgba(255, 255, 255, 0.28);
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.08);
   }
   .progress-box-layout1 {
     width: 100%;
@@ -345,8 +343,8 @@ const stats = [
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    gap: 15px;
-    padding: 0 5px;
+    gap: 16px;
+    width: 100%;
   }
   .progress-box-layout1 .progress-content .item-icon {
     line-height: 1;
@@ -354,16 +352,17 @@ const stats = [
     margin-right: 0;
   }
   .progress-box-layout1 .progress-content .item-icon i {
-    color: #ee212b;
+    color: var(--brand-orange);
     font-size: 52px;
     display: block;
+    line-height: 1;
   }
   .progress-box-layout1 .progress-content .item-content {
     text-align: left;
     min-width: 0;
   }
   .progress-box-layout1 .progress-content .item-content .count-number {
-    font-size: 32px;
+    font-size: 38px;
     font-weight: 700;
     color: #ffffff;
     line-height: 1.1;
@@ -371,7 +370,7 @@ const stats = [
     letter-spacing: -0.5px;
   }
   .progress-box-layout1 .progress-content .item-content .count-title {
-    font-size: 13px;
+    font-size: 13.5px;
     color: #ffffff;
     line-height: 16px;
     font-weight: 400;
