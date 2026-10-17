@@ -131,36 +131,39 @@ img {
   background-color: #ffffff;
 }
 
-/* Letterhead Signature Divider: Navy left, Orange right joined by a slanted cut */
+/* Letterhead Signature Divider (hidden on desktop header to match Fullever clean look) */
 .header-letterhead-divider {
-  width: 100%;
-  height: 4px;
-  position: relative;
-  overflow: hidden;
-  background: linear-gradient(115deg, var(--brand-navy) 0%, var(--brand-navy) 72%, var(--brand-orange) 72.08%, var(--brand-orange) 100%);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  display: block;
-  z-index: 10;
+  display: none;
 }
 
-/* Active navigation state */
-nav.template-main-menu > ul > li > a.active-m,
+/* Fullever authentic Active navigation state */
+nav.template-main-menu > ul > li > a.active-m {
+  background-color: #c9dff3 !important;
+  color: #ea1d22 !important;
+}
+
 nav.template-main-menu > ul > li > a:hover {
-  background-color: var(--brand-orange-light);
-  color: var(--brand-orange) !important;
+  color: #ea1d22 !important;
+}
+
+nav.template-main-menu > ul > li > a {
+  font-weight: 700 !important;
+  font-size: 14px !important;
+  color: #111111 !important;
+  letter-spacing: 0.3px;
 }
 
 /* Dropdown styling */
 nav.template-main-menu ul li .dropdown-menu-col-1 {
   background-color: #ffffff;
-  border-top: 3px solid var(--brand-orange);
+  border-top: 2px solid #ea1d22;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   min-width: 250px;
 }
 
 nav.template-main-menu ul li .dropdown-menu-col-1 li a:hover {
-  color: var(--brand-orange) !important;
-  background-color: var(--brand-orange-light);
+  color: #ea1d22 !important;
+  background-color: #f7f9fc;
 }
 
 /* Mobile MeanMenu overrides */
@@ -295,8 +298,8 @@ nav.template-main-menu ul li .dropdown-menu-col-1 li a:hover {
 }
 
 .mean-container .mean-nav ul li a.active-m {
-  background: var(--brand-orange-light);
-  color: var(--brand-orange) !important;
+  background: #c9dff3;
+  color: #ea1d22 !important;
 }
 
 .mean-container .mean-nav ul li a.mean-expand {

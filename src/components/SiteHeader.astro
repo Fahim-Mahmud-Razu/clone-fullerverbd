@@ -28,13 +28,13 @@ const labels = {
   en: {
     home: 'HOME',
     about: 'ABOUT US',
-    facilities: 'Our Facilities',
+    facilities: 'OUR FACILITIES',
     compliance: 'COMPLIANCE',
-    products: 'Our Products',
+    products: 'OUR PRODUCT',
     gallery: 'GALLERY',
     contact: 'CONTACT US',
     language: 'LANGUAGE',
-    welcome: `Welcome to ${BRAND.companyName} — ${BRAND.tagline}`
+    welcome: `Welcome to ${BRAND.companyName}`
   },
   jp: {
     home: 'ホームページ',
@@ -45,7 +45,7 @@ const labels = {
     gallery: 'ギャラリー',
     contact: 'お問い合わせ',
     language: '言語',
-    welcome: `${BRAND.companyName} へようこそ — 手を守り、未来を築く`
+    welcome: `${BRAND.companyName} へようこそ`
   },
   kr: {
     home: '홈 페이지',
@@ -56,7 +56,7 @@ const labels = {
     gallery: '갤러리',
     contact: '문의하기',
     language: '언어',
-    welcome: `${BRAND.companyName}에 오신 것을 환영합니다 — 손을 보호하고 미래를 건설합니다`
+    welcome: `${BRAND.companyName}에 오신 것을 환영합니다`
   }
 }[locale];
 ---
@@ -65,35 +65,30 @@ const labels = {
   <div id="header-topbar" class="bg-accent pd-x-85">
     <div class="container-fluid">
       <div class="row align-items-center">
-        <div class="col-lg-7">
+        <div class="col-lg-6">
           <div class="header-topbar-layout1">
-            <ul class="header-top-left" style="display: flex; flex-wrap: wrap; align-items: center; list-style: none; margin: 0; padding: 0; font-size: 13px; gap: 14px;">
-              <li style="display: inline-flex; align-items: center; gap: 6px;">
-                <i style="color: var(--brand-orange);" class="fas fa-phone-alt" aria-hidden="true"></i>
-                <a style="color: white; text-decoration: none; font-weight: 600;" href={BRAND.phoneTel}>{BRAND.phone}</a>
+            <ul class="header-top-left" style="display: flex; align-items: center; list-style: none; margin: 0; padding: 0;">
+              <li style="margin-right: 25px; display: inline-flex; align-items: center; gap: 8px;">
+                <i style="color: white;" class="far fa-envelope"></i>
+                <a style="color: white; text-decoration: none; font-size: 14px;" href={BRAND.emailMailto}>{BRAND.email}</a>
               </li>
-              <li style="display: inline-flex; align-items: center; gap: 6px;">
-                <i style="color: var(--brand-orange);" class="far fa-envelope" aria-hidden="true"></i>
-                <a style="color: white; text-decoration: none;" href={BRAND.emailMailto}>{BRAND.email}</a>
-              </li>
-              <li style="display: inline-flex; align-items: center; gap: 6px;">
-                <i style="color: var(--brand-orange);" class="fas fa-building" aria-hidden="true"></i>
-                <span style="color: white;"><span style="color: var(--brand-orange); font-weight: 600;">Office:</span> 585/C, Khilgaon, C Block, Dhaka-1219</span>
-              </li>
-              <li style="display: inline-flex; align-items: center; gap: 6px;">
-                <i style="color: var(--brand-orange);" class="fas fa-industry" aria-hidden="true"></i>
-                <span style="color: white;"><span style="color: var(--brand-orange); font-weight: 600;">Factory:</span> Savar, Hemayetpur</span>
+              <li style="flex: 1; margin-right: 0;">
+                <marquee width="100%" direction="left" style="color: white; font-size: 14px; line-height: 1;">
+                  {labels.welcome}
+                </marquee>
               </li>
             </ul>
           </div>
         </div>
-        <div class="col-lg-5 d-flex justify-content-end align-items-center">
+        <div class="col-lg-6 d-flex justify-content-end align-items-center">
           <div class="header-topbar-layout1">
-            <ul class="header-top-right" style="list-style: none; margin: 0; padding: 0; display: flex; align-items: center; gap: 15px;">
-              <li style="color: rgba(255,255,255,0.9); font-size: 12px; font-weight: 600; font-style: italic;">
-                {BRAND.tagline}
+            <ul class="header-top-right" style="list-style: none; margin: 0; padding: 0; display: flex; align-items: center;">
+              <li class="social-icon">
+                <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
               </li>
-
             </ul>
           </div>
         </div>
@@ -106,7 +101,7 @@ const labels = {
   <div id="header-menu" class="header-menu menu-layout1 pd-x-85" style="position: relative;">
     <div class="container-fluid">
       <div class="row d-flex align-items-center">
-        <div class="col-xl-3 col-lg-3">
+        <div class="col-xl-2 col-lg-2">
           <div class="logo-area" style="padding: 10px 0;">
             <a href={homeUrl} class="temp-logo" style="display: inline-block;">
               <img
@@ -120,7 +115,7 @@ const labels = {
             </a>
           </div>
         </div>
-        <div class="col-xl-9 col-lg-9 d-flex justify-content-end possition-static">
+        <div class="col-xl-10 col-lg-10 d-flex justify-content-end possition-static">
           <nav id="dropdown" class="template-main-menu">
             <ul>
               <li>
@@ -161,7 +156,7 @@ const labels = {
               </li>
               <li>
                 <div class="dropdown" style="padding-top: 22px;">
-                  <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size: 15px; font-weight: bold; padding-top: 10px; background: transparent; color: var(--brand-navy);">
+                  <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size: 15px; font-weight: bold; padding-top: 10px; background: transparent; color: #111111;">
                     {labels.language}
                   </button>
                   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="min-width: 130px; padding: 8px 12px;">
@@ -176,7 +171,5 @@ const labels = {
         </div>
       </div>
     </div>
-    <!-- Signature Letterhead Divider: Navy on left, Orange on right with slanted cut -->
-    <div class="header-letterhead-divider" aria-hidden="true"></div>
   </div>
 </header>
