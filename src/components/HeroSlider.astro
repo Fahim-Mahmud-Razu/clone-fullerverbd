@@ -7,23 +7,37 @@ const slides = [
   { image: '/front-end/img/slider/Welding-gloves2026_09.jpg', label: 'Welding Articles', alt: 'Welding Articles' },
   { image: '/front-end/img/slider/Palm-Gloves.jpg', label: 'Leather Palm Gloves', alt: 'Leather Palm Gloves' }
 ];
+
+// Prepend last slide and append first slide for seamless infinite horizontal sliding
+const loopSlides = [
+  { ...slides[slides.length - 1], isClone: true, origIdx: slides.length - 1 },
+  ...slides.map((s, idx) => ({ ...s, isClone: false, origIdx: idx })),
+  { ...slides[0], isClone: true, origIdx: 0 }
+];
 ---
 
 <section class="slick-slider-wrap-layout1" id="heroSliderSection">
   <div class="slick-slider-layout1">
-    <!-- Main Big Slide Display -->
-    <div class="slick-carousel slick-content" id="heroContentTrack" style="position: relative; overflow: hidden; min-height: 480px;">
-      {slides.map((slide, idx) => (
-        <div
-          class={`hero-slide ${idx === 0 ? 'is-active' : ''}`}
-          data-slide-index={idx}
-          style={`display: ${idx === 0 ? 'block' : 'none'}; width: 100%; transition: opacity 0.8s ease;`}
-        >
-          <div class="item-img" style="width: 100%; text-align: center;">
-            <img src={slide.image} alt={slide.alt} style="width: 100%; height: auto; max-height: 700px; object-fit: cover; display: block;" />
+    <!-- Main Big Slide Display (Continuous Horizontal Sliding Carousel) -->
+    <div class="slick-carousel slick-content hero-viewport" id="heroViewport">
+      <div class="hero-track" id="heroTrack">
+        {loopSlides.map((slide, trackIdx) => (
+          <div
+            class="hero-slide slick-slider"
+            data-track-index={trackIdx}
+            data-orig-index={slide.origIdx}
+          >
+            <div class="item-img">
+              <img
+                src={slide.image}
+                alt={slide.alt}
+                loading={trackIdx <= 2 ? 'eager' : 'lazy'}
+                decoding="async"
+              />
+            </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
 
     <!-- Synchronized Navigation Control Strip -->
@@ -51,13 +65,46 @@ const slides = [
 </section>
 
 <style>
-  .hero-slide {
-    animation: fadeIn 0.8s ease-in-out;
+  .hero-viewport {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    margin: 0;
+    padding: 0;
   }
 
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+  .hero-track {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    will-change: transform;
+    transform: translate3d(-100%, 0, 0);
+    transition: transform 1000ms ease;
+  }
+
+  .hero-slide {
+    flex: 0 0 100%;
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .hero-slide .item-img {
+    width: 100%;
+    text-align: center;
+    position: relative;
+    margin-bottom: -10px;
+  }
+
+  .hero-slide .item-img img {
+    width: 100%;
+    height: auto;
+    max-height: 700px;
+    object-fit: cover;
+    display: block;
+    user-select: none;
+    -webkit-user-drag: none;
   }
 
   #heroNavStrip {
@@ -91,29 +138,27 @@ const slides = [
 
 <script>
   function initHeroSlider() {
-    const slides = document.querySelectorAll<HTMLElement>('.hero-slide');
-    const navItems = document.querySelectorAll<HTMLElement>('.slick-nav .nav-item');
-    if (!slides.length || !navItems.length) return;
+    const track = document.getElementById('heroTrack') as HTMLElement | null;
+    const navItems = document.querySelectorAll<HTMLElement>('#heroNavStrip .nav-item');
+    const heroSection = document.getElementById('heroSliderSection');
+    if (!track || !navItems.length) return;
 
-    let currentIndex = 0;
-    let timer: number | null = null;
+    const TOTAL_REAL_SLIDES = navItems.length; // 6
+    // Track indices: 0 is clone of slide 5, 1..6 are slides 0..5, 7 is clone of slide 0
+    let currentTrackIndex = 1;
+    let isTransitioning = false;
+    let autoplayTimer: number | null = null;
     const AUTOPLAY_DELAY = 3000;
+    const TRANSITION_STYLE = 'transform 1000ms ease';
 
-    function goToSlide(index: number) {
-      currentIndex = (index + slides.length) % slides.length;
+    // Set initial position
+    track.style.transition = 'none';
+    track.style.transform = `translate3d(-${currentTrackIndex * 100}%, 0, 0)`;
+    void track.offsetWidth;
 
-      slides.forEach((slide, i) => {
-        if (i === currentIndex) {
-          slide.style.display = 'block';
-          slide.classList.add('is-active');
-        } else {
-          slide.style.display = 'none';
-          slide.classList.remove('is-active');
-        }
-      });
-
-      navItems.forEach((nav, i) => {
-        if (i === currentIndex) {
+    function updateNav(realIndex: number) {
+      navItems.forEach((nav, idx) => {
+        if (idx === realIndex) {
           nav.classList.add('slick-current');
         } else {
           nav.classList.remove('slick-current');
@@ -121,38 +166,109 @@ const slides = [
       });
     }
 
+    function goToTrackIndex(targetIndex: number) {
+      if (!track) return;
+      currentTrackIndex = targetIndex;
+      isTransitioning = true;
+
+      track.style.transition = TRANSITION_STYLE;
+      track.style.transform = `translate3d(-${currentTrackIndex * 100}%, 0, 0)`;
+
+      // Determine active nav index immediately
+      let realIndex = 0;
+      if (currentTrackIndex === 0) {
+        realIndex = TOTAL_REAL_SLIDES - 1;
+      } else if (currentTrackIndex === TOTAL_REAL_SLIDES + 1) {
+        realIndex = 0;
+      } else {
+        realIndex = currentTrackIndex - 1;
+      }
+      updateNav(realIndex);
+    }
+
+    function nextSlide() {
+      if (isTransitioning) return;
+      goToTrackIndex(currentTrackIndex + 1);
+    }
+
+    function prevSlide() {
+      if (isTransitioning) return;
+      goToTrackIndex(currentTrackIndex - 1);
+    }
+
+    // Handle seamless infinite looping jump on transition end
+    track.addEventListener('transitionend', (e) => {
+      if (e.target !== track || e.propertyName !== 'transform') return;
+      isTransitioning = false;
+
+      // If we just slid past the last slide onto the clone of slide 0 (index 7)
+      if (currentTrackIndex === TOTAL_REAL_SLIDES + 1) {
+        track.style.transition = 'none';
+        currentTrackIndex = 1;
+        track.style.transform = `translate3d(-${currentTrackIndex * 100}%, 0, 0)`;
+        void track.offsetWidth;
+      }
+      // If we just slid backward past the first slide onto the clone of slide 5 (index 0)
+      else if (currentTrackIndex === 0) {
+        track.style.transition = 'none';
+        currentTrackIndex = TOTAL_REAL_SLIDES;
+        track.style.transform = `translate3d(-${currentTrackIndex * 100}%, 0, 0)`;
+        void track.offsetWidth;
+      }
+    });
+
     function startAutoplay() {
       stopAutoplay();
-      timer = window.setInterval(() => {
-        goToSlide(currentIndex + 1);
-      }, AUTOPLAY_DELAY);
+      autoplayTimer = window.setInterval(nextSlide, AUTOPLAY_DELAY);
     }
 
     function stopAutoplay() {
-      if (timer) {
-        clearInterval(timer);
-        timer = null;
+      if (autoplayTimer !== null) {
+        clearInterval(autoplayTimer);
+        autoplayTimer = null;
       }
     }
 
+    // Navigation item click
     navItems.forEach((item, idx) => {
       item.addEventListener('click', () => {
-        goToSlide(idx);
+        goToTrackIndex(idx + 1);
         startAutoplay();
       });
       item.addEventListener('keydown', (e) => {
         if (e.key === 'Enter' || e.key === ' ') {
-          goToSlide(idx);
+          goToTrackIndex(idx + 1);
           startAutoplay();
         }
       });
     });
 
-    const heroSection = document.getElementById('heroSliderSection');
+    // Pause on hover
     if (heroSection) {
       heroSection.addEventListener('mouseenter', stopAutoplay);
       heroSection.addEventListener('mouseleave', startAutoplay);
     }
+
+    // Touch swipe support for mobile
+    let touchStartX = 0;
+    let touchEndX = 0;
+    track.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+      stopAutoplay();
+    }, { passive: true });
+
+    track.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      const diffX = touchEndX - touchStartX;
+      if (Math.abs(diffX) > 50) {
+        if (diffX < 0) {
+          nextSlide();
+        } else {
+          prevSlide();
+        }
+      }
+      startAutoplay();
+    }, { passive: true });
 
     startAutoplay();
   }
