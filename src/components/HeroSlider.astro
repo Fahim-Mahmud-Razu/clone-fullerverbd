@@ -139,7 +139,6 @@ const slides = [
     width: 100%;
     aspect-ratio: 1920 / 700;
     max-height: 700px;
-    min-height: 240px;
     overflow: hidden;
     background-color: #070B10;
   }
@@ -181,7 +180,7 @@ const slides = [
   .hero-banner-img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
     object-position: center;
     display: block;
   }
@@ -282,8 +281,8 @@ const slides = [
     padding: 30px 10px 20px;
     text-align: center;
     cursor: pointer;
-    background-color: #0E1722;
-    border-right: 1px solid #1E293B;
+    background-color: #DA101A;
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -298,18 +297,18 @@ const slides = [
   }
 
   .nav-item:hover {
-    background-color: #1A2634;
+    background-color: #C81E1E;
   }
 
   .nav-item:focus-visible {
-    outline: 2px solid var(--color-crimson, #C81E1E);
+    outline: 2px solid #FFFFFF;
     outline-offset: -2px;
   }
 
   /* Active Nav Item */
   .nav-item.slick-current {
-    background-color: var(--color-crimson, #C81E1E) !important;
-    border-right-color: #A51818;
+    background-color: #B91C1C !important;
+    border-right-color: rgba(255, 255, 255, 0.25);
   }
 
   .nav-item .item-icon {
@@ -355,33 +354,77 @@ const slides = [
   }
 
   /* --------------------------------------------------------------------------
-     Responsive Breakpoints
+     Responsive Breakpoints: Flawless Mobile & Desktop Parity (Image 1 Parity)
      -------------------------------------------------------------------------- */
   @media (max-width: 991px) {
+    .slick-content {
+      aspect-ratio: 1920 / 700 !important;
+      height: auto !important;
+      min-height: unset !important;
+    }
+    .slick-slider-layout1 .slick-nav-wrap .slick-nav .nav-item,
     .nav-item {
-      padding: 22px 8px 16px;
-      min-width: 125px;
+      padding: 16px 8px 12px !important;
+      min-width: 110px !important;
+    }
+    .slick-slider-layout1 .slick-nav-wrap .slick-nav .nav-item .item-icon,
+    .nav-item .item-icon {
+      margin-bottom: 6px !important;
     }
     .nav-glove-icon {
-      width: 22px;
-      height: 36px;
+      width: 20px !important;
+      height: 32px !important;
     }
+    .slick-slider-layout1 .slick-nav-wrap .slick-nav .nav-item .item-title,
     .nav-item .item-title {
-      font-size: 13px;
+      font-size: 12.5px !important;
+    }
+    .hero-arrow-btn {
+      width: 36px !important;
+      height: 36px !important;
+      font-size: 13px !important;
     }
   }
 
-  @media (max-width: 575px) {
+  @media (max-width: 640px) {
+    .slick-content {
+      aspect-ratio: 1920 / 700 !important;
+      height: auto !important;
+      min-height: unset !important;
+    }
+    .hero-arrow-btn {
+      width: 26px !important;
+      height: 26px !important;
+      font-size: 11px !important;
+      background: rgba(11, 17, 24, 0.55) !important;
+      border-radius: 3px !important;
+    }
+    .hero-arrow-prev { left: 4px !important; }
+    .hero-arrow-next { right: 4px !important; }
+
+    .slick-slider-layout1 .slick-nav-wrap .slick-nav .nav-item,
     .nav-item {
-      padding: 16px 8px 12px;
-      min-width: 110px;
+      padding: 10px 6px 8px !important;
+      min-width: 90px !important;
+    }
+    .slick-slider-layout1 .slick-nav-wrap .slick-nav .nav-item .item-icon,
+    .nav-item .item-icon {
+      margin-bottom: 3px !important;
     }
     .nav-glove-icon {
-      width: 18px;
-      height: 30px;
+      width: 14px !important;
+      height: 22px !important;
     }
+    .slick-slider-layout1 .slick-nav-wrap .slick-nav .nav-item .item-title,
     .nav-item .item-title {
-      font-size: 11.5px;
+      font-size: 10px !important;
+      line-height: 1.15 !important;
+      font-weight: 600 !important;
+    }
+    .nav-active-notch {
+      border-left-width: 5px !important;
+      border-right-width: 5px !important;
+      border-top-width: 5px !important;
     }
   }
 </style>

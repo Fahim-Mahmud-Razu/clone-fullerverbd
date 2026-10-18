@@ -37,7 +37,6 @@ export const BRAND = {
     mono: "'IBM Plex Mono', monospace"
   },
   copyright: '© 2026 MAX GLOVES BD LTD. All rights reserved.',
-  developerCredit: 'Website by Fahim Mahmud Razu',
   logo: {
     horizontal: '/front-end/img/max-logo-horizontal.png',
     horizontalWhite: '/front-end/img/max-logo-horizontal-white.png',
