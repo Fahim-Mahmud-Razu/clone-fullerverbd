@@ -155,9 +155,15 @@ const displaySku = product.sku || `MG-${product.id}`;
                   <i class="far fa-paper-plane" aria-hidden="true"></i>
                   <span>REQUEST QUOTATION FOR {displaySku}</span>
                 </a>
-                <a href={BRAND.phoneTel} class="btn-steel-outline font-mono">
-                  <i class="fas fa-phone-alt text-crimson" aria-hidden="true"></i>
-                  <span>CALL DIRECT</span>
+                <a
+                  href={BRAND.whatsappUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="btn-steel-outline font-mono"
+                  title={`Chat on WhatsApp (${BRAND.phone})`}
+                >
+                  <i class="fab fa-whatsapp" style="color: #25D366;" aria-hidden="true"></i>
+                  <span>WHATSAPP {BRAND.phone}</span>
                 </a>
               </div>
             </div>

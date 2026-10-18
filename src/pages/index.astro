@@ -5,121 +5,126 @@ import CertificationSlider from '../components/CertificationSlider.astro';
 import BRAND from '../config/site';
 
 const workingProcess = [
-  {
-    step: '01',
-    code: 'LEATHER-GRADE',
-    title: 'Raw Material Selection',
-    subtitle: 'Grade-A Cowhide & Goatskin',
-    desc: 'Incoming leather hides undergo strict caliper thickness testing, tensile grading, and visual defect segregation before staging.',
-    url: '/raw-materials',
-    img: '/front-end/img/service/rawmaterials.webp'
-  },
-  {
-    step: '02',
-    code: 'DIE-CUTTING',
-    title: 'Precision Die Cutting',
-    subtitle: 'Hydraulic Press & Laser Accuracy',
-    desc: 'Heavy-duty hydraulic clicker presses and laser-calibrated steel dies stamp ergonomic glove patterns with zero edge fraying.',
-    url: '/cutting-process',
-    img: '/front-end/img/service/catting.webp'
-  },
-  {
-    step: '03',
-    code: 'KEVLAR-JOIN',
-    title: 'Industrial Sewing',
-    subtitle: 'Kevlar Thread & Reinforced Seams',
-    desc: 'Heavy-duty industrial lockstitch sewing using heat-resistant Kevlar thread, reinforced welting, and double-layered thumb crotches.',
-    url: '/sewing-process',
-    img: '/front-end/img/service/swwim.webp'
-  },
-  {
-    step: '04',
-    code: 'QC-EXPORT',
-    title: 'QC & Packaging',
-    subtitle: 'Pre-Shipment Compliance Check',
-    desc: 'Individual dimensional inspection, pair pairing, anti-mold conditioning, and export-compliant palletization for overseas freight.',
-    url: '/packaging',
-    img: '/front-end/img/service/Packaging.webp'
-  }
+  { num: '01', title: 'Raw Materials', url: '/raw-materials', img: '/front-end/img/service/rawmaterials.webp' },
+  { num: '02', title: 'Cutting Process', url: '/cutting-process', img: '/front-end/img/service/catting.webp' },
+  { num: '03', title: 'Sewing Process', url: '/sewing-process', img: '/front-end/img/service/swwim.webp' },
+  { num: '04', title: 'Packaging', url: '/packaging', img: '/front-end/img/service/Packaging.webp' }
 ];
 
 const categoryTiles = [
-  { id: 20, code: 'WELD', count: '27 Models', title: 'Leather Welding Gloves', url: '/category/20', img: '/media-library/walding.png' },
-  { id: 19, code: 'SPLT', count: '11 Models', title: 'Leather Split Gloves', url: '/category/19', img: '/media-library/slipt.png' },
-  { id: 17, code: 'DRIV', count: '7 Models', title: 'Leather Driver Gloves', url: '/category/17', img: '/media-library/driver.png' },
-  { id: 18, code: 'GRAN', count: '10 Models', title: 'Leather Grain Gloves', url: '/category/18', img: '/media-library/Grain-Gloves.png' },
-  { id: 23, code: 'WNTR', count: '6 Models', title: 'Leather Winter Gloves', url: '/category/23', img: '/media-library/wenter.png' },
-  { id: 21, code: 'PALM', count: '11 Models', title: 'Leather Palm Gloves', url: '/category/21', img: '/media-library/117356021.png' },
-  { id: 27, code: 'SYNT', count: '9 Models', title: 'Synthetic Leather Gloves', url: '/category/27', img: '/media-library/Micro-Gloves.png' },
-  { id: 29, code: 'MECH', count: '12 Models', title: 'Mechanics Gloves', url: '/category/29', img: '/media-library/0172317000.png' },
-  { id: 30, code: 'IMPC', count: '3 Models', title: 'Impact Gloves', url: '/category/30', img: '/media-library/0000025056864_1.png' },
-  { id: 24, code: 'AP-J', count: '7 Models', title: 'Leather Welding Jackets', url: '/category/24', img: '/media-library/jek.png' },
-  { id: 25, code: 'AP-T', count: '7 Models', title: 'Leather Welding Trousers', url: '/category/25', img: '/media-library/pant.png' },
-  { id: 31, code: 'COTN', count: '1 Model', title: 'Cotton Gloves', url: '/category/31', img: '/media-library/cotton_new.png' },
-  { id: 32, code: 'GARD', count: '12 Models', title: 'Gardening Gloves', url: '/category/32', img: '/media-library/GG1_F.png' }
+  { id: 23, title: 'Leather Winter Gloves', url: '/category/23', img: '/media-library/wenter.png' },
+  { id: 17, title: 'Leather Driver Gloves', url: '/category/17', img: '/media-library/driver.png' },
+  { id: 18, title: 'Leather Grain Gloves', url: '/category/18', img: '/media-library/Grain-Gloves.png' },
+  { id: 19, title: 'Leather Split Gloves', url: '/category/19', img: '/media-library/slipt.png' },
+  { id: 20, title: 'Leather Welding Gloves', url: '/category/20', img: '/media-library/walding.png' },
+  { id: 21, title: 'Leather Palm Gloves', url: '/category/21', img: '/media-library/117356021.png' },
+  { id: 25, title: 'Leather Welding Apparel', url: '/category/25', img: '/media-library/pant.png' },
+  { id: 24, title: 'Leather Welding Apparel', url: '/category/24', img: '/media-library/jek.png' },
+  { id: 27, title: 'Synthetic Leather Gloves', url: '/category/27', img: '/media-library/Micro-Gloves.png' },
+  { id: 29, title: "Mechanic's Gloves", url: '/category/29', img: '/media-library/0172317000.png' },
+  { id: 30, title: 'Impact Gloves', url: '/category/30', img: '/media-library/0000025056864_1.png' },
+  { id: 31, title: '100% Cotton Interlock Gloves', url: '/category/31', img: '/media-library/cotton_new.png' },
+  { id: 32, title: 'Gardening Gloves', url: '/category/32', img: '/media-library/GG1_F.png' }
 ];
 
 const stats = [
-  { icon: 'fas fa-users-cog', value: '153', num: 153, suffix: '', title: 'Skilled Production Craftsmen', spec: 'FACILITY WORKFORCE' },
-  { icon: 'fas fa-industry', value: '1,530', num: 1530, suffix: ' m²', title: 'Square Meters Manufacturing Floor', spec: 'SAVAR PLANT AREA' },
-  { icon: 'fas fa-shield-alt', value: '12,750', num: 12750, suffix: ' Dz', title: 'Dozen Gloves Produced Monthly', spec: 'EXPORT CAPACITY' },
-  { icon: 'fas fa-globe-americas', value: '5M+', num: 5, suffix: ' Pairs', title: 'Industrial Gloves Exported Globally', spec: 'TOTAL OUTPUT' }
+  { icon: 'flaticon-apartment', target: 1200, display: '1,200', title: 'Skilled Workers' },
+  { icon: 'flaticon-industry', target: 12000, display: '12,000', title: 'Square Meters' },
+  { icon: 'flaticon-helmet', target: 100000, display: '1,00,000', title: 'Dozen Gloves Produced Monthly' },
+  { icon: 'flaticon-happy', target: 40, display: '40', title: 'Million Gloves Produced Overall' }
 ];
 ---
 
 <BaseLayout title={`${BRAND.companyName} — Protecting Hands, Building Futures`} currentPath="/">
-  <!-- 1. Hero Section with High-Contrast Scrim & Tabular Nav -->
+  <!-- 1. Hero Section with Synchronized Navigation -->
   <HeroSlider />
 
-  <!-- 2. Dark Industrial Working Process Timeline (#0B1118 Carbon-Steel) -->
-  <section class="industrial-timeline-section" aria-label="Manufacturing process workflow">
+  <!-- 2. Our Working Process Section (Fuller Ver BD Signature Circular Process Nodes) -->
+  <section class="service-wrap-layout1" aria-label="Our Working Process">
     <div class="container">
-      <div class="timeline-header-block text-center">
+      <div class="heading-layout1 heading-light text-center">
         <div class="kicker-tag font-mono">
           <span class="crimson-dot"></span>
-          <span>MANUFACTURING INTEGRITY // 4-STAGE TECHNICAL WORKFLOW</span>
+          <span>MANUFACTURING INTEGRITY // 4-STAGE PRODUCTION FLOW</span>
         </div>
-        <h2 class="timeline-main-title">
-          The Industrial Production Process
-        </h2>
-        <p class="timeline-intro-text">
-          Precision execution at every manufacturing milestone ensures maximum abrasion resistance, ergonomic grip comfort, and compliance with international PPE standards.
-        </p>
+        <h2 class="process-main-title">Our Working Process</h2>
+        <div class="process-rule-bar" aria-hidden="true"></div>
       </div>
 
-      <div class="row g-4 timeline-cards-row">
+      <div class="row g-4 justify-content-center">
         {workingProcess.map((proc) => (
-          <div class="col-xl-3 col-md-6 col-12">
-            <div class="timeline-step-card">
-              <!-- Step Header -->
-              <div class="step-card-meta">
-                <span class="step-counter-tabular font-mono">{proc.step}</span>
-                <span class="step-code-badge font-mono">{proc.code}</span>
+          <div class="col-lg-3 col-md-6 col-12">
+            <div class="service-box-layout1 text-center">
+              <div class="item-img">
+                <a href={proc.url} aria-label={`View ${proc.title} details`}>
+                  <img
+                    src={proc.img}
+                    alt={proc.title}
+                    width="250"
+                    height="250"
+                    loading="lazy"
+                    decoding="async"
+                    class="process-circular-img"
+                  />
+                </a>
+                <div class="sl-number font-mono" aria-hidden="true">
+                  {proc.num}
+                </div>
               </div>
+              <div class="item-content">
+                <h3 class="item-title">
+                  <a href={proc.url} class="process-title-link">
+                    {proc.title}
+                  </a>
+                </h3>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
 
-              <!-- Process Image Well -->
-              <div class="timeline-img-box">
+  <!-- 3. Product Categories Section (13 Category Tiles with Studio-Well Lighting & Hover Reveal) -->
+  <section class="project-wrap-layout1" aria-label="Our Product Categories">
+    <div class="container text-center">
+      <!-- Section Banner Header -->
+      <div class="categories-header-wrap">
+        <img
+          src="/front-end/img/CT.png"
+          alt="Our Product Categories"
+          width="480"
+          height="75"
+          loading="lazy"
+          decoding="async"
+          class="categories-header-img"
+        />
+        <div class="kicker-tag font-mono mt-3">
+          <span class="crimson-dot"></span>
+          <span>CERTIFIED EXPORT PPE // DIRECT FACTORY CATALOG</span>
+        </div>
+      </div>
+
+      <!-- 13 Category Tiles Grid -->
+      <div class="row gutters-15 g-4 mt-2">
+        {categoryTiles.map((cat) => (
+          <div class="col-lg-4 col-md-6 col-12">
+            <div class="project-box-layout1">
+              <!-- 4:3 Studio Well Background -->
+              <div class="item-img">
                 <img
-                  src={proc.img}
-                  alt={proc.title}
-                  width="300"
-                  height="200"
+                  src={cat.img}
+                  alt={cat.title}
                   loading="lazy"
                   decoding="async"
-                  class="timeline-img"
+                  class="category-tile-img"
                 />
-                <div class="timeline-img-overlay"></div>
               </div>
 
-              <!-- Content -->
-              <div class="step-card-body">
-                <h3 class="step-title">
-                  <a href={proc.url} class="step-title-link">{proc.title}</a>
-                </h3>
-                <div class="step-subtitle font-mono">{proc.subtitle}</div>
-                <p class="step-desc">{proc.desc}</p>
-                <a href={proc.url} class="step-link font-mono">
-                  <span>View Process Specs</span>
+              <!-- Fullerver Signature Hover Reveal Overlay -->
+              <div class="item-content">
+                <a href={cat.url} class="item-btn font-mono" aria-label={`Explore ${cat.title}`}>
+                  <span>{cat.title}</span>
                   <i class="fas fa-arrow-right" aria-hidden="true"></i>
                 </a>
               </div>
@@ -127,161 +132,73 @@ const stats = [
           </div>
         ))}
       </div>
-    </div>
-  </section>
 
-  <!-- 3. Certified Product Categories Grid (Standardized 4:3 Studio Wells) -->
-  <section class="categories-studio-section" aria-label="Industrial PPE Product Categories">
-    <div class="container">
-      <!-- Section Title Area -->
-      <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-end mb-5">
-        <div>
-          <div class="kicker-tag font-mono">
-            <span class="crimson-dot"></span>
-            <span>DIRECT FACTORY CATALOG // 13 CERTIFIED PPE LINES</span>
-          </div>
-          <h2 class="section-heading-barlow">
-            Certified Industrial Glove Categories
-          </h2>
-          <p class="section-subtext">
-            Standardized technical studio view of our heavy industrial work, welding, split, and driver glove lines.
-          </p>
-        </div>
-        <div class="mt-3 mt-md-0">
-          <a href="/category/20" class="btn-steel-outline font-mono">
-            <span>View All 123 Models</span>
-            <i class="fas fa-arrow-right" aria-hidden="true"></i>
-          </a>
-        </div>
-      </div>
-
-      <!-- Categories 4:3 Studio Well Grid -->
-      <div class="row g-4">
-        {categoryTiles.map((cat) => (
-          <div class="col-xl-4 col-md-6 col-12">
-            <a href={cat.url} class="category-product-card" aria-label={`View ${cat.title} (${cat.count})`}>
-              <!-- 4:3 Studio Well Image Container -->
-              <div class="studio-product-well">
-                <div class="category-well-badge font-mono">
-                  <span class="cat-code">{cat.code}</span>
-                  <span class="cat-count">{cat.count}</span>
-                </div>
-                <img
-                  src={cat.img}
-                  alt={cat.title}
-                  loading="lazy"
-                  decoding="async"
-                  class="category-well-img"
-                />
-              </div>
-
-              <!-- Card Info Footer -->
-              <div class="category-card-footer">
-                <div class="d-flex align-items-center justify-content-between">
-                  <h3 class="category-card-title">{cat.title}</h3>
-                  <span class="category-card-action font-mono">
-                    <i class="fas fa-arrow-right text-crimson" aria-hidden="true"></i>
-                  </span>
-                </div>
-                <div class="category-card-route font-mono">{cat.url}</div>
-              </div>
-            </a>
-          </div>
-        ))}
+      <!-- More Category Link -->
+      <div class="more-catalog-callout">
+        <a href="/category/20" class="more-category-link font-mono">
+          <span>More.. Click Menu Our Product</span>
+          <i class="fas fa-chevron-right" aria-hidden="true"></i>
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- 4. Factory Provenance & Production Capability Teaser (Purged of Legacy Claims) -->
-  <section class="factory-provenance-section" aria-label="Company manufacturing credentials">
-    <div class="container">
-      <div class="row g-5 align-items-center">
-        <!-- Left Column: Architectural Profile -->
-        <div class="col-lg-6 col-12">
-          <div class="provenance-content-block">
-            <div class="kicker-tag font-mono">
-              <span class="crimson-dot"></span>
-              <span>MANUFACTURING PROVENANCE // SAVAR, HEMAYETPUR</span>
-            </div>
+  <!-- 4. Signature Fuller Ver BD Diagonal Red Angled Polygon About Section (Image 1 Signature) -->
+  <section class="about-wrap-layout1" aria-label="Company Overview">
+    <!-- Factory Building Background Layer -->
+    <div class="about-building-layer" aria-hidden="true">
+      <img
+        src="/front-end/img/about/about-bg.png"
+        alt="MAX GLOVES BD LTD Industrial Factory in Savar, Dhaka"
+        class="about-building-img"
+        loading="lazy"
+        decoding="async"
+      />
+    </div>
 
-            <h2 class="provenance-heading">
-              Dedicated Leather PPE Exporter with Direct Factory Control
-            </h2>
-
-            <p class="provenance-lead">
-              <strong>MAX GLOVES BD LTD.</strong> operates a specialized 1,530 m² manufacturing plant in Savar, Hemayetpur, Bangladesh, supplying certified personal protective equipment to leading safety distributors across Asia, Europe, and the Americas.
-            </p>
-
-            <p class="provenance-body">
-              By controlling raw leather grading, precision die cutting, Kevlar-thread assembly, and export quality verification in-house, we eliminate intermediary costs while ensuring strict compliance with EN 388 mechanical and EN 407 thermal resistance standards.
-            </p>
-
-            <div class="provenance-points-grid">
-              <div class="point-item">
-                <i class="fas fa-check-circle text-crimson" aria-hidden="true"></i>
-                <div>
-                  <strong>OEM / ODM Customization</strong>
-                  <span>Private labeling, custom leather dyeing, and bespoke cuff sizing.</span>
-                </div>
-              </div>
-              <div class="point-item">
-                <i class="fas fa-check-circle text-crimson" aria-hidden="true"></i>
-                <div>
-                  <strong>Direct Export Procurement</strong>
-                  <span>Transparent FOB pricing, rapid sample dispatch, and container shipping.</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="provenance-action-group mt-4">
-              <a href="/about" class="btn-crimson font-mono">
-                <span>READ COMPANY PROFILE</span>
-                <i class="fas fa-arrow-right" aria-hidden="true"></i>
-              </a>
-              <a href="/facilities" class="btn-steel-outline font-mono">
-                <span>INSPECT SAVAR FACTORY</span>
-              </a>
-            </div>
+    <!-- Slanted Industrial Crimson Polygon Box -->
+    <div class="about-box-layout1">
+      <div class="about-box-content">
+        <div class="item-header">
+          <div class="experience-year font-heading">
+            4<span class="zero-target">0</span>
+          </div>
+          <div class="experience-title font-heading">
+            <span class="title-top">Years Of</span>
+            <span class="title-bottom">Working Experience</span>
           </div>
         </div>
 
-        <!-- Right Column: Savar Facility Tour Image Well -->
-        <div class="col-lg-6 col-12">
-          <div class="facility-preview-card">
-            <div class="facility-img-frame">
-              <img
-                src="/front-end/img/max_cover.png"
-                alt="Max Gloves BD Ltd. Savar Manufacturing Plant"
-                loading="lazy"
-                decoding="async"
-                class="facility-main-img"
-              />
-              <div class="facility-badge-strip font-mono">
-                <i class="fas fa-industry text-crimson" aria-hidden="true"></i>
-                <span>PLANT: SAVAR, HEMAYETPUR, DHAKA // BANGLADESH</span>
-              </div>
-            </div>
-          </div>
-        </div>
+        <div class="about-divider-line" aria-hidden="true"></div>
+
+        <p class="about-lead-text">
+          <strong>MAX GLOVES BD LTD.</strong> is a dedicated safety gloves manufacturer based in Savar, Hemayetpur, Bangladesh, backed by over 40 years of industrial expertise beginning with technical partnerships in China. Engineered for high-durability protection across international B2B export markets.
+        </p>
+
+        <a href="/about" class="about-readmore-btn font-heading">
+          <span>READ MORE</span>
+          <i class="fas fa-chevron-right" aria-hidden="true"></i>
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- 5. Tabular Key Metrics Strip (Dark Carbon-Steel #0B1118) -->
-  <section class="industrial-metrics-section" aria-label="Key manufacturing capacity metrics">
+  <!-- 5. Industrial Progress & Statistics Counter Section (Image 1 4-Stat Row) -->
+  <section class="progress-wrap-layout1" aria-label="Production Statistics">
     <div class="container">
-      <div class="row g-4">
+      <div class="row g-3">
         {stats.map((st) => (
-          <div class="col-xl-3 col-sm-6 col-12">
-            <div class="metric-card">
-              <div class="metric-card-top font-mono">
-                <span class="metric-spec">{st.spec}</span>
-                <i class={`${st.icon} text-crimson`} aria-hidden="true"></i>
+          <div class="col-lg-3 col-sm-6 col-12">
+            <div class="stat-card">
+              <div class="stat-card-icon" aria-hidden="true">
+                <i class={st.icon}></i>
               </div>
-              <div class="metric-value font-mono">
-                {st.value}{st.suffix}
+              <div class="stat-card-body">
+                <div class="counter count-number font-mono" data-num={st.target}>
+                  {st.display}
+                </div>
+                <div class="count-title">{st.title}</div>
               </div>
-              <div class="metric-title">{st.title}</div>
             </div>
           </div>
         ))}
@@ -289,12 +206,14 @@ const stats = [
     </div>
   </section>
 
-  <!-- 6. Bordered Trust Grid: Certifications & Compliance -->
+  <!-- 6. Certifications Trust Grid -->
   <CertificationSlider />
 </BaseLayout>
 
 <style>
-  /* Kicker / Badge Utility */
+  /* --------------------------------------------------------------------------
+     Global Reusable Utilities
+     -------------------------------------------------------------------------- */
   .kicker-tag {
     display: inline-flex;
     align-items: center;
@@ -306,7 +225,7 @@ const stats = [
     border: 1px solid var(--color-border, #E2E8F0);
     padding: 5px 12px;
     border-radius: 4px;
-    margin-bottom: 14px;
+    margin-bottom: 12px;
   }
   .crimson-dot {
     width: 6px;
@@ -316,348 +235,502 @@ const stats = [
     display: inline-block;
   }
 
-  /* Section Headings */
-  .section-heading-barlow {
-    font-size: clamp(28px, 3.8vw, 42px);
-    font-weight: 800;
-    color: var(--color-steel, #0B1118);
+  /* --------------------------------------------------------------------------
+     Section 2: Our Working Process Section (Circular Nodes + Red Badge)
+     -------------------------------------------------------------------------- */
+  .service-wrap-layout1 {
+    background: linear-gradient(180deg, #0B1118 0%, #111A24 100%);
+    padding: 85px 0 70px;
+    position: relative;
+    border-bottom: 1px solid #1E293B;
+  }
+  .service-wrap-layout1 .heading-layout1 {
+    margin-bottom: 50px;
+  }
+  .process-main-title {
+    color: #FFFFFF;
+    font-size: clamp(28px, 4vw, 38px);
+    font-weight: 700;
     letter-spacing: -0.02em;
-    margin-bottom: 8px;
+    margin: 10px 0 16px;
   }
-  .section-subtext {
-    color: var(--color-text-muted, #64748B);
-    font-size: 15.5px;
-    max-width: 680px;
-    margin: 0;
-  }
-
-  /* 2. Timeline Section (Dark Carbon-Steel #0B1118) */
-  .industrial-timeline-section {
-    background-color: var(--color-steel, #0B1118);
-    border-top: 1px solid var(--color-steel-border, #223242);
-    border-bottom: 1px solid var(--color-steel-border, #223242);
-    padding: 90px 0 100px;
-  }
-  .timeline-header-block {
-    max-width: 760px;
-    margin: 0 auto 60px;
-  }
-  .timeline-header-block .kicker-tag {
-    background: #15202B;
-    border-color: #223242;
-    color: #94A3B8;
-  }
-  .timeline-main-title {
-    color: #FFFFFF !important;
-    font-size: clamp(30px, 4vw, 46px);
-    font-weight: 800;
-    margin-bottom: 14px;
-  }
-  .timeline-intro-text {
-    color: #94A3B8;
-    font-size: 16px;
-    line-height: 1.6;
-    margin: 0;
+  .process-rule-bar {
+    width: 60px;
+    height: 3px;
+    background-color: var(--color-crimson, #C81E1E);
+    margin: 0 auto;
+    border-radius: 2px;
   }
 
-  .timeline-step-card {
-    background: #15202B;
-    border: 1px solid #223242;
-    border-radius: 4px;
-    height: 100%;
+  .service-box-layout1 {
     display: flex;
     flex-direction: column;
+    align-items: center;
+  }
+  .service-box-layout1 .item-img {
+    position: relative;
+    display: inline-block;
+    border-radius: 50%;
+  }
+  .process-circular-img {
+    width: 230px;
+    height: 230px;
+    border-radius: 50%;
+    border: 8px solid #FFFFFF;
+    object-fit: cover;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease;
+  }
+  .service-box-layout1:hover .process-circular-img {
+    transform: scale(1.06);
+    box-shadow: 0 14px 35px rgba(200, 30, 30, 0.25);
+  }
+
+  /* Iconic Red Serial Badge */
+  .sl-number {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 52px;
+    height: 52px;
+    line-height: 48px;
+    background-color: var(--color-crimson, #C81E1E);
+    color: #FFFFFF;
+    border-radius: 50%;
+    border: 3px solid #FFFFFF;
+    font-size: 19px;
+    font-weight: 700;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  }
+
+  .service-box-layout1 .item-content {
+    margin-top: 22px;
+  }
+  .process-title-link {
+    color: #FFFFFF;
+    font-size: 19px;
+    font-weight: 600;
+    text-decoration: none;
+    letter-spacing: -0.01em;
+    transition: color 0.2s ease;
+  }
+  .process-title-link:hover,
+  .service-box-layout1:hover .process-title-link {
+    color: #F87171;
+  }
+
+  /* --------------------------------------------------------------------------
+     Section 3: Product Categories Section (13 Category Tiles)
+     -------------------------------------------------------------------------- */
+  .project-wrap-layout1 {
+    background-color: var(--color-canvas, #F8FAFC);
+    padding: 65px 0 85px;
+  }
+  .categories-header-wrap {
+    margin-bottom: 35px;
+  }
+  .categories-header-img {
+    max-width: 440px;
+    height: auto;
+    object-fit: contain;
+  }
+
+  /* Category Tile Card */
+  .project-box-layout1 {
+    position: relative;
     overflow: hidden;
-    transition: transform 0.2s ease, border-color 0.2s ease;
+    background: #FFFFFF;
+    border: 1px solid var(--color-border, #E2E8F0);
+    border-radius: 4px;
+    box-shadow: 0 4px 15px rgba(11, 17, 24, 0.04);
+    height: 336px;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
   }
-  .timeline-step-card:hover {
-    transform: translateY(-4px);
-    border-color: #334155;
+  .project-box-layout1:hover {
+    border-color: var(--color-border-dark, #CBD5E1);
+    box-shadow: 0 8px 24px rgba(11, 17, 24, 0.08);
+    transform: translateY(-2px);
   }
-  .step-card-meta {
+
+  .project-box-layout1 .item-img {
+    overflow: hidden;
+    height: 100%;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 14px 18px;
-    border-bottom: 1px solid #223242;
-    background: #0B1118;
+    justify-content: center;
+    background: radial-gradient(circle, #EDF2F7 0%, #FFFFFF 80%);
+    padding: 20px;
   }
-  .step-counter-tabular {
-    font-size: 20px;
-    font-weight: 700;
-    color: var(--color-crimson, #C81E1E);
+  .category-tile-img {
+    max-height: 85%;
+    max-width: 90%;
+    object-fit: contain;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    filter: drop-shadow(0 4px 10px rgba(11, 17, 24, 0.08));
   }
-  .step-code-badge {
-    font-size: 11px;
-    color: #94A3B8;
-    background: #1E293B;
-    padding: 3px 8px;
-    border-radius: 3px;
-    border: 1px solid #334155;
+  .project-box-layout1:hover .category-tile-img {
+    transform: scale(1.08);
   }
 
-  .timeline-img-box {
-    position: relative;
-    height: 180px;
-    overflow: hidden;
-    background: #000;
-  }
-  .timeline-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.4s ease;
-  }
-  .timeline-step-card:hover .timeline-img {
-    transform: scale(1.05);
-  }
-  .timeline-img-overlay {
+  /* Hover Reveal Overlay */
+  .project-box-layout1 .item-content {
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, transparent 50%, rgba(11, 17, 24, 0.8) 100%);
+    background: rgba(11, 17, 24, 0.88);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    padding: 24px;
+  }
+  .project-box-layout1:hover .item-content {
+    opacity: 1;
   }
 
-  .step-card-body {
-    padding: 20px 18px;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-  }
-  .step-title {
-    margin: 0 0 4px;
-  }
-  .step-title-link {
-    font-size: 18px;
-    font-weight: 700;
+  .project-box-layout1 .item-btn {
     color: #FFFFFF;
+    border: 1.5px solid var(--color-crimson, #C81E1E);
+    background-color: var(--color-crimson, #C81E1E);
+    padding: 10px 22px;
+    border-radius: 4px;
+    font-weight: 700;
     text-decoration: none;
-    transition: color 0.15s ease;
-  }
-  .step-title-link:hover {
-    color: var(--color-crimson, #C81E1E);
-  }
-  .step-subtitle {
-    font-size: 12px;
-    color: #94A3B8;
-    margin-bottom: 12px;
-  }
-  .step-desc {
-    color: #CBD5E1;
-    font-size: 13.5px;
-    line-height: 1.55;
-    flex: 1;
-    margin-bottom: 16px;
-  }
-  .step-link {
+    font-size: 14.5px;
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    color: var(--color-crimson, #C81E1E);
-    font-size: 12.5px;
-    font-weight: 600;
-    text-decoration: none;
-    transition: gap 0.2s ease;
+    transition: background 0.2s ease, transform 0.2s ease;
+    box-shadow: 0 4px 12px rgba(200, 30, 30, 0.35);
   }
-  .step-link:hover {
-    gap: 12px;
+  .project-box-layout1 .item-btn:hover {
+    background-color: #A51818;
+    border-color: #A51818;
+    transform: translateY(-1px);
+  }
+
+  .more-catalog-callout {
+    margin-top: 40px;
+  }
+  .more-category-link {
+    color: var(--color-crimson, #C81E1E);
+    font-size: 15px;
+    font-weight: 700;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background: #FFFFFF;
+    border: 1px solid var(--color-border, #E2E8F0);
+    border-radius: 4px;
+    transition: all 0.2s ease;
+  }
+  .more-category-link:hover {
+    background: #FEF2F2;
+    border-color: #FCA5A5;
+    transform: translateX(3px);
+  }
+
+  /* --------------------------------------------------------------------------
+     Section 4: Diagonal Red Angled Polygon About Section (Image 1 Signature)
+     -------------------------------------------------------------------------- */
+  .about-wrap-layout1 {
+    background-color: #070B10;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: stretch;
+    min-height: 500px;
+    border-top: 1px solid #1E293B;
+  }
+
+  .about-building-layer {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 62%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+  }
+  .about-building-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: right bottom;
+  }
+
+  .about-box-layout1 {
+    position: relative;
+    z-index: 2;
+    width: 54%;
+    background-color: var(--color-crimson, #C81E1E);
+    -webkit-clip-path: polygon(0 0, 100% 0%, 78% 100%, 0 100%);
+    clip-path: polygon(0 0, 100% 0%, 78% 100%, 0 100%);
+    padding-left: max(24px, calc((100vw - 1200px) / 2 + 15px));
+    padding-right: 80px;
+    padding-top: 80px;
+    padding-bottom: 80px;
+    display: flex;
+    align-items: center;
+  }
+
+  @media only screen and (max-width: 1399px) {
+    .about-box-layout1 {
+      width: 58%;
+      -webkit-clip-path: polygon(0 0, 100% 0%, 80% 100%, 0 100%);
+      clip-path: polygon(0 0, 100% 0%, 80% 100%, 0 100%);
+      padding-right: 70px;
+    }
+    .about-building-layer {
+      width: 58%;
+    }
+  }
+
+  @media only screen and (max-width: 1199px) {
+    .about-box-layout1 {
+      padding-left: max(24px, calc((100vw - 960px) / 2 + 15px));
+      padding-right: 60px;
+      width: 62%;
+      -webkit-clip-path: polygon(0 0, 100% 0%, 82% 100%, 0 100%);
+      clip-path: polygon(0 0, 100% 0%, 82% 100%, 0 100%);
+    }
+    .about-building-layer {
+      width: 54%;
+    }
+  }
+
+  @media only screen and (max-width: 991px) {
+    .about-wrap-layout1 {
+      flex-direction: column;
+    }
+    .about-box-layout1 {
+      width: 100%;
+      clip-path: none;
+      -webkit-clip-path: none;
+      padding: 60px 24px;
+    }
+    .about-building-layer {
+      position: relative;
+      width: 100%;
+      height: 280px;
+    }
+  }
+
+  .about-box-content {
+    width: 100%;
+    max-width: 520px;
+  }
+
+  .about-box-layout1 .item-header {
+    display: flex;
+    align-items: center;
     color: #FFFFFF;
   }
 
-  /* 3. Product Categories Section */
-  .categories-studio-section {
-    background-color: var(--color-canvas, #F8FAFC);
-    padding: 90px 0 100px;
+  .experience-year {
+    font-size: clamp(64px, 6.5vw, 88px);
+    font-weight: 700;
+    line-height: 0.85;
+    color: #FFFFFF;
+    letter-spacing: -0.04em;
+    display: inline-flex;
+    align-items: center;
   }
-  .category-product-card {
+  .experience-year .zero-target {
+    position: relative;
+    display: inline-block;
+  }
+  .experience-year .zero-target::after {
+    content: '';
+    position: absolute;
+    width: clamp(10px, 1.2vw, 15px);
+    height: clamp(10px, 1.2vw, 15px);
+    background-color: #FFFFFF;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .experience-title {
     display: flex;
     flex-direction: column;
-    text-decoration: none;
-    background: #FFFFFF;
-    border: 1px solid var(--color-border, #E2E8F0);
-    border-radius: 4px;
-    overflow: hidden;
-    transition: all 0.2s ease;
+    margin-left: 20px;
+    line-height: 1.15;
   }
-  .category-product-card:hover {
-    border-color: var(--color-border-dark, #CBD5E1);
-    box-shadow: 0 8px 24px rgba(11, 17, 24, 0.06);
+  .experience-title .title-top {
+    font-size: clamp(20px, 2.2vw, 28px);
+    font-weight: 600;
+    color: #FFFFFF;
+    letter-spacing: -0.01em;
+  }
+  .experience-title .title-bottom {
+    font-size: clamp(20px, 2.2vw, 28px);
+    font-weight: 700;
+    color: #FFFFFF;
+    letter-spacing: -0.01em;
+  }
+
+  .about-divider-line {
+    width: 100%;
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.4);
+    margin: 18px 0 22px;
+  }
+
+  .about-lead-text {
+    color: #FFFFFF;
+    margin-bottom: 30px;
+    font-size: 15px;
+    line-height: 1.75;
+    font-weight: 400;
+  }
+
+  .about-readmore-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background-color: #FFFFFF;
+    color: #0B1118;
+    font-size: 13.5px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    padding: 12px 28px;
+    border-radius: 4px;
+    text-decoration: none;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.22);
+    transition: all 0.25s ease;
+  }
+  .about-readmore-btn:hover {
+    background-color: #0B1118;
+    color: #FFFFFF;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+  }
+
+  /* --------------------------------------------------------------------------
+     Section 5: Industrial Progress & Statistics Counter Strip (Image 1 4-Stat Row)
+     -------------------------------------------------------------------------- */
+  .progress-wrap-layout1 {
+    background-color: #070B10;
+    padding: 30px 0 35px;
+    border-top: 1px solid #1E293B;
+    border-bottom: 1px solid #1E293B;
+  }
+
+  .stat-card {
+    padding: 20px 18px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: #0E1722;
+    border-radius: 4px;
+    min-height: 110px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    transition: border-color 0.25s ease, background-color 0.25s ease, transform 0.25s ease;
+  }
+  .stat-card:hover {
+    border-color: rgba(200, 30, 30, 0.45);
+    background: #131E2B;
     transform: translateY(-2px);
   }
-  .category-product-card:focus-visible {
-    outline: 2px solid var(--color-crimson, #C81E1E) !important;
-    outline-offset: 2px;
-  }
 
-  .category-product-card .studio-product-well {
-    border: none;
-    border-bottom: 1px solid var(--color-border, #E2E8F0);
-    border-radius: 0;
-    height: 250px;
-    aspect-ratio: auto;
+  .stat-card-icon {
+    line-height: 1;
+    flex-shrink: 0;
   }
-  .category-well-badge {
-    position: absolute;
-    top: 12px;
-    left: 12px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    background: #FFFFFF;
-    border: 1px solid var(--color-border, #E2E8F0);
-    border-radius: 3px;
-    padding: 3px 8px;
-    font-size: 11px;
-    z-index: 2;
-  }
-  .cat-code {
-    font-weight: 700;
+  .stat-card-icon i {
     color: var(--color-crimson, #C81E1E);
-  }
-  .cat-count {
-    color: var(--color-text-muted, #64748B);
-  }
-
-  .category-well-img {
-    max-height: 82%;
-    max-width: 88%;
-    object-fit: contain;
-    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-  .category-product-card:hover .category-well-img {
-    transform: scale(1.05);
-  }
-
-  .category-card-footer {
-    padding: 16px 20px 18px;
-  }
-  .category-card-title {
-    font-size: 17px;
-    font-weight: 700;
-    color: var(--color-steel, #0B1118);
-    margin: 0;
-    transition: color 0.15s ease;
-  }
-  .category-product-card:hover .category-card-title {
-    color: var(--color-crimson, #C81E1E);
-  }
-  .category-card-route {
-    font-size: 11.5px;
-    color: var(--color-text-muted, #64748B);
-    margin-top: 4px;
-  }
-
-  /* 4. Factory Provenance Section */
-  .factory-provenance-section {
-    background: #FFFFFF;
-    border-top: 1px solid var(--color-border, #E2E8F0);
-    border-bottom: 1px solid var(--color-border, #E2E8F0);
-    padding: 95px 0 100px;
-  }
-  .provenance-heading {
-    font-size: clamp(28px, 3.8vw, 42px);
-    font-weight: 800;
-    color: var(--color-steel, #0B1118);
-    letter-spacing: -0.02em;
-    margin-bottom: 18px;
-  }
-  .provenance-lead {
-    font-size: 16.5px;
-    line-height: 1.6;
-    color: #1E293B;
-    margin-bottom: 14px;
-  }
-  .provenance-body {
-    font-size: 15px;
-    line-height: 1.65;
-    color: var(--color-text-muted, #64748B);
-    margin-bottom: 24px;
-  }
-  .provenance-points-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    margin-bottom: 28px;
-  }
-  .point-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    font-size: 14.5px;
-  }
-  .point-item i {
-    font-size: 18px;
-    margin-top: 3px;
-  }
-  .point-item strong {
-    display: block;
-    color: var(--color-steel, #0B1118);
-  }
-  .point-item span {
-    color: var(--color-text-muted, #64748B);
-  }
-  .provenance-action-group {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 14px;
-  }
-
-  .facility-img-frame {
-    position: relative;
-    border: 1px solid var(--color-border, #E2E8F0);
-    border-radius: 4px;
-    overflow: hidden;
-    background: var(--color-canvas, #F8FAFC);
-  }
-  .facility-main-img {
-    width: 100%;
-    height: auto;
+    font-size: 34px;
     display: block;
   }
-  .facility-badge-strip {
-    background: #0B1118;
-    color: #E2E8F0;
-    padding: 10px 16px;
-    font-size: 11.5px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    letter-spacing: 0.05em;
-  }
 
-  /* 5. Metrics Section */
-  .industrial-metrics-section {
-    background-color: var(--color-steel, #0B1118);
-    border-bottom: 1px solid var(--color-steel-border, #223242);
-    padding: 60px 0;
+  .stat-card-body {
+    text-align: left;
+    min-width: 0;
   }
-  .metric-card {
-    background: #15202B;
-    border: 1px solid #223242;
-    border-radius: 4px;
-    padding: 24px;
-    height: 100%;
-  }
-  .metric-card-top {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 10px;
-  }
-  .metric-spec {
-    font-size: 11px;
-    color: #64748B;
-    letter-spacing: 0.08em;
-  }
-  .metric-value {
-    font-size: 36px;
+  .stat-card-body .count-number {
+    font-size: 28px;
     font-weight: 700;
     color: #FFFFFF;
     line-height: 1.1;
-    margin-bottom: 6px;
+    margin-bottom: 4px;
+    letter-spacing: -0.02em;
   }
-  .metric-title {
+  .stat-card-body .count-title {
+    font-size: 13px;
     color: #94A3B8;
-    font-size: 14px;
+    line-height: 1.35;
+    font-weight: 500;
+  }
+    font-weight: 500;
   }
 </style>
+
+<script>
+  function initCounters() {
+    const counters = document.querySelectorAll<HTMLElement>('.counter.count-number');
+    if (!counters.length) return;
+
+    const observer = new IntersectionObserver(
+      (entries, obs) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const el = entry.target as HTMLElement;
+            obs.unobserve(el);
+            const target = parseInt(el.getAttribute('data-num') || '0', 10);
+            const duration = 1600;
+            const startTime = performance.now();
+
+            function update(currentTime: number) {
+              const elapsed = currentTime - startTime;
+              const progress = Math.min(elapsed / duration, 1);
+              // Ease-out cubic
+              const eased = 1 - Math.pow(1 - progress, 3);
+              const current = Math.floor(eased * target);
+
+              if (target === 100000) {
+                if (current < 100000) {
+                  el.textContent = current.toLocaleString();
+                } else {
+                  el.textContent = '1,00,000';
+                }
+              } else {
+                el.textContent = current.toLocaleString();
+              }
+
+              if (progress < 1) {
+                requestAnimationFrame(update);
+              } else {
+                if (target === 100000) {
+                  el.textContent = '1,00,000';
+                } else {
+                  el.textContent = target.toLocaleString();
+                }
+              }
+            }
+            requestAnimationFrame(update);
+          }
+        });
+      },
+      { threshold: 0.25 }
+    );
+
+    counters.forEach((c) => observer.observe(c));
+  }
+
+  // Run on initial page load and view transitions
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initCounters);
+  } else {
+    initCounters();
+  }
+  document.addEventListener('astro:page-load', initCounters);
+</script>

@@ -3,13 +3,24 @@ name: "Max Gloves BD Ltd — Architectural Industrial PPE Showcase"
 description: "Authoritative B2B industrial PPE exporter showcase design system"
 colors:
   steel: "#0B1118"
+  steel-deep: "#070B10"
+  steel-surface: "#111A24"
+  steel-card: "#15202B"
+  steel-hover: "#1A2634"
+  steel-border: "#1E293B"
+  steel-border-light: "#223242"
+  whatsapp: "#25D366"
   crimson: "#C81E1E"
+  crimson-deep: "#A51818"
+  crimson-light: "#F87171"
+  crimson-bg: "#FEF2F2"
   canvas: "#F8FAFC"
   well: "#F1F5F9"
   card: "#FFFFFF"
   border: "#E2E8F0"
   border-dark: "#CBD5E1"
   text-muted: "#64748B"
+  text-slate: "#94A3B8"
   text-body: "#334155"
 typography:
   headline:
@@ -22,6 +33,7 @@ typography:
     fontFamily: "'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace"
     fontWeight: 600
 rounded:
+  xs: "2px"
   sm: "3px"
   md: "4px"
 components:

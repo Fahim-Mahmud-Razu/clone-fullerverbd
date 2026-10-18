@@ -4,6 +4,8 @@ export const BRAND = {
   tagline: 'Protecting Hands, Building Futures',
   phone: '+880 1710-591088',
   phoneTel: 'tel:+8801710591088',
+  whatsappNumber: '8801710591088',
+  whatsappUrl: 'https://wa.me/8801710591088',
   email: 'maxglovesbdltd@gmail.com',
   emailMailto: 'mailto:maxglovesbdltd@gmail.com',
   website: 'www.maxglovesbdltd.com',

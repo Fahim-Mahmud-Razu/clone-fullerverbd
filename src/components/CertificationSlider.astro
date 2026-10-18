@@ -1,223 +1,459 @@
 ---
 const certifications = [
   {
-    code: 'SQP',
-    title: 'Supplier Qualification Program',
-    desc: 'Audited manufacturing operations and facility workflow compliance.',
-    logo: '/front-end/img/SQP-Logo-Web.png',
-    status: 'VERIFIED AUDIT'
-  },
-  {
-    code: 'GSV',
-    title: 'Global Security Verification',
-    desc: 'International supply chain and export transport security compliance.',
-    logo: '/front-end/img/gsv-logo-web.png',
-    status: 'SECURITY AUDITED'
+    code: 'FLAXA',
+    title: 'Footwear, Leather Goods & Accessories Exporters Association',
+    desc: 'Membership in the industry association representing footwear, leather goods, and accessories exporters.',
+    logo: '/front-end/img/FLAXA.png',
+    isFeatured: false
   },
   {
     code: 'WCA',
     title: 'Workplace Conditions Assessment',
-    desc: 'Social accountability, fair labor standards, and safe working conditions.',
+    desc: 'Independent audit of labor practices, health, and safety conditions across our facilities.',
     logo: '/front-end/img/WCA.png',
-    status: 'WORKPLACE STANDARDS'
+    isFeatured: true
   },
   {
     code: 'ISO 9001',
-    title: 'Quality Management System',
-    desc: 'Continuous manufacturing quality control and leather grading protocol.',
+    title: 'ISO 9001 Certified',
+    desc: 'International standard for quality management systems, consistently met and independently certified.',
     logo: '/front-end/img/ISO_9001.png',
-    status: 'QMS CERTIFIED'
+    isFeatured: false
   },
   {
     code: 'ISO 14001',
-    title: 'Environmental Management',
-    desc: 'Sustainable waste reduction, eco-conscious leather processing controls.',
+    title: 'ISO 14001 Certified',
+    desc: 'International standard for environmental management systems, independently certified.',
     logo: '/front-end/img/ISO_14001.png',
-    status: 'EMS COMPLIANT'
+    isFeatured: false
   },
   {
-    code: 'EN 388 / 407',
-    title: 'Harmonized PPE Safety Standards',
-    desc: 'Abrasion, tear, puncture, and thermal heat resistant glove testing.',
-    icon: 'fas fa-shield-alt',
-    status: 'PPE TECHNICAL SPECS'
+    code: 'SQP',
+    title: 'Supplier Qualification Program',
+    desc: 'Audited manufacturing operations and international facility workflow compliance protocol.',
+    logo: '/front-end/img/SQP-Logo-Web.png',
+    isFeatured: false
+  },
+  {
+    code: 'GSV',
+    title: 'Global Security Verification',
+    desc: 'International supply chain transparency and export freight security compliance.',
+    logo: '/front-end/img/gsv-logo-web.png',
+    isFeatured: false
   }
 ];
 ---
 
-<section class="trust-grid-section" aria-label="Quality certifications and standards">
+<section class="certifications-slider-section" aria-label="Our Certifications">
   <div class="container">
-    <!-- Header Block -->
-    <div class="trust-header text-center">
-      <div class="trust-kicker font-mono">
-        <span class="crimson-dot"></span>
-        <span>VERIFIED INDUSTRIAL STANDARDS & ACCREDITATIONS</span>
-      </div>
-      <h2 class="trust-title">
-        Quality Assurance & International Compliance
+    <!-- Iconic Fuller Ver BD Angled Banner Header (Rendered with Max Gloves Carbon Steel & Crimson Theme) -->
+    <div class="cert-title-wrapper text-center">
+      <h2 class="certifications-title font-heading">
+        OUR CERTIFICATIONS
       </h2>
-      <p class="trust-subtitle">
-        Every leather glove production batch undergoes strict incoming material grading, dimensional tolerance testing, and pre-shipment safety inspections at our Savar manufacturing plant.
-      </p>
     </div>
 
-    <!-- Clean Bordered Trust Grid (4px radii, 1px #E2E8F0 borders, no tacky shadows) -->
-    <div class="trust-cards-grid">
-      {certifications.map((cert) => (
-        <div class="trust-card">
-          <div class="trust-card-top">
-            <div class="trust-logo-box">
-              {cert.logo ? (
-                <img src={cert.logo} alt={`${cert.code} accreditation`} loading="lazy" decoding="async" class="cert-img" />
-              ) : (
-                <i class={`${cert.icon} cert-icon text-crimson`} aria-hidden="true"></i>
-              )}
-            </div>
-            <div class="trust-status-badge font-mono">{cert.status}</div>
-          </div>
+    <!-- Certification Carousel Wrapper -->
+    <div class="cert-carousel-container">
+      <!-- Navigation Arrow: Prev -->
+      <button
+        type="button"
+        id="certPrevBtn"
+        class="cert-nav-btn cert-nav-prev"
+        aria-label="Previous certification"
+      >
+        <i class="fas fa-chevron-left" aria-hidden="true"></i>
+      </button>
 
-          <div class="trust-card-body">
-            <div class="trust-code font-mono">{cert.code}</div>
-            <h3 class="trust-card-heading">{cert.title}</h3>
-            <p class="trust-card-desc">{cert.desc}</p>
+      <!-- Carousel Cards Track -->
+      <div id="certTrack" class="cert-carousel-track" role="region" aria-label="Certifications carousel">
+        {certifications.map((cert, index) => (
+          <div
+            class={`cert-slide-card ${cert.isFeatured ? 'is-featured' : ''}`}
+            data-index={index}
+          >
+            <!-- Circular Accreditation Logo Frame -->
+            <div class="cert-logo-circle">
+              <img
+                src={cert.logo}
+                alt={`${cert.code} Logo`}
+                width="70"
+                height="70"
+                loading="lazy"
+                decoding="async"
+                class="cert-logo-img"
+              />
+            </div>
+
+            <!-- Certification Pill Badge -->
+            <div class={`cert-pill-badge font-mono ${cert.isFeatured ? 'badge-crimson' : 'badge-steel'}`}>
+              {cert.code}
+            </div>
+
+            <!-- Title & Specification -->
+            <h3 class="cert-card-title font-heading">
+              {cert.title}
+            </h3>
+
+            <!-- Descriptive Body -->
+            <p class="cert-card-desc">
+              {cert.desc}
+            </p>
           </div>
-        </div>
+        ))}
+      </div>
+
+      <!-- Navigation Arrow: Next -->
+      <button
+        type="button"
+        id="certNextBtn"
+        class="cert-nav-btn cert-nav-next"
+        aria-label="Next certification"
+      >
+        <i class="fas fa-chevron-right" aria-hidden="true"></i>
+      </button>
+    </div>
+
+    <!-- Carousel Pagination Indicators -->
+    <div class="cert-pagination-dots" id="certDots" aria-label="Carousel pagination">
+      {certifications.map((_, i) => (
+        <button
+          type="button"
+          class={`cert-dot-btn ${i === 0 ? 'is-active' : ''}`}
+          data-dot-index={i}
+          aria-label={`Go to slide ${i + 1}`}
+        ></button>
       ))}
     </div>
   </div>
 </section>
 
 <style>
-  .trust-grid-section {
+  /* --------------------------------------------------------------------------
+     Section Canvas
+     -------------------------------------------------------------------------- */
+  .certifications-slider-section {
     background-color: var(--color-canvas, #F8FAFC);
     border-top: 1px solid var(--color-border, #E2E8F0);
     border-bottom: 1px solid var(--color-border, #E2E8F0);
-    padding: 80px 0 90px;
+    padding: 70px 0 85px;
+    position: relative;
+    overflow: hidden;
   }
 
-  .trust-header {
-    max-width: 760px;
-    margin: 0 auto 50px;
+  /* --------------------------------------------------------------------------
+     The Signature Fuller Ver BD Angled Banner Header ("OUR CERTIFICATIONS")
+     -------------------------------------------------------------------------- */
+  .cert-title-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 48px;
   }
-  .trust-kicker {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 11.5px;
-    letter-spacing: 0.08em;
-    color: var(--color-text-muted, #64748B);
-    background: #FFFFFF;
-    border: 1px solid var(--color-border, #E2E8F0);
-    padding: 5px 12px;
-    border-radius: 4px;
-    margin-bottom: 14px;
-  }
-  .crimson-dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background-color: var(--color-crimson, #C81E1E);
+
+  .certifications-title {
+    position: relative;
+    isolation: isolate;
+    margin: 0 auto;
+    padding: 10px 48px 12px;
+    color: #FFFFFF;
+    font-size: clamp(22px, 4vw, 42px);
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    text-align: center;
+    text-transform: uppercase;
+    white-space: nowrap;
     display: inline-block;
   }
 
-  .trust-title {
-    font-size: clamp(26px, 3.5vw, 38px);
-    font-weight: 800;
-    color: var(--color-steel, #0B1118);
-    letter-spacing: -0.02em;
-    margin-bottom: 12px;
+  /* Main Carbon Steel Trapezoid Banner */
+  .certifications-title::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    border: 2px solid #FFFFFF;
+    border-radius: 20px 20px 16px 16px;
+    background: linear-gradient(110deg, #070B10, #0B1118 55%, #070B10);
+    clip-path: polygon(4% 0, 96% 0, 100% 100%, 0 100%);
+    box-shadow: 0 4px 20px rgba(11, 17, 24, 0.2);
   }
 
-  .trust-subtitle {
-    color: var(--color-text-muted, #64748B);
-    font-size: 15.5px;
-    line-height: 1.6;
-    margin: 0;
+  /* Industrial Crimson Angled Corner Wings */
+  .certifications-title::after {
+    content: "";
+    position: absolute;
+    z-index: -2;
+    inset: 8px -14px;
+    border-radius: 10px;
+    background: linear-gradient(90deg, #C81E1E, #E02424);
+    clip-path: polygon(3% 0, 97% 0, 100% 100%, 0 100%);
   }
 
-  /* Grid Layout: Crisp 1px borders & 4px radii */
-  .trust-cards-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  /* --------------------------------------------------------------------------
+     Carousel Layout & Track
+     -------------------------------------------------------------------------- */
+  .cert-carousel-container {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+
+  .cert-carousel-track {
+    display: flex;
     gap: 20px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding: 12px 4px 24px;
+  }
+  .cert-carousel-track::-webkit-scrollbar {
+    display: none;
   }
 
-  .trust-card {
+  /* --------------------------------------------------------------------------
+     Certification Cards
+     -------------------------------------------------------------------------- */
+  .cert-slide-card {
+    flex: 0 0 calc(25% - 15px);
+    scroll-snap-align: start;
+    min-width: 250px;
     background: #FFFFFF;
     border: 1px solid var(--color-border, #E2E8F0);
     border-radius: 4px;
-    padding: 24px;
+    padding: 32px 20px 28px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    transition: all 0.2s ease;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(11, 17, 24, 0.04);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
   }
-  .trust-card:hover {
+  .cert-slide-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 24px rgba(11, 17, 24, 0.08);
     border-color: var(--color-border-dark, #CBD5E1);
-    box-shadow: 0 4px 16px rgba(11, 17, 24, 0.04);
   }
 
-  .trust-card-top {
+  /* Featured / Highlighted Card (e.g., WCA in Image 2) */
+  .cert-slide-card.is-featured {
+    border-color: rgba(200, 30, 30, 0.35);
+    box-shadow: 0 6px 20px rgba(200, 30, 30, 0.08);
+  }
+  .cert-slide-card.is-featured:hover {
+    border-color: var(--color-crimson, #C81E1E);
+    box-shadow: 0 12px 28px rgba(200, 30, 30, 0.14);
+  }
+
+  /* Circular Logo Well */
+  .cert-logo-circle {
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    border: 2.5px solid var(--color-steel, #0B1118);
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
+    background: #FFFFFF;
     margin-bottom: 18px;
+    padding: 12px;
+    box-shadow: 0 2px 8px rgba(11, 17, 24, 0.06);
+    flex-shrink: 0;
   }
-
-  .trust-logo-box {
-    width: 70px;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
+  .cert-slide-card.is-featured .cert-logo-circle {
+    border-color: var(--color-crimson, #C81E1E);
   }
-  .cert-img {
-    max-height: 44px;
-    max-width: 68px;
+  .cert-logo-img {
+    max-height: 65px;
+    max-width: 65px;
     object-fit: contain;
   }
-  .cert-icon {
-    font-size: 32px;
-  }
 
-  .trust-status-badge {
-    font-size: 10.5px;
-    letter-spacing: 0.04em;
-    color: #475569;
-    background: var(--color-well, #F1F5F9);
-    border: 1px solid var(--color-border, #E2E8F0);
-    padding: 3px 8px;
-    border-radius: 3px;
-  }
-
-  .trust-card-body {
-    flex: 1;
-  }
-
-  .trust-code {
-    font-size: 12px;
+  /* Pill Badges */
+  .cert-pill-badge {
+    font-size: 12.5px;
     font-weight: 700;
-    color: var(--color-crimson, #C81E1E);
-    margin-bottom: 4px;
+    letter-spacing: 0.04em;
+    padding: 5px 20px;
+    border-radius: 20px;
+    margin-bottom: 14px;
+    white-space: nowrap;
+    text-transform: uppercase;
+  }
+  .badge-steel {
+    background: var(--color-steel, #0B1118);
+    color: #FFFFFF;
+  }
+  .badge-crimson {
+    background: var(--color-crimson, #C81E1E);
+    color: #FFFFFF;
   }
 
-  .trust-card-heading {
-    font-size: 17px;
+  /* Typography Inside Card */
+  .cert-card-title {
+    font-size: 14px;
     font-weight: 700;
     color: var(--color-steel, #0B1118);
-    margin-bottom: 8px;
+    line-height: 1.35;
+    margin-bottom: 10px;
+    min-height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
-
-  .trust-card-desc {
-    color: var(--color-text-muted, #64748B);
-    font-size: 13.5px;
+  .cert-card-desc {
+    font-size: 12px;
+    color: #64748B;
     line-height: 1.5;
     margin: 0;
+    max-width: 220px;
   }
 
-  @media (max-width: 575px) {
-    .trust-cards-grid {
-      grid-template-columns: 1fr;
+  /* --------------------------------------------------------------------------
+     Navigation Arrow Controls (< and > buttons)
+     -------------------------------------------------------------------------- */
+  .cert-nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: #FFFFFF;
+    border: 1px solid var(--color-border, #E2E8F0);
+    color: var(--color-steel, #0B1118);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(11, 17, 24, 0.08);
+    transition: all 0.2s ease;
+    z-index: 5;
+  }
+  .cert-nav-btn:hover {
+    background: var(--color-steel, #0B1118);
+    color: #FFFFFF;
+    border-color: var(--color-steel, #0B1118);
+    transform: translateY(-50%) scale(1.05);
+  }
+  .cert-nav-prev {
+    left: 0;
+  }
+  .cert-nav-next {
+    right: 0;
+  }
+
+  /* --------------------------------------------------------------------------
+     Pagination Dots
+     -------------------------------------------------------------------------- */
+  .cert-pagination-dots {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 10px;
+  }
+  .cert-dot-btn {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #CBD5E1;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .cert-dot-btn.is-active {
+    width: 26px;
+    height: 8px;
+    border-radius: 4px;
+    background-color: var(--color-crimson, #C81E1E);
+  }
+
+  /* --------------------------------------------------------------------------
+     Responsive Media Queries
+     -------------------------------------------------------------------------- */
+  @media (max-width: 1024px) {
+    .cert-slide-card {
+      flex: 0 0 calc(50% - 10px);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .cert-carousel-container {
+      padding: 0 20px;
+    }
+    .cert-slide-card {
+      flex: 0 0 100%;
+    }
+    .cert-nav-btn {
+      display: none;
     }
   }
 </style>
+
+<script>
+  function initCertSlider() {
+    const track = document.getElementById('certTrack');
+    const prevBtn = document.getElementById('certPrevBtn');
+    const nextBtn = document.getElementById('certNextBtn');
+    const dots = document.querySelectorAll<HTMLElement>('.cert-dot-btn');
+
+    if (!track || !prevBtn || !nextBtn) return;
+    const certTrack = track;
+
+    function getCardWidth() {
+      const firstCard = certTrack.querySelector<HTMLElement>('.cert-slide-card');
+      if (!firstCard) return 300;
+      return firstCard.offsetWidth + 20; // width + gap
+    }
+
+    prevBtn.addEventListener('click', () => {
+      certTrack.scrollBy({ left: -getCardWidth(), behavior: 'smooth' });
+    });
+
+    nextBtn.addEventListener('click', () => {
+      certTrack.scrollBy({ left: getCardWidth(), behavior: 'smooth' });
+    });
+
+    // Update active dot on scroll
+    function updateActiveDot() {
+      const scrollLeft = certTrack.scrollLeft;
+      const cardWidth = getCardWidth();
+      const activeIndex = Math.min(
+        Math.round(scrollLeft / cardWidth),
+        dots.length - 1
+      );
+
+      dots.forEach((dot, idx) => {
+        if (idx === activeIndex) {
+          dot.classList.add('is-active');
+        } else {
+          dot.classList.remove('is-active');
+        }
+      });
+    }
+
+    certTrack.addEventListener('scroll', updateActiveDot, { passive: true });
+
+    // Click dot to navigate
+    dots.forEach((dot) => {
+      dot.addEventListener('click', () => {
+        const targetIndex = parseInt(dot.getAttribute('data-dot-index') || '0', 10);
+        certTrack.scrollTo({ left: targetIndex * getCardWidth(), behavior: 'smooth' });
+      });
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initCertSlider);
+  } else {
+    initCertSlider();
+  }
+  document.addEventListener('astro:page-load', initCertSlider);
+</script>
