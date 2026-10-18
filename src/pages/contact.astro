@@ -4,193 +4,235 @@ import PageBanner from '../components/PageBanner.astro';
 import BRAND from '../config/site';
 ---
 
-<BaseLayout title="Contact Us - Max Gloves BD Ltd." currentPath="/contact">
-  <PageBanner title="Contact With Us" breadcrumbs={[{ label: 'Home', url: '/' }, { label: 'Contact With Us' }]} />
+<BaseLayout title={`Contact Us & Factory RFQ — ${BRAND.companyName}`} currentPath="/contact">
+  <PageBanner title="Contact & Factory RFQ" breadcrumbs={[{ label: 'Home', url: '/' }, { label: 'Contact Us' }]} />
 
-  <section class="contact-wrap-layout2" style="padding: 70px 0;">
+  <section class="contact-architectural-section" aria-label="Contact information and RFQ inquiry form">
     <div class="container">
-      <div class="row">
+      <div class="row g-5">
         <!-- Main Form & Map Column (col-lg-8) -->
         <div class="col-lg-8">
-          <div class="contact-box-layout2">
+          <div class="contact-main-flow">
             <!-- Google Maps Embed: Office Location -->
-            <div class="contact-wrap-map" style="margin-bottom: 35px; border-radius: 6px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.08);">
+            <div class="map-structural-frame">
+              <div class="map-meta-strip font-mono">
+                <i class="fas fa-map-marker-alt text-crimson" aria-hidden="true"></i>
+                <span>CORPORATE HEADQUARTERS // 585/C KHILGAON, DHAKA-1219, BANGLADESH</span>
+              </div>
               <iframe
                 src="https://maps.google.com/maps?q=585%2FC%2C+Khilgaon%2C+C+Block%2C+Dhaka-1219%2C+Bangladesh&t=&z=15&ie=UTF8&iwloc=&output=embed"
                 width="100%"
-                height="450"
+                height="380"
                 style="border:0; display: block;"
                 allowfullscreen=""
                 loading="lazy"
-                title="Max Gloves BD Ltd. Office Location Map"
+                title="Max Gloves BD Ltd. Corporate Office Location Map"
               ></iframe>
             </div>
 
-            <!-- Contact Form -->
-            <div class="contact-form" style="background: #ffffff; padding: 40px; border-radius: 6px; box-shadow: 0 4px 20px rgba(0,0,0,0.06); border: 1px solid #ebebeb;">
-              <div class="heading-layout3" style="margin-bottom: 25px;">
-                <h3 class="mg-b-10" style="font-size: 26px; font-weight: 700; color: var(--brand-navy);">Get In Touch With Us!</h3>
-                <p style="color: #666; font-size: 14.5px; margin-top: 6px;">Have questions about our glove catalog, customized OEM manufacturing, or factory orders? Send us an inquiry below.</p>
+            <!-- Architectural Contact & RFQ Form -->
+            <div class="contact-form-card">
+              <div class="form-header-block">
+                <div class="kicker-tag font-mono">
+                  <span class="crimson-dot"></span>
+                  <span>PROCUREMENT & OEM INQUIRIES // DIRECT SALES DESK</span>
+                </div>
+                <h2 class="form-title">
+                  Send Factory RFQ or Specification Inquiry
+                </h2>
+                <p class="form-subtitle">
+                  Inquire about bulk leather glove container orders, custom branding/OEM specifications, EN standard certificates, or sample dispatches.
+                </p>
               </div>
 
-              <form class="contact-form-box" id="contactForm">
-                <div class="row gutters-15">
-                  <div class="col-md-6 col-12 form-group" style="margin-bottom: 20px;">
-                    <input
-                      type="text"
-                      placeholder="Name *"
-                      class="form-control"
-                      name="name"
-                      id="nameInput"
-                      required
-                      style="height: 50px; border: 1px solid #ddd; padding: 10px 18px; border-radius: 4px; width: 100%; font-size: 15px;"
-                    />
-                    <div class="help-block with-errors" style="color: var(--brand-orange); font-size: 13px; margin-top: 4px;"></div>
+              <form class="contact-form-box" id="contactForm" novalidate>
+                <div class="row g-4">
+                  <!-- Name -->
+                  <div class="col-md-6 col-12">
+                    <div class="input-field-group">
+                      <label for="nameInput" class="field-label font-mono">
+                        <span>FULL NAME</span>
+                        <span class="required-star text-crimson">*</span>
+                      </label>
+                      <input
+                        type="text"
+                        class="form-control-architectural"
+                        name="name"
+                        id="nameInput"
+                        placeholder="e.g. John Doe"
+                        required
+                        autocomplete="name"
+                      />
+                    </div>
                   </div>
 
-                  <div class="col-md-6 col-12 form-group" style="margin-bottom: 20px;">
-                    <input
-                      type="email"
-                      placeholder="E-mail *"
-                      class="form-control"
-                      name="email"
-                      id="emailInput"
-                      required
-                      style="height: 50px; border: 1px solid #ddd; padding: 10px 18px; border-radius: 4px; width: 100%; font-size: 15px;"
-                    />
-                    <div class="help-block with-errors" style="color: var(--brand-orange); font-size: 13px; margin-top: 4px;"></div>
+                  <!-- Email -->
+                  <div class="col-md-6 col-12">
+                    <div class="input-field-group">
+                      <label for="emailInput" class="field-label font-mono">
+                        <span>BUSINESS EMAIL</span>
+                        <span class="required-star text-crimson">*</span>
+                      </label>
+                      <input
+                        type="email"
+                        class="form-control-architectural"
+                        name="email"
+                        id="emailInput"
+                        placeholder="e.g. procurement@company.com"
+                        required
+                        autocomplete="email"
+                      />
+                    </div>
                   </div>
 
-                  <div class="col-md-6 col-12 form-group" style="margin-bottom: 20px;">
-                    <input
-                      type="text"
-                      placeholder="Phone"
-                      class="form-control"
-                      name="phone"
-                      id="phoneInput"
-                      style="height: 50px; border: 1px solid #ddd; padding: 10px 18px; border-radius: 4px; width: 100%; font-size: 15px;"
-                    />
-                    <div class="help-block with-errors" style="color: var(--brand-orange); font-size: 13px; margin-top: 4px;"></div>
+                  <!-- Phone -->
+                  <div class="col-md-6 col-12">
+                    <div class="input-field-group">
+                      <label for="phoneInput" class="field-label font-mono">
+                        <span>PHONE / WHATSAPP</span>
+                      </label>
+                      <input
+                        type="tel"
+                        class="form-control-architectural"
+                        name="phone"
+                        id="phoneInput"
+                        placeholder="e.g. +1 555-0199"
+                        autocomplete="tel"
+                      />
+                    </div>
                   </div>
 
-                  <div class="col-md-6 col-12 form-group" style="margin-bottom: 20px;">
-                    <input
-                      type="text"
-                      placeholder="Subject *"
-                      class="form-control"
-                      name="subject"
-                      id="subjectInput"
-                      required
-                      style="height: 50px; border: 1px solid #ddd; padding: 10px 18px; border-radius: 4px; width: 100%; font-size: 15px;"
-                    />
-                    <div class="help-block with-errors" style="color: var(--brand-orange); font-size: 13px; margin-top: 4px;"></div>
+                  <!-- Subject -->
+                  <div class="col-md-6 col-12">
+                    <div class="input-field-group">
+                      <label for="subjectInput" class="field-label font-mono">
+                        <span>INQUIRY SUBJECT / SKU</span>
+                        <span class="required-star text-crimson">*</span>
+                      </label>
+                      <input
+                        type="text"
+                        class="form-control-architectural"
+                        name="subject"
+                        id="subjectInput"
+                        placeholder="e.g. Quotation for Leather Welding Gloves SKU #163"
+                        required
+                      />
+                    </div>
                   </div>
 
-                  <div class="col-12 form-group" style="margin-bottom: 25px;">
-                    <textarea
-                      placeholder="Comments *"
-                      class="textarea form-control"
-                      name="comment"
-                      id="commentInput"
-                      rows="7"
-                      required
-                      style="border: 1px solid #ddd; padding: 14px 18px; border-radius: 4px; width: 100%; font-size: 15px; resize: vertical;"
-                    ></textarea>
-                    <div class="help-block with-errors" style="color: var(--brand-orange); font-size: 13px; margin-top: 4px;"></div>
+                  <!-- Message -->
+                  <div class="col-12">
+                    <div class="input-field-group">
+                      <label for="commentInput" class="field-label font-mono">
+                        <span>DETAILED INQUIRY & SPECIFICATIONS</span>
+                        <span class="required-star text-crimson">*</span>
+                      </label>
+                      <textarea
+                        class="form-control-architectural textarea-control"
+                        name="comment"
+                        id="commentInput"
+                        rows="6"
+                        placeholder="Please state expected quantity, destination port (FOB Chittagong), leather thickness requirement, and delivery timeline."
+                        required
+                      ></textarea>
+                    </div>
                   </div>
 
-                  <div class="col-12 form-group">
+                  <!-- Submit Action -->
+                  <div class="col-12">
                     <button
                       type="submit"
-                      class="item-btn btn-fill-lg btn-accent text-light"
+                      class="btn-crimson font-mono"
                       id="submitBtn"
-                      style="background: var(--brand-orange); color: #ffffff; border: none; padding: 14px 36px; border-radius: 4px; font-weight: 700; font-size: 16px; cursor: pointer; transition: background 0.25s;"
+                      style="padding: 14px 32px; font-size: 14px;"
                     >
-                      Send Now
+                      <i class="far fa-paper-plane" aria-hidden="true"></i>
+                      <span>SUBMIT INQUIRY FOR DISPATCH</span>
                     </button>
                   </div>
                 </div>
 
-                <div id="formStatus" class="form-feedback"></div>
+                <div id="formStatus" class="form-feedback-area" role="alert" aria-live="polite"></div>
               </form>
             </div>
           </div>
         </div>
 
         <!-- Sidebar Column (col-lg-4) -->
-        <div class="col-lg-4 sidebar-break-md sidebar-widget-area">
-          <!-- 1. Direct Contact Card (Phone & Email First) -->
-          <ul class="list-group" style="margin-bottom: 25px; list-style: none; padding: 0;">
-            <li class="list-group-item list-group-item-info" style="background: var(--brand-navy); color: #ffffff; border: none; padding: 14px 20px; border-radius: 6px 6px 0 0;">
-              <h4 style="color: #ffffff; margin: 0; font-size: 18px; display: flex; align-items: center; gap: 10px;">
-                <i class="fas fa-headset" style="color: var(--brand-orange);"></i> Direct Contact
-              </h4>
-            </li>
-            <li class="list-group-item" style="border: 1px solid #ebebeb; border-top: none; border-radius: 0 0 6px 6px; padding: 25px 20px; background: #ffffff; box-shadow: 0 4px 15px rgba(0,0,0,0.06);">
-              <div class="row section-info ourTeam-box text-center">
-                <div class="col-md-12 section2 pb-3" style="margin-bottom: 15px;">
-                  <p style="padding-top: 2px; font-size: 18px; font-weight: bold; color: var(--brand-navy); margin-bottom: 4px;">[PLACEHOLDER: contact person name needs confirmation]</p>
-                  <span style="font-size: 15px; font-weight: bold; color: var(--brand-orange);">Sales and Marketing</span><br />
-                  <span style="font-size: 14px; font-weight: 600; color: #555;">{BRAND.companyName}</span>
-                </div>
-                <div class="col-md-12" style="font-size: 14.5px; line-height: 32px; text-align: left;">
-                  <!-- Phone -->
-                  <p style="margin: 0; display: flex; align-items: center; gap: 10px;">
-                    <i class="fas fa-phone-alt" style="color: var(--brand-orange); width: 18px;"></i>
-                    <a href={BRAND.phoneTel} style="color: #111; text-decoration: none; font-weight: 700;">{BRAND.phone}</a>
-                  </p>
-                  <!-- Email -->
-                  <p style="margin: 0; display: flex; align-items: center; gap: 10px;">
-                    <i class="far fa-envelope" style="color: var(--brand-orange); width: 18px;"></i>
-                    <a href={BRAND.emailMailto} style="color: #111; text-decoration: none; font-weight: 600;">{BRAND.email}</a>
-                  </p>
-                  <!-- Website -->
-                  <p style="margin: 0; display: flex; align-items: center; gap: 10px;">
-                    <i class="fas fa-globe" style="color: var(--brand-orange); width: 18px;"></i>
-                    <a href={BRAND.websiteUrl} target="_blank" rel="noopener noreferrer" style="color: #111; text-decoration: none; font-weight: 500;">{BRAND.website}</a>
-                  </p>
+        <div class="col-lg-4">
+          <div class="contact-sidebar-stack">
+            <!-- 1. Direct Sales & Export Desk Card -->
+            <div class="sidebar-info-card">
+              <div class="card-kicker font-mono">
+                <i class="fas fa-headset text-crimson" aria-hidden="true"></i>
+                <span>DIRECT EXPORT PROCUREMENT</span>
+              </div>
+              <h3 class="sidebar-card-title">Commercial & Sales Desk</h3>
+              <p class="sidebar-card-desc">
+                Contact our international trade team directly for instant pricing sheets, material grade samples, or factory video inspections.
+              </p>
 
-                  <div class="col-md-12 text-center" style="margin-top: 20px;">
-                    <button class="vc-trigger" id="vcOpenBtn" style="background: var(--brand-navy); color: #fff; border: none; padding: 10px 22px; border-radius: 4px; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
-                      <i class="far fa-id-card"></i> View Card
-                    </button>
+              <div class="sidebar-channel-list">
+                <div class="channel-row">
+                  <i class="fas fa-phone-alt text-crimson" aria-hidden="true"></i>
+                  <div>
+                    <span class="channel-kicker font-mono">DIRECT PHONE</span>
+                    <a href={BRAND.phoneTel} class="channel-link font-mono">{BRAND.phone}</a>
+                  </div>
+                </div>
+
+                <div class="channel-row">
+                  <i class="far fa-envelope text-crimson" aria-hidden="true"></i>
+                  <div>
+                    <span class="channel-kicker font-mono">SALES INBOX</span>
+                    <a href={BRAND.emailMailto} class="channel-link font-mono">{BRAND.email}</a>
+                  </div>
+                </div>
+
+                <div class="channel-row">
+                  <i class="fas fa-globe text-crimson" aria-hidden="true"></i>
+                  <div>
+                    <span class="channel-kicker font-mono">WEBSITE PORTAL</span>
+                    <span class="channel-static font-mono">{BRAND.website}</span>
                   </div>
                 </div>
               </div>
-            </li>
-          </ul>
 
-          <!-- 2. Office Address Card -->
-          <div class="widget widget-contact-info" style="background: #ffffff; padding: 25px; border-radius: 6px; box-shadow: 0 4px 15px rgba(0,0,0,0.06); border: 1px solid #ebebeb; margin-bottom: 25px;">
-            <div class="media" style="display: flex; gap: 15px; align-items: flex-start;">
-              <div class="item-icon" style="color: var(--brand-orange); font-size: 28px; line-height: 1;">
-                <i class="fas fa-building"></i>
-              </div>
-              <div class="media-body space-md">
-                <h4 style="font-size: 17px; font-weight: 700; color: var(--brand-navy); margin-bottom: 6px;">Head Office</h4>
-                <p style="margin: 0; color: #555; line-height: 22px; font-size: 14.5px;">
-                  {BRAND.officeAddress}
-                </p>
-                <div style="margin-top: 8px;">
-                  <a href="#wrapper" onclick="window.scrollTo({top: 200, behavior: 'smooth'}); return false;" style="font-size: 13px; color: var(--brand-orange); font-weight: 600; text-decoration: none;">
-                    <i class="fas fa-map-marked-alt"></i> View on map above
-                  </a>
-                </div>
+              <div class="mt-4 pt-3 border-top">
+                <button type="button" class="btn-steel-outline font-mono w-100 justify-content-center" id="vcOpenBtn">
+                  <i class="far fa-id-card text-crimson" aria-hidden="true"></i>
+                  <span>VIEW OFFICIAL BUSINESS CARD</span>
+                </button>
               </div>
             </div>
-          </div>
 
-          <!-- 3. Factory Address Card -->
-          <div class="widget widget-contact-info" style="background: #ffffff; padding: 25px; border-radius: 6px; box-shadow: 0 4px 15px rgba(0,0,0,0.06); border: 1px solid #ebebeb; margin-bottom: 25px;">
-            <div class="media" style="display: flex; gap: 15px; align-items: flex-start;">
-              <div class="item-icon" style="color: var(--brand-orange); font-size: 28px; line-height: 1;">
-                <i class="fas fa-industry"></i>
+            <!-- 2. Headquarters Facility Card -->
+            <div class="sidebar-info-card">
+              <div class="card-kicker font-mono">
+                <i class="fas fa-building text-crimson" aria-hidden="true"></i>
+                <span>CORPORATE HEADQUARTERS</span>
               </div>
-              <div class="media-body space-md">
-                <h4 style="font-size: 17px; font-weight: 700; color: var(--brand-navy); margin-bottom: 6px;">Factory</h4>
-                <p style="margin: 0; color: #555; line-height: 22px; font-size: 14.5px;">
-                  {BRAND.factoryAddress}
-                </p>
+              <h4 class="facility-name">Dhaka Corporate Office</h4>
+              <p class="facility-address">
+                {BRAND.officeAddress}
+              </p>
+              <div class="facility-spec font-mono">
+                ADMINISTRATION & EXPORT DOCUMENTATION
+              </div>
+            </div>
+
+            <!-- 3. Factory Plant Facility Card -->
+            <div class="sidebar-info-card">
+              <div class="card-kicker font-mono">
+                <i class="fas fa-industry text-crimson" aria-hidden="true"></i>
+                <span>MANUFACTURING FACILITY</span>
+              </div>
+              <h4 class="facility-name">Savar Production Plant</h4>
+              <p class="facility-address">
+                {BRAND.factoryAddress}
+              </p>
+              <div class="facility-spec font-mono">
+                1,530 M² FLOOR // CUTTING, SEWING & EXPORT PACKAGING
               </div>
             </div>
           </div>
@@ -199,16 +241,19 @@ import BRAND from '../config/site';
     </div>
   </section>
 
-  <!-- Visiting Card Modal Dialog -->
-  <dialog id="vcDialog">
-    <div class="vc-modal-inner">
-      <button class="vc-close" id="vcCloseBtn" aria-label="Close">&times;</button>
-      <div class="card-badge icon" style="text-align: center;">
+  <!-- Business Card Modal Dialog -->
+  <dialog id="vcDialog" class="architectural-modal-dialog">
+    <div class="modal-dialog-inner">
+      <div class="dialog-header">
+        <span class="font-mono text-muted" style="font-size: 11px;">MAX GLOVES BD LTD. // OFFICIAL BUSINESS CARD</span>
+        <button type="button" class="modal-close-btn" id="vcCloseBtn" aria-label="Close dialog">&times;</button>
+      </div>
+      <div class="dialog-body text-center">
         <img
           src="/front-end/img/max-visiting-card.png"
-          alt="Max Gloves BD Ltd. Visiting Card"
+          alt="Max Gloves BD Ltd. Official Business Card"
           loading="lazy"
-          style="width: 100%; height: auto; border-radius: 6px; display: block; box-shadow: 0 4px 15px rgba(0,0,0,0.1);"
+          class="business-card-img"
         />
       </div>
     </div>
@@ -216,60 +261,281 @@ import BRAND from '../config/site';
 </BaseLayout>
 
 <style>
+  .contact-architectural-section {
+    background-color: var(--color-canvas, #F8FAFC);
+    padding: 75px 0 100px;
+  }
+
+  /* Map Frame */
+  .map-structural-frame {
+    border: 1px solid var(--color-border, #E2E8F0);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 30px;
+    background: #FFFFFF;
+  }
+  .map-meta-strip {
+    background: #0B1118;
+    color: #CBD5E1;
+    padding: 10px 16px;
+    font-size: 11px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    letter-spacing: 0.05em;
+  }
+
+  /* Form Card */
+  .contact-form-card {
+    background: #FFFFFF;
+    border: 1px solid var(--color-border, #E2E8F0);
+    border-radius: 4px;
+    padding: 36px;
+  }
+  .form-header-block {
+    margin-bottom: 28px;
+  }
+  .form-title {
+    font-size: clamp(24px, 3.2vw, 34px);
+    font-weight: 800;
+    color: var(--color-steel, #0B1118);
+    letter-spacing: -0.02em;
+    margin-bottom: 8px;
+  }
+  .form-subtitle {
+    color: var(--color-text-muted, #64748B);
+    font-size: 15px;
+    line-height: 1.55;
+    margin: 0;
+  }
+
+  /* Form Controls & Accessible Labels */
+  .input-field-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .field-label {
+    font-size: 11.5px;
+    font-weight: 600;
+    color: var(--color-steel, #0B1118);
+    letter-spacing: 0.04em;
+  }
+  .form-control-architectural {
+    height: 48px;
+    border: 1px solid var(--color-border, #E2E8F0);
+    border-radius: 4px;
+    padding: 10px 16px;
+    font-family: var(--font-body);
+    font-size: 14.5px;
+    color: var(--color-steel, #0B1118);
+    background: var(--color-well, #F1F5F9);
+    transition: all 0.2s ease;
+    width: 100%;
+  }
+  .form-control-architectural:focus {
+    background: #FFFFFF;
+    border-color: var(--color-crimson, #C81E1E);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(200, 30, 30, 0.12);
+  }
+  .textarea-control {
+    height: auto;
+    resize: vertical;
+    padding: 14px 16px;
+  }
+
+  .form-feedback-area {
+    margin-top: 20px;
+  }
+
+  /* Sidebar Cards */
+  .contact-sidebar-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .sidebar-info-card {
+    background: #FFFFFF;
+    border: 1px solid var(--color-border, #E2E8F0);
+    border-radius: 4px;
+    padding: 24px;
+  }
+  .card-kicker {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 10.5px;
+    color: var(--color-text-muted, #64748B);
+    letter-spacing: 0.08em;
+    margin-bottom: 10px;
+  }
+  .sidebar-card-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--color-steel, #0B1118);
+    margin-bottom: 6px;
+  }
+  .sidebar-card-desc {
+    color: var(--color-text-muted, #64748B);
+    font-size: 13.5px;
+    line-height: 1.5;
+    margin-bottom: 18px;
+  }
+
+  .sidebar-channel-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .channel-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    background: var(--color-well, #F1F5F9);
+    border: 1px solid var(--color-border, #E2E8F0);
+    padding: 10px 14px;
+    border-radius: 4px;
+  }
+  .channel-row i {
+    font-size: 15px;
+    margin-top: 3px;
+  }
+  .channel-kicker {
+    display: block;
+    font-size: 10px;
+    color: var(--color-text-muted, #64748B);
+    letter-spacing: 0.06em;
+  }
+  .channel-link {
+    color: var(--color-steel, #0B1118);
+    font-size: 13.5px;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .channel-link:hover {
+    color: var(--color-crimson, #C81E1E);
+  }
+  .channel-static {
+    color: var(--color-steel, #0B1118);
+    font-size: 13.5px;
+  }
+
+  .facility-name {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--color-steel, #0B1118);
+    margin-bottom: 4px;
+  }
+  .facility-address {
+    color: var(--color-text-body, #334155);
+    font-size: 14px;
+    line-height: 1.45;
+    margin-bottom: 10px;
+  }
+  .facility-spec {
+    font-size: 10.5px;
+    color: #64748B;
+    background: var(--color-well, #F1F5F9);
+    padding: 4px 8px;
+    border-radius: 3px;
+    border: 1px solid var(--color-border, #E2E8F0);
+    display: inline-block;
+  }
+
+  /* Modal Dialog */
+  .architectural-modal-dialog {
+    border: 1px solid var(--color-border, #E2E8F0);
+    border-radius: 6px;
+    padding: 0;
+    box-shadow: 0 16px 40px rgba(11, 17, 24, 0.2);
+    max-width: 620px;
+    width: 90%;
+  }
+  .architectural-modal-dialog::backdrop {
+    background: rgba(11, 17, 24, 0.7);
+    backdrop-filter: blur(4px);
+  }
+  .modal-dialog-inner {
+    background: #FFFFFF;
+  }
+  .dialog-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--color-border, #E2E8F0);
+    background: #0B1118;
+  }
+  .modal-close-btn {
+    background: transparent;
+    border: none;
+    color: #CBD5E1;
+    font-size: 24px;
+    cursor: pointer;
+    line-height: 1;
+    padding: 0;
+  }
+  .dialog-body {
+    padding: 24px;
+  }
+  .business-card-img {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  }
+
   @media (max-width: 767px) {
-    .contact-wrap-layout2 {
-      padding: 40px 0 !important;
-    }
-    .contact-form {
-      padding: 24px 16px !important;
-    }
-    .contact-wrap-map iframe {
-      height: 280px !important;
-    }
-    .heading-layout3 h3 {
-      font-size: 22px !important;
+    .contact-form-card {
+      padding: 22px 18px;
     }
   }
 </style>
 
 <script>
-  function initContactPage() {
+  function initContactPageScript() {
+    // Check URL parameters for pre-filling SKU
+    const urlParams = new URLSearchParams(window.location.search);
+    const skuParam = urlParams.get('sku');
+    const subjectEl = document.getElementById('subjectInput') as HTMLInputElement | null;
+    if (skuParam && subjectEl) {
+      subjectEl.value = `Quotation Request for Model ${skuParam}`;
+    }
+
+    // Modal dialog handling
     const vcOpenBtn = document.getElementById('vcOpenBtn');
     const vcCloseBtn = document.getElementById('vcCloseBtn');
-    const vcDialog = document.getElementById('vcDialog') as HTMLDialogElement;
+    const vcDialog = document.getElementById('vcDialog') as HTMLDialogElement | null;
 
     if (vcOpenBtn && vcDialog) {
       vcOpenBtn.addEventListener('click', () => {
         vcDialog.showModal();
       });
     }
-
     if (vcCloseBtn && vcDialog) {
       vcCloseBtn.addEventListener('click', () => {
         vcDialog.close();
       });
     }
-
     if (vcDialog) {
       vcDialog.addEventListener('click', (e) => {
-        if (e.target === vcDialog) {
-          vcDialog.close();
-        }
+        if (e.target === vcDialog) vcDialog.close();
       });
     }
 
-    const contactForm = document.getElementById('contactForm') as HTMLFormElement;
+    // Form submission validation & transparent fallback
+    const contactForm = document.getElementById('contactForm') as HTMLFormElement | null;
     const formStatus = document.getElementById('formStatus');
 
     if (contactForm && formStatus) {
       contactForm.addEventListener('submit', (e) => {
         e.preventDefault();
 
-        const nameEl = document.getElementById('nameInput') as HTMLInputElement;
-        const emailEl = document.getElementById('emailInput') as HTMLInputElement;
-        const phoneEl = document.getElementById('phoneInput') as HTMLInputElement;
-        const subjectEl = document.getElementById('subjectInput') as HTMLInputElement;
-        const commentEl = document.getElementById('commentInput') as HTMLTextAreaElement;
+        const nameEl = document.getElementById('nameInput') as HTMLInputElement | null;
+        const emailEl = document.getElementById('emailInput') as HTMLInputElement | null;
+        const phoneEl = document.getElementById('phoneInput') as HTMLInputElement | null;
+        const commentEl = document.getElementById('commentInput') as HTMLTextAreaElement | null;
 
         const name = nameEl?.value.trim() || '';
         const email = emailEl?.value.trim() || '';
@@ -277,53 +543,69 @@ import BRAND from '../config/site';
         const subject = subjectEl?.value.trim() || '';
         const comment = commentEl?.value.trim() || '';
 
-        // Email validation regex
         const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
         if (!name || name.length < 2) {
-          formStatus.innerHTML = '<div style="color: #d9534f; background: #fff0f0; border: 1px solid #ffcccc; padding: 12px; border-radius: 4px; font-weight: 600;"><i class="fas fa-exclamation-triangle"></i> Please provide your full name (minimum 2 characters).</div>';
+          formStatus.innerHTML = `
+            <div style="color: #991B1B; background: #FEF2F2; border: 1px solid #F87171; padding: 14px; border-radius: 4px; font-weight: 600; font-size: 14px;">
+              <i class="fas fa-exclamation-triangle" aria-hidden="true"></i> Please provide your full name (minimum 2 characters).
+            </div>
+          `;
           nameEl?.focus();
           return;
         }
 
         if (!emailPattern.test(email)) {
-          formStatus.innerHTML = '<div style="color: #d9534f; background: #fff0f0; border: 1px solid #ffcccc; padding: 12px; border-radius: 4px; font-weight: 600;"><i class="fas fa-exclamation-triangle"></i> Please provide a valid email address.</div>';
+          formStatus.innerHTML = `
+            <div style="color: #991B1B; background: #FEF2F2; border: 1px solid #F87171; padding: 14px; border-radius: 4px; font-weight: 600; font-size: 14px;">
+              <i class="fas fa-exclamation-triangle" aria-hidden="true"></i> Please enter a valid business email address.
+            </div>
+          `;
           emailEl?.focus();
           return;
         }
 
         if (!subject || subject.length < 3) {
-          formStatus.innerHTML = '<div style="color: #d9534f; background: #fff0f0; border: 1px solid #ffcccc; padding: 12px; border-radius: 4px; font-weight: 600;"><i class="fas fa-exclamation-triangle"></i> Please enter an inquiry subject.</div>';
+          formStatus.innerHTML = `
+            <div style="color: #991B1B; background: #FEF2F2; border: 1px solid #F87171; padding: 14px; border-radius: 4px; font-weight: 600; font-size: 14px;">
+              <i class="fas fa-exclamation-triangle" aria-hidden="true"></i> Please enter an inquiry subject or product SKU.
+            </div>
+          `;
           subjectEl?.focus();
           return;
         }
 
         if (!comment || comment.length < 5) {
-          formStatus.innerHTML = '<div style="color: #d9534f; background: #fff0f0; border: 1px solid #ffcccc; padding: 12px; border-radius: 4px; font-weight: 600;"><i class="fas fa-exclamation-triangle"></i> Please enter your message or question.</div>';
+          formStatus.innerHTML = `
+            <div style="color: #991B1B; background: #FEF2F2; border: 1px solid #F87171; padding: 14px; border-radius: 4px; font-weight: 600; font-size: 14px;">
+              <i class="fas fa-exclamation-triangle" aria-hidden="true"></i> Please provide details regarding your inquiry or requirements.
+            </div>
+          `;
           commentEl?.focus();
           return;
         }
 
-        // Construct pre-filled email inquiry for honest fallback
-        const emailBody = `Name: ${name}\nEmail: ${email}\nPhone: ${phone || 'N/A'}\nSubject: ${subject}\n\nMessage:\n${comment}\n\n---\nSent via MAX GLOVES BD LTD. Website`;
-        const mailtoLink = `mailto:maxglovesbdltd@gmail.com?subject=${encodeURIComponent(`[Website Inquiry] ${subject}`)}&body=${encodeURIComponent(emailBody)}`;
+        // Construct pre-filled email inquiry for honest transparent direct-dispatch
+        const emailBody = `Name: ${name}\nEmail: ${email}\nPhone: ${phone || 'N/A'}\nSubject: ${subject}\n\nMessage:\n${comment}\n\n---\nDispatched via MAX GLOVES BD LTD. Exporter Portal`;
+        const mailtoLink = `mailto:maxglovesbdltd@gmail.com?subject=${encodeURIComponent(`[RFQ Inquiry] ${subject}`)}&body=${encodeURIComponent(emailBody)}`;
 
         formStatus.innerHTML = `
-          <div style="background: #f0f7ff; border: 2px solid #05254F; border-radius: 6px; padding: 22px 20px; margin-top: 25px; box-shadow: 0 4px 15px rgba(5,37,79,0.08);">
+          <div style="background: #F8FAFC; border: 1px solid #CBD5E1; border-radius: 4px; padding: 24px; margin-top: 24px;">
             <div style="display: flex; align-items: flex-start; gap: 14px;">
-              <i class="fas fa-info-circle" style="color: var(--brand-navy); font-size: 24px; margin-top: 2px; flex-shrink: 0;"></i>
+              <i class="fas fa-info-circle text-crimson" style="font-size: 24px; margin-top: 2px;"></i>
               <div>
-                <h4 style="color: var(--brand-navy); font-size: 17px; font-weight: 700; margin: 0 0 6px;">
-                  Thank you, ${name}! Inquiry Prepared
+                <h4 style="color: #0B1118; font-size: 17px; font-weight: 700; margin: 0 0 6px;">
+                  Inquiry Formatted for Direct Dispatch
                 </h4>
-                <p style="color: #334155; font-size: 14px; margin: 0 0 14px; line-height: 1.6;">
-                  Direct automated form delivery is currently operating in direct-inquiry mode. Your inquiry has been validated and formatted. Click below to launch your email client to dispatch it directly to our sales inbox at <strong>maxglovesbdltd@gmail.com</strong>, or call us directly.
+                <p style="color: #334155; font-size: 14px; line-height: 1.6; margin: 0 0 16px;">
+                  Thank you, <strong>${name}</strong>. Your inquiry has been validated and compiled. Click below to launch your email client to transmit it directly to our commercial sales desk at <strong>maxglovesbdltd@gmail.com</strong>, or call us immediately.
                 </p>
                 <div style="display: flex; flex-wrap: wrap; gap: 12px;">
-                  <a href="${mailtoLink}" class="btn" style="background: var(--brand-orange); color: #ffffff; text-decoration: none; padding: 10px 22px; border-radius: 4px; font-weight: 700; font-size: 14px; display: inline-flex; align-items: center; gap: 8px;">
+                  <a href="${mailtoLink}" class="btn-crimson font-mono" style="padding: 10px 20px; font-size: 13.5px;">
                     <i class="far fa-envelope"></i> Open in Email Client
                   </a>
-                  <a href="tel:+8801710591088" class="btn" style="background: var(--brand-navy); color: #ffffff; text-decoration: none; padding: 10px 22px; border-radius: 4px; font-weight: 700; font-size: 14px; display: inline-flex; align-items: center; gap: 8px;">
-                    <i class="fas fa-phone-alt"></i> Call +880 1710-591088
+                  <a href="tel:+8801710591088" class="btn-steel-outline font-mono" style="padding: 10px 20px; font-size: 13.5px;">
+                    <i class="fas fa-phone-alt text-crimson"></i> Call +880 1710-591088
                   </a>
                 </div>
               </div>
@@ -335,8 +617,8 @@ import BRAND from '../config/site';
   }
 
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initContactPage);
+    document.addEventListener('DOMContentLoaded', initContactPageScript);
   } else {
-    initContactPage();
+    initContactPageScript();
   }
 </script>

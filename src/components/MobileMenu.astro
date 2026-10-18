@@ -28,93 +28,356 @@ const labels = {
     about: 'ABOUT US',
     facilities: 'OUR FACILITIES',
     compliance: 'COMPLIANCE',
-    products: 'OUR PRODUCT',
+    products: 'GLOVE CATALOG',
     gallery: 'GALLERY',
     contact: 'CONTACT US',
-    language: 'Language'
+    language: 'LANGUAGE',
+    rfq: 'SUBMIT RFQ INQUIRY'
   },
   jp: {
-    home: 'ホームページ',
-    about: '私たちについて',
-    facilities: '私たちの施設',
-    compliance: 'コンプライアンス',
-    products: '私たちの商品',
+    home: 'ホーム',
+    about: '企業情報',
+    facilities: '製造施設',
+    compliance: '認証規格',
+    products: '製品カタログ',
     gallery: 'ギャラリー',
     contact: 'お問い合わせ',
-    language: '言語'
+    language: '言語選択',
+    rfq: 'お見積り依頼'
   },
   kr: {
-    home: '홈 페이지',
+    home: '홈',
     about: '회사 소개',
-    facilities: '우리 시설',
-    compliance: '규정 준수',
-    products: '우리의 제품',
+    facilities: '생산 시설',
+    compliance: '품질 인증',
+    products: '제품 카탈로그',
     gallery: '갤러리',
     contact: '문의하기',
-    language: '언어'
+    language: '언어 선택',
+    rfq: '견적 요청'
   }
 }[locale];
+
+const categories = [
+  { id: 20, name: 'Leather Welding Gloves', url: '/category/20' },
+  { id: 19, name: 'Leather Split Gloves', url: '/category/19' },
+  { id: 17, name: 'Leather Driver Gloves', url: '/category/17' },
+  { id: 18, name: 'Leather Grain Gloves', url: '/category/18' },
+  { id: 23, name: 'Leather Winter Gloves', url: '/category/23' },
+  { id: 21, name: 'Leather Palm Gloves', url: '/category/21' },
+  { id: 27, name: 'Synthetic Leather Gloves', url: '/category/27' },
+  { id: 29, name: 'Mechanic\'s Gloves', url: '/category/29' },
+  { id: 30, name: 'Impact Gloves', url: '/category/30' },
+  { id: 24, name: 'Leather Welding Jackets', url: '/category/24' },
+  { id: 25, name: 'Leather Welding Trousers', url: '/category/25' },
+  { id: 31, name: 'Cotton Interlock Gloves', url: '/category/31' },
+  { id: 32, name: 'Gardening Gloves', url: '/category/32' }
+];
 ---
 
-<div class="mean-container">
-  <div class="mean-bar">
-    <a href={homeUrl} class="mean-logo">
-      <img src={BRAND.logo.horizontal} alt={BRAND.logo.alt} style="max-height: 38px; width: auto; object-fit: contain;" />
+<div class="architectural-mobile-bar d-lg-none">
+  <div class="mobile-bar-inner">
+    <a href={homeUrl} class="mobile-logo-anchor" aria-label={`${BRAND.companyName} Home`}>
+      <img
+        src={BRAND.logo.horizontal}
+        alt={BRAND.logo.alt}
+        width="180"
+        height="45"
+        style="max-height: 40px; width: auto; object-fit: contain; display: block;"
+      />
     </a>
-    <a href="#nav" class="meanmenu-reveal" id="mobileMenuBtn" aria-label="Toggle Navigation">
-      <span></span>
-      <span></span>
-      <span></span>
-    </a>
+
+    <button
+      type="button"
+      id="mobileMenuBtn"
+      class="mobile-toggle-btn"
+      aria-label="Toggle navigation menu"
+      aria-expanded="false"
+      aria-controls="mobileNavMenu"
+    >
+      <span class="hamburger-bar"></span>
+      <span class="hamburger-bar"></span>
+      <span class="hamburger-bar"></span>
+    </button>
   </div>
-  <nav class="mean-nav" id="mobileNavMenu">
-    <ul>
+
+  <!-- Mobile Drawer Menu -->
+  <nav class="mobile-drawer-menu" id="mobileNavMenu" aria-label="Mobile Navigation" aria-hidden="true">
+    <div class="mobile-drawer-header font-mono">
+      <span>MAX GLOVES BD // NAVIGATION</span>
+    </div>
+
+    <ul class="mobile-nav-list">
       <li>
-        <a class={isHome ? 'active-m' : ''} href={homeUrl}>{labels.home}</a>
+        <a href={homeUrl} class={`mobile-nav-item ${isHome ? 'active' : ''}`}>{labels.home}</a>
       </li>
       <li>
-        <a class={isAbout ? 'active-m' : ''} href={aboutUrl}>{labels.about}</a>
+        <a href={aboutUrl} class={`mobile-nav-item ${isAbout ? 'active' : ''}`}>{labels.about}</a>
       </li>
       <li>
-        <a class={isFacilities ? 'active-m' : ''} href={facilitiesUrl}>{labels.facilities}</a>
+        <a href={facilitiesUrl} class={`mobile-nav-item ${isFacilities ? 'active' : ''}`}>{labels.facilities}</a>
       </li>
       <li>
-        <a class={isCompliance ? 'active-m' : ''} href={complianceUrl}>{labels.compliance}</a>
+        <a href={complianceUrl} class={`mobile-nav-item ${isCompliance ? 'active' : ''}`}>{labels.compliance}</a>
       </li>
-      <li class="has-submenu">
-        <a href="#">{labels.products}</a>
-        <a class="mean-expand" id="mobileProductsExpand" href="#" aria-label="Expand Products">+</a>
-        <ul id="mobileProductsSubmenu">
-          <li><a href="/category/23">Leather Winter Gloves</a></li>
-          <li><a href="/category/17">Leather Driver Gloves</a></li>
-          <li><a href="/category/18">Leather Grain Gloves</a></li>
-          <li><a href="/category/19">Leather Split Gloves</a></li>
-          <li><a href="/category/20">Leather Welding Gloves</a></li>
-          <li><a href="/category/21">Leather Palm Gloves</a></li>
-          <li><a href="/category/24">Leather Welding Jackets</a></li>
-          <li><a href="/category/25">Leather Welding Trousers</a></li>
-          <li><a href="/category/27">Synthetic Leather Gloves</a></li>
-          <li><a href="/category/29">Mechanics Gloves</a></li>
-          <li><a href="/category/30">Impact Gloves</a></li>
-          <li><a href="/category/31">Cotton Gloves</a></li>
-          <li><a href="/category/32">Gardening Gloves</a></li>
+
+      <!-- Products Accordion -->
+      <li class="mobile-accordion-group">
+        <div class="accordion-trigger-row">
+          <a href="/category/20" class="mobile-nav-item">{labels.products}</a>
+          <button
+            type="button"
+            id="mobileProductsExpand"
+            class="accordion-expand-btn font-mono"
+            aria-label="Toggle products categories"
+            aria-expanded="false"
+            aria-controls="mobileProductsSubmenu"
+          >+</button>
+        </div>
+        <ul id="mobileProductsSubmenu" class="mobile-submenu">
+          {categories.map((c) => (
+            <li>
+              <a href={c.url} class="mobile-sub-item">
+                <i class="fas fa-angle-right text-crimson" aria-hidden="true"></i>
+                <span>{c.name}</span>
+              </a>
+            </li>
+          ))}
         </ul>
       </li>
+
       <li>
-        <a class={isGallery ? 'active-m' : ''} href={galleryUrl}>{labels.gallery}</a>
+        <a href={galleryUrl} class={`mobile-nav-item ${isGallery ? 'active' : ''}`}>{labels.gallery}</a>
       </li>
       <li>
-        <a class={isContact ? 'active-m' : ''} href={contactUrl}>{labels.contact}</a>
+        <a href={contactUrl} class={`mobile-nav-item ${isContact ? 'active' : ''}`}>{labels.contact}</a>
       </li>
-      <li class="has-submenu">
-        <a href="#">{labels.language}</a>
-        <a class="mean-expand" id="mobileLangExpand" href="#" aria-label="Expand Languages">+</a>
-        <ul id="mobileLangSubmenu">
-          <li><a href="/">English</a></li>
-          <li><a href="/jp/">日本語</a></li>
-          <li><a href="/kr/">한국인</a></li>
+
+      <!-- Language Switcher Accordion -->
+      <li class="mobile-accordion-group">
+        <div class="accordion-trigger-row">
+          <span class="mobile-nav-item">{labels.language}</span>
+          <button
+            type="button"
+            id="mobileLangExpand"
+            class="accordion-expand-btn font-mono"
+            aria-label="Toggle language menu"
+            aria-expanded="false"
+            aria-controls="mobileLangSubmenu"
+          >+</button>
+        </div>
+        <ul id="mobileLangSubmenu" class="mobile-submenu">
+          <li>
+            <a href="/" class="mobile-sub-item">
+              <span class="flag-circle font-mono">EN</span>
+              <span>English</span>
+            </a>
+          </li>
+          <li>
+            <a href="/jp/" class="mobile-sub-item">
+              <span class="flag-circle font-mono">JP</span>
+              <span>日本語 (Japanese)</span>
+            </a>
+          </li>
+          <li>
+            <a href="/kr/" class="mobile-sub-item">
+              <span class="flag-circle font-mono">KR</span>
+              <span>한국어 (Korean)</span>
+            </a>
+          </li>
         </ul>
       </li>
     </ul>
+
+    <!-- Bottom Mobile RFQ Action -->
+    <div class="mobile-drawer-footer">
+      <a href={contactUrl} class="btn-mobile-rfq font-mono">
+        <i class="far fa-paper-plane" aria-hidden="true"></i>
+        <span>{labels.rfq}</span>
+      </a>
+      <div class="mobile-drawer-contact font-mono">
+        <div>TEL: {BRAND.phone}</div>
+        <div>MAIL: {BRAND.email}</div>
+      </div>
+    </div>
   </nav>
 </div>
+
+<style>
+  .architectural-mobile-bar {
+    background: #0B1118;
+    border-bottom: 1px solid #223242;
+    position: sticky;
+    top: 0;
+    z-index: 1050;
+  }
+  .mobile-bar-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 16px;
+  }
+  .mobile-toggle-btn {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    background: #15202B;
+    border: 1px solid #223242;
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 0;
+  }
+  .hamburger-bar {
+    width: 22px;
+    height: 2px;
+    background-color: #FFFFFF;
+    border-radius: 2px;
+    transition: all 0.25s ease;
+  }
+  .mobile-toggle-btn.is-active .hamburger-bar:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+  .mobile-toggle-btn.is-active .hamburger-bar:nth-child(2) {
+    opacity: 0;
+  }
+  .mobile-toggle-btn.is-active .hamburger-bar:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  /* Drawer Navigation */
+  .mobile-drawer-menu {
+    display: none;
+    background: #0B1118;
+    border-bottom: 2px solid var(--color-crimson, #C81E1E);
+    max-height: calc(100vh - 64px);
+    overflow-y: auto;
+  }
+  .mobile-drawer-menu.is-open {
+    display: block;
+  }
+  .mobile-drawer-header {
+    padding: 12px 18px 8px;
+    font-size: 11px;
+    color: #64748B;
+    letter-spacing: 0.08em;
+    border-bottom: 1px solid #1E293B;
+  }
+
+  .mobile-nav-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .mobile-nav-item {
+    display: block;
+    padding: 14px 18px;
+    color: #F8FAFC;
+    font-family: var(--font-heading, 'Barlow', sans-serif);
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-decoration: none;
+    border-bottom: 1px solid #15202B;
+    transition: background 0.15s ease;
+  }
+  .mobile-nav-item:hover,
+  .mobile-nav-item.active {
+    background: #15202B;
+    color: var(--color-crimson, #C81E1E);
+  }
+
+  .accordion-trigger-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #15202B;
+  }
+  .accordion-trigger-row .mobile-nav-item {
+    border-bottom: none;
+    flex: 1;
+  }
+  .accordion-expand-btn {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    color: #CBD5E1;
+    font-size: 20px;
+    font-weight: 700;
+    cursor: pointer;
+  }
+  .mobile-submenu {
+    display: none;
+    list-style: none;
+    margin: 0;
+    padding: 8px 0;
+    background: #15202B;
+    border-bottom: 1px solid #223242;
+  }
+  .mobile-submenu.sub-open {
+    display: block;
+  }
+  .mobile-sub-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 24px;
+    color: #94A3B8;
+    font-size: 14px;
+    text-decoration: none;
+    transition: color 0.15s ease;
+  }
+  .mobile-sub-item:hover {
+    color: #FFFFFF;
+  }
+  .flag-circle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 18px;
+    background: #223242;
+    color: #E2E8F0;
+    font-size: 10px;
+    border-radius: 2px;
+  }
+
+  /* Drawer Footer */
+  .mobile-drawer-footer {
+    padding: 20px 18px 25px;
+    background: #0B1118;
+  }
+  .btn-mobile-rfq {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 14px;
+    background-color: var(--color-crimson, #C81E1E);
+    color: #FFFFFF;
+    border-radius: 4px;
+    font-size: 13.5px;
+    font-weight: 700;
+    text-decoration: none;
+    letter-spacing: 0.04em;
+  }
+  .btn-mobile-rfq:hover {
+    background-color: var(--color-crimson-hover, #A81818);
+    color: #FFFFFF;
+  }
+  .mobile-drawer-contact {
+    margin-top: 14px;
+    font-size: 11px;
+    color: #64748B;
+    line-height: 1.6;
+    text-align: center;
+  }
+</style>

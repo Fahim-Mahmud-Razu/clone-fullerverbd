@@ -4,6 +4,7 @@ import PageBanner from '../../../components/PageBanner.astro';
 import krData from '../../../data/kr_data.json';
 import products from '../../../data/products.json';
 import categories from '../../../data/categories.json';
+import BRAND from '../../../config/site';
 
 export function getStaticPaths() {
   return krData.categories.map((cat) => ({
@@ -23,42 +24,70 @@ interface Props {
 
 const { category } = Astro.props;
 
+// Find matching product IDs from main category definition
 const baseCat = categories.find((c) => c.id === category.id);
 const categoryProducts = (baseCat?.product_ids || [])
   .map((pid) => products.find((p) => p.id === pid))
   .filter((p): p is typeof products[0] => Boolean(p));
 ---
 
-<BaseLayout title={`${category.title} - Max Gloves BD Ltd.`} currentPath={`/kr/category/${category.id}`} locale="kr">
+<BaseLayout title={`${category.title} — ${BRAND.companyName}`} currentPath={`/kr/category/${category.id}`} locale="kr">
   <PageBanner
     title={category.title}
-    breadcrumbs={[{ label: '홈 페이지', url: '/kr/' }, { label: '카테고리' }]}
+    breadcrumbs={[{ label: '홈페이지', url: '/kr/' }, { label: '제품 카테고리', url: '/kr/category/20' }, { label: category.title }]}
   />
 
-  <section class="project-wrap-layout1 bg-common" style="padding: 70px 0 85px;">
+  <section class="category-catalog-section" aria-label={`${category.title} 카탈로그`}>
     <div class="container">
-      <div class="row gutters-15">
+      <!-- Category Catalog Header -->
+      <div class="category-header-bar d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-5 pb-3">
+        <div>
+          <div class="font-mono text-muted text-uppercase" style="font-size: 11.5px; letter-spacing: 0.08em; margin-bottom: 6px;">
+            CATEGORY REF // CAT-{category.id.toString().padStart(2, '0')}
+          </div>
+          <h2 class="category-page-title">{category.title}</h2>
+        </div>
+        <div class="mt-3 mt-md-0 d-flex align-items-center gap-3">
+          <span class="catalog-count-pill font-mono">
+            {categoryProducts.length} 모델 인증
+          </span>
+          <a href="/kr/contact" class="btn-crimson font-mono" style="padding: 9px 18px; font-size: 13px;">
+            <i class="far fa-paper-plane" aria-hidden="true"></i>
+            <span>견적 문의 (RFQ)</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Standardized 4:3 Studio Wells Product Grid -->
+      <div class="row g-4">
         {categoryProducts.map((prod) => (
-          <div class="col-lg-4 col-md-6 col-12 col-sm-4" style="margin-bottom: 30px;">
-            <div class="project-box-layout1" style="position: relative; overflow: hidden; background: #f8f8f8; border-radius: 4px; box-shadow: 0 4px 15px rgba(0,0,0,0.06); height: 336px;">
-              <div class="item-img" style="overflow: hidden; height: 100%; display: flex; align-items: center; justify-content: center; background: radial-gradient(circle, #eef7fc 0%, #ffffff 80%); padding: 20px;">
+          <div class="col-xl-4 col-md-6 col-12">
+            <a href={`/product/${prod.id}`} class="product-item-card" aria-label={`${prod.title} (SKU: ${prod.sku || prod.id}) 보기`}>
+              <!-- 4:3 Studio Well -->
+              <div class="studio-product-well">
+                <div class="product-well-badges font-mono">
+                  <span class="badge-sku">SKU: #{prod.sku || prod.id}</span>
+                  {prod.sprite_image && <span class="badge-3d">3D 뷰</span>}
+                </div>
                 <img
                   src={prod.preview_image || prod.sprite_image}
                   alt={prod.title}
                   loading="lazy"
-                  style="max-height: 85%; max-width: 90%; object-fit: contain; transition: transform 0.4s ease;"
+                  decoding="async"
+                  class="product-well-img"
                 />
               </div>
-              <div class="item-content" style="position: absolute; inset: 0; background: rgba(5, 37, 79, 0.88); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s ease; padding: 20px;">
-                <a
-                  href={`/product/${prod.id}`}
-                  class="item-btn"
-                  style="color: #ffffff; border: 2px solid var(--brand-orange); background: var(--brand-orange); padding: 10px 24px; border-radius: 4px; font-weight: 700; text-decoration: none; font-size: 15px; text-align: center; display: inline-flex; align-items: center; gap: 6px; box-shadow: 0 4px 12px rgba(246, 98, 2, 0.4);"
-                >
-                  상세 보기 <i class="fas fa-arrow-right" style="font-size: 13px;" aria-hidden="true"></i>
-                </a>
+
+              <!-- Product Info Card Body -->
+              <div class="product-card-body">
+                <div class="product-cat-kicker font-mono">{category.title}</div>
+                <h3 class="product-card-title">{prod.title}</h3>
+                <div class="product-card-action font-mono">
+                  <span>사양 및 상세 정보 확인</span>
+                  <i class="fas fa-arrow-right text-crimson" aria-hidden="true"></i>
+                </div>
               </div>
-            </div>
+            </a>
           </div>
         ))}
       </div>
@@ -67,10 +96,142 @@ const categoryProducts = (baseCat?.product_ids || [])
 </BaseLayout>
 
 <style>
-  .project-box-layout1:hover .item-content {
-    opacity: 1 !important;
+  .category-catalog-section {
+    background-color: var(--color-canvas, #F8FAFC);
+    padding: 70px 0 90px;
   }
-  .project-box-layout1:hover .item-img img {
-    transform: scale(1.08);
+
+  .category-header-bar {
+    border-bottom: 1px solid var(--color-border, #E2E8F0);
+  }
+  .category-page-title {
+    font-size: clamp(26px, 3.5vw, 36px);
+    font-weight: 800;
+    color: var(--color-steel, #0B1118);
+    letter-spacing: -0.02em;
+    margin: 0;
+  }
+  .catalog-count-pill {
+    background: #FFFFFF;
+    border: 1px solid var(--color-border, #E2E8F0);
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 11.5px;
+    color: var(--color-steel, #0B1118);
+    font-weight: 600;
+  }
+
+  /* Product Card Container */
+  .product-item-card {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    background: #FFFFFF;
+    border: 1px solid var(--color-border, #E2E8F0);
+    border-radius: 4px;
+    overflow: hidden;
+    height: 100%;
+    transition: all 0.2s ease;
+  }
+  .product-item-card:hover {
+    border-color: var(--color-border-dark, #CBD5E1);
+    box-shadow: 0 8px 24px rgba(11, 17, 24, 0.06);
+    transform: translateY(-2px);
+  }
+
+  /* 4:3 Neutral Studio Well */
+  .studio-product-well {
+    position: relative;
+    aspect-ratio: 4 / 3;
+    background-color: var(--color-well, #F1F5F9);
+    border-bottom: 1px solid var(--color-border, #E2E8F0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    overflow: hidden;
+  }
+
+  .product-well-badges {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    right: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    pointer-events: none;
+    z-index: 2;
+  }
+  .badge-sku {
+    font-size: 11px;
+    font-weight: 600;
+    background: rgba(255, 255, 255, 0.95);
+    color: var(--color-steel, #0B1118);
+    border: 1px solid var(--color-border, #E2E8F0);
+    padding: 2px 8px;
+    border-radius: 3px;
+  }
+  .badge-3d {
+    font-size: 10.5px;
+    font-weight: 700;
+    background: var(--color-steel, #0B1118);
+    color: #FFFFFF;
+    padding: 2px 7px;
+    border-radius: 3px;
+    letter-spacing: 0.04em;
+  }
+
+  .product-well-img {
+    max-width: 85%;
+    max-height: 85%;
+    object-fit: contain;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    filter: drop-shadow(0 4px 12px rgba(11, 17, 24, 0.08));
+  }
+  .product-item-card:hover .product-well-img {
+    transform: scale(1.05);
+  }
+
+  /* Card Body */
+  .product-card-body {
+    padding: 20px 22px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    background: #FFFFFF;
+  }
+  .product-cat-kicker {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #64748B;
+    margin-bottom: 6px;
+  }
+  .product-card-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--color-steel, #0B1118);
+    line-height: 1.35;
+    margin-bottom: 16px;
+    flex-grow: 1;
+  }
+  .product-card-action {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--color-steel, #0B1118);
+    padding-top: 14px;
+    border-top: 1px solid #F1F5F9;
+  }
+  .product-item-card:hover .product-card-action {
+    color: var(--color-crimson, #C81E1E);
+  }
+  .product-item-card:hover .product-card-action i {
+    transform: translateX(4px);
+    transition: transform 0.2s ease;
   }
 </style>

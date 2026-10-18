@@ -2,148 +2,247 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageBanner from '../components/PageBanner.astro';
 import CertificationSlider from '../components/CertificationSlider.astro';
+import BRAND from '../config/site';
+
+const complianceAreas = [
+  {
+    code: 'COMP-01',
+    title: 'Legal Compliance & Licensing',
+    icon: 'far fa-file-alt',
+    items: [
+      'Organization Policy structured on ILO conventions, Bangladesh Labour Act 2006 & Rules 2015',
+      'Valid Trade License & Fire Safety License approved by Bangladesh Fire Service',
+      'Factory License issued by Department of Inspection for Factories and Establishments (DIFE)',
+      'Bond License & Bangladesh Investment Development Authority (BIDA) Registration',
+      'LFMEAB Membership (Leathergoods And Footwear Manufacturers & Exporters Association of Bangladesh)',
+      'Department of Environment (DoE) Environmental Clearance Certificate'
+    ]
+  },
+  {
+    code: 'COMP-02',
+    title: 'Management Systems & Protocol',
+    icon: 'fas fa-cogs',
+    items: [
+      'Structured Code of Conduct and multi-department compliance auditing team',
+      'Dedicated task forces for Implementation, Controlling, Reporting & Continuous Monitoring',
+      'Adherence to ECA-1995 (Environment Conservation Act) and ECR-2023 Rules',
+      'Regular protocol review aligned with international B2B buyer audit criteria'
+    ]
+  },
+  {
+    code: 'COMP-03',
+    title: 'Working Hours & Rest Periods',
+    icon: 'far fa-clock',
+    items: [
+      'Standard 8-hour working shift (8:00 AM to 5:00 PM with 1-hour lunch & prayer break)',
+      'Overtime voluntary, capped, and compensated at statutory premium rates per Bangladesh Labour Law',
+      'Guaranteed 1 full day of weekly rest and observed national public holidays'
+    ]
+  },
+  {
+    code: 'COMP-04',
+    title: 'Compensation & Employee Welfare',
+    icon: 'fas fa-hand-holding-usd',
+    items: [
+      'Timely monthly wage disbursement meeting or exceeding statutory minimum wage levels',
+      'Maternity benefits, festival allowances, earned leave encashment, and service benefits',
+      'Documented pay-slips and transparent digital/bank wage records'
+    ]
+  },
+  {
+    code: 'COMP-05',
+    title: 'Freedom of Association & Dialogue',
+    icon: 'fas fa-users',
+    items: [
+      'Unrestricted rights to democratic employee representation and grievance communication',
+      'Active Participation Committee holding regular employer-worker consultative meetings',
+      'Documented meeting minutes submitted to Department of Inspection for Factories'
+    ]
+  },
+  {
+    code: 'COMP-06',
+    title: 'Strict Prohibition of Child Labour',
+    icon: 'fas fa-child',
+    items: [
+      'Absolute zero tolerance for child labor: strict minimum hiring age of 18 years verified via NID and birth records',
+      'Mandatory pre-employment medical fitness assessment by certified medical staff',
+      'Continuous age verification audits across raw material handling and sewing bays'
+    ]
+  },
+  {
+    code: 'COMP-07',
+    title: 'Zero Discrimination & Fair Treatment',
+    icon: 'fas fa-balance-scale',
+    items: [
+      'Equal opportunities for recruitment, compensation, training, and advancement regardless of gender, religion, race, or caste',
+      'Zero tolerance policy for harassment, intimidation, or verbal abuse in the workplace',
+      'Dedicated confidential grievance mechanism and Women’s Anti-Harassment Committee'
+    ]
+  },
+  {
+    code: 'COMP-08',
+    title: 'Occupational Health & Workplace Safety',
+    icon: 'fas fa-user-shield',
+    items: [
+      'Full personal protective equipment (PPE) provided free to all production floor workers',
+      'On-site First Aid medical room staffed with certified first-aiders and emergency contract doctors',
+      'Certified fire hydrants, multi-directional fire escape staircases, and bi-monthly evacuation drills',
+      'Continuous workshop ventilation, dust extraction, clean LED illumination, and tested potable drinking water'
+    ]
+  }
+];
 ---
 
-<BaseLayout title="Compliance - Max Gloves BD Ltd." currentPath="/compliance">
-  <PageBanner title="Compliance" breadcrumbs={[{ label: 'Home', url: '/' }, { label: 'Compliance' }]} />
+<BaseLayout title={`Compliance & Labor Standards — ${BRAND.companyName}`} currentPath="/compliance">
+  <PageBanner title="Compliance & Standards" breadcrumbs={[{ label: 'Home', url: '/' }, { label: 'Compliance' }]} />
 
-  <section class="about-wrap-layout7 bg-shape-2" style="padding: 70px 0; background: #ffffff;">
+  <section class="compliance-architectural-section" aria-label="Factory compliance and social accountability">
     <div class="container">
-      <div class="row about-box-layout9">
-        <!-- Left Column -->
-        <div class="col-lg-6 col-12 single-item left-item">
-          <!-- 1. Legal Compliance -->
-          <div class="item-content" style="text-align: justify; margin-bottom: 35px;">
-            <h4 style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
-              <i class="far fa-file" style="font-size: 50px; color: var(--brand-navy);"></i>
-              <b style="font-size: 20px;">Legal Compliance:</b>
-            </h4>
-            <p style="margin-bottom: 8px;"><i class="fa fa-check" style="color: #28a745; margin-right: 8px;"></i> Organization Policy (Based on ILO, Labour Law & Organization Standard)</p>
-            <p style="margin-bottom: 8px;"><i class="fa fa-check" style="color: #28a745; margin-right: 8px;"></i> Trade License</p>
-            <p style="margin-bottom: 8px;"><i class="fa fa-check" style="color: #28a745; margin-right: 8px;"></i> Fire License</p>
-            <p style="margin-bottom: 8px;"><i class="fa fa-check" style="color: #28a745; margin-right: 8px;"></i> Factory License</p>
-            <p style="margin-bottom: 8px;"><i class="fa fa-check" style="color: #28a745; margin-right: 8px;"></i> Bond License</p>
-            <p style="margin-bottom: 8px;"><i class="fa fa-check" style="color: #28a745; margin-right: 8px;"></i> Bangladesh Investments Development Authority (BIDA)</p>
-            <p style="margin-bottom: 8px;"><i class="fa fa-check" style="color: #28a745; margin-right: 8px;"></i> Membership Certificate Leather goods And Footwear Manufacturers & Exporters Association of Bangladesh (LFMEAB)</p>
-            <p style="margin-bottom: 8px;"><i class="fa fa-check" style="color: #28a745; margin-right: 8px;"></i> Environment Clearance Certificate</p>
-          </div>
-
-          <!-- 2. Management Systems -->
-          <div class="item-content" style="text-align: justify; margin-bottom: 35px;">
-            <h4 style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
-              <img src="/front-end/img/gallery/management_Systems.png" width="60" height="60" alt="Management Systems" />
-              <b style="font-size: 20px;">Management Systems:</b>
-            </h4>
-            <p style="margin-bottom: 8px;"><i class="fa fa-check" style="color: #28a745; margin-right: 8px;"></i> Strong Policy / Code of Conduct</p>
-            <p style="margin-bottom: 8px;"><i class="fa fa-check" style="color: #28a745; margin-right: 8px;"></i> Every policy has different team for Implementing, Controlling, Reporting & Monitoring</p>
-            <p style="margin-bottom: 8px;"><i class="fa fa-check" style="color: #28a745; margin-right: 8px;"></i> Maintain strong compliance based on Bangladesh Labor Law & Rules, ILO core convention, ECA-1995, and ECR: 2023 [PLACEHOLDER: ISO certification audits pending confirmation]</p>
-          </div>
-
-          <!-- 3. Working Hours -->
-          <div class="item-content" style="text-align: justify; margin-bottom: 35px;">
-            <h4 style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
-              <i class="far fa-clock" style="font-size: 50px; color: var(--brand-navy);"></i>
-              <b style="font-size: 20px;">Working Hours:</b>
-            </h4>
-            <p style="margin-bottom: 8px;"><i class="fa fa-check" style="color: #28a745; margin-right: 8px;"></i> General Working 08 hours duty</p>
-            <p style="margin-bottom: 8px;"><i class="fa fa-check" style="color: #28a745; margin-right: 8px;"></i> Normal Duty From 8.00 AM to 5.00 PM</p>
-            <p style="margin-bottom: 8px;"><i class="fa fa-check" style="color: #28a745; margin-right: 8px;"></i> Over Time duty based as per Bangladesh Labour law / ILO standard</p>
-            <p style="margin-bottom: 8px;"><i class="fa fa-check" style="color: #28a745; margin-right: 8px;"></i> Weekly Holiday 01 Day</p>
-          </div>
-
-          <!-- 4. Compensation & Benefits -->
-          <div class="item-content" style="text-align: justify; margin-bottom: 35px;">
-            <h4 style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
-              <i class="fas fa-hand-holding-usd" style="font-size: 50px; color: var(--brand-navy);"></i>
-              <b style="font-size: 20px;">Compensation & Benefits:</b>
-            </h4>
-            <p style="margin-bottom: 8px;"><i class="fa fa-check" style="color: #28a745; margin-right: 8px;"></i> All benefits & compensation are followed as per Bangladesh Labour Law</p>
-          </div>
+      <div class="compliance-header-block text-center">
+        <div class="kicker-tag font-mono">
+          <span class="crimson-dot"></span>
+          <span>SOCIAL & STATUTORY ACCOUNTABILITY // ETHICAL SOURCING</span>
         </div>
+        <h1 class="compliance-main-title">
+          Labor Standards, Safety & Regulatory Compliance
+        </h1>
+        <p class="compliance-subtitle">
+          Operating under full transparency according to the Bangladesh Labour Act, ILO core conventions, and international B2B buyer social audits.
+        </p>
+      </div>
 
-        <!-- Right Column -->
-        <div class="col-lg-6 col-12 single-item right-item">
-          <!-- 5. Freedom of Association -->
-          <div class="item-content" style="text-align: justify; margin-bottom: 35px;">
-            <h4 style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
-              <img src="/front-end/img/gallery/Freedom-of-Association-and-Collective-Bargaining1-150x150.png" width="60" height="60" alt="Freedom of Association" />
-              <b style="font-size: 20px;">Freedom of Association and Collective Bargaining:</b>
-            </h4>
-            <p style="margin-bottom: 8px;"><i class="fa fa-check" style="color: #28a745; margin-right: 8px;"></i> Workers are free to choose how they are represented</p>
-            <p style="margin-bottom: 8px;"><i class="fa fa-check" style="color: #28a745; margin-right: 8px;"></i> Enterprise bargaining is negotiated between the employer and employee bargaining representatives with the goal of making an enterprise agreement</p>
-            <p style="margin-bottom: 8px;"><i class="fa fa-check" style="color: #28a745; margin-right: 8px;"></i> Meeting minutes are sent to Department of Inspection for Factories and Establishments</p>
-          </div>
+      <!-- Compliance Cards Grid: 1px #E2E8F0 borders, 4px radii -->
+      <div class="row g-4">
+        {complianceAreas.map((area) => (
+          <div class="col-lg-6 col-12">
+            <div class="compliance-card">
+              <div class="compliance-card-header">
+                <div class="d-flex align-items-center gap-3">
+                  <div class="compliance-icon-box">
+                    <i class={`${area.icon} text-crimson`} aria-hidden="true"></i>
+                  </div>
+                  <div>
+                    <span class="area-code font-mono">{area.code}</span>
+                    <h2 class="area-title">{area.title}</h2>
+                  </div>
+                </div>
+              </div>
 
-          <!-- 6. Prohibition of Child Labour -->
-          <div class="item-content" style="text-align: justify; margin-bottom: 35px;">
-            <h4 style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
-              <img src="/front-end/img/gallery/No_Child_labor.png" width="65" height="65" alt="No Child Labor" />
-              <b style="font-size: 20px;">Prohibition of Child Labour:</b>
-            </h4>
-            <p style="margin-bottom: 8px;"><i class="fa fa-check" style="color: #28a745; margin-right: 8px;"></i> No recruitment under 18 years old employee</p>
-            <p style="margin-bottom: 8px;"><i class="fa fa-check" style="color: #28a745; margin-right: 8px;"></i> Age verified with NID / Birth Certificate / Academic certificate</p>
-            <p style="margin-bottom: 8px;"><i class="fa fa-check" style="color: #28a745; margin-right: 8px;"></i> Physical fitness check by Medical Officer & Medical Assistant</p>
+              <div class="compliance-card-body">
+                <ul class="compliance-item-list">
+                  {area.items.map((item) => (
+                    <li>
+                      <i class="fas fa-check-circle text-crimson" aria-hidden="true"></i>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
           </div>
-
-          <!-- 7. Prohibition of Discrimination -->
-          <div class="item-content" style="text-align: justify; margin-bottom: 35px;">
-            <h4 style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
-              <img src="/front-end/img/gallery/prohibition_discrimination.png" width="60" height="60" alt="Prohibition of Discrimination" />
-              <b style="font-size: 20px;">Prohibition of Discrimination:</b>
-            </h4>
-            <p style="margin-bottom: 8px;"><i class="fa fa-check" style="color: #28a745; margin-right: 8px;"></i> No discrimination based on gender, religion, race, or caste</p>
-            <p style="margin-bottom: 8px;"><i class="fa fa-check" style="color: #28a745; margin-right: 8px;"></i> Everyone is treated equally</p>
-            <p style="margin-bottom: 8px;"><i class="fa fa-check" style="color: #28a745; margin-right: 8px;"></i> Management has zero tolerance for discrimination</p>
-          </div>
-
-          <!-- 8. Workplace Health and Safety -->
-          <div class="item-content" style="text-align: justify; margin-bottom: 35px;">
-            <h4 style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
-              <i class="fas fa-user-md" style="font-size: 50px; color: var(--brand-navy);"></i>
-              <b style="font-size: 20px;">Workplace Health and Safety:</b>
-            </h4>
-            <p style="margin-bottom: 8px;"><i class="fa fa-check" style="color: #28a745; margin-right: 8px;"></i> Strong policy on environmental health & safety</p>
-            <p style="margin-bottom: 8px;"><i class="fa fa-check" style="color: #28a745; margin-right: 8px;"></i> Ensuring First Aid Treatment, Medical Contract</p>
-            <p style="margin-bottom: 8px;"><i class="fa fa-check" style="color: #28a745; margin-right: 8px;"></i> Ensuring Health & Hygiene in the workplace</p>
-            <p style="margin-bottom: 8px;"><i class="fa fa-check" style="color: #28a745; margin-right: 8px;"></i> Regular Cleanliness, Ventilation and temperature controlling</p>
-            <p style="margin-bottom: 8px;"><i class="fa fa-check" style="color: #28a745; margin-right: 8px;"></i> Dust & fume protection, Over Crowding Prevention</p>
-            <p style="margin-bottom: 8px;"><i class="fa fa-check" style="color: #28a745; margin-right: 8px;"></i> Proper lighting & Pure drinking water for all employees</p>
-            <p style="margin-bottom: 8px;"><i class="fa fa-check" style="color: #28a745; margin-right: 8px;"></i> Ensure Personal Protective Equipment (PPE) for all employees</p>
-          </div>
-        </div>
+        ))}
       </div>
     </div>
   </section>
 
-  <!-- Certifications Slider Section -->
+  <!-- Bordered Trust Grid Component -->
   <CertificationSlider />
 </BaseLayout>
 
 <style>
-  @media (max-width: 767px) {
-    .about-wrap-layout7 {
-      padding: 40px 0 !important;
-    }
-    .item-content {
-      text-align: left !important;
-      margin-bottom: 25px !important;
-    }
-    .item-content h4 {
-      gap: 12px !important;
-    }
-    .item-content h4 i {
-      font-size: 36px !important;
-    }
-    .item-content h4 img {
-      width: 45px !important;
-      height: 45px !important;
-    }
-    .item-content h4 b {
-      font-size: 18px !important;
-    }
-    .item-content p {
-      font-size: 14.5px !important;
-      line-height: 22px !important;
-    }
+  .compliance-architectural-section {
+    background-color: var(--color-canvas, #F8FAFC);
+    padding: 75px 0 95px;
+  }
+
+  .compliance-header-block {
+    max-width: 780px;
+    margin: 0 auto 55px;
+  }
+  .compliance-main-title {
+    font-size: clamp(28px, 3.8vw, 42px);
+    font-weight: 800;
+    color: var(--color-steel, #0B1118);
+    letter-spacing: -0.02em;
+    margin-bottom: 12px;
+  }
+  .compliance-subtitle {
+    color: var(--color-text-muted, #64748B);
+    font-size: 15.5px;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* Compliance Cards: 1px #E2E8F0 structural borders, 4px radii */
+  .compliance-card {
+    background: #FFFFFF;
+    border: 1px solid var(--color-border, #E2E8F0);
+    border-radius: 4px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition: all 0.2s ease;
+  }
+  .compliance-card:hover {
+    border-color: var(--color-border-dark, #CBD5E1);
+    box-shadow: 0 4px 16px rgba(11, 17, 24, 0.04);
+  }
+
+  .compliance-card-header {
+    background: var(--color-well, #F1F5F9);
+    border-bottom: 1px solid var(--color-border, #E2E8F0);
+    padding: 18px 22px;
+  }
+  .compliance-icon-box {
+    width: 44px;
+    height: 44px;
+    background: #FFFFFF;
+    border: 1px solid var(--color-border, #E2E8F0);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+  .area-code {
+    font-size: 11px;
+    color: var(--color-crimson, #C81E1E);
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    display: block;
+  }
+  .area-title {
+    font-size: 17.5px;
+    font-weight: 700;
+    color: var(--color-steel, #0B1118);
+    margin: 2px 0 0;
+  }
+
+  .compliance-card-body {
+    padding: 22px;
+    flex: 1;
+  }
+  .compliance-item-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .compliance-item-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 14px;
+    color: var(--color-text-body, #334155);
+    line-height: 1.5;
+  }
+  .compliance-item-list li i {
+    margin-top: 3px;
+    font-size: 14px;
+    flex-shrink: 0;
   }
 </style>

@@ -11,15 +11,28 @@ export const BRAND = {
   officeAddress: '585/C, Khilgaon, C Block, Dhaka-1219, Bangladesh',
   factoryAddress: 'Savar, Hemayetpur, Dhaka, Bangladesh',
   colors: {
-    navy: '#05254F',
-    navyDeep: '#031B38',
-    orange: '#F66202',
-    orangeHover: '#D95400',
+    // Slate-tinted architectural neutrals
+    steel: '#0B1118',
+    steelLight: '#15202B',
+    steelBorder: '#223242',
+    canvas: '#F8FAFC',
+    well: '#F1F5F9',
+    border: '#E2E8F0',
+    borderDark: '#CBD5E1',
+    // Industrial Crimson Accent
+    crimson: '#C81E1E',
+    crimsonHover: '#A81818',
+    crimsonSurface: '#FEF2F2',
+    // Text roles
+    textPrimary: '#0B1118',
+    textSecondary: '#475569',
+    textMuted: '#64748B',
     white: '#FFFFFF'
   },
   fonts: {
-    headings: "'Montserrat', sans-serif",
-    body: "'Inter', sans-serif"
+    headings: "'Barlow', sans-serif",
+    body: "'Public Sans', -apple-system, BlinkMacSystemFont, sans-serif",
+    mono: "'IBM Plex Mono', monospace"
   },
   copyright: '© 2026 MAX GLOVES BD LTD. All rights reserved.',
   developerCredit: 'Website by Fahim Mahmud Razu',

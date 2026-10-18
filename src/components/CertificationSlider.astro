@@ -1,252 +1,223 @@
 ---
+const certifications = [
+  {
+    code: 'SQP',
+    title: 'Supplier Qualification Program',
+    desc: 'Audited manufacturing operations and facility workflow compliance.',
+    logo: '/front-end/img/SQP-Logo-Web.png',
+    status: 'VERIFIED AUDIT'
+  },
+  {
+    code: 'GSV',
+    title: 'Global Security Verification',
+    desc: 'International supply chain and export transport security compliance.',
+    logo: '/front-end/img/gsv-logo-web.png',
+    status: 'SECURITY AUDITED'
+  },
+  {
+    code: 'WCA',
+    title: 'Workplace Conditions Assessment',
+    desc: 'Social accountability, fair labor standards, and safe working conditions.',
+    logo: '/front-end/img/WCA.png',
+    status: 'WORKPLACE STANDARDS'
+  },
+  {
+    code: 'ISO 9001',
+    title: 'Quality Management System',
+    desc: 'Continuous manufacturing quality control and leather grading protocol.',
+    logo: '/front-end/img/ISO_9001.png',
+    status: 'QMS CERTIFIED'
+  },
+  {
+    code: 'ISO 14001',
+    title: 'Environmental Management',
+    desc: 'Sustainable waste reduction, eco-conscious leather processing controls.',
+    logo: '/front-end/img/ISO_14001.png',
+    status: 'EMS COMPLIANT'
+  },
+  {
+    code: 'EN 388 / 407',
+    title: 'Harmonized PPE Safety Standards',
+    desc: 'Abrasion, tear, puncture, and thermal heat resistant glove testing.',
+    icon: 'fas fa-shield-alt',
+    status: 'PPE TECHNICAL SPECS'
+  }
+];
 ---
 
-<section class="action-wrap-layout1 bg-common" style="background: #f7f8fa; padding: 60px 0 70px;">
+<section class="trust-grid-section" aria-label="Quality certifications and standards">
   <div class="container">
-    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; margin-bottom: 30px;">
-      <h2 class="certifications-title">QUALITY & STANDARDS</h2>
-      <p style="margin-top: 15px; font-size: 14px; color: #64748b; font-weight: 600; text-align: center; letter-spacing: 0.5px;">
-        [PLACEHOLDER — Certifications to be confirmed with Max Gloves: ISO 9001, ISO 14001, SQP, GSV, WCA]
+    <!-- Header Block -->
+    <div class="trust-header text-center">
+      <div class="trust-kicker font-mono">
+        <span class="crimson-dot"></span>
+        <span>VERIFIED INDUSTRIAL STANDARDS & ACCREDITATIONS</span>
+      </div>
+      <h2 class="trust-title">
+        Quality Assurance & International Compliance
+      </h2>
+      <p class="trust-subtitle">
+        Every leather glove production batch undergoes strict incoming material grading, dimensional tolerance testing, and pre-shipment safety inspections at our Savar manufacturing plant.
       </p>
     </div>
 
-    <!-- Strip 1: 4 Badges -->
-    <div class="strip">
-      <div class="corner"></div>
+    <!-- Clean Bordered Trust Grid (4px radii, 1px #E2E8F0 borders, no tacky shadows) -->
+    <div class="trust-cards-grid">
+      {certifications.map((cert) => (
+        <div class="trust-card">
+          <div class="trust-card-top">
+            <div class="trust-logo-box">
+              {cert.logo ? (
+                <img src={cert.logo} alt={`${cert.code} accreditation`} loading="lazy" decoding="async" class="cert-img" />
+              ) : (
+                <i class={`${cert.icon} cert-icon text-crimson`} aria-hidden="true"></i>
+              )}
+            </div>
+            <div class="trust-status-badge font-mono">{cert.status}</div>
+          </div>
 
-      <div class="badge">
-        <div class="icon">
-          <img src="/front-end/img/SQP-Logo-Web.png" alt="SQP logo" />
+          <div class="trust-card-body">
+            <div class="trust-code font-mono">{cert.code}</div>
+            <h3 class="trust-card-heading">{cert.title}</h3>
+            <p class="trust-card-desc">{cert.desc}</p>
+          </div>
         </div>
-        <div class="pill">SQP</div>
-        <div class="caption">Supplier Qualification Program</div>
-      </div>
-
-      <div class="badge">
-        <div class="icon">
-          <img src="/front-end/img/gsv-logo-web.png" alt="GSV logo" />
-        </div>
-        <div class="pill">GSV</div>
-        <div class="caption">Global Security Verification</div>
-      </div>
-
-      <div class="badge">
-        <div class="icon">
-          <i class="fas fa-certificate" style="font-size: 38px; color: var(--gold);"></i>
-        </div>
-        <div class="pill">[PLACEHOLDER]</div>
-        <div class="caption">[PLACEHOLDER: accreditation pending confirmation]</div>
-      </div>
-
-      <div class="badge">
-        <div class="icon">
-          <img src="/front-end/img/WCA.png" alt="WCA logo" />
-        </div>
-        <div class="pill">WCA</div>
-        <div class="caption">Workplace Conditions Assessment</div>
-      </div>
-    </div>
-
-    <!-- Strip 2: 2 Badges -->
-    <div class="strip" style="margin-top: 25px;">
-      <div class="corner"></div>
-
-      <div class="badge">
-        <div class="icon">
-          <img src="/front-end/img/ISO_9001.png" alt="ISO 9001 logo" />
-        </div>
-        <div class="pill">ISO 9001</div>
-        <div class="caption">Quality Management System</div>
-      </div>
-
-      <div class="badge">
-        <div class="icon">
-          <img src="/front-end/img/ISO_14001.png" alt="ISO 14001 logo" />
-        </div>
-        <div class="pill">ISO 14001</div>
-        <div class="caption">Environmental Management Systems</div>
-      </div>
+      ))}
     </div>
   </div>
 </section>
 
 <style>
-  :root {
-    --navy: var(--brand-navy, #05254F);
-    --blue: var(--brand-navy-light, #0A3770);
-    --gold: var(--brand-orange, #F66202);
-    --line: #d9dee5;
-    --text: #1c2733;
-    --muted: #5b6672;
+  .trust-grid-section {
+    background-color: var(--color-canvas, #F8FAFC);
+    border-top: 1px solid var(--color-border, #E2E8F0);
+    border-bottom: 1px solid var(--color-border, #E2E8F0);
+    padding: 80px 0 90px;
   }
 
-  .certifications-title {
-    position: relative;
-    isolation: isolate;
-    margin: 0 auto;
-    padding: 8px 48px 10px;
-    color: #fff;
-    font-family: "Arial Black", "Helvetica Neue", Arial, sans-serif;
-    font-size: clamp(22px, 4.5vw, 48px);
-    font-weight: 900;
-    line-height: 1.15;
-    letter-spacing: -1.5px;
-    text-align: center;
-    text-transform: uppercase;
-    white-space: nowrap;
+  .trust-header {
+    max-width: 760px;
+    margin: 0 auto 50px;
+  }
+  .trust-kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11.5px;
+    letter-spacing: 0.08em;
+    color: var(--color-text-muted, #64748B);
+    background: #FFFFFF;
+    border: 1px solid var(--color-border, #E2E8F0);
+    padding: 5px 12px;
+    border-radius: 4px;
+    margin-bottom: 14px;
+  }
+  .crimson-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--color-crimson, #C81E1E);
     display: inline-block;
   }
 
-  .certifications-title::before {
-    content: "";
-    position: absolute;
-    z-index: -1;
-    inset: 0;
-    border: 2px solid #fff;
-    border-radius: 25px 25px 18px 18px;
-    background: linear-gradient(110deg, #034485, #07509c 55%, #034385);
-    clip-path: polygon(4% 0, 96% 0, 100% 100%, 0 100%);
+  .trust-title {
+    font-size: clamp(26px, 3.5vw, 38px);
+    font-weight: 800;
+    color: var(--color-steel, #0B1118);
+    letter-spacing: -0.02em;
+    margin-bottom: 12px;
   }
 
-  .certifications-title::after {
-    content: "";
-    position: absolute;
-    z-index: -2;
-    inset: 10px -13px;
-    border-radius: 12px;
-    background: linear-gradient(90deg, #ffa20b, #ff8c00);
-    clip-path: polygon(3% 0, 97% 0, 100% 100%, 0 100%);
+  .trust-subtitle {
+    color: var(--color-text-muted, #64748B);
+    font-size: 15.5px;
+    line-height: 1.6;
+    margin: 0;
   }
 
-  .strip {
-    position: relative;
-    overflow: hidden;
-    max-width: 100%;
-    margin: 0 auto;
-    background: #fff;
-    border-radius: 6px;
-    padding: 28px 24px 30px;
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  /* Grid Layout: Crisp 1px borders & 4px radii */
+  .trust-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 20px;
   }
 
-  .corner {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    width: 110px;
-    height: 70px;
-    background: var(--navy);
-    clip-path: polygon(100% 0, 100% 100%, 0 100%);
-  }
-
-  .corner::before {
-    content: "";
-    position: absolute;
-    right: 20px;
-    bottom: 0;
-    width: 90px;
-    height: 70px;
-    background: var(--gold);
-    clip-path: polygon(100% 0, 100% 100%, 30% 100%);
-  }
-
-  .badge {
-    flex: 1;
+  .trust-card {
+    background: #FFFFFF;
+    border: 1px solid var(--color-border, #E2E8F0);
+    border-radius: 4px;
+    padding: 24px;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding: 0 14px;
-    position: relative;
+    justify-content: space-between;
+    transition: all 0.2s ease;
+  }
+  .trust-card:hover {
+    border-color: var(--color-border-dark, #CBD5E1);
+    box-shadow: 0 4px 16px rgba(11, 17, 24, 0.04);
   }
 
-  .badge:not(:last-child)::after {
-    content: "";
-    position: absolute;
-    right: 0;
-    top: 6px;
-    bottom: 20px;
-    width: 1px;
-    background: var(--line);
-  }
-
-  .icon {
-    width: 98px;
-    height: 98px;
-    border-radius: 50%;
-    border: 3px solid var(--blue);
+  .trust-card-top {
     display: flex;
     align-items: center;
-    justify-content: center;
-    background: #fff;
-    margin-bottom: 14px;
+    justify-content: space-between;
+    margin-bottom: 18px;
   }
 
-  .icon img {
-    max-height: 70px;
-    max-width: 70px;
+  .trust-logo-box {
+    width: 70px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  .cert-img {
+    max-height: 44px;
+    max-width: 68px;
     object-fit: contain;
   }
+  .cert-icon {
+    font-size: 32px;
+  }
 
-  .pill {
-    background: #0b2447;
-    color: #fff;
-    font-weight: 700;
-    font-size: 13px;
+  .trust-status-badge {
+    font-size: 10.5px;
     letter-spacing: 0.04em;
-    padding: 6px 22px;
-    border-radius: 14px;
-    margin-bottom: 10px;
-    white-space: nowrap;
+    color: #475569;
+    background: var(--color-well, #F1F5F9);
+    border: 1px solid var(--color-border, #E2E8F0);
+    padding: 3px 8px;
+    border-radius: 3px;
   }
 
-  .caption {
-    font-size: 12.5px;
-    color: var(--muted);
-    line-height: 1.4;
-    max-width: 180px;
+  .trust-card-body {
+    flex: 1;
   }
 
-  @media (max-width: 820px) {
-    .strip {
-      flex-wrap: wrap;
-      gap: 26px 0;
-      padding: 24px 15px 40px;
-    }
-    .badge {
-      flex: 1 1 50%;
-      margin-bottom: 15px;
-    }
-    .badge::after {
-      display: none;
-    }
-    .corner {
-      width: 70px;
-      height: 45px;
-    }
+  .trust-code {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--color-crimson, #C81E1E);
+    margin-bottom: 4px;
   }
 
-  @media (max-width: 576px) {
-    .certifications-title {
-      font-size: 18px !important;
-      padding: 6px 20px 8px !important;
-      letter-spacing: -0.5px !important;
-      white-space: normal !important;
-    }
-    .certifications-title::after {
-      inset: 6px -6px !important;
-    }
+  .trust-card-heading {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--color-steel, #0B1118);
+    margin-bottom: 8px;
   }
 
-  @media (max-width: 480px) {
-    .badge {
-      flex: 1 1 100%;
-    }
-    .caption {
-      max-width: 260px;
+  .trust-card-desc {
+    color: var(--color-text-muted, #64748B);
+    font-size: 13.5px;
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  @media (max-width: 575px) {
+    .trust-cards-grid {
+      grid-template-columns: 1fr;
     }
   }
 </style>

@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageBanner from '../components/PageBanner.astro';
+import BRAND from '../config/site';
 
 interface Props {
   title: string;
@@ -13,114 +14,125 @@ interface Props {
 
 const { title, subtitle, currentPath, images, paragraphs, locale = 'en' } = Astro.props;
 
-let sidebarTitle = 'Manufacturing Process';
+let sidebarTitle = 'Manufacturing Workflow';
 let homeLabel = 'Home';
 let homeUrl = '/';
 let sidebarLinks = [
-  { title: 'Raw Materials', url: '/raw-materials' },
-  { title: 'Cutting Process', url: '/cutting-process' },
-  { title: 'Sewing Process', url: '/sewing-process' },
-  { title: 'Packaging', url: '/packaging' }
+  { code: '01', title: 'Raw Materials', url: '/raw-materials' },
+  { code: '02', title: 'Cutting Process', url: '/cutting-process' },
+  { code: '03', title: 'Sewing Process', url: '/sewing-process' },
+  { code: '04', title: 'Packaging', url: '/packaging' }
 ];
 
 if (locale === 'jp') {
-  sidebarTitle = '私たちの仕事のプロセス';
-  homeLabel = 'ホームページ';
+  sidebarTitle = '製造プロセス';
+  homeLabel = 'ホーム';
   homeUrl = '/jp/';
   sidebarLinks = [
-    { title: '原材料', url: '/jp/raw-materials' },
-    { title: '切断工程', url: '/jp/cutting-process' },
-    { title: '縫製工程', url: '/jp/sewing-process' },
-    { title: '包装', url: '/jp/packaging' }
+    { code: '01', title: '原材料', url: '/jp/raw-materials' },
+    { code: '02', title: '切断工程', url: '/jp/cutting-process' },
+    { code: '03', title: '縫製工程', url: '/jp/sewing-process' },
+    { code: '04', title: '包装', url: '/jp/packaging' }
   ];
 } else if (locale === 'kr') {
-  sidebarTitle = '우리의 작업 과정';
-  homeLabel = '홈 페이지';
+  sidebarTitle = '제조 공정';
+  homeLabel = '홈';
   homeUrl = '/kr/';
   sidebarLinks = [
-    { title: '원자재', url: '/kr/raw-materials' },
-    { title: '절단 공정', url: '/kr/cutting-process' },
-    { title: '봉제 공정', url: '/kr/sewing-process' },
-    { title: '포장', url: '/kr/packaging' }
+    { code: '01', title: '원자재', url: '/kr/raw-materials' },
+    { code: '02', title: '절단 공정', url: '/kr/cutting-process' },
+    { code: '03', title: '봉제 공정', url: '/kr/sewing-process' },
+    { code: '04', title: '포장', url: '/kr/packaging' }
   ];
 }
 ---
 
-<BaseLayout title={`${title} - Max Gloves BD Ltd.`} currentPath={currentPath} locale={locale}>
-  <PageBanner title={title} breadcrumbs={[{ label: homeLabel, url: homeUrl }, { label: title }]} />
+<BaseLayout title={`${title} — ${BRAND.companyName}`} currentPath={currentPath} locale={locale}>
+  <PageBanner title={title} breadcrumbs={[{ label: homeLabel, url: homeUrl }, { label: 'Manufacturing Process' }, { label: title }]} />
 
-  <section class="single-service-wrap-layout2" style="padding: 70px 0;">
+  <section class="process-detail-section" aria-label="Manufacturing process specifications">
     <div class="container">
-      <!-- Main Photo Slider/Switcher -->
-      <div class="zoom-gallery-box" style="margin-bottom: 40px;">
-        <div class="tab-content" style="margin-bottom: 15px; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.08);">
-          <div class="tab-pane fade show active">
-            <img
-              id="processMainImage"
-              src={images[0]}
-              alt={title}
-              style="width: 100%; height: auto; max-height: 550px; object-fit: cover; display: block;"
-            />
-          </div>
+      <!-- Main Process Photo Showcase -->
+      <div class="process-photo-showcase mb-5">
+        <div class="main-photo-frame">
+          <img
+            id="processMainImage"
+            src={images[0]}
+            alt={title}
+            class="process-main-img"
+          />
         </div>
 
-        <ul class="nav nav-tabs tab-nav-list" style="display: flex; gap: 12px; list-style: none; padding: 0; margin: 0; border: none;">
-          {images.map((img, idx) => (
-            <li class="nav-item" style="border: none;">
+        {images.length > 1 && (
+          <div class="process-thumbnails-row font-mono" role="group" aria-label="Process photos">
+            {images.map((img, idx) => (
               <button
+                type="button"
                 class={`process-thumb-btn ${idx === 0 ? 'active' : ''}`}
                 data-img-src={img}
-                style="padding: 0; border: 2px solid transparent; border-radius: 4px; overflow: hidden; cursor: pointer; background: none; width: 100px; height: 70px; display: block;"
+                aria-label={`View photo ${idx + 1}`}
               >
-                <img src={img} alt={`Thumbnail ${idx + 1}`} style="width: 100%; height: 100%; object-fit: cover; display: block;" />
+                <img src={img} alt="" />
               </button>
-            </li>
-          ))}
-        </ul>
+            ))}
+          </div>
+        )}
       </div>
 
-      <div class="row">
-        <!-- Content on right -->
+      <div class="row g-5">
+        <!-- Main Content Column -->
         <div class="col-lg-8 order-lg-2">
-          <div class="single-service-box-layout1">
-            <div class="item-content">
-              <div class="item-info">
-                <div class="item-subtitle" style="font-size: 28px; font-weight: 700; color: #082c4b; margin-bottom: 20px;">
-                  {subtitle}
-                </div>
-                {paragraphs.map((p) => (
-                  <p style="font-size: 16px; line-height: 28px; color: #646464; margin-bottom: 20px;">
-                    {p}
-                  </p>
-                ))}
+          <div class="process-content-card">
+            <div class="kicker-tag font-mono">
+              <span class="crimson-dot"></span>
+              <span>TECHNICAL PROCESS SPECIFICATION</span>
+            </div>
+            <h1 class="process-headline">{subtitle}</h1>
+            <div class="process-paragraphs-body">
+              {paragraphs.map((p) => (
+                <p>{p}</p>
+              ))}
+            </div>
+
+            <!-- RFQ Callout Strip -->
+            <div class="process-rfq-strip mt-4">
+              <div>
+                <h4 class="mb-1" style="font-size: 16px; font-weight: 700; color: #FFFFFF;">Inquire About Custom OEM Processing</h4>
+                <p class="mb-0" style="font-size: 13.5px; color: #94A3B8;">Direct factory dialogue for customized dimensions, welting, and leather thickness.</p>
               </div>
+              <a href="/contact" class="btn-crimson font-mono" style="padding: 10px 20px; font-size: 13px;">
+                <span>CONTACT SALES</span>
+                <i class="fas fa-arrow-right" aria-hidden="true"></i>
+              </a>
             </div>
           </div>
         </div>
 
-        <!-- Sidebar Navigation on left -->
+        <!-- Sidebar Navigation -->
         <div class="col-lg-4 order-lg-1">
-          <div class="sidebar-widget-area" style="background: #f8f8f8; padding: 30px; border-radius: 6px; border: 1px solid #e5e5e5;">
-            <h3 style="font-size: 20px; font-weight: 700; color: #082c4b; margin-bottom: 20px; border-bottom: 2px solid #ee212b; padding-bottom: 10px;">
-              {sidebarTitle}
-            </h3>
-            <ul style="list-style: none; padding: 0; margin: 0;">
-              {sidebarLinks.map((item) => (
-                <li style="margin-bottom: 10px;">
-                  <a
-                    href={item.url}
-                    style={`display: block; padding: 12px 18px; border-radius: 4px; text-decoration: none; font-weight: 600; font-size: 15px; transition: all 0.2s ease; ${
-                      currentPath === item.url
-                        ? 'background: #082c4b; color: #ffffff;'
-                        : 'background: #ffffff; color: #333333; border: 1px solid #e0e0e0;'
-                    }`}
-                  >
-                    <i class="fas fa-angle-right" style="margin-right: 8px;"></i>
-                    {item.title}
-                  </a>
-                </li>
-              ))}
+          <div class="process-sidebar-card">
+            <div class="sidebar-header font-mono">
+              <span>{sidebarTitle}</span>
+            </div>
+            <ul class="process-nav-list">
+              {sidebarLinks.map((link) => {
+                const isActive = currentPath === link.url;
+                return (
+                  <li>
+                    <a href={link.url} class={`process-sidebar-link ${isActive ? 'active' : ''}`}>
+                      <span class="link-code font-mono">{link.code}</span>
+                      <span class="link-title">{link.title}</span>
+                      <i class="fas fa-chevron-right link-arrow" aria-hidden="true"></i>
+                    </a>
+                  </li>
+                );
+              })}
             </ul>
+
+            <div class="sidebar-factory-note font-mono mt-4">
+              <i class="fas fa-industry text-crimson" aria-hidden="true"></i>
+              <span>SAVAR PLANT // ISO 9001 COMPLIANT</span>
+            </div>
           </div>
         </div>
       </div>
@@ -129,65 +141,192 @@ if (locale === 'jp') {
 </BaseLayout>
 
 <style>
+  .process-detail-section {
+    background-color: var(--color-canvas, #F8FAFC);
+    padding: 70px 0 95px;
+  }
+
+  .process-photo-showcase {
+    background: #FFFFFF;
+    border: 1px solid var(--color-border, #E2E8F0);
+    border-radius: 4px;
+    padding: 20px;
+  }
+  .main-photo-frame {
+    height: clamp(320px, 45vh, 480px);
+    overflow: hidden;
+    border-radius: 4px;
+    background: #0B1118;
+  }
+  .process-main-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .process-thumbnails-row {
+    display: flex;
+    gap: 12px;
+    margin-top: 16px;
+    overflow-x: auto;
+  }
+  .process-thumb-btn {
+    width: 100px;
+    height: 65px;
+    padding: 2px;
+    border: 1px solid var(--color-border, #E2E8F0);
+    border-radius: 4px;
+    background: var(--color-well, #F1F5F9);
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.2s ease;
+  }
+  .process-thumb-btn:hover,
   .process-thumb-btn.active {
-    border-color: var(--brand-orange) !important;
+    border-color: var(--color-crimson, #C81E1E);
+  }
+  .process-thumb-btn img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
   }
 
-  @media (max-width: 991px) {
-    .single-service-wrap-layout2 {
-      padding: 40px 0 60px !important;
-    }
-    .zoom-gallery-box {
-      margin-bottom: 30px !important;
-    }
-    .sidebar-widget-area {
-      margin-top: 35px !important;
-    }
+  /* Main Content */
+  .process-content-card {
+    background: #FFFFFF;
+    border: 1px solid var(--color-border, #E2E8F0);
+    border-radius: 4px;
+    padding: 36px;
+  }
+  .process-headline {
+    font-size: clamp(26px, 3.5vw, 36px);
+    font-weight: 800;
+    color: var(--color-steel, #0B1118);
+    letter-spacing: -0.02em;
+    margin-bottom: 20px;
+  }
+  .process-paragraphs-body p {
+    font-size: 15.5px;
+    line-height: 1.7;
+    color: var(--color-text-body, #334155);
+    margin-bottom: 20px;
+  }
+  .process-paragraphs-body p:last-child {
+    margin-bottom: 0;
   }
 
-  @media (max-width: 767px) {
-    .tab-nav-list {
-      overflow-x: auto !important;
-      flex-wrap: nowrap !important;
-      padding-bottom: 8px !important;
-      scrollbar-width: none;
-      -webkit-overflow-scrolling: touch;
-    }
-    .tab-nav-list::-webkit-scrollbar {
-      display: none;
-    }
-    .process-thumb-btn {
-      width: 80px !important;
-      height: 56px !important;
-      flex-shrink: 0 !important;
-    }
-    .item-subtitle {
-      font-size: 22px !important;
-    }
+  .process-rfq-strip {
+    background: var(--color-steel, #0B1118);
+    border: 1px solid #223242;
+    border-radius: 4px;
+    padding: 22px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  /* Sidebar */
+  .process-sidebar-card {
+    background: #FFFFFF;
+    border: 1px solid var(--color-border, #E2E8F0);
+    border-radius: 4px;
+    padding: 24px;
+  }
+  .sidebar-header {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--color-text-muted, #64748B);
+    letter-spacing: 0.08em;
+    padding-bottom: 12px;
+    margin-bottom: 14px;
+    border-bottom: 1px solid var(--color-border, #E2E8F0);
+  }
+
+  .process-nav-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .process-sidebar-link {
+    display: flex;
+    align-items: center;
+    padding: 12px 14px;
+    border-radius: 4px;
+    text-decoration: none;
+    color: var(--color-steel, #0B1118);
+    border: 1px solid transparent;
+    transition: all 0.15s ease;
+  }
+  .process-sidebar-link:hover {
+    background: var(--color-well, #F1F5F9);
+    border-color: var(--color-border, #E2E8F0);
+  }
+  .process-sidebar-link.active {
+    background: var(--color-steel, #0B1118);
+    color: #FFFFFF;
+    border-color: var(--color-steel, #0B1118);
+  }
+  .link-code {
+    font-size: 11px;
+    color: var(--color-crimson, #C81E1E);
+    margin-right: 10px;
+    font-weight: 700;
+  }
+  .process-sidebar-link.active .link-code {
+    color: var(--color-crimson, #C81E1E);
+  }
+  .link-title {
+    font-size: 14.5px;
+    font-weight: 600;
+    flex: 1;
+  }
+  .link-arrow {
+    font-size: 11px;
+    color: var(--color-text-muted, #64748B);
+  }
+  .process-sidebar-link.active .link-arrow {
+    color: #FFFFFF;
+  }
+
+  .sidebar-factory-note {
+    font-size: 11px;
+    color: var(--color-text-muted, #64748B);
+    background: var(--color-well, #F1F5F9);
+    padding: 8px 12px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
   }
 </style>
 
 <script>
-  function initProcessThumbs() {
-    const mainImg = document.getElementById('processMainImage') as HTMLImageElement;
+  function initProcessLayoutScripts() {
+    const mainImg = document.getElementById('processMainImage') as HTMLImageElement | null;
     const thumbBtns = document.querySelectorAll<HTMLButtonElement>('.process-thumb-btn');
-    if (!mainImg || !thumbBtns.length) return;
 
-    thumbBtns.forEach((btn) => {
-      btn.addEventListener('click', () => {
-        thumbBtns.forEach((b) => b.classList.remove('active'));
-        btn.classList.add('active');
-        const src = btn.getAttribute('data-img-src');
-        if (src) {
-          mainImg.src = src;
-        }
+    if (mainImg && thumbBtns.length) {
+      thumbBtns.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          thumbBtns.forEach((b) => b.classList.remove('active'));
+          btn.classList.add('active');
+          const src = btn.getAttribute('data-img-src');
+          if (src) mainImg.src = src;
+        });
       });
-    });
+    }
   }
 
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initProcessThumbs);
+    document.addEventListener('DOMContentLoaded', initProcessLayoutScripts);
   } else {
-    initProcessThumbs();
+    initProcessLayoutScripts();
   }
 </script>

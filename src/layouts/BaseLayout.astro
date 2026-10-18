@@ -1,28 +1,29 @@
 ---
-import BRAND from '../config/site';
 import SiteHeader from '../components/SiteHeader.astro';
 import MobileMenu from '../components/MobileMenu.astro';
 import SiteFooter from '../components/SiteFooter.astro';
-import '../styles/shared.css';
+import BRAND from '../config/site';
 
 interface Props {
   title?: string;
   description?: string;
+  bodyClass?: string;
   currentPath?: string;
   locale?: 'en' | 'jp' | 'kr';
-  bodyClass?: string;
 }
 
 const {
-  title = `${BRAND.companyName} - ${BRAND.tagline}`,
-  description = `${BRAND.companyName} is a premier manufacturer of high quality safety gloves, leather driver gloves, welding articles, and protective apparel based in ${BRAND.factoryAddress}. ${BRAND.tagline}.`,
+  title = `${BRAND.companyName} — Protecting Hands, Building Futures`,
+  description = 'MAX GLOVES BD LTD. is a premier industrial PPE and leather safety glove manufacturer based in Savar, Hemayetpur, Bangladesh. Direct factory supplier of certified welding, split, driver, mechanics, and industrial work gloves.',
+  bodyClass = 'sticky-header',
   currentPath = '/',
-  locale = 'en',
-  bodyClass = 'sticky-header'
+  locale = 'en'
 } = Astro.props;
+
+const canonicalUrl = new URL(currentPath, BRAND.websiteUrl).toString();
 ---
 
-<!doctype html>
+<!DOCTYPE html>
 <html class="no-js" lang={locale}>
   <head>
     <meta charset="utf-8" />
@@ -30,42 +31,43 @@ const {
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="theme-color" content={BRAND.colors.navy} />
+    <link rel="canonical" href={canonicalUrl} />
 
-    <!-- Favicons & App Icons -->
+    <!-- Open Graph / Meta -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:site_name" content={BRAND.companyName} />
+    <meta property="og:image" content={`${BRAND.websiteUrl}${BRAND.logo.horizontal}`} />
+
+    <!-- Favicon Suite -->
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <link rel="shortcut icon" href="/favicon.ico" />
     <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#0B1118" />
 
-    <!-- Open Graph & Twitter Cards -->
-    <meta property="og:type" content="website" />
-    <meta property="og:site_name" content={BRAND.companyName} />
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
-    <meta property="og:url" content={`${BRAND.websiteUrl}${currentPath}`} />
-    <meta property="og:image" content={`${BRAND.websiteUrl}${BRAND.logo.stacked}`} />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={title} />
-    <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={`${BRAND.websiteUrl}${BRAND.logo.stacked}`} />
-
-    <!-- JSON-LD Structured Data: Organization & LocalBusiness -->
+    <!-- JSON-LD Structured Data -->
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
-      "@type": ["Organization", "LocalBusiness"],
+      "@type": "Organization",
       "name": BRAND.companyName,
       "alternateName": BRAND.shortName,
       "url": BRAND.websiteUrl,
-      "logo": `${BRAND.websiteUrl}${BRAND.logo.stacked}`,
-      "email": BRAND.email,
-      "telephone": BRAND.phone,
-      "slogan": BRAND.tagline,
+      "logo": `${BRAND.websiteUrl}${BRAND.logo.horizontal}`,
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": BRAND.phone,
+        "contactType": "sales",
+        "email": BRAND.email,
+        "availableLanguage": ["English", "Japanese", "Korean"]
+      },
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "585/C, Khilgaon, C Block",
+        "streetAddress": BRAND.officeAddress,
         "addressLocality": "Dhaka",
         "postalCode": "1219",
         "addressCountry": "BD"
@@ -73,7 +75,7 @@ const {
       "location": [
         {
           "@type": "Place",
-          "name": "Head Office",
+          "name": "Corporate Office",
           "address": {
             "@type": "PostalAddress",
             "streetAddress": BRAND.officeAddress,
@@ -94,39 +96,228 @@ const {
       ]
     })} />
 
-    <!-- Google Fonts (Montserrat for headings, Inter for body) -->
+    <!-- Google Fonts: Barlow (Headings), Public Sans (Body), IBM Plex Mono (Tabular Data) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,500;0,600;0,700;0,800;0,900;1,700&family=IBM+Plex+Mono:wght@400;500;600&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
-    <!-- Source Stylesheets in Exact Cascade Order -->
+    <!-- Core Stylesheets -->
     <link rel="stylesheet" href="/front-end/css/normalize.css" />
     <link rel="stylesheet" href="/front-end/css/main.css" />
     <link rel="stylesheet" href="/front-end/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="/front-end/css/meanmenu.min.css" />
     <link rel="stylesheet" href="/front-end/css/fontawesome-all.min.css" />
-    <link rel="stylesheet" href="/front-end/css/animate.min.css" />
     <link rel="stylesheet" href="/front-end/font/flaticon.css" />
-    <link rel="stylesheet" href="/front-end/vendor/slick/slick.css" />
-    <link rel="stylesheet" href="/front-end/vendor/slick/slick-theme.css" />
-    <link rel="stylesheet" href="/front-end/css/select2.min.css" />
-    <link rel="stylesheet" href="/front-end/css/magnific-popup.css" />
     <link rel="stylesheet" href="/front-end/css/style.css" />
 
     <slot name="head" />
   </head>
 
   <body class={bodyClass}>
+    <!-- Accessibility Skip Link -->
+    <a href="#main-content" class="skip-to-content font-mono">Skip to main content</a>
+
     <div id="wrapper" class="wrapper">
       <SiteHeader currentPath={currentPath} locale={locale} />
       <MobileMenu currentPath={currentPath} locale={locale} />
 
-      <main id="main-content">
+      <main id="main-content" tabindex="-1">
         <slot />
       </main>
 
       <SiteFooter locale={locale} />
     </div>
+
+    <!-- Global Architectural Industrial Design System Tokens & Base CSS -->
+    <style is:global>
+      :root {
+        /* Carbon-Steel Neutral Scale */
+        --color-steel: #0B1118;
+        --color-steel-light: #15202B;
+        --color-steel-surface: #1E293B;
+        --color-steel-border: #223242;
+        --color-canvas: #F8FAFC;
+        --color-well: #F1F5F9;
+        --color-well-hover: #E8EEF5;
+        --color-border: #E2E8F0;
+        --color-border-dark: #CBD5E1;
+
+        /* Industrial Crimson Accent */
+        --color-crimson: #C81E1E;
+        --color-crimson-hover: #A81818;
+        --color-crimson-subtle: #FEF2F2;
+
+        /* Text Contrast System */
+        --color-text-main: #0B1118;
+        --color-text-body: #334155;
+        --color-text-muted: #64748B;
+        --color-text-light: #94A3B8;
+
+        /* Typography Stacks */
+        --font-heading: 'Barlow', -apple-system, BlinkMacSystemFont, sans-serif;
+        --font-body: 'Public Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+        --font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, monospace;
+
+        /* Structural Constraints */
+        --radius-sm: 4px;
+        --border-structural: 1px solid var(--color-border);
+      }
+
+      /* Base Resets & Typography */
+      html {
+        font-family: var(--font-body);
+        color: var(--color-text-body);
+        background-color: var(--color-canvas);
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: var(--font-body);
+        color: var(--color-text-body);
+        background-color: var(--color-canvas);
+        line-height: 1.6;
+        margin: 0;
+      }
+
+      /* Skip to content link */
+      .skip-to-content {
+        position: absolute;
+        top: -60px;
+        left: 20px;
+        background: var(--color-steel);
+        color: #FFFFFF;
+        padding: 10px 18px;
+        font-size: 13px;
+        font-weight: 600;
+        z-index: 9999;
+        border: 2px solid var(--color-crimson);
+        border-radius: 4px;
+        transition: top 0.2s ease;
+      }
+      .skip-to-content:focus {
+        top: 20px;
+        outline: none;
+      }
+
+      /* Headings in Barlow */
+      h1, h2, h3, h4, h5, h6,
+      .heading-barlow {
+        font-family: var(--font-heading) !important;
+        color: var(--color-steel);
+        font-weight: 700;
+        letter-spacing: -0.015em;
+        line-height: 1.25;
+      }
+
+      /* Monospace & Tabular Numerals */
+      .font-mono,
+      .badge-mono,
+      .tabular-num {
+        font-family: var(--font-mono) !important;
+        font-feature-settings: 'tnum' 1, 'zero' 1;
+      }
+
+      .text-crimson {
+        color: var(--color-crimson) !important;
+      }
+      .bg-steel {
+        background-color: var(--color-steel) !important;
+      }
+      .bg-canvas {
+        background-color: var(--color-canvas) !important;
+      }
+
+      /* Global Selection & Focus */
+      ::selection {
+        background-color: var(--color-steel);
+        color: #FFFFFF;
+      }
+      :focus-visible {
+        outline: 2px solid var(--color-crimson) !important;
+        outline-offset: 2px !important;
+      }
+
+      /* Architectural Custom Scrollbar */
+      ::-webkit-scrollbar {
+        width: 10px;
+        height: 10px;
+      }
+      ::-webkit-scrollbar-track {
+        background: var(--color-well);
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #94A3B8;
+        border-radius: 2px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: var(--color-steel-light);
+      }
+
+      /* Structural 4:3 Product Wells */
+      .studio-product-well {
+        background: var(--color-well);
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius-sm);
+        aspect-ratio: 4 / 3;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+        overflow: hidden;
+        position: relative;
+        transition: border-color 0.2s ease, background-color 0.2s ease;
+      }
+      .studio-product-well:hover {
+        border-color: var(--color-border-dark);
+        background-color: var(--color-well-hover);
+      }
+
+      /* Crisp Buttons */
+      .btn-crimson {
+        background-color: var(--color-crimson);
+        color: #FFFFFF !important;
+        border: 1px solid var(--color-crimson);
+        border-radius: var(--radius-sm);
+        padding: 12px 24px;
+        font-family: var(--font-heading);
+        font-weight: 700;
+        font-size: 14.5px;
+        letter-spacing: 0.04em;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+      .btn-crimson:hover {
+        background-color: var(--color-crimson-hover);
+        border-color: var(--color-crimson-hover);
+      }
+
+      .btn-steel-outline {
+        background-color: transparent;
+        color: var(--color-steel) !important;
+        border: 1px solid var(--color-border-dark);
+        border-radius: var(--radius-sm);
+        padding: 12px 24px;
+        font-family: var(--font-heading);
+        font-weight: 700;
+        font-size: 14.5px;
+        letter-spacing: 0.04em;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+      .btn-steel-outline:hover {
+        background-color: var(--color-well);
+        border-color: var(--color-steel);
+      }
+    </style>
 
     <!-- Client Interactivity Script -->
     <script>
@@ -147,10 +338,10 @@ const {
       function handleScroll() {
         const scrollY = window.scrollY || window.pageYOffset;
         if (headerMenu && stickyPlaceholder && window.innerWidth >= 992) {
-          if (scrollY > 60) {
+          if (scrollY > 50) {
             if (!headerMenu.classList.contains('rt-sticky')) {
               updateMenuMetrics();
-              stickyPlaceholder.style.height = `${naturalMenuHeight || 80}px`;
+              stickyPlaceholder.style.height = `${naturalMenuHeight || 76}px`;
               stickyPlaceholder.classList.add('is-active');
               headerMenu.classList.add('rt-sticky');
             }
@@ -163,9 +354,9 @@ const {
           }
         }
 
-        // Scroll-to-top button visibility
+        // Scroll to top visibility
         if (scrollUpBtn) {
-          if (scrollY > 300) {
+          if (scrollY > 350) {
             scrollUpBtn.classList.add('back-top');
           } else {
             scrollUpBtn.classList.remove('back-top');
@@ -176,7 +367,6 @@ const {
       window.addEventListener('scroll', handleScroll, { passive: true });
       handleScroll();
 
-      // Scroll to top action
       if (scrollUpBtn) {
         scrollUpBtn.addEventListener('click', (e) => {
           e.preventDefault();
@@ -184,7 +374,7 @@ const {
         });
       }
 
-      // 2. Mobile Menu Toggle & Accordion (closes on navigation)
+      // 2. Mobile Menu Accessible Toggle
       const mobileBtn = document.getElementById('mobileMenuBtn');
       const mobileNav = document.getElementById('mobileNavMenu');
       const prodExpandBtn = document.getElementById('mobileProductsExpand');
@@ -196,39 +386,29 @@ const {
         mobileBtn.addEventListener('click', (e) => {
           e.preventDefault();
           const isOpen = mobileNav.classList.toggle('is-open');
-          mobileBtn.classList.toggle('meanclose', isOpen);
+          mobileBtn.classList.toggle('is-active', isOpen);
+          mobileBtn.setAttribute('aria-expanded', String(isOpen));
+          mobileNav.setAttribute('aria-hidden', String(!isOpen));
         });
 
-        // Close menu immediately after link is tapped
-        mobileNav.querySelectorAll('a').forEach((link) => {
-          link.addEventListener('click', () => {
-            const href = link.getAttribute('href');
-            if (href && href !== '#' && !link.classList.contains('mean-expand')) {
-              mobileNav.classList.remove('is-open');
-              mobileBtn.classList.remove('meanclose');
-            }
-          });
-        });
-
-        // Close when clicking outside mobile nav and button
-        document.addEventListener('click', (e) => {
-          const target = e.target as HTMLElement | null;
-          if (
-            mobileNav.classList.contains('is-open') &&
-            target &&
-            !mobileNav.contains(target) &&
-            !mobileBtn.contains(target)
-          ) {
+        // Close on escape key
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape' && mobileNav.classList.contains('is-open')) {
             mobileNav.classList.remove('is-open');
-            mobileBtn.classList.remove('meanclose');
+            mobileBtn.classList.remove('is-active');
+            mobileBtn.setAttribute('aria-expanded', 'false');
+            mobileNav.setAttribute('aria-hidden', 'true');
+            mobileBtn.focus();
           }
         });
 
-        // Close when window resized to desktop
+        // Close on resize to desktop
         window.addEventListener('resize', () => {
           if (window.innerWidth >= 992 && mobileNav.classList.contains('is-open')) {
             mobileNav.classList.remove('is-open');
-            mobileBtn.classList.remove('meanclose');
+            mobileBtn.classList.remove('is-active');
+            mobileBtn.setAttribute('aria-expanded', 'false');
+            mobileNav.setAttribute('aria-hidden', 'true');
           }
         }, { passive: true });
       }
@@ -236,16 +416,12 @@ const {
       function toggleSubmenu(btn: HTMLElement | null, submenu: HTMLElement | null) {
         if (!btn || !submenu) return;
         const isExpanded = submenu.classList.toggle('sub-open');
-        btn.textContent = isExpanded ? '-' : '+';
+        btn.textContent = isExpanded ? '−' : '+';
+        btn.setAttribute('aria-expanded', String(isExpanded));
       }
 
       if (prodExpandBtn && prodSubmenu) {
         prodExpandBtn.addEventListener('click', (e) => {
-          e.preventDefault();
-          toggleSubmenu(prodExpandBtn, prodSubmenu);
-        });
-        const prodParentLink = prodExpandBtn.parentElement?.querySelector('a:not(.mean-expand)');
-        prodParentLink?.addEventListener('click', (e) => {
           e.preventDefault();
           toggleSubmenu(prodExpandBtn, prodSubmenu);
         });
@@ -256,27 +432,21 @@ const {
           e.preventDefault();
           toggleSubmenu(langExpandBtn, langSubmenu);
         });
-        const langParentLink = langExpandBtn.parentElement?.querySelector('a:not(.mean-expand)');
-        langParentLink?.addEventListener('click', (e) => {
-          e.preventDefault();
-          toggleSubmenu(langExpandBtn, langSubmenu);
-        });
       }
 
       // 3. Desktop Language Dropdown Toggle
-      const langBtn = document.getElementById('dropdownMenuButton');
-      if (langBtn) {
+      const langBtn = document.getElementById('languageMenuBtn');
+      const langPanel = document.getElementById('languageMenuPanel');
+      if (langBtn && langPanel) {
         langBtn.addEventListener('click', (e) => {
           e.stopPropagation();
-          const menu = langBtn.nextElementSibling as HTMLElement;
-          if (menu) {
-            menu.classList.toggle('show');
-          }
+          const isShown = langPanel.classList.toggle('show');
+          langBtn.setAttribute('aria-expanded', String(isShown));
         });
         document.addEventListener('click', () => {
-          const menu = langBtn.nextElementSibling as HTMLElement;
-          if (menu && menu.classList.contains('show')) {
-            menu.classList.remove('show');
+          if (langPanel.classList.contains('show')) {
+            langPanel.classList.remove('show');
+            langBtn.setAttribute('aria-expanded', 'false');
           }
         });
       }

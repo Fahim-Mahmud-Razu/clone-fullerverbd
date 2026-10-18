@@ -1,9 +1,45 @@
 ---
 const slides = [
-  { image: '/front-end/img/slider/max_welcome_hero.jpg', label: 'Welcome MAX Gloves', alt: 'Welcome to Max Gloves BD Ltd.' },
-  { image: '/front-end/img/slider/max_split_gloves.jpg', label: 'Split Gloves', alt: 'Split Gloves - Max Gloves BD Ltd.' },
-  { image: '/front-end/img/slider/max_welding_gloves.jpg', label: 'Welding Gloves', alt: 'Welding Gloves - Max Gloves BD Ltd.' },
-  { image: '/front-end/img/slider/max_leather_palm_gloves.jpg', label: 'Leather Palm Gloves', alt: 'Leather Palm Gloves - Max Gloves BD Ltd.' }
+  {
+    image: '/front-end/img/slider/max_welcome_hero.jpg',
+    kicker: 'BANGLADESH DIRECT EXPORTER // SAVAR MANUFACTURING FACILITY',
+    title: 'Precision-Engineered Industrial Safety & Leather Gloves',
+    desc: 'Direct-from-factory personal protective equipment for international procurement teams. Heavy-duty cowhide, goat grain, split, and heat-resistant welding gloves certified for demanding industrial environments.',
+    primaryBtn: { text: 'EXPLORE GLOVE CATALOG', url: '/category/20' },
+    secondaryBtn: { text: 'REQUEST FACTORY RFQ', url: '/contact' },
+    label: 'Welcome Max Gloves',
+    num: '01'
+  },
+  {
+    image: '/front-end/img/slider/max_split_gloves.jpg',
+    kicker: 'HEAVY INDUSTRIAL ABRASION PROTECTION // EN 388 STANDARDS',
+    title: 'Reinforced Leather Split Work Gloves',
+    desc: 'Engineered from premium shoulder split leather with reinforced cotton drill backs and safety rubberized cuffs for heavy metalworking, foundries, construction, and rigging.',
+    primaryBtn: { text: 'VIEW SPLIT GLOVES', url: '/category/19' },
+    secondaryBtn: { text: 'INQUIRE SPECIFICATIONS', url: '/contact' },
+    label: 'Leather Split Gloves',
+    num: '02'
+  },
+  {
+    image: '/front-end/img/slider/max_welding_gloves.jpg',
+    kicker: 'EXTREME HEAT & SPATTER RESISTANCE // EN 407 CERTIFICATION',
+    title: 'Kevlar-Stitched Leather Welding Gloves',
+    desc: 'One-piece back construction crafted from specialized heat-treated cow split leather with soft fleece lining and reinforced thumb crotches for MIG, TIG, and arc welding applications.',
+    primaryBtn: { text: 'VIEW WELDING GLOVES', url: '/category/20' },
+    secondaryBtn: { text: 'INQUIRE SPECIFICATIONS', url: '/contact' },
+    label: 'Leather Welding Gloves',
+    num: '03'
+  },
+  {
+    image: '/front-end/img/slider/max_leather_palm_gloves.jpg',
+    kicker: 'DURABLE PALM GRIP & ERGONOMIC AGILITY',
+    title: 'Heavy Duty Leather Palm Gloves',
+    desc: 'High-friction leather palm reinforcement combined with breathable cotton striped backs and knuckle straps. Ideal for general assembly, warehousing, logistics, and material handling.',
+    primaryBtn: { text: 'VIEW PALM GLOVES', url: '/category/21' },
+    secondaryBtn: { text: 'INQUIRE SPECIFICATIONS', url: '/contact' },
+    label: 'Leather Palm Gloves',
+    num: '04'
+  }
 ];
 
 // Prepend last slide and append first slide for seamless infinite horizontal sliding
@@ -14,213 +50,324 @@ const loopSlides = [
 ];
 ---
 
-<section class="slick-slider-wrap-layout1" id="heroSliderSection">
-  <div class="slick-slider-layout1">
-    <!-- Main Big Slide Display (Continuous Horizontal Sliding Carousel) -->
-    <div class="slick-carousel slick-content hero-viewport" id="heroViewport">
-      <div class="hero-track" id="heroTrack">
-        {loopSlides.map((slide, trackIdx) => (
-          <div
-            class="hero-slide slick-slider"
-            data-track-index={trackIdx}
-            data-orig-index={slide.origIdx}
-          >
-            <div class="item-img">
-              <img
-                src={slide.image}
-                alt={slide.alt}
-                loading={trackIdx <= 2 ? 'eager' : 'lazy'}
-                decoding="async"
-              />
+<section class="architectural-hero-section" id="heroSliderSection" aria-label="Featured industrial glove products">
+  <!-- Main Viewport Carousel -->
+  <div class="hero-viewport" id="heroViewport">
+    <div class="hero-track" id="heroTrack">
+      {loopSlides.map((slide, trackIdx) => (
+        <div
+          class="hero-slide-pane"
+          data-track-index={trackIdx}
+          data-orig-index={slide.origIdx}
+          aria-hidden={trackIdx !== 1 ? 'true' : 'false'}
+        >
+          <!-- Background Image with High-Contrast Dark Scrim -->
+          <div class="hero-image-backdrop">
+            <img
+              src={slide.image}
+              alt=""
+              loading={trackIdx <= 2 ? 'eager' : 'lazy'}
+              decoding="async"
+              class="hero-img-element"
+            />
+            <div class="hero-scrim-overlay"></div>
+          </div>
+
+          <!-- Architectural Content Container -->
+          <div class="container hero-content-container">
+            <div class="row">
+              <div class="col-xl-8 col-lg-9 col-12">
+                <div class="hero-text-card">
+                  <div class="hero-kicker font-mono">
+                    <span class="crimson-tick"></span>
+                    <span>{slide.kicker}</span>
+                  </div>
+
+                  <h1 class="hero-headline">
+                    {slide.title}
+                  </h1>
+
+                  <p class="hero-description">
+                    {slide.desc}
+                  </p>
+
+                  <div class="hero-cta-cluster">
+                    <a href={slide.primaryBtn.url} class="btn-crimson">
+                      <span>{slide.primaryBtn.text}</span>
+                      <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                    </a>
+                    <a href={slide.secondaryBtn.url} class="btn-steel-glass font-mono">
+                      <span>{slide.secondaryBtn.text}</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-        ))}
-      </div>
-    </div>
-
-    <!-- Synchronized Navigation Control Strip -->
-    <div class="slick-nav-wrap">
-      <div class="container">
-        <div class="slick-carousel slick-nav" id="heroNavStrip">
-          {slides.map((slide, idx) => (
-            <div
-              class={`nav-item ${idx === 0 ? 'slick-current' : ''}`}
-              data-nav-index={idx}
-              role="button"
-              tabindex="0"
-              style="cursor: pointer;"
-            >
-              <div class="item-icon">
-                <img src="/front-end/img/ggafp.png" alt="service" width="32" height="51" />
-              </div>
-              <h4 class="item-title">{slide.label}</h4>
-            </div>
-          ))}
         </div>
+      ))}
+    </div>
+  </div>
+
+  <!-- Synchronized Tabular Navigation Strip (Anchored directly over #0B1118) -->
+  <div class="hero-nav-strip-wrap">
+    <div class="container">
+      <div class="hero-nav-strip" id="heroNavStrip" role="tablist" aria-label="Hero carousel slide navigation">
+        {slides.map((slide, idx) => (
+          <button
+            type="button"
+            class={`hero-nav-tab ${idx === 0 ? 'is-active' : ''}`}
+            data-nav-index={idx}
+            role="tab"
+            aria-selected={idx === 0 ? 'true' : 'false'}
+            id={`hero-tab-${idx}`}
+            aria-label={`Slide ${idx + 1}: ${slide.label}`}
+          >
+            <div class="nav-tab-header font-mono">
+              <span class="tab-index">{slide.num}</span>
+              <span class="tab-divider">//</span>
+              <span class="tab-category">INDUSTRIAL PPE</span>
+            </div>
+            <div class="nav-tab-title">{slide.label}</div>
+            <div class="nav-active-bar" aria-hidden="true"></div>
+          </button>
+        ))}
       </div>
     </div>
   </div>
 </section>
 
 <style>
-  #heroSliderSection {
+  .architectural-hero-section {
+    position: relative;
+    background-color: var(--color-steel, #0B1118);
+    overflow: hidden;
+    contain: layout paint;
     overflow-anchor: none;
   }
 
   .hero-viewport {
     position: relative;
-    overflow: hidden;
     width: 100%;
-    margin: 0;
-    padding: 0;
-    contain: layout paint;
-    overflow-anchor: none;
+    height: clamp(520px, 68vh, 680px);
+    overflow: hidden;
   }
 
   .hero-track {
     display: flex;
-    flex-direction: row;
+    height: 100%;
     width: 100%;
     will-change: transform;
-    transform: translate3d(-100%, 0, 0);
-    transition: transform 1000ms ease;
   }
 
-  .hero-slide {
+  .hero-slide-pane {
     flex: 0 0 100%;
     width: 100%;
-    min-width: 100%;
-    max-width: 100%;
-    box-sizing: border-box;
-  }
-
-  .hero-slide .item-img {
-    width: 100%;
-    text-align: center;
+    height: 100%;
     position: relative;
-    margin-bottom: -10px;
-    background: #05254f;
-    min-height: 240px;
+    display: flex;
+    align-items: center;
   }
 
-  .hero-slide .item-img img {
+  .hero-image-backdrop {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    overflow: hidden;
+  }
+
+  .hero-img-element {
     width: 100%;
-    height: auto;
-    max-height: 700px;
+    height: 100%;
     object-fit: cover;
+    object-position: center;
     display: block;
-    user-select: none;
-    -webkit-user-drag: none;
+    filter: brightness(0.95);
   }
 
-  #heroNavStrip {
-    display: flex !important;
-    flex-direction: row !important;
-    align-items: stretch !important;
-    justify-content: space-between !important;
-    height: 193px !important;
-    overflow-x: auto !important;
-    overflow-y: hidden !important;
-    scrollbar-width: none !important;
-    -ms-overflow-style: none !important;
-    -webkit-overflow-scrolling: touch;
-    overflow-anchor: none;
+  /* High-Contrast Industrial Scrim */
+  .hero-scrim-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      90deg,
+      rgba(11, 17, 24, 0.94) 0%,
+      rgba(11, 17, 24, 0.82) 45%,
+      rgba(11, 17, 24, 0.45) 80%,
+      rgba(11, 17, 24, 0.25) 100%
+    );
   }
 
-  #heroNavStrip::-webkit-scrollbar {
-    display: none !important;
+  .hero-content-container {
+    position: relative;
+    z-index: 2;
+    padding-top: 20px;
+    padding-bottom: 70px;
   }
 
-  #heroNavStrip .nav-item {
-    flex: 1 1 0 !important;
-    max-width: 25% !important;
-    height: 193px !important;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    justify-content: center !important;
-    transition: background-color 0.25s ease;
-    flex-shrink: 0;
+  .hero-text-card {
+    max-width: 720px;
   }
 
-  .slick-nav .nav-item.slick-current {
-    background-color: var(--brand-orange) !important;
+  .hero-kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11.5px;
+    letter-spacing: 0.08em;
+    color: #94A3B8;
+    background: rgba(15, 23, 42, 0.85);
+    border: 1px solid #223242;
+    padding: 5px 12px;
+    border-radius: 4px;
+    margin-bottom: 18px;
   }
 
-  .slick-nav .nav-item:hover {
-    background-color: var(--brand-orange-hover) !important;
+  .crimson-tick {
+    width: 6px;
+    height: 6px;
+    background: var(--color-crimson, #C81E1E);
+    border-radius: 1px;
+    display: inline-block;
   }
 
-  @media only screen and (max-width: 1199px) {
-    #heroNavStrip {
-      height: 160px !important;
-    }
-    #heroNavStrip .nav-item {
-      height: 160px !important;
-      padding: 30px 5px 18px !important;
-      max-width: 25% !important;
-    }
-    #heroNavStrip .nav-item .item-title {
-      font-size: 16px !important;
-    }
+  .hero-headline {
+    color: #FFFFFF !important;
+    font-size: clamp(32px, 4.5vw, 56px) !important;
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -0.025em;
+    margin-bottom: 18px;
   }
 
-  @media only screen and (max-width: 991px) {
-    #heroNavStrip {
-      height: 130px !important;
-      justify-content: flex-start !important;
-    }
-    #heroNavStrip .nav-item {
-      flex: 0 0 50% !important;
-      max-width: 50% !important;
-      min-width: 50% !important;
-      height: 130px !important;
-      padding: 16px 5px 12px !important;
-    }
-    #heroNavStrip .nav-item .item-icon {
-      margin-bottom: 10px !important;
-    }
-    #heroNavStrip .nav-item .item-icon img {
-      height: 38px !important;
-      width: auto !important;
-    }
-    #heroNavStrip .nav-item .item-title {
-      font-size: 14px !important;
-      line-height: 1.25 !important;
-    }
+  .hero-description {
+    color: #CBD5E1;
+    font-size: clamp(15px, 1.8vw, 17.5px);
+    line-height: 1.6;
+    max-width: 640px;
+    margin-bottom: 28px;
   }
 
-  @media only screen and (max-width: 767px) {
-    .hero-slide .item-img {
-      margin-bottom: 0 !important;
-      min-height: 180px;
-    }
-    .hero-slide .item-img img {
-      max-height: 400px !important;
-    }
+  .hero-cta-cluster {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 14px;
   }
 
-  @media only screen and (max-width: 575px) {
-    #heroNavStrip {
-      height: 105px !important;
+  .btn-steel-glass {
+    background: rgba(30, 41, 59, 0.6);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(226, 232, 240, 0.25);
+    color: #FFFFFF !important;
+    padding: 12px 22px;
+    border-radius: 4px;
+    font-size: 13.5px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+  .btn-steel-glass:hover {
+    background: rgba(30, 41, 59, 0.95);
+    border-color: #FFFFFF;
+    color: #FFFFFF !important;
+  }
+
+  /* Synchronized Tabular Navigation Strip */
+  .hero-nav-strip-wrap {
+    position: relative;
+    z-index: 10;
+    background-color: #0B1118;
+    border-top: 1px solid #223242;
+    border-bottom: 1px solid #223242;
+  }
+
+  .hero-nav-strip {
+    display: flex;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .hero-nav-strip::-webkit-scrollbar {
+    display: none;
+  }
+
+  .hero-nav-tab {
+    flex: 1 0 240px;
+    min-width: 200px;
+    background: transparent;
+    border: none;
+    border-right: 1px solid #1E293B;
+    padding: 16px 20px 18px;
+    text-align: left;
+    cursor: pointer;
+    position: relative;
+    transition: background 0.2s ease;
+  }
+  .hero-nav-tab:last-child {
+    border-right: none;
+  }
+  .hero-nav-tab:hover {
+    background: #15202B;
+  }
+  .hero-nav-tab.is-active {
+    background: #15202B;
+  }
+
+  .nav-tab-header {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    color: #64748B;
+    margin-bottom: 4px;
+  }
+  .hero-nav-tab.is-active .tab-index {
+    color: var(--color-crimson, #C81E1E);
+    font-weight: 700;
+  }
+  .tab-category {
+    letter-spacing: 0.05em;
+  }
+
+  .nav-tab-title {
+    font-family: var(--font-heading, 'Barlow', sans-serif);
+    font-size: 14.5px;
+    font-weight: 700;
+    color: #94A3B8;
+    transition: color 0.2s ease;
+  }
+  .hero-nav-tab.is-active .nav-tab-title {
+    color: #FFFFFF;
+  }
+
+  .nav-active-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background-color: transparent;
+    transition: background-color 0.2s ease;
+  }
+  .hero-nav-tab.is-active .nav-active-bar {
+    background-color: var(--color-crimson, #C81E1E);
+  }
+
+  @media (max-width: 767px) {
+    .hero-viewport {
+      height: 540px;
     }
-    #heroNavStrip .nav-item {
-      flex: 0 0 50% !important;
-      max-width: 50% !important;
-      min-width: 50% !important;
-      height: 105px !important;
-      padding: 12px 6px 10px !important;
+    .hero-content-container {
+      padding-top: 10px;
+      padding-bottom: 40px;
     }
-    #heroNavStrip .nav-item .item-icon {
-      margin-bottom: 6px !important;
-    }
-    #heroNavStrip .nav-item .item-icon img {
-      height: 28px !important;
-      width: auto !important;
-    }
-    #heroNavStrip .nav-item .item-title {
-      font-size: 13px !important;
-      line-height: 1.2 !important;
+    .hero-nav-tab {
+      flex: 0 0 75%;
+      min-width: 75%;
     }
   }
 
@@ -232,20 +379,20 @@ const loopSlides = [
 </style>
 
 <script>
-  function initHeroSlider() {
+  function initArchitecturalHero() {
     const track = document.getElementById('heroTrack') as HTMLElement | null;
-    const navItems = document.querySelectorAll<HTMLElement>('#heroNavStrip .nav-item');
+    const navTabs = document.querySelectorAll<HTMLButtonElement>('#heroNavStrip .hero-nav-tab');
     const heroSection = document.getElementById('heroSliderSection');
     const navStrip = document.getElementById('heroNavStrip');
-    if (!track || !navItems.length) return;
+    if (!track || !navTabs.length) return;
 
-    const TOTAL_REAL_SLIDES = navItems.length; // 6
+    const TOTAL_REAL_SLIDES = navTabs.length;
     let currentTrackIndex = 1;
     let isTransitioning = false;
     let autoplayTimer: number | null = null;
     let isHeroInView = true;
-    const AUTOPLAY_DELAY = 3500;
-    const TRANSITION_STYLE = 'transform 1000ms ease';
+    const AUTOPLAY_DELAY = 4200;
+    const TRANSITION_STYLE = 'transform 800ms cubic-bezier(0.16, 1, 0.3, 1)';
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     // Set initial position
@@ -253,24 +400,22 @@ const loopSlides = [
     track.style.transform = `translate3d(-${currentTrackIndex * 100}%, 0, 0)`;
     void track.offsetWidth;
 
-    // ROOT CAUSE FIX: Never call nav.scrollIntoView() which scrolls the whole window viewport!
-    // Instead, scroll ONLY the horizontal navStrip container element.
+    // Container-level scroll (never whole window)
     function updateNav(realIndex: number) {
-      navItems.forEach((nav, idx) => {
-        if (idx === realIndex) {
-          nav.classList.add('slick-current');
-          if (navStrip) {
-            const navLeft = nav.offsetLeft;
-            const navWidth = nav.offsetWidth;
-            const stripWidth = navStrip.clientWidth;
-            const targetLeft = navLeft - (stripWidth / 2) + (navWidth / 2);
-            navStrip.scrollTo({
-              left: Math.max(0, targetLeft),
-              behavior: prefersReducedMotion ? 'auto' : 'smooth'
-            });
-          }
-        } else {
-          nav.classList.remove('slick-current');
+      navTabs.forEach((tab, idx) => {
+        const isMatch = idx === realIndex;
+        tab.classList.toggle('is-active', isMatch);
+        tab.setAttribute('aria-selected', String(isMatch));
+
+        if (isMatch && navStrip) {
+          const tabLeft = tab.offsetLeft;
+          const tabWidth = tab.offsetWidth;
+          const stripWidth = navStrip.clientWidth;
+          const targetLeft = tabLeft - (stripWidth / 2) + (tabWidth / 2);
+          navStrip.scrollTo({
+            left: Math.max(0, targetLeft),
+            behavior: prefersReducedMotion ? 'auto' : 'smooth'
+          });
         }
       });
     }
@@ -283,7 +428,6 @@ const loopSlides = [
       track.style.transition = prefersReducedMotion ? 'none' : TRANSITION_STYLE;
       track.style.transform = `translate3d(-${currentTrackIndex * 100}%, 0, 0)`;
 
-      // Determine active nav index immediately
       let realIndex = 0;
       if (currentTrackIndex === 0) {
         realIndex = TOTAL_REAL_SLIDES - 1;
@@ -305,20 +449,17 @@ const loopSlides = [
       goToTrackIndex(currentTrackIndex - 1);
     }
 
-    // Handle seamless infinite looping jump on transition end
     track.addEventListener('transitionend', (e) => {
       if (e.target !== track || e.propertyName !== 'transform') return;
       isTransitioning = false;
 
-      // Past last slide -> jump to slide 1
+      // Wrap around seamless loop
       if (currentTrackIndex === TOTAL_REAL_SLIDES + 1) {
         track.style.transition = 'none';
         currentTrackIndex = 1;
         track.style.transform = `translate3d(-${currentTrackIndex * 100}%, 0, 0)`;
         void track.offsetWidth;
-      }
-      // Before first slide -> jump to last slide
-      else if (currentTrackIndex === 0) {
+      } else if (currentTrackIndex === 0) {
         track.style.transition = 'none';
         currentTrackIndex = TOTAL_REAL_SLIDES;
         track.style.transform = `translate3d(-${currentTrackIndex * 100}%, 0, 0)`;
@@ -339,8 +480,7 @@ const loopSlides = [
       }
     }
 
-    // ROOT CAUSE MITIGATION: Pause autoplay whenever the hero section is not visible on screen.
-    // When the user scrolls past the hero to "Our Working Process", slider pauses completely.
+    // Pause autoplay when hero is scrolled out of viewport
     if ('IntersectionObserver' in window && heroSection) {
       const observer = new IntersectionObserver(
         (entries) => {
@@ -358,7 +498,6 @@ const loopSlides = [
       observer.observe(heroSection);
     }
 
-    // Pause on background tab or app minimize
     document.addEventListener('visibilitychange', () => {
       if (document.hidden) {
         stopAutoplay();
@@ -367,13 +506,12 @@ const loopSlides = [
       }
     });
 
-    // Navigation item click & keyboard accessibility (no window scroll)
-    navItems.forEach((item, idx) => {
-      item.addEventListener('click', () => {
+    navTabs.forEach((tab, idx) => {
+      tab.addEventListener('click', () => {
         goToTrackIndex(idx + 1);
         startAutoplay();
       });
-      item.addEventListener('keydown', (e) => {
+      tab.addEventListener('keydown', (e) => {
         if (e.key === 'Enter' || e.key === ' ') {
           e.preventDefault();
           goToTrackIndex(idx + 1);
@@ -382,7 +520,6 @@ const loopSlides = [
       });
     });
 
-    // Pause on mouse hover (desktop)
     if (heroSection) {
       heroSection.addEventListener('mouseenter', stopAutoplay);
       heroSection.addEventListener('mouseleave', () => {
@@ -390,42 +527,30 @@ const loopSlides = [
       });
     }
 
-    // Touch swipe support for mobile (pure horizontal, passive)
+    // Touch swipe support (passive)
     let touchStartX = 0;
     let touchEndX = 0;
-    track.addEventListener(
-      'touchstart',
-      (e) => {
-        touchStartX = e.changedTouches[0].screenX;
-        stopAutoplay();
-      },
-      { passive: true }
-    );
+    track.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+      stopAutoplay();
+    }, { passive: true });
 
-    track.addEventListener(
-      'touchend',
-      (e) => {
-        touchEndX = e.changedTouches[0].screenX;
-        const diffX = touchEndX - touchStartX;
-        if (Math.abs(diffX) > 50) {
-          if (diffX < 0) {
-            nextSlide();
-          } else {
-            prevSlide();
-          }
-        }
-        if (isHeroInView) startAutoplay();
-      },
-      { passive: true }
-    );
+    track.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      const diffX = touchEndX - touchStartX;
+      if (Math.abs(diffX) > 40) {
+        if (diffX < 0) nextSlide();
+        else prevSlide();
+      }
+      if (isHeroInView) startAutoplay();
+    }, { passive: true });
 
     startAutoplay();
   }
 
-  // Initialize on load
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initHeroSlider);
+    document.addEventListener('DOMContentLoaded', initArchitecturalHero);
   } else {
-    initHeroSlider();
+    initArchitecturalHero();
   }
 </script>

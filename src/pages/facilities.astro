@@ -1,142 +1,204 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageBanner from '../components/PageBanner.astro';
+import BRAND from '../config/site';
+
+const plantFeatures = [
+  {
+    icon: 'fas fa-award',
+    code: 'QA-01',
+    title: 'Incoming Leather Inspection',
+    desc: 'Automated thickness gauge verification, tensile testing, and raw hide grain sorting before cutting.'
+  },
+  {
+    icon: 'fas fa-users-cog',
+    code: 'OPS-02',
+    title: '150+ Skilled Glove Craftsmen',
+    desc: 'Expert leather stitchers trained in Kevlar lockstitch seam execution and palm welt reinforcement.'
+  },
+  {
+    icon: 'fas fa-industry',
+    code: 'CAP-03',
+    title: '1,530 m² Production Floor',
+    desc: 'Dedicated hydraulic clicker press banks, heavy sewing lines, conditioning bays, and export palletizing.'
+  },
+  {
+    icon: 'fas fa-shield-alt',
+    code: 'STD-04',
+    title: 'Pre-Shipment Compliance',
+    desc: 'Full batch mechanical abrasion, tear resistance, and anti-mold export protocol before container sealing.'
+  }
+];
 ---
 
-<BaseLayout title="Our Facilities - Max Gloves BD Ltd." currentPath="/facilities">
-  <PageBanner title="Our Facilities" breadcrumbs={[{ label: 'Home', url: '/' }, { label: 'Our Facilities' }]} />
+<BaseLayout title={`Savar Manufacturing Facilities — ${BRAND.companyName}`} currentPath="/facilities">
+  <PageBanner title="Manufacturing Facilities" breadcrumbs={[{ label: 'Home', url: '/' }, { label: 'Our Facilities' }]} />
 
-  <section class="facilities">
-    <div class="container1">
-      <div class="content">
-        <span class="eyebrow">/// WHAT WE HAVE</span>
-        <h1>Our Facilities</h1>
-        <div class="line"></div>
+  <section class="facilities-architectural-section" aria-label="Savar glove manufacturing facility">
+    <div class="container">
+      <div class="row g-5 align-items-center mb-5">
+        <!-- Text Column -->
+        <div class="col-lg-6 col-12">
+          <div class="facility-overview-content">
+            <div class="kicker-tag font-mono">
+              <span class="crimson-dot"></span>
+              <span>PLANT SPECIFICATION // SAVAR, HEMAYETPUR</span>
+            </div>
 
-        <p><strong>Max Gloves BD Ltd.</strong> is based in Savar, Hemayetpur, Bangladesh, in a prime manufacturing area only 1 hour outside the capital Dhaka, and the airport. Further benefits of our location include convenient transport links to the nearest port, Chittagong.</p>
+            <h1 class="facility-main-heading">
+              Modern Leather Glove Manufacturing Plant
+            </h1>
 
-        <p>Bangladesh has a globally recognized leather and apparel manufacturing ecosystem. This environment enables <strong>Max Gloves BD Ltd.</strong> to employ experienced, highly skilled craftsmen and technicians who maintain rigorous quality standards and manufacturing agility.</p>
+            <p class="facility-lead-text">
+              <strong>MAX GLOVES BD LTD.</strong> operates a specialized 1,530 m² industrial manufacturing plant in Savar, Hemayetpur, Bangladesh, situated strategically in the country's primary industrial export corridor.
+            </p>
 
-        <p><strong>Max Gloves BD Ltd.</strong> produces reliable leather drivers and welding gloves that are shipped to global clients across the world.</p>
+            <p class="facility-body-text">
+              Our location provides direct highway transit to the capital Dhaka (1 hour), rapid airfreight access via Hazrat Shahjalal International Airport, and direct transport links to the country’s primary seaport at Chittagong for streamlined ocean freight dispatch.
+            </p>
 
-        <p>We create advanced leather gloves with increased comfort and heat resistance. Our team can develop custom products based on customer requirements.</p>
+            <p class="facility-body-text">
+              By leveraging Bangladesh's world-class leather and tannery supply chains, our Savar facility delivers large-scale export orders of cowhide welding, split leather, driver, and mechanics gloves with exceptional cost efficiency and uncompromising international PPE quality.
+            </p>
 
-        <p>We are capable of producing high volume stock at a lower cost while maintaining quality, safety, and consistent production capability.</p>
-      </div>
+            <div class="pt-3">
+              <a href="/contact" class="btn-crimson font-mono">
+                <i class="far fa-paper-plane" aria-hidden="true"></i>
+                <span>SCHEDULE FACTORY INSPECTION</span>
+              </a>
+            </div>
+          </div>
+        </div>
 
-      <div class="gallery">
-        <div class="single-item right-item" style="padding-right: 20px;">
-          <img style="border: 2px solid var(--brand-navy); width: 100%; border-radius: 4px; box-shadow: 0 10px 30px rgba(0,0,0,0.12);" src="/front-end/img/about/facilities.jpg" alt="Our Facilities" />
+        <!-- Image Column -->
+        <div class="col-lg-6 col-12">
+          <div class="facility-photo-frame">
+            <img
+              src="/front-end/img/about/facilities.jpg"
+              alt="Max Gloves BD Ltd. Savar Manufacturing Plant Facility"
+              loading="lazy"
+              decoding="async"
+              class="facility-showcase-img"
+            />
+            <div class="facility-photo-badge font-mono">
+              <i class="fas fa-industry text-crimson" aria-hidden="true"></i>
+              <span>SAVAR PLANT FLOOR // HYDRAULIC CUTTING & STITCHING BAYS</span>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="features">
-      <div><b><i class="fas fa-award" style="color: var(--brand-orange); margin-right: 8px;"></i>Premium Quality</b><span>High quality raw materials and strict quality control.</span></div>
-      <div><b><i class="fas fa-users-cog" style="color: var(--brand-orange); margin-right: 8px;"></i>Skilled Workforce</b><span>Experienced and efficient team ensuring excellence.</span></div>
-      <div><b><i class="fas fa-industry" style="color: var(--brand-orange); margin-right: 8px;"></i>Scalable Capacity</b><span>Large scale production with on-time delivery.</span></div>
-      <div><b><i class="fas fa-shield-alt" style="color: var(--brand-orange); margin-right: 8px;"></i>Safety First</b><span>Committed to safety standards and compliance.</span></div>
+      <!-- 4-Grid Operational Features (1px #E2E8F0 structural borders, 4px radii) -->
+      <div class="row g-4 mt-2">
+        {plantFeatures.map((feat) => (
+          <div class="col-xl-3 col-md-6 col-12">
+            <div class="facility-feature-box">
+              <div class="d-flex align-items-center justify-content-between mb-3">
+                <div class="feature-icon-bubble">
+                  <i class={`${feat.icon} text-crimson`} aria-hidden="true"></i>
+                </div>
+                <span class="feature-code font-mono">{feat.code}</span>
+              </div>
+              <h3 class="feature-title">{feat.title}</h3>
+              <p class="feature-desc">{feat.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   </section>
 </BaseLayout>
 
 <style>
-  .facilities {
-    padding: 70px 5%;
-    background: #ffffff;
+  .facilities-architectural-section {
+    background-color: var(--color-canvas, #F8FAFC);
+    padding: 80px 0 100px;
   }
-  .container1 {
-    max-width: 1200px;
-    margin: auto;
-    display: grid;
-    grid-template-columns: 0.9fr 1.1fr;
-    gap: 55px;
+
+  .facility-main-heading {
+    font-size: clamp(30px, 4vw, 46px);
+    font-weight: 800;
+    color: var(--color-steel, #0B1118);
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    margin-bottom: 18px;
+  }
+  .facility-lead-text {
+    font-size: 16.5px;
+    line-height: 1.6;
+    color: var(--color-steel, #0B1118);
+    margin-bottom: 14px;
+  }
+  .facility-body-text {
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--color-text-muted, #64748B);
+    margin-bottom: 16px;
+  }
+
+  .facility-photo-frame {
+    background: #FFFFFF;
+    border: 1px solid var(--color-border, #E2E8F0);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .facility-showcase-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+  }
+  .facility-photo-badge {
+    background: #0B1118;
+    color: #CBD5E1;
+    padding: 10px 16px;
+    font-size: 11px;
+    display: flex;
     align-items: center;
+    gap: 8px;
+    letter-spacing: 0.05em;
   }
-  .eyebrow {
-    font-size: 14px;
-    font-weight: 700;
-    color: var(--brand-orange);
-    letter-spacing: 1px;
-    display: block;
+
+  /* 4-Box Feature Cards */
+  .facility-feature-box {
+    background: #FFFFFF;
+    border: 1px solid var(--color-border, #E2E8F0);
+    border-radius: 4px;
+    padding: 24px;
+    height: 100%;
+    transition: all 0.2s ease;
   }
-  .content h1 {
-    font-size: 58px;
-    margin: 18px 0;
-    color: var(--brand-navy);
-    font-weight: 700;
-    line-height: 1.1;
+  .facility-feature-box:hover {
+    border-color: var(--color-border-dark, #CBD5E1);
+    box-shadow: 0 4px 16px rgba(11, 17, 24, 0.04);
   }
-  .line {
-    width: 45px;
-    height: 4px;
-    background: var(--brand-orange);
-    margin-bottom: 25px;
-  }
-  .content p {
-    font-size: 17px;
-    line-height: 1.9;
-    color: #596273;
-    margin-bottom: 22px;
-  }
-  .content strong {
-    color: var(--brand-orange);
-  }
-  .features {
-    max-width: 1200px;
-    margin: 50px auto 0;
-    padding: 25px;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-    background: #fff;
-    border-radius: 20px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
-  }
-  .features div {
-    padding: 15px;
-    border-right: 1px solid #eee;
-  }
-  .features div:last-child {
-    border-right: none;
-  }
-  .features b {
-    display: block;
+
+  .feature-icon-bubble {
+    width: 44px;
+    height: 44px;
+    border-radius: 4px;
+    background: var(--color-well, #F1F5F9);
+    border: 1px solid var(--color-border, #E2E8F0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-size: 18px;
-    margin-bottom: 10px;
-    color: var(--brand-navy);
   }
-  .features span {
-    color: #667085;
-    line-height: 1.5;
-    font-size: 14px;
+  .feature-code {
+    font-size: 11px;
+    color: var(--color-text-muted, #64748B);
   }
-  @media (max-width: 900px) {
-    .facilities {
-      padding: 40px 15px !important;
-    }
-    .container1 {
-      grid-template-columns: 1fr;
-      gap: 35px;
-    }
-    .content h1 {
-      font-size: clamp(28px, 6vw, 42px);
-    }
-    .single-item.right-item {
-      padding-right: 0 !important;
-    }
-    .features {
-      grid-template-columns: 1fr;
-      margin-top: 35px;
-      padding: 16px;
-    }
-    .features div {
-      border-right: none;
-      border-bottom: 1px solid #eee;
-      padding: 12px 6px;
-    }
-    .features div:last-child {
-      border-bottom: none;
-    }
+
+  .feature-title {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--color-steel, #0B1118);
+    margin-bottom: 8px;
+  }
+  .feature-desc {
+    color: var(--color-text-muted, #64748B);
+    font-size: 13.5px;
+    line-height: 1.55;
+    margin: 0;
   }
 </style>

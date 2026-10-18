@@ -3,19 +3,22 @@
    ========================================================================== */
 
 :root {
-  /* Brand Colors sampled directly from official logo */
-  --brand-navy: #05254F;
-  --brand-navy-dark: #031B3A;
-  --brand-navy-light: #0A3770;
-  --brand-orange: #F66202;
-  --brand-orange-hover: #D95400;
-  --brand-orange-light: #FFF0E6;
-  --brand-orange-text: #C44800; /* WCAG AA accessible contrast on white backgrounds */
-  --brand-bg: #FFFFFF;
-  --brand-font-heading: 'Montserrat', sans-serif;
-  --brand-font-body: 'Inter', 'Roboto', sans-serif;
+  /* Architectural Industrial PPE Design System */
+  --brand-navy: #0B1118;
+  --brand-navy-dark: #070B10;
+  --brand-navy-light: #1E293B;
+  --brand-orange: #C81E1E;
+  --brand-orange-hover: #A51818;
+  --brand-orange-light: #FEF2F2;
+  --brand-orange-text: #C81E1E;
+  --brand-bg: #F8FAFC;
+  --brand-font-heading: 'Barlow', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --brand-font-body: 'Public Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --brand-font-mono: 'IBM Plex Mono', monospace;
   --spacing-section-desktop: 70px 0;
   --spacing-section-mobile: 40px 0;
+  --radius-sm: 3px;
+  --radius-md: 4px;
 }
 
 /* Accessible Focus States */
@@ -441,27 +444,28 @@ nav.template-main-menu ul li .dropdown-menu-col-1 li a:hover {
 
 /* Visiting card modal dialog */
 dialog#vcDialog {
-  border: none;
-  border-radius: 12px;
+  border: 1px solid var(--color-border, #E2E8F0);
+  border-radius: 4px;
   padding: 0;
   max-width: 90vw;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 16px 40px rgba(11, 17, 24, 0.25);
   background: transparent;
   outline: none;
 }
 
 dialog#vcDialog::backdrop {
-  background: rgba(5, 37, 79, 0.7);
+  background: rgba(11, 17, 24, 0.75);
   backdrop-filter: blur(3px);
 }
 
 .vc-modal-inner {
   position: relative;
   background: #ffffff;
-  border-radius: 12px;
+  border-radius: 4px;
   padding: 24px;
   max-width: 650px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--color-border, #E2E8F0);
+  box-shadow: 0 10px 30px rgba(11, 17, 24, 0.15);
 }
 
 .vc-close {
@@ -511,7 +515,7 @@ dialog#vcDialog::backdrop {
   display: none;
   position: fixed;
   inset: 0;
-  background: rgba(5, 37, 79, 0.9);
+  background: rgba(11, 17, 24, 0.92);
   z-index: 999999;
   align-items: center;
   justify-content: center;
@@ -549,12 +553,12 @@ dialog#vcDialog::backdrop {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(246, 98, 2, 0.85);
+  background: var(--color-crimson, #C81E1E);
   color: #ffffff;
   border: none;
   width: 44px;
   height: 44px;
-  border-radius: 50%;
+  border-radius: 4px;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -564,7 +568,7 @@ dialog#vcDialog::backdrop {
 }
 
 .gallery-modal-nav:hover {
-  background: var(--brand-orange-hover);
+  background: #A51818;
 }
 
 .gallery-modal-prev {
@@ -605,19 +609,19 @@ dialog#vcDialog::backdrop {
 
 /* Inner Page Banner (navy with subtle orange rule) */
 .inner-page-banner {
-  background-color: var(--brand-navy) !important;
+  background-color: var(--color-steel, #0B1118) !important;
   background-size: cover;
   background-position: center;
   position: relative;
-  padding: 28px 0;
-  border-bottom: 3px solid var(--brand-orange);
+  padding: 32px 0;
+  border-bottom: 2px solid var(--color-crimson, #C81E1E);
 }
 
 .inner-page-banner::before {
   content: "";
   position: absolute;
   inset: 0;
-  background-color: rgba(5, 37, 79, 0.85);
+  background-color: rgba(11, 17, 24, 0.88);
 }
 
 .inner-page-banner .container {

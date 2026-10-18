@@ -3,6 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageBanner from '../../components/PageBanner.astro';
 import categories from '../../data/categories.json';
 import products from '../../data/products.json';
+import BRAND from '../../config/site';
 
 export function getStaticPaths() {
   return categories.map((cat) => ({
@@ -30,40 +31,63 @@ const categoryProducts = category.product_ids
   .filter((p): p is typeof products[0] => Boolean(p));
 ---
 
-<BaseLayout title={`${category.title} - Max Gloves BD Ltd.`} currentPath={category.route}>
+<BaseLayout title={`${category.title} — ${BRAND.companyName}`} currentPath={category.route}>
   <PageBanner
     title={category.title}
-    breadcrumbs={[{ label: 'Home', url: '/' }, { label: 'Categories' }]}
+    breadcrumbs={[{ label: 'Home', url: '/' }, { label: 'Glove Catalog', url: '/category/20' }, { label: category.title }]}
   />
 
-  <section class="project-wrap-layout1 bg-common" style="padding: 70px 0 85px;">
+  <section class="category-catalog-section" aria-label={`${category.title} Catalog`}>
     <div class="container">
-      <div class="row gutters-15">
+      <!-- Category Catalog Header -->
+      <div class="category-header-bar d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-5 pb-3">
+        <div>
+          <div class="font-mono text-muted text-uppercase" style="font-size: 11.5px; letter-spacing: 0.08em; margin-bottom: 6px;">
+            CATEGORY REF // CAT-{category.id.toString().padStart(2, '0')}
+          </div>
+          <h2 class="category-page-title">{category.title}</h2>
+        </div>
+        <div class="mt-3 mt-md-0 d-flex align-items-center gap-3">
+          <span class="catalog-count-pill font-mono">
+            {categoryProducts.length} CERTIFIED MODELS
+          </span>
+          <a href="/contact" class="btn-crimson font-mono" style="padding: 9px 18px; font-size: 13px;">
+            <i class="far fa-paper-plane" aria-hidden="true"></i>
+            <span>REQUEST CATEGORY RFQ</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Standardized 4:3 Studio Wells Product Grid -->
+      <div class="row g-4">
         {categoryProducts.map((prod) => (
-          <div class="col-lg-4 col-md-6 col-12 col-sm-4" style="margin-bottom: 30px;">
-            <div
-              class="project-box-layout1"
-              onclick={`location.href='/product/${prod.id}'`}
-              style="position: relative; overflow: hidden; background: #f8f8f8; border-radius: 4px; box-shadow: 0 4px 15px rgba(0,0,0,0.06); height: 336px; cursor: pointer;"
-            >
-              <div class="item-img" style="overflow: hidden; height: 100%; display: flex; align-items: center; justify-content: center; background: radial-gradient(circle, #eef7fc 0%, #ffffff 80%); padding: 20px;">
+          <div class="col-xl-4 col-md-6 col-12">
+            <a href={`/product/${prod.id}`} class="product-item-card" aria-label={`View ${prod.title} (SKU: ${prod.sku || prod.id})`}>
+              <!-- 4:3 Studio Well -->
+              <div class="studio-product-well">
+                <div class="product-well-badges font-mono">
+                  <span class="badge-sku">SKU: #{prod.sku || prod.id}</span>
+                  {prod.sprite_image && <span class="badge-3d">3D VIEW</span>}
+                </div>
                 <img
                   src={prod.preview_image || prod.sprite_image}
                   alt={prod.title}
                   loading="lazy"
-                  style="max-height: 85%; max-width: 90%; object-fit: contain; transition: transform 0.4s ease;"
+                  decoding="async"
+                  class="product-well-img"
                 />
               </div>
-              <div class="item-content" style="position: absolute; inset: 0; background: rgba(5, 37, 79, 0.88); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s ease; padding: 20px;">
-                <a
-                  href={`/product/${prod.id}`}
-                  class="item-btn"
-                  style="color: #ffffff; border: 2px solid var(--brand-orange); background: var(--brand-orange); padding: 10px 24px; border-radius: 4px; font-weight: 700; text-decoration: none; font-size: 15px; text-align: center; display: inline-flex; align-items: center; gap: 6px; box-shadow: 0 4px 12px rgba(246, 98, 2, 0.4);"
-                >
-                  View Details <i class="fas fa-arrow-right" style="font-size: 13px;" aria-hidden="true"></i>
-                </a>
+
+              <!-- Product Info Card Body -->
+              <div class="product-card-body">
+                <div class="product-cat-kicker font-mono">{category.title}</div>
+                <h3 class="product-card-title">{prod.title}</h3>
+                <div class="product-card-action font-mono">
+                  <span>Inspect Specifications</span>
+                  <i class="fas fa-arrow-right text-crimson" aria-hidden="true"></i>
+                </div>
               </div>
-            </div>
+            </a>
           </div>
         ))}
       </div>
@@ -72,16 +96,134 @@ const categoryProducts = category.product_ids
 </BaseLayout>
 
 <style>
-  .project-box-layout1:hover .item-content {
-    opacity: 1 !important;
-  }
-  .project-box-layout1:hover .item-img img {
-    transform: scale(1.08);
+  .category-catalog-section {
+    background-color: var(--color-canvas, #F8FAFC);
+    padding: 70px 0 90px;
   }
 
-  @media (max-width: 767px) {
-    .project-box-layout1 {
-      height: 280px !important;
-    }
+  .category-header-bar {
+    border-bottom: 1px solid var(--color-border, #E2E8F0);
+  }
+  .category-page-title {
+    font-size: clamp(26px, 3.5vw, 36px);
+    font-weight: 800;
+    color: var(--color-steel, #0B1118);
+    letter-spacing: -0.02em;
+    margin: 0;
+  }
+  .catalog-count-pill {
+    background: #FFFFFF;
+    border: 1px solid var(--color-border, #E2E8F0);
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 11.5px;
+    color: var(--color-steel, #0B1118);
+    font-weight: 600;
+  }
+
+  /* Product Card Container */
+  .product-item-card {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    background: #FFFFFF;
+    border: 1px solid var(--color-border, #E2E8F0);
+    border-radius: 4px;
+    overflow: hidden;
+    height: 100%;
+    transition: all 0.2s ease;
+  }
+  .product-item-card:hover {
+    border-color: var(--color-border-dark, #CBD5E1);
+    box-shadow: 0 8px 24px rgba(11, 17, 24, 0.06);
+    transform: translateY(-2px);
+  }
+  .product-item-card:focus-visible {
+    outline: 2px solid var(--color-crimson, #C81E1E) !important;
+    outline-offset: 2px;
+  }
+
+  /* 4:3 Studio Well */
+  .product-item-card .studio-product-well {
+    border: none;
+    border-bottom: 1px solid var(--color-border, #E2E8F0);
+    border-radius: 0;
+    aspect-ratio: 4 / 3;
+    background: var(--color-well, #F1F5F9);
+    position: relative;
+    padding: 24px;
+  }
+
+  .product-well-badges {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    z-index: 2;
+  }
+  .badge-sku {
+    background: #FFFFFF;
+    border: 1px solid var(--color-border, #E2E8F0);
+    padding: 3px 7px;
+    border-radius: 3px;
+    font-size: 11px;
+    color: var(--color-steel, #0B1118);
+    font-weight: 600;
+  }
+  .badge-3d {
+    background: #0B1118;
+    color: #FFFFFF;
+    padding: 3px 7px;
+    border-radius: 3px;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+  }
+
+  .product-well-img {
+    max-height: 85%;
+    max-width: 88%;
+    object-fit: contain;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .product-item-card:hover .product-well-img {
+    transform: scale(1.06);
+  }
+
+  .product-card-body {
+    padding: 18px 20px 22px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .product-cat-kicker {
+    font-size: 11px;
+    color: var(--color-text-muted, #64748B);
+    letter-spacing: 0.04em;
+    margin-bottom: 6px;
+  }
+  .product-card-title {
+    font-size: 16.5px;
+    font-weight: 700;
+    color: var(--color-steel, #0B1118);
+    margin: 0 0 16px;
+    line-height: 1.35;
+    transition: color 0.15s ease;
+  }
+  .product-item-card:hover .product-card-title {
+    color: var(--color-crimson, #C81E1E);
+  }
+  .product-card-action {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--color-steel, #0B1118);
+    padding-top: 12px;
+    border-top: 1px solid var(--color-border, #E2E8F0);
   }
 </style>

@@ -14,133 +14,326 @@ const facilitiesUrl = locale === 'en' ? '/facilities' : `/${locale}/facilities`;
 const contactUrl = locale === 'en' ? '/contact' : `/${locale}/contact`;
 ---
 
-<footer class="footer-wrap-layout1" style="position: relative; overflow: hidden;">
-  <!-- Letterhead Signature Navy Wave with Orange Curved Accent Strip -->
-  <div class="footer-letterhead-wave" aria-hidden="true" style="width: 100%; overflow: hidden; line-height: 0; background: transparent;">
-    <svg viewBox="0 0 1440 60" preserveAspectRatio="none" style="display: block; width: 100%; height: 42px;">
-      <!-- Orange Curved Strip Accent (from letterhead) -->
-      <path d="M0,20 C360,55 720,5 1080,38 C1260,52 1380,24 1440,30 L1440,60 L0,60 Z" fill={BRAND.colors.orange} opacity="0.95"></path>
-      <!-- Dominant Navy Wave Joining Footer Body -->
-      <path d="M0,28 C340,60 700,16 1060,46 C1240,60 1370,32 1440,38 L1440,60 L0,60 Z" fill={BRAND.colors.navy}></path>
-    </svg>
-  </div>
+<footer class="architectural-footer" role="contentinfo">
+  <!-- Crimson Structural Accent Line -->
+  <div class="footer-accent-line" aria-hidden="true"></div>
 
-  <div class="footer-top-wrap-layout1" style="padding-top: 40px;">
+  <!-- Main Footer Body -->
+  <div class="footer-main-block">
     <div class="container">
-      <div class="row">
+      <div class="row g-5">
         <!-- Brand & Mission Column -->
-        <div class="col-lg-4" style="margin-top: -15px;">
-          <div class="footer-box-layout1">
-            <div class="footer-logo" style="margin-bottom: 20px;">
-              <a href={homeUrl}>
+        <div class="col-lg-4 col-12">
+          <div class="footer-brand-column">
+            <div class="footer-logo-box">
+              <a href={homeUrl} aria-label={`${BRAND.companyName} Home`}>
                 <img
                   src={BRAND.logo.stackedWhite}
                   alt={BRAND.logo.alt}
                   width="180"
-                  height="210"
-                  style="max-height: 140px; width: auto; object-fit: contain; display: block;"
+                  height="160"
+                  style="max-height: 120px; width: auto; object-fit: contain; display: block;"
                 />
               </a>
             </div>
-            <p style="color: #cbd5e1; font-size: 15px; line-height: 1.6; margin-bottom: 15px;">
-              <strong style="color: #ffffff;">{BRAND.companyName}</strong> — {BRAND.tagline}. Dedicated to delivering absolute quality safety and leather protective equipment.
+
+            <p class="footer-tagline-lead">
+              <strong style="color: #FFFFFF;">{BRAND.companyName}</strong> — Direct manufacturer and exporter of certified industrial personal protective equipment and heavy-duty leather safety gloves.
             </p>
-            <hr style="background-color: rgba(255, 255, 255, 0.15); margin: 20px 0;" />
-            <div class="tagline-badge" style="display: inline-flex; align-items: center; gap: 8px; color: var(--brand-orange); font-weight: 700; font-size: 14px;">
-              <i class="fas fa-shield-alt"></i> {BRAND.tagline}
+
+            <div class="footer-spec-badge font-mono">
+              <i class="fas fa-industry text-crimson" aria-hidden="true"></i>
+              <span>SAVAR MANUFACTURING FACILITY // DHAKA, BANGLADESH</span>
             </div>
           </div>
         </div>
 
-        <!-- Quick Links Column -->
-        <div class="col-lg-4">
-          <div class="footer-box-layout1">
-            <div class="footer-title">
-              <h3 style="color: #ffffff; font-size: 20px; font-weight: 700; margin-bottom: 20px; position: relative;">
-                Quick Links
-              </h3>
+        <!-- Catalog & Direct Navigation Column -->
+        <div class="col-lg-4 col-12">
+          <div class="footer-nav-column">
+            <div class="footer-col-kicker font-mono">
+              <span>EXPLORE GLOVE CATALOG</span>
             </div>
-            <div class="footer-menu-box">
-              <ul class="footer-menu-list">
-                <li><a href={homeUrl}>Home</a></li>
-                <li><a href={aboutUrl}>About Us</a></li>
-                <li><a href={complianceUrl}>Compliance</a></li>
-                <li><a href={facilitiesUrl}>Our Facilities</a></li>
-                <li><a href={contactUrl}>Contact Us</a></li>
-                <li><a href="/category/17">Leather Driver Gloves</a></li>
-              </ul>
-              <ul class="footer-menu-list">
-                <li><a href="/category/18">Leather Grain Gloves</a></li>
-                <li><a href="/category/19">Leather Split Gloves</a></li>
-                <li><a href="/category/20">Leather Welding Gloves</a></li>
-                <li><a href="/category/21">Leather Palm Gloves</a></li>
-                <li><a href="/category/24">Leather Welding Jackets</a></li>
-                <li><a href="/category/25">Leather Welding Trousers</a></li>
-              </ul>
+            <div class="row g-2">
+              <div class="col-6">
+                <ul class="footer-links-list">
+                  <li><a href="/category/20">Welding Gloves</a></li>
+                  <li><a href="/category/19">Split Gloves</a></li>
+                  <li><a href="/category/17">Driver Gloves</a></li>
+                  <li><a href="/category/18">Grain Gloves</a></li>
+                  <li><a href="/category/21">Palm Gloves</a></li>
+                  <li><a href="/category/23">Winter Gloves</a></li>
+                </ul>
+              </div>
+              <div class="col-6">
+                <ul class="footer-links-list">
+                  <li><a href="/category/29">Mechanics</a></li>
+                  <li><a href="/category/30">Impact Gloves</a></li>
+                  <li><a href="/category/27">Synthetic</a></li>
+                  <li><a href="/category/24">Welding Jackets</a></li>
+                  <li><a href="/category/25">Welding Trousers</a></li>
+                  <li><a href="/category/32">Gardening</a></li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="footer-corporate-links pt-3 mt-3">
+              <div class="footer-col-kicker font-mono">
+                <span>CORPORATE</span>
+              </div>
+              <div class="d-flex flex-wrap gap-3">
+                <a href={aboutUrl} class="corp-link">About Us</a>
+                <a href={facilitiesUrl} class="corp-link">Savar Plant</a>
+                <a href={complianceUrl} class="corp-link">Accreditation</a>
+                <a href="/gallery" class="corp-link">Photo Gallery</a>
+                <a href={contactUrl} class="corp-link">Inquiry / RFQ</a>
+              </div>
             </div>
           </div>
         </div>
 
-        <!-- Contact Information Block (Order: Phone -> Email -> Office -> Factory) -->
-        <div class="col-lg-4">
-          <div class="footer-box-layout1">
-            <div class="footer-title">
-              <h3 style="color: #ffffff; font-size: 20px; font-weight: 700; margin-bottom: 20px;">
-                Contact Us
-              </h3>
+        <!-- Verified Contact Channels (Phone -> Email -> Office -> Factory -> Web) -->
+        <div class="col-lg-4 col-12">
+          <div class="footer-contact-column">
+            <div class="footer-col-kicker font-mono">
+              <span>DIRECT EXPORT CONTACT</span>
             </div>
-            <div class="footer-contac" style="color: #cbd5e1; font-size: 14.5px; line-height: 28px;">
-              <h4 style="color: #ffffff; font-size: 18px; font-weight: 700; margin-bottom: 12px;">
-                {BRAND.companyName}
-              </h4>
+
+            <div class="footer-contact-cards">
               <!-- 1. Phone -->
-              <p style="margin-bottom: 8px; display: flex; align-items: center; gap: 10px;">
-                <i class="fas fa-phone-alt" style="color: var(--brand-orange);" aria-hidden="true"></i>
-                <span><a href={BRAND.phoneTel} style="color: #ffffff; text-decoration: none; font-weight: 600;">{BRAND.phone}</a></span>
-              </p>
-              <!-- 2. Email -->
-              <p style="margin-bottom: 8px; display: flex; align-items: center; gap: 10px;">
-                <i class="far fa-envelope" style="color: var(--brand-orange);" aria-hidden="true"></i>
-                <span><a href={BRAND.emailMailto} style="color: #ffffff; text-decoration: none;">{BRAND.email}</a></span>
-              </p>
-              <!-- 3. Office -->
-              <p style="margin-bottom: 8px; display: flex; align-items: flex-start; gap: 10px;">
-                <i class="fas fa-building" style="color: var(--brand-orange); margin-top: 5px;" aria-hidden="true"></i>
-                <span><strong>Office:</strong> {BRAND.officeAddress}</span>
-              </p>
-              <!-- 4. Factory -->
-              <p style="margin-bottom: 8px; display: flex; align-items: flex-start; gap: 10px;">
-                <i class="fas fa-industry" style="color: var(--brand-orange); margin-top: 5px;" aria-hidden="true"></i>
-                <span><strong>Factory:</strong> {BRAND.factoryAddress}</span>
-              </p>
-              <!-- Website -->
-              <p style="margin-bottom: 8px; display: flex; align-items: center; gap: 10px;">
-                <i class="fas fa-globe" style="color: var(--brand-orange);" aria-hidden="true"></i>
-                <span><a href={BRAND.websiteUrl} target="_blank" rel="noopener noreferrer" style="color: #ffffff; text-decoration: none;">{BRAND.website}</a></span>
-              </p>
-            </div>
+              <div class="contact-entry">
+                <i class="fas fa-phone-alt text-crimson" aria-hidden="true"></i>
+                <div>
+                  <span class="contact-label font-mono">DIRECT SALES LINE</span>
+                  <a href={BRAND.phoneTel} class="contact-val font-mono">{BRAND.phone}</a>
+                </div>
+              </div>
 
+              <!-- 2. Email -->
+              <div class="contact-entry">
+                <i class="far fa-envelope text-crimson" aria-hidden="true"></i>
+                <div>
+                  <span class="contact-label font-mono">RFQ PROCUREMENT EMAIL</span>
+                  <a href={BRAND.emailMailto} class="contact-val font-mono">{BRAND.email}</a>
+                </div>
+              </div>
+
+              <!-- 3. Office -->
+              <div class="contact-entry">
+                <i class="fas fa-building text-crimson" aria-hidden="true"></i>
+                <div>
+                  <span class="contact-label font-mono">CORPORATE OFFICE</span>
+                  <span class="contact-address">{BRAND.officeAddress}</span>
+                </div>
+              </div>
+
+              <!-- 4. Factory -->
+              <div class="contact-entry">
+                <i class="fas fa-industry text-crimson" aria-hidden="true"></i>
+                <div>
+                  <span class="contact-label font-mono">MANUFACTURING PLANT</span>
+                  <span class="contact-address">{BRAND.factoryAddress}</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="footer-bottom-wrap-layout1" style="margin-top: -30px; padding: 22px 0;">
+  <!-- Sub-footer Bar -->
+  <div class="footer-sub-bar">
     <div class="container">
-      <div class="row align-items-center">
-        <div class="col-lg-12">
-          <div class="copyright text-center" style="color: rgba(255, 255, 255, 0.85); font-size: 14.5px;">
-            <div>{BRAND.copyright} &nbsp;|&nbsp; <span style="color: var(--brand-orange); font-weight: 600;">{BRAND.tagline}</span></div>
-            <div style="margin-top: 6px; font-size: 12px; color: rgba(255, 255, 255, 0.55);">{BRAND.developerCredit}</div>
-          </div>
+      <div class="d-flex flex-column flex-md-row align-items-center justify-content-between gap-3 text-center text-md-start">
+        <div class="copyright-text font-mono">
+          <span>{BRAND.copyright}</span>
+          <span class="divider" aria-hidden="true">|</span>
+          <span class="tagline-text">{BRAND.tagline}</span>
+        </div>
+        <div class="developer-credit-text font-mono">
+          {BRAND.developerCredit}
         </div>
       </div>
     </div>
   </div>
 </footer>
 
-<!-- ScrollUp Button -->
-<a href="#wrapper" data-type="section-switch" class="scrollup" id="scrollUpBtn" aria-label="Scroll to top">
-  <i class="fas fa-angle-double-up" aria-hidden="true"></i>
+<!-- Accessible Back-to-Top Button -->
+<a href="#wrapper" id="scrollUpBtn" class="architectural-scrollup-btn" aria-label="Scroll back to top">
+  <i class="fas fa-chevron-up" aria-hidden="true"></i>
 </a>
+
+<style>
+  .architectural-footer {
+    background-color: var(--color-steel, #0B1118);
+    border-top: 1px solid var(--color-steel-border, #223242);
+    position: relative;
+    color: #94A3B8;
+  }
+
+  .footer-accent-line {
+    height: 3px;
+    background: linear-gradient(90deg, var(--color-crimson, #C81E1E) 0%, #15202B 100%);
+  }
+
+  .footer-main-block {
+    padding: 70px 0 60px;
+  }
+
+  .footer-logo-box {
+    margin-bottom: 20px;
+  }
+
+  .footer-tagline-lead {
+    color: #CBD5E1;
+    font-size: 14.5px;
+    line-height: 1.6;
+    margin-bottom: 18px;
+  }
+
+  .footer-spec-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #15202B;
+    border: 1px solid #223242;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 11px;
+    color: #CBD5E1;
+  }
+
+  .footer-col-kicker {
+    font-size: 11px;
+    font-weight: 700;
+    color: #64748B;
+    letter-spacing: 0.08em;
+    margin-bottom: 14px;
+  }
+
+  .footer-links-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .footer-links-list a {
+    color: #CBD5E1;
+    font-size: 13.5px;
+    text-decoration: none;
+    transition: color 0.15s ease;
+  }
+  .footer-links-list a:hover {
+    color: var(--color-crimson, #C81E1E);
+  }
+
+  .footer-corporate-links {
+    border-top: 1px solid #1E293B;
+  }
+  .corp-link {
+    color: #94A3B8;
+    font-size: 13px;
+    text-decoration: none;
+    transition: color 0.15s ease;
+  }
+  .corp-link:hover {
+    color: #FFFFFF;
+  }
+
+  /* Contact entries */
+  .footer-contact-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .contact-entry {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    background: #15202B;
+    border: 1px solid #223242;
+    padding: 10px 14px;
+    border-radius: 4px;
+  }
+  .contact-entry i {
+    font-size: 15px;
+    margin-top: 4px;
+  }
+  .contact-label {
+    display: block;
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    color: #64748B;
+    margin-bottom: 2px;
+  }
+  .contact-val {
+    color: #FFFFFF;
+    font-size: 13.5px;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .contact-val:hover {
+    color: var(--color-crimson, #C81E1E);
+  }
+  .contact-address {
+    color: #CBD5E1;
+    font-size: 13px;
+    line-height: 1.4;
+    display: block;
+  }
+
+  /* Sub Footer */
+  .footer-sub-bar {
+    background-color: #060B10;
+    border-top: 1px solid #15202B;
+    padding: 18px 0;
+    font-size: 12px;
+    color: #64748B;
+  }
+  .copyright-text .divider {
+    margin: 0 8px;
+    color: #334155;
+  }
+  .tagline-text {
+    color: #94A3B8;
+  }
+  .developer-credit-text {
+    color: #475569;
+  }
+
+  /* ScrollUp Button */
+  .architectural-scrollup-btn {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    width: 44px;
+    height: 44px;
+    background: #0B1118;
+    color: #FFFFFF;
+    border: 1px solid #223242;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    text-decoration: none;
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.2s ease;
+  }
+  .architectural-scrollup-btn.back-top {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+  .architectural-scrollup-btn:hover {
+    background: var(--color-crimson, #C81E1E);
+    border-color: var(--color-crimson, #C81E1E);
+    color: #FFFFFF;
+  }
+</style>

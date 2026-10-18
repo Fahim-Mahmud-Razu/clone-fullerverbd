@@ -15,27 +15,87 @@ const {
 } = Astro.props;
 ---
 
-<section class="inner-page-banner bg-common">
+<section class="architectural-page-banner" aria-label="Page header">
   <div class="container">
-    <div class="row">
-      <div class="col-12">
-        <div class="breadcrumbs-area">
-          <h1>{title}</h1>
-          {breadcrumbs.length > 0 && (
-            <ul>
-              {breadcrumbs.map((crumb) => (
-                <li>
-                  {crumb.url ? (
-                    <a href={crumb.url}>{crumb.label}</a>
-                  ) : (
-                    crumb.label
-                  )}
-                </li>
-              ))}
-            </ul>
-          )}
-        </div>
+    <div class="banner-inner-box">
+      <div class="breadcrumbs-trail font-mono" aria-label="Breadcrumb trail">
+        {breadcrumbs.map((crumb, idx) => (
+          <span class="crumb-wrapper">
+            {crumb.url ? (
+              <a href={crumb.url} class="crumb-link">{crumb.label}</a>
+            ) : (
+              <span class="crumb-current">{crumb.label}</span>
+            )}
+            {idx < breadcrumbs.length - 1 && <span class="crumb-divider" aria-hidden="true">/</span>}
+          </span>
+        ))}
       </div>
+
+      <h1 class="banner-heading">
+        {title}
+      </h1>
     </div>
   </div>
+  <div class="banner-bottom-accent" aria-hidden="true"></div>
 </section>
+
+<style>
+  .architectural-page-banner {
+    background: linear-gradient(135deg, #0B1118 0%, #15202B 65%, #1E293B 100%);
+    position: relative;
+    padding: 55px 0 50px;
+    border-bottom: 1px solid #223242;
+  }
+
+  .banner-inner-box {
+    max-width: 900px;
+  }
+
+  .breadcrumbs-trail {
+    font-size: 11.5px;
+    letter-spacing: 0.06em;
+    color: #94A3B8;
+    margin-bottom: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .crumb-link {
+    color: #CBD5E1;
+    text-decoration: none;
+    transition: color 0.15s ease;
+  }
+  .crumb-link:hover {
+    color: var(--color-crimson, #C81E1E);
+  }
+
+  .crumb-current {
+    color: #FFFFFF;
+    font-weight: 600;
+  }
+
+  .crumb-divider {
+    color: #475569;
+    user-select: none;
+  }
+
+  .banner-heading {
+    color: #FFFFFF !important;
+    font-size: clamp(28px, 4vw, 44px) !important;
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    margin: 0;
+    line-height: 1.18;
+  }
+
+  .banner-bottom-accent {
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 140px;
+    height: 3px;
+    background-color: var(--color-crimson, #C81E1E);
+  }
+</style>

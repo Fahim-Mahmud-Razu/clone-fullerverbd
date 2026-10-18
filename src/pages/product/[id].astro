@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageBanner from '../../components/PageBanner.astro';
 import products from '../../data/products.json';
+import BRAND from '../../config/site';
 
 export function getStaticPaths() {
   return products.map((prod) => ({
@@ -31,124 +32,154 @@ interface Props {
 }
 
 const { product } = Astro.props;
+const displaySku = product.sku || `MG-${product.id}`;
 ---
 
-<BaseLayout title={`${product.title} - Max Gloves BD Ltd.`} currentPath={product.route}>
+<BaseLayout title={`${product.title} (${displaySku}) — ${BRAND.companyName}`} currentPath={product.route}>
   <PageBanner
     title={product.title}
-    breadcrumbs={[{ label: 'Home', url: '/' }, { label: product.category_title || 'Products' }]}
+    breadcrumbs={[
+      { label: 'Home', url: '/' },
+      { label: product.category_title || 'Glove Catalog', url: product.category_id ? `/category/${product.category_id}` : '/category/20' },
+      { label: displaySku }
+    ]}
   />
 
-  <section class="single-product-wrap-layout1 product-up-gap" style="padding: 70px 0 90px; background: #ffffff;">
+  <section class="single-product-section" aria-label="Product specifications and viewer">
     <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="row">
-            <!-- Left Column: Product Viewer / Gallery -->
-            <div class="col-xl-6 col-12" style="margin-bottom: 35px;">
-              <div class="single-product-gallery-layout1">
-                {product.is_apparel_gallery ? (
-                  <div class="apparel-gallery-box" style="background: #fbfbfb; border: 1px solid #eee; border-radius: 8px; padding: 25px;">
-                    <div class="main-image-wrap text-center" style="margin-bottom: 20px; min-height: 400px; display: flex; align-items: center; justify-content: center;">
-                      <img
-                        id="apparelMainImage"
-                        src={product.apparel_images[0] || product.preview_image}
-                        alt={product.title}
-                        style="max-width: 100%; max-height: 450px; object-fit: contain;"
-                      />
-                    </div>
-                    {product.apparel_images.length > 1 && (
-                      <div class="apparel-thumbnails" style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
-                        {product.apparel_images.map((img) => (
-                          <button
-                            class="apparel-thumb-btn"
-                            data-img-src={img}
-                            style="border: 2px solid #ddd; padding: 4px; border-radius: 4px; background: #fff; cursor: pointer; width: 75px; height: 75px;"
-                          >
-                            <img src={img} alt="Thumbnail" style="width: 100%; height: 100%; object-fit: contain;" />
-                          </button>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                ) : (
-                  <div class="viewer-container" style="background: #fbfbfb; border: 1px solid #eee; border-radius: 8px; padding: 25px;">
-                    <div
-                      class="cd-product-viewer-wrapper"
-                      id="productViewer"
-                      data-frame={product.frame || 16}
-                      data-friction={product.friction || 0.33}
-                    >
-                      <figure class="product-viewer" id="productFigure">
-                        <img
-                          id="productPreviewImg"
-                          src={product.preview_image || product.sprite_image}
-                          alt="Product Preview"
-                        />
-                        {product.sprite_image && (
-                          <div
-                            class="product-sprite"
-                            id="productSprite"
-                            data-image={product.sprite_image}
-                            style={`background-image: url(${product.sprite_image});`}
-                          ></div>
-                        )}
-                      </figure>
-
-                      {product.sprite_image && (
-                        <div class="cd-product-viewer-handle" id="viewerHandle">
-                          <span class="fill" id="handleFill"></span>
-                          <span class="handle" id="handleCursor">Handle</span>
-                        </div>
-                      )}
-                    </div>
-
-                    {product.sprite_image && (
-                      <div class="badge bg-primary" style="padding: 6px 14px; color: #111; background-color: #c9dff3 !important; font-weight: 700; border-radius: 4px; display: inline-block;">
-                        Image 3D View
-                      </div>
-                    )}
+      <div class="row g-5">
+        <!-- Left Column: 4:3 Studio Well / 3D Sprite Viewer -->
+        <div class="col-xl-6 col-12">
+          <div class="product-viewer-shell">
+            {product.is_apparel_gallery ? (
+              <div class="apparel-gallery-box">
+                <div class="apparel-main-well studio-product-well">
+                  <img
+                    id="apparelMainImage"
+                    src={product.apparel_images[0] || product.preview_image}
+                    alt={product.title}
+                    class="apparel-main-img"
+                  />
+                </div>
+                {product.apparel_images.length > 1 && (
+                  <div class="apparel-thumbnails-strip" role="group" aria-label="Product thumbnail angles">
+                    {product.apparel_images.map((img, idx) => (
+                      <button
+                        type="button"
+                        class={`apparel-thumb-btn ${idx === 0 ? 'is-active' : ''}`}
+                        data-img-src={img}
+                        aria-label={`View photo ${idx + 1}`}
+                      >
+                        <img src={img} alt="" />
+                      </button>
+                    ))}
                   </div>
                 )}
               </div>
-            </div>
+            ) : (
+              <div class="studio-viewer-container">
+                <!-- Viewer Control Bar -->
+                <div class="viewer-top-meta font-mono">
+                  <span class="meta-tag">
+                    <i class="fas fa-cube text-crimson" aria-hidden="true"></i>
+                    <span>360° INTERACTIVE ROTATION</span>
+                  </span>
+                  <span class="meta-frames font-mono">{product.frame || 16} ANGLE FRAMES</span>
+                </div>
 
-            <!-- Right Column: Details & SKU -->
-            <div class="col-xl-6 col-12">
-              <div class="single-product-content-layout1">
-                <div class="product-dec">
-                  <h3 class="item-title" style="font-size: 28px; font-weight: 700; color: #111111; margin-bottom: 10px;">
-                    {product.title}
-                  </h3>
+                <div
+                  class="cd-product-viewer-wrapper"
+                  id="productViewer"
+                  data-frame={product.frame || 16}
+                  data-friction={product.friction || 0.33}
+                >
+                  <figure class="product-viewer" id="productFigure">
+                    <img
+                      id="productPreviewImg"
+                      src={product.preview_image || product.sprite_image}
+                      alt={product.title}
+                      class="product-preview-asset"
+                    />
+                    {product.sprite_image && (
+                      <div
+                        class="product-sprite"
+                        id="productSprite"
+                        data-image={product.sprite_image}
+                        style={`background-image: url(${product.sprite_image});`}
+                      ></div>
+                    )}
+                  </figure>
 
-                  {product.sku && (
-                    <p style="font-weight: bold; color: Black; font-size: 16px; margin-bottom: 25px;">
-                      {product.sku}
-                    </p>
-                  )}
-
-                  <div class="single-product-other-info">
-                    <ul class="nav nav-tabs tab-nav-list" style="border-bottom: 2px solid var(--brand-orange); margin-bottom: 20px;">
-                      <li class="nav-item">
-                        <a
-                          class="active"
-                          href="#desc"
-                          style="display: inline-block; padding: 10px 22px; font-size: 16px; font-weight: 700; color: var(--brand-orange); background: #fff; border: none; text-decoration: none;"
-                        >
-                          Description
-                        </a>
-                      </li>
-                    </ul>
-
-                    <div class="tab-content" style="color: #444444; font-size: 15px; line-height: 26px;">
-                      <div class="tab-pane active show" id="desc">
-                        <div class="desc-content" set:html={product.description_html} />
-                      </div>
+                  {product.sprite_image && (
+                    <div class="viewer-scrubber-track" id="viewerHandle" role="slider" aria-label="360 view angle scrubber" aria-valuemin="0" aria-valuemax={product.frame || 16} aria-valuenow="0">
+                      <span class="scrubber-fill" id="handleFill"></span>
+                      <span class="scrubber-thumb font-mono" id="handleCursor">
+                        <i class="fas fa-arrows-alt-h" aria-hidden="true"></i>
+                      </span>
                     </div>
-                  </div>
+                  )}
+                </div>
+
+                <div class="viewer-hint-text font-mono">
+                  <i class="fas fa-hand-pointer text-muted" aria-hidden="true"></i>
+                  <span>DRAG SCRUBBER OR SWIPE HORIZONTALLY TO INSPECT PALM & SEAMS</span>
                 </div>
               </div>
+            )}
+          </div>
+        </div>
+
+        <!-- Right Column: Technical Specs & Direct RFQ Action -->
+        <div class="col-xl-6 col-12">
+          <div class="product-specs-shell">
+            <div class="product-sku-badge-row font-mono">
+              <span class="sku-pill">ITEM CODE: {displaySku}</span>
+              <span class="category-pill">{product.category_title || 'Industrial PPE'}</span>
             </div>
+
+            <h1 class="product-title-barlow">
+              {product.title}
+            </h1>
+
+            <!-- Quick RFQ Callout Box -->
+            <div class="product-rfq-callout">
+              <div class="rfq-callout-header font-mono">
+                <span class="crimson-dot"></span>
+                <span>FACTORY DIRECT PROCUREMENT // B2B EXPORT</span>
+              </div>
+              <p class="rfq-callout-text">
+                Customizable leather thickness (1.0 mm – 1.4 mm), Kevlar sewing, rubberized or safety cuffs, and custom embossed private labeling for container orders.
+              </p>
+              <div class="d-flex flex-wrap align-items-center gap-3">
+                <a href={`/contact?sku=${encodeURIComponent(displaySku)}`} class="btn-crimson font-mono">
+                  <i class="far fa-paper-plane" aria-hidden="true"></i>
+                  <span>REQUEST QUOTATION FOR {displaySku}</span>
+                </a>
+                <a href={BRAND.phoneTel} class="btn-steel-outline font-mono">
+                  <i class="fas fa-phone-alt text-crimson" aria-hidden="true"></i>
+                  <span>CALL DIRECT</span>
+                </a>
+              </div>
+            </div>
+
+            <!-- Technical Description Tab -->
+            <div class="product-technical-tabs">
+              <div class="tabs-header-bar font-mono">
+                <span class="active-tab-indicator">TECHNICAL SPECIFICATIONS & MATERIAL DATA</span>
+              </div>
+
+              <div class="desc-content-well" set:html={product.description_html} />
+            </div>
+
+            {product.size_image && (
+              <div class="product-sizing-box mt-4">
+                <div class="sizing-header font-mono">
+                  <i class="fas fa-ruler-combined text-crimson" aria-hidden="true"></i>
+                  <span>CERTIFIED SIZING GUIDE</span>
+                </div>
+                <img src={product.size_image} alt="Glove sizing chart" class="sizing-guide-img" />
+              </div>
+            )}
           </div>
         </div>
       </div>
@@ -157,48 +188,284 @@ const { product } = Astro.props;
 </BaseLayout>
 
 <style>
-  .apparel-thumb-btn.is-active {
-    border-color: var(--brand-orange) !important;
+  .single-product-section {
+    background-color: var(--color-canvas, #F8FAFC);
+    padding: 70px 0 100px;
   }
-  .desc-content p {
+
+  .product-viewer-shell {
+    background: #FFFFFF;
+    border: 1px solid var(--color-border, #E2E8F0);
+    border-radius: 4px;
+    padding: 24px;
+  }
+
+  .viewer-top-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 11px;
+    padding-bottom: 12px;
     margin-bottom: 16px;
-    color: #333333;
-    line-height: 24px;
+    border-bottom: 1px solid var(--color-border, #E2E8F0);
   }
-  .desc-content img {
+  .meta-tag {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--color-steel, #0B1118);
+    font-weight: 600;
+  }
+  .meta-frames {
+    color: var(--color-text-muted, #64748B);
+  }
+
+  /* 3D Product Viewer Container with touch-action: pan-y */
+  .cd-product-viewer-wrapper {
+    position: relative;
+    width: 100%;
+    background: var(--color-well, #F1F5F9);
+    border: 1px solid var(--color-border, #E2E8F0);
+    border-radius: 4px;
+    padding: 24px;
+    overflow: hidden;
+  }
+  .product-viewer {
+    position: relative;
+    width: 100%;
+    margin: 0;
+    cursor: grab;
+    touch-action: pan-y; /* CRITICAL: allows natural vertical scrolling on mobile */
+  }
+  .product-viewer:active {
+    cursor: grabbing;
+  }
+  .product-preview-asset {
+    display: block;
+    max-height: 420px;
+    width: 100%;
+    object-fit: contain;
+  }
+  .product-sprite {
+    position: absolute;
+    inset: 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+  .cd-product-viewer-wrapper.loaded .product-sprite {
+    opacity: 1;
+  }
+
+  /* Scrubber Track */
+  .viewer-scrubber-track {
+    position: relative;
+    width: 100%;
+    height: 10px;
+    background: #E2E8F0;
+    border-radius: 5px;
+    margin-top: 24px;
+    cursor: pointer;
+    touch-action: none; /* Only horizontal scrubber scrubbing */
+  }
+  .scrubber-fill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background: var(--color-crimson, #C81E1E);
+    border-radius: 5px;
+  }
+  .scrubber-thumb {
+    position: absolute;
+    top: 50%;
+    width: 32px;
+    height: 32px;
+    background: var(--color-steel, #0B1118);
+    color: #FFFFFF;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    box-shadow: 0 2px 8px rgba(11, 17, 24, 0.25);
+  }
+
+  .viewer-hint-text {
+    margin-top: 14px;
+    font-size: 11.5px;
+    color: var(--color-text-muted, #64748B);
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  /* Apparel Thumbnails */
+  .apparel-main-well {
+    min-height: 400px;
+  }
+  .apparel-main-img {
+    max-height: 420px;
+    max-width: 90%;
+    object-fit: contain;
+  }
+  .apparel-thumbnails-strip {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 18px;
+  }
+  .apparel-thumb-btn {
+    width: 72px;
+    height: 72px;
+    padding: 4px;
+    border: 1px solid var(--color-border, #E2E8F0);
+    border-radius: 4px;
+    background: var(--color-well, #F1F5F9);
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .apparel-thumb-btn:hover,
+  .apparel-thumb-btn.is-active {
+    border-color: var(--color-crimson, #C81E1E);
+    background: #FFFFFF;
+  }
+  .apparel-thumb-btn img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  /* Right Column Specs */
+  .product-specs-shell {
+    padding-left: 10px;
+  }
+  .product-sku-badge-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+  .sku-pill {
+    background: var(--color-steel, #0B1118);
+    color: #FFFFFF;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 3px;
+    letter-spacing: 0.04em;
+  }
+  .category-pill {
+    background: #FFFFFF;
+    border: 1px solid var(--color-border, #E2E8F0);
+    color: var(--color-text-muted, #64748B);
+    font-size: 12px;
+    padding: 4px 10px;
+    border-radius: 3px;
+  }
+
+  .product-title-barlow {
+    font-size: clamp(28px, 4vw, 42px);
+    font-weight: 800;
+    color: var(--color-steel, #0B1118);
+    letter-spacing: -0.02em;
+    margin-bottom: 24px;
+  }
+
+  /* RFQ Callout */
+  .product-rfq-callout {
+    background: #FFFFFF;
+    border: 1px solid var(--color-border, #E2E8F0);
+    border-radius: 4px;
+    padding: 22px;
+    margin-bottom: 28px;
+  }
+  .rfq-callout-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--color-steel, #0B1118);
+    margin-bottom: 8px;
+  }
+  .rfq-callout-text {
+    font-size: 14px;
+    color: var(--color-text-body, #334155);
+    line-height: 1.5;
+    margin-bottom: 16px;
+  }
+
+  /* Technical Specs Tabs */
+  .product-technical-tabs {
+    background: #FFFFFF;
+    border: 1px solid var(--color-border, #E2E8F0);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .tabs-header-bar {
+    background: var(--color-well, #F1F5F9);
+    border-bottom: 1px solid var(--color-border, #E2E8F0);
+    padding: 12px 18px;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--color-steel, #0B1118);
+    letter-spacing: 0.05em;
+  }
+  .desc-content-well {
+    padding: 22px;
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: var(--color-text-body, #334155);
+  }
+  .desc-content-well :global(table) {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 14px 0;
+    font-size: 14px;
+  }
+  .desc-content-well :global(th),
+  .desc-content-well :global(td) {
+    border: 1px solid var(--color-border, #E2E8F0);
+    padding: 10px 14px;
+  }
+  .desc-content-well :global(th) {
+    background: var(--color-well, #F1F5F9);
+    font-family: var(--font-mono);
+    font-size: 12px;
+    text-transform: uppercase;
+  }
+
+  .product-sizing-box {
+    background: #FFFFFF;
+    border: 1px solid var(--color-border, #E2E8F0);
+    border-radius: 4px;
+    padding: 18px;
+  }
+  .sizing-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--color-steel, #0B1118);
+    margin-bottom: 12px;
+  }
+  .sizing-guide-img {
     max-width: 100%;
     height: auto;
     border-radius: 4px;
-    margin: 15px 0;
-  }
-
-  @media (max-width: 991px) {
-    .single-product-wrap-layout1 {
-      padding: 40px 0 60px !important;
-    }
-    .item-title {
-      font-size: clamp(22px, 5vw, 28px) !important;
-    }
-  }
-
-  @media (max-width: 767px) {
-    .viewer-container,
-    .apparel-gallery-box {
-      padding: 15px !important;
-    }
-    .main-image-wrap {
-      min-height: 280px !important;
-    }
-    .desc-content table {
-      display: block;
-      width: 100%;
-      overflow-x: auto;
-    }
   }
 </style>
 
 <script>
-  function initProductPage() {
+  function initProductPageScripts() {
     // 1. Apparel Thumbnail Switcher
     const apparelMain = document.getElementById('apparelMainImage') as HTMLImageElement;
     const apparelBtns = document.querySelectorAll<HTMLButtonElement>('.apparel-thumb-btn');
@@ -209,20 +476,18 @@ const { product } = Astro.props;
           apparelBtns.forEach((b) => b.classList.remove('is-active'));
           btn.classList.add('is-active');
           const src = btn.getAttribute('data-img-src');
-          if (src) {
-            apparelMain.src = src;
-          }
+          if (src) apparelMain.src = src;
         });
       });
-      apparelBtns[0]?.classList.add('is-active');
     }
 
-    // 2. 3D Sprite Viewer Scrubber
+    // 2. 3D Sprite Viewer Scrubber with touchcancel & pointer events
     const viewer = document.getElementById('productViewer') as HTMLElement | null;
     const sprite = document.getElementById('productSprite') as HTMLElement | null;
     const handleContainer = document.getElementById('viewerHandle') as HTMLElement | null;
     const handleFill = document.getElementById('handleFill') as HTMLElement | null;
     const handleCursor = document.getElementById('handleCursor') as HTMLElement | null;
+    const figure = document.getElementById('productFigure') as HTMLElement | null;
 
     if (viewer && sprite && handleContainer && handleFill && handleCursor) {
       const activeSprite = sprite;
@@ -234,7 +499,6 @@ const { product } = Astro.props;
       let visibleFrame = 0;
       let isDragging = false;
 
-      // Reveal sprite on load
       const spriteUrl = activeSprite.getAttribute('data-image');
       if (spriteUrl) {
         const img = new Image();
@@ -245,16 +509,17 @@ const { product } = Astro.props;
       }
 
       function updateFrame(frameIndex: number) {
-        visibleFrame = Math.max(0, Math.min(frameIndex, frames - 1));
+        visibleFrame = ((frameIndex % frames) + frames) % frames;
         const transformPercent = -(100 * visibleFrame / frames);
         activeSprite.style.transform = `translateX(${transformPercent}%)`;
 
         const percent = (visibleFrame / (frames - 1)) * 100;
         activeFill.style.width = `${percent}%`;
         activeCursor.style.left = `${percent}%`;
+        activeContainer.setAttribute('aria-valuenow', String(visibleFrame));
       }
 
-      function onHandleMove(clientX: number) {
+      function onScrubberMove(clientX: number) {
         const rect = activeContainer.getBoundingClientRect();
         const offsetX = Math.max(0, Math.min(clientX - rect.left, rect.width));
         const fraction = offsetX / rect.width;
@@ -264,82 +529,60 @@ const { product } = Astro.props;
 
       activeContainer.addEventListener('mousedown', (e) => {
         isDragging = true;
-        activeContainer.classList.add('dragging');
-        onHandleMove(e.clientX);
+        onScrubberMove(e.clientX);
       });
-
       window.addEventListener('mousemove', (e) => {
         if (!isDragging) return;
-        onHandleMove(e.clientX);
+        onScrubberMove(e.clientX);
       });
-
       window.addEventListener('mouseup', () => {
-        if (isDragging) {
-          isDragging = false;
-          activeContainer.classList.remove('dragging');
-        }
+        isDragging = false;
       });
 
-      // Touch events for mobile
-      handleContainer.addEventListener('touchstart', (e) => {
+      // Touch events on scrubber
+      activeContainer.addEventListener('touchstart', (e) => {
         isDragging = true;
-        handleContainer.classList.add('dragging');
-        onHandleMove(e.touches[0].clientX);
+        onScrubberMove(e.touches[0].clientX);
       }, { passive: true });
 
       window.addEventListener('touchmove', (e) => {
         if (!isDragging) return;
-        onHandleMove(e.touches[0].clientX);
+        onScrubberMove(e.touches[0].clientX);
       }, { passive: true });
 
-      window.addEventListener('touchend', () => {
-        if (isDragging) {
-          isDragging = false;
-          handleContainer.classList.remove('dragging');
-        }
-      });
+      const clearDrag = () => { isDragging = false; };
+      window.addEventListener('touchend', clearDrag);
+      window.addEventListener('touchcancel', clearDrag);
 
-      // Also allow swiping directly on the product image
-      const figure = document.getElementById('productFigure');
-      let imgStartX = 0;
-      let imgStartFrame = 0;
-      let imgDragging = false;
-
+      // Horizontal swipe on figure (with horizontal check so vertical scrolling is unaffected)
       if (figure) {
-        figure.addEventListener('mousedown', (e) => {
-          e.preventDefault();
-          imgDragging = true;
-          imgStartX = e.clientX;
-          imgStartFrame = visibleFrame;
-        });
-
-        window.addEventListener('mousemove', (e) => {
-          if (!imgDragging) return;
-          const diff = e.clientX - imgStartX;
-          const step = Math.round(diff / 20);
-          updateFrame(imgStartFrame - step);
-        });
-
-        window.addEventListener('mouseup', () => {
-          imgDragging = false;
-        });
+        let figureStartX = 0;
+        let figureStartY = 0;
+        let figureStartFrame = 0;
+        let isFigureSwiping = false;
 
         figure.addEventListener('touchstart', (e) => {
-          imgDragging = true;
-          imgStartX = e.touches[0].clientX;
-          imgStartFrame = visibleFrame;
+          figureStartX = e.touches[0].clientX;
+          figureStartY = e.touches[0].clientY;
+          figureStartFrame = visibleFrame;
+          isFigureSwiping = true;
         }, { passive: true });
 
-        window.addEventListener('touchmove', (e) => {
-          if (!imgDragging) return;
-          const diff = e.touches[0].clientX - imgStartX;
-          const step = Math.round(diff / 20);
-          updateFrame(imgStartFrame - step);
+        figure.addEventListener('touchmove', (e) => {
+          if (!isFigureSwiping) return;
+          const diffX = e.touches[0].clientX - figureStartX;
+          const diffY = Math.abs(e.touches[0].clientY - figureStartY);
+
+          // Only rotate if user is distinctly swiping horizontally
+          if (Math.abs(diffX) > diffY && Math.abs(diffX) > 10) {
+            const step = Math.round(diffX / 24);
+            updateFrame(figureStartFrame - step);
+          }
         }, { passive: true });
 
-        window.addEventListener('touchend', () => {
-          imgDragging = false;
-        });
+        const endFigureSwipe = () => { isFigureSwiping = false; };
+        figure.addEventListener('touchend', endFigureSwipe);
+        figure.addEventListener('touchcancel', endFigureSwipe);
       }
 
       updateFrame(0);
@@ -347,8 +590,8 @@ const { product } = Astro.props;
   }
 
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initProductPage);
+    document.addEventListener('DOMContentLoaded', initProductPageScripts);
   } else {
-    initProductPage();
+    initProductPageScripts();
   }
 </script>
