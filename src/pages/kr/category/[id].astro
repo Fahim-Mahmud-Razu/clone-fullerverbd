@@ -61,7 +61,7 @@ const categoryProducts = (baseCat?.product_ids || [])
       <!-- Standardized 4:3 Studio Wells Product Grid -->
       <div class="row g-4">
         {categoryProducts.map((prod) => (
-          <div class="col-xl-4 col-md-6 col-12">
+          <div class="col-xl-4 col-md-6 col-6">
             <a href={`/product/${prod.id}`} class="product-item-card" aria-label={`${prod.title} (SKU: ${prod.sku || prod.id}) 보기`}>
               <!-- 4:3 Studio Well -->
               <div class="studio-product-well">
@@ -233,5 +233,30 @@ const categoryProducts = (baseCat?.product_ids || [])
   .product-item-card:hover .product-card-action i {
     transform: translateX(4px);
     transition: transform 0.2s ease;
+  }
+
+  @media (max-width: 767px) {
+    .category-catalog-section {
+      padding: 40px 0 60px;
+    }
+    .product-card-body {
+      padding: 10px 10px 12px;
+    }
+    .product-card-title {
+      font-size: 13px;
+      margin: 0 0 8px;
+      line-height: 1.3;
+    }
+    .product-card-action {
+      font-size: 11px;
+      padding-top: 8px;
+    }
+    .product-item-card .studio-product-well {
+      padding: 12px;
+    }
+    .badge-sku {
+      font-size: 9.5px;
+      padding: 2px 5px;
+    }
   }
 </style>

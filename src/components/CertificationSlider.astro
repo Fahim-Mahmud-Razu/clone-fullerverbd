@@ -199,6 +199,8 @@ const certifications = [
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 40px;
+    overflow: hidden;
+    width: 100%;
   }
 
   .cert-carousel-track {
@@ -210,6 +212,8 @@ const certifications = [
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
     padding: 12px 4px 24px;
+    width: 100%;
+    max-width: 100%;
   }
   .cert-carousel-track::-webkit-scrollbar {
     display: none;
@@ -385,11 +389,32 @@ const certifications = [
   }
 
   @media (max-width: 640px) {
+    .cert-title-wrapper {
+      margin-bottom: 28px;
+    }
+    .certifications-title {
+      font-size: clamp(16px, 4.5vw, 22px);
+      padding: 8px 24px 10px;
+      white-space: normal;
+      max-width: 90vw;
+    }
+    .certifications-title::before {
+      clip-path: polygon(2% 0, 98% 0, 100% 100%, 0 100%);
+    }
+    .certifications-title::after {
+      inset: 6px -6px;
+      clip-path: polygon(2% 0, 98% 0, 100% 100%, 0 100%);
+    }
     .cert-carousel-container {
-      padding: 0 20px;
+      padding: 0 16px;
+      overflow: hidden;
+      max-width: 100%;
     }
     .cert-slide-card {
-      flex: 0 0 100%;
+      flex: 0 0 calc(100% - 10px);
+      min-width: 0;
+      max-width: 100%;
+      padding: 24px 16px 20px;
     }
     .cert-nav-btn {
       display: none;

@@ -247,13 +247,19 @@ const categories = [
   .mobile-topbar-steel {
     background-color: var(--color-steel, #0B1118);
     border-bottom: 1px solid var(--color-steel-border, #223242);
-    padding: 5px 14px;
+    padding: 5px 12px;
+    overflow: hidden;
+    max-width: 100vw;
+    width: 100%;
   }
   .mobile-topbar-inner {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    font-size: 11.5px;
+    font-size: 11px;
+    gap: 6px;
+    max-width: 100%;
+    overflow: hidden;
   }
   .mobile-topbar-link {
     color: #CBD5E1;
@@ -261,7 +267,11 @@ const categories = [
     display: inline-flex;
     align-items: center;
     gap: 5px;
-    letter-spacing: 0.02em;
+    letter-spacing: 0.01em;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
   .text-whatsapp {
     color: #25D366 !important;
@@ -272,6 +282,20 @@ const categories = [
   .mobile-topbar-sep {
     color: #334155;
     font-size: 11px;
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 380px) {
+    .mobile-topbar-inner {
+      font-size: 10px;
+    }
+    .mobile-topbar-link span {
+      max-width: 125px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      display: inline-block;
+    }
   }
 
   /* Crisp White Mobile Main Bar (Image 1 Aesthetic) */
@@ -282,6 +306,9 @@ const categories = [
     top: 0;
     z-index: 1050;
     box-shadow: 0 2px 8px rgba(11, 17, 24, 0.06);
+    width: 100%;
+    max-width: 100vw;
+    overflow: hidden;
   }
   .mobile-bar-inner {
     display: flex;

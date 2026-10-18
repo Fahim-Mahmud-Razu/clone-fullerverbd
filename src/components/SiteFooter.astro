@@ -219,6 +219,9 @@ const contactUrl = locale === 'en' ? '/contact' : `/${locale}/contact`;
     border-radius: 4px;
     font-size: 11px;
     color: #CBD5E1;
+    max-width: 100%;
+    flex-wrap: wrap;
+    word-break: break-word;
   }
 
   .footer-col-kicker {
@@ -441,5 +444,25 @@ const contactUrl = locale === 'en' ? '/contact' : `/${locale}/contact`;
     background: var(--color-crimson, #C81E1E);
     border-color: var(--color-crimson, #C81E1E);
     color: #FFFFFF;
+  }
+
+  @media (max-width: 767px) {
+    .floating-whatsapp-btn {
+      right: 16px;
+      bottom: 68px;
+      width: 42px;
+      height: 42px;
+      font-size: 21px;
+    }
+    .floating-whatsapp-tooltip {
+      display: none;
+    }
+    .architectural-scrollup-btn {
+      right: 16px;
+      bottom: 16px;
+      width: 40px;
+      height: 40px;
+      font-size: 13px;
+    }
   }
 </style>

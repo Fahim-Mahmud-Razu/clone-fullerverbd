@@ -53,7 +53,7 @@ const stats = [
 
       <div class="row g-4 justify-content-center">
         {workingProcess.map((proc) => (
-          <div class="col-lg-3 col-md-6 col-12">
+          <div class="col-lg-3 col-md-6 col-6">
             <div class="service-box-layout1 text-center">
               <div class="item-img">
                 <a href={proc.url} aria-label={`View ${proc.title} details`}>
@@ -108,7 +108,7 @@ const stats = [
       <!-- 13 Category Tiles Grid -->
       <div class="row gutters-15 g-4 mt-2">
         {categoryTiles.map((cat) => (
-          <div class="col-lg-4 col-md-6 col-12">
+          <div class="col-lg-4 col-md-6 col-6">
             <div class="project-box-layout1">
               <!-- 4:3 Studio Well Background -->
               <div class="item-img">
@@ -188,7 +188,7 @@ const stats = [
     <div class="container">
       <div class="row g-3">
         {stats.map((st) => (
-          <div class="col-lg-3 col-sm-6 col-12">
+          <div class="col-lg-3 col-sm-6 col-6">
             <div class="stat-card">
               <div class="stat-card-icon" aria-hidden="true">
                 <i class={st.icon}></i>
@@ -240,12 +240,13 @@ const stats = [
      -------------------------------------------------------------------------- */
   .service-wrap-layout1 {
     background: linear-gradient(180deg, #0B1118 0%, #111A24 100%);
-    padding: 85px 0 70px;
+    padding: clamp(45px, 6vw, 85px) 0 clamp(40px, 5vw, 70px);
     position: relative;
     border-bottom: 1px solid #1E293B;
+    overflow: hidden;
   }
   .service-wrap-layout1 .heading-layout1 {
-    margin-bottom: 50px;
+    margin-bottom: clamp(24px, 4vw, 50px);
   }
   .process-main-title {
     color: #FFFFFF;
@@ -320,6 +321,28 @@ const stats = [
     color: #F87171;
   }
 
+  @media (max-width: 991px) {
+    .process-circular-img {
+      width: clamp(120px, 34vw, 175px) !important;
+      height: clamp(120px, 34vw, 175px) !important;
+      border-width: 5px !important;
+    }
+    .sl-number {
+      width: 36px !important;
+      height: 36px !important;
+      line-height: 32px !important;
+      font-size: 14px !important;
+      top: 4px !important;
+      right: 4px !important;
+    }
+    .process-title-link {
+      font-size: 13.5px !important;
+    }
+    .service-box-layout1 .item-content {
+      margin-top: 10px !important;
+    }
+  }
+
   /* --------------------------------------------------------------------------
      Section 3: Product Categories Section (13 Category Tiles)
      -------------------------------------------------------------------------- */
@@ -331,7 +354,8 @@ const stats = [
     margin-bottom: 35px;
   }
   .categories-header-img {
-    max-width: 440px;
+    max-width: min(440px, 92vw);
+    width: 100%;
     height: auto;
     object-fit: contain;
   }
@@ -408,6 +432,41 @@ const stats = [
     background-color: #A51818;
     border-color: #A51818;
     transform: translateY(-1px);
+  }
+
+  @media (max-width: 991px) {
+    .project-box-layout1 {
+      height: auto !important;
+      display: flex !important;
+      flex-direction: column !important;
+    }
+    .project-box-layout1 .item-img {
+      height: 155px !important;
+      padding: 10px !important;
+    }
+    .category-tile-img {
+      max-height: 90% !important;
+      max-width: 90% !important;
+    }
+    .project-box-layout1 .item-content {
+      position: static !important;
+      opacity: 1 !important;
+      background: #0B1118 !important;
+      padding: 8px 6px !important;
+    }
+    .project-box-layout1 .item-btn {
+      font-size: 11.5px !important;
+      padding: 6px 8px !important;
+      width: 100% !important;
+      justify-content: center !important;
+      border: none !important;
+      box-shadow: none !important;
+    }
+    .project-box-layout1 .item-btn span {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
   }
 
   .more-catalog-callout {
@@ -514,12 +573,13 @@ const stats = [
       width: 100%;
       clip-path: none;
       -webkit-clip-path: none;
-      padding: 60px 24px;
+      padding: 40px 20px;
+      box-sizing: border-box;
     }
     .about-building-layer {
       position: relative;
       width: 100%;
-      height: 280px;
+      height: 220px;
     }
   }
 
@@ -670,7 +730,23 @@ const stats = [
     line-height: 1.35;
     font-weight: 500;
   }
-    font-weight: 500;
+
+  @media (max-width: 576px) {
+    .stat-card {
+      padding: 12px 10px !important;
+      gap: 8px !important;
+      min-height: 80px !important;
+    }
+    .stat-card-icon i {
+      font-size: 22px !important;
+    }
+    .stat-card-body .count-number {
+      font-size: 20px !important;
+    }
+    .stat-card-body .count-title {
+      font-size: 11px !important;
+      line-height: 1.25 !important;
+    }
   }
 </style>
 
